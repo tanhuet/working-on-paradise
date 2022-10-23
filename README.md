@@ -1,16 +1,27 @@
-# Note: This is my own document. It's just for reference.
+## Create new branch
 
-# After downloading, write `npm install` in powershell to install `node_modules`.
+```
+git checkout -b <branch_name> dev
+```
 
-# `npm start` to start the project
+## Pull request
 
-## Let watch the graph of web project `https://www.mindmeister.com/map/2463148031`
+Flow conventions for creating branches and pull requests
 
-## Some description about components of the project
+![pull request flow](src/components/asses/flow.png)
 
-- Pages document containts four components is:
-  <ul>
-  <li>Home component. Components conatinted in Home are containted in `introduction documents` </li>
-  <li>Category component</li>
-  </ul> 
-...
+## Run project
+
+### Install dependency packages
+
+```
+npm install
+```
+
+### Run
+
+```
+npm start
+```
+
+### Graph of web project <a href="https://www.mindmeister.com/map/2463148031">click here</a>
