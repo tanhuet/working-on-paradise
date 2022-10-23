@@ -1,0 +1,75 @@
+.service {
+    margin: 9rem 0;
+    margin-bottom: 8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.service-img {
+    margin-left: 80px;
+}
+
+.service-img img {
+    height: 400px;
+    width: 400px;
+}
+
+.service-option {
+    // border: solid;
+}
+
+.text {
+    color: #808080;
+}
+
+.text span {
+    color: #0099CC
+}
+
+.main {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22px;
+    margin-right: 16rem;
+}
+
+.main ul {
+    margin-left: -30px;
+    padding: 0;
+    list-style: none;
+}
+
+.main li {
+    margin: 20px 0 ;
+    align-items: center;
+    display: flex;
+}
+
+li img {
+    padding: 5px;
+    
+    height: 65px;
+    width: 65px;
+    border-radius: 25px;
+    margin-right: 0;
+}
+
+li p {
+    margin-left: 50px;
+    color: black;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.career {
+    background-color: orange;
+}
+
+.interact {
+    background-color: #00C9CC;
+}
+
+.location {
+    background: #AED75B;
+}

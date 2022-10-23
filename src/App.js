@@ -1,39 +1,24 @@
-import { Fragment } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { publicRoutes } from '~/routes';
-import DefaultLayout from '~/layouts';
+// import React, { useEffect, useState } from 'react';
+import Layout from './components/layout/Layout';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import Home from './pages/Home';
+import Favourite from './pages/Favourite'
+import Category from './pages/Category'
+import Cv from './pages/Cv'
 
 function App() {
-   return (
-      <Router>
-         <div className="App">
-            <Routes>
-               {publicRoutes.map((route, index) => {
-                  const Page = route.component;
-                  let Layout = DefaultLayout;
 
-                  if (route.layout) {
-                     Layout = route.layout;
-                  } else if (route.layout === null) {
-                     Layout = Fragment;
-                  }
-
-                  return (
-                     <Route
-                        key={index}
-                        path={route.path}
-                        element={
-                           <Layout>
-                              <Page />
-                           </Layout>
-                        }
-                     />
-                  );
-               })}
-            </Routes>
-         </div>
-      </Router>
-   );
+  return (
+    <Layout>
+      <Routes>
+        <Route path='/' element={<Navigate replace to = '/home' />} />
+        <Route path='/home' element={<Home/>} />
+        <Route path='/category' element={<Category/>} />
+        <Route path='/favourite' element={<Favourite/>} />
+        <Route path='/cv' element={<Cv/>} />
+      </Routes>
+    </Layout>
+  );
 }
 
 export default App;
