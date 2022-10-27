@@ -13,3 +13,27 @@
     font-size: 30px;
     line-height: 45px;
 }
+
+.title p {
+    margin-top: -2rem;
+    font-size: 15px;
+}
+
+.filter {
+    padding: 10px;
+    display: flex;
+    background: #C3EFEF;
+    justify-content: space-between;
+    // align-items: center;
+}
+.filter-button {
+    
+}
+.filter-search input{
+    padding: 0 10px;
+    background: #FFFFFF;
+    border-radius: 60px;
+    width: 339.47px;
+    height: 39.4px;
+    border: none;
+}
