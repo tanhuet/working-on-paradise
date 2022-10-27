@@ -1,7 +1,7 @@
 import { Fragment } from "react"
-import classes from "./Background.module.scss"
+import classes from "./HomeBackground.module.scss"
 
-const Background = () => {
+const HomeBackground = () => {
     return (
         <Fragment>
             <div className={`${classes.background} ${classes["background-first"]}`} />
@@ -12,4 +12,4 @@ const Background = () => {
     )
 }
 
-export default Background
+export default HomeBackground
