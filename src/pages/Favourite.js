@@ -1,6 +1,11 @@
+import { Fragment } from "react"
+import FavouriteJob from "../components/favourite/FavouriteJob"
+
 const Favourite = () => {
     return (
-        <h1>This is Favourite</h1>
+        <Fragment>
+            <FavouriteJob/>
+        </Fragment>
     )
 }
 

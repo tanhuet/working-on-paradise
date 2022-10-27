@@ -25,7 +25,7 @@ const MainNavigation = () => {
                 </div>
                 <div className={classes.center}>
                     <form>
-                        <input type='text'/>
+                        <input type='text' placeholder="Search"/>
                         {/* <button></button> */}
                     </form>
                 </div>
