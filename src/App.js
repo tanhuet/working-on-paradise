@@ -17,6 +17,7 @@ function App() {
         <Route path="/favourite" element={<Favourite />} />
         <Route path="/cv" element={<Cv />} />
         <Route path="/signin" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
       </Routes>
     </Layout>
   );
