@@ -1,5 +1,5 @@
 .header {
-    padding: 0 0;
+    padding: 0px 0;
     align-items: center;
     background-color: white;
     font-weight: 600;
@@ -17,7 +17,7 @@
     align-items: center;
     // border: solid;
     background-color: #6CE0E0;
-    padding: 0 2rem;
+    padding: 6px 2rem;
   }
 
   .nav .left {
@@ -82,6 +82,7 @@
     list-style-type:none;
     display:flex;
     align-items: center;
+    margin: auto 0;
   }
 
   .right .signup {
@@ -92,7 +93,6 @@
     border-radius: 10px;
     text-align: center;
     padding: 10px 0 10px 0;
-    
   }
 
   .right .signup a{
