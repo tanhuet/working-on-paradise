@@ -16,8 +16,7 @@ function App() {
         <Route path="/category" element={<Category />} />
         <Route path="/favourite" element={<Favourite />} />
         <Route path="/cv" element={<Cv />} />
-        <Route path="/signin" element={<Login />} />
-        <Route path="/signup" element={<Singup />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </Layout>
   );
