@@ -6,6 +6,7 @@ import Favourite from "./pages/Favourite";
 import Category from "./pages/Category";
 import Cv from "./pages/Cv";
 import Login from "./pages/Login"
+import './App.css';
 
 function App() {
   return (
