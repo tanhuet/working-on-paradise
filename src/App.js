@@ -6,7 +6,6 @@ import Favourite from "./pages/Favourite";
 import Category from "./pages/Category";
 import Cv from "./pages/Cv";
 import Login from "./pages/Login"
-import './App.css';
 
 function App() {
   return (
@@ -18,6 +17,7 @@ function App() {
         <Route path="/favourite" element={<Favourite />} />
         <Route path="/cv" element={<Cv />} />
         <Route path="/signin" element={<Login />} />
+        <Route path="/signup" element={<Singup />} />
       </Routes>
     </Layout>
   );
