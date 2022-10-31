@@ -3,7 +3,7 @@
 ### HighlightJob trong folder highlight-job
 
 Chuyển tất cả :
-![img](src/asses/readme/pre-highlight-job.png)
+![img](../asses/readme/pre-highlight-job.png)
 sang
 ![img](src/asses/readme/highlight-job.png)
 
