@@ -1,7 +1,7 @@
 import React from "react"
-import Overview from "../components/introduction/Overview"
-import HighlightJob from "../components/introduction/HighlightJob"
-import HomeBackground from "../components/layout/HomeBackground"
+import Overview from "./Components/Overview"
+import HighlightJob from "./Components/HighlightJob"
+import HomeBackground from "../../components/layout/HomeBackground"
 
 const Home = () => {
     return (

@@ -1,5 +1,5 @@
 import React from "react"
-import filter from "../asses/filter.png"
+import filter from "../../asses/filter.png"
 import classes from "./filter.module.scss"
 
 const Filter = () => {

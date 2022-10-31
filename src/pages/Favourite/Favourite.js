@@ -1,6 +1,6 @@
 import { Fragment } from "react"
-import FavouriteJob from "../components/favourite/FavouriteJob"
-import locationImg from "../components/asses/img-location.png"
+import FavouriteJob from "./Components/FavouriteJob"
+import locationImg from "../../asses/img-location.png"
 
 const DUMMY_JOB = [{
     id: '1',

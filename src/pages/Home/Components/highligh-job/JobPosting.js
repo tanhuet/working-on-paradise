@@ -1,6 +1,6 @@
 import classes from "./JobPosting.module.scss"
 
-import JobPOstingImg from "../../asses/job-posting.png"
+import JobPOstingImg from "../../../../asses/job-posting.png"
 import { Link } from "react-router-dom"
 
 const JobPosting = () => {

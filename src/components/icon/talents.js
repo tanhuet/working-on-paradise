@@ -1,5 +1,5 @@
 import React from "react"
-import talents from "../asses/talents.png"
+import talents from "../../asses/talents.png"
 import classes from "./rocket.module.scss"
 
 const Talents = () => {
