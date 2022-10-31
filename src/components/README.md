@@ -12,4 +12,15 @@ sang
 
 Các tham số đầu vào:
 
-![img](../asses/readme/argument-of-highlight-job.png)
+```{
+    id: 1,
+    logo: locationImg,
+    companyName: 'Google Inc',
+    location: 'California',
+    category: 'UI/UX Desgin',
+    jobType: 'Part Time',
+    experience: 'Senior',
+    minSalary: '700',
+    maxSalary: '1500',
+    skills: ['cloud', 'react'],
+}```
