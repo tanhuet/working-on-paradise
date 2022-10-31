@@ -19,7 +19,7 @@ const OfferList = (props) => {
                     experience = {job.experience}
                     minSalary = {job.minSalary}
                     maxSalary = {job.maxSalary}
-                    submittedDate = {job.submittedDate}
+                    // submittedDate = {job.submittedDate}
                 />
             </div>
         </Fragment>

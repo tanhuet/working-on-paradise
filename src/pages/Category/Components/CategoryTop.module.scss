@@ -1,0 +1,34 @@
+.img {
+    margin: 0;
+    padding: 0;
+    margin-left: -35px;
+}
+.img-category {
+    width: 104%;
+    height: 467.46px;
+}
+
+.filter-bar {
+    margin-left: -35px;
+    width: 106%;
+}
+
+.highligh-job {
+    margin-top: 2rem;
+    background: #E9FBFA;
+    border-radius: 60px;
+}
+
+.highligh-job .title {
+    color: #235B5C;
+    font-weight: 600;
+    font-size: 50px;
+    line-height: 75px;
+    text-align: center;
+}
+
+.highligh-job .list {
+    padding: 80px 80px;
+    display: flex;
+    justify-content: space-between;
+}
