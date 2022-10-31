@@ -12,4 +12,4 @@ sang
 
 Các tham số đầu vào:
 
-![img](../asses/readme/argument-of-highlight-job)
+![img](../asses/readme/argument-of-highlight-job.png)
