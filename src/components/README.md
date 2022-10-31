@@ -12,15 +12,69 @@ sang
 
 Các tham số đầu vào:
 
-```{
-    id: 1,
-    logo: locationImg,
+```argument
+<HighlightJob
+    // class = {classes.red}
+    logo = {job.logo}
+    companyName = {job.companyName}
+    location = {job.location}
+    category = {job.category}
+    jobType = {job.jobType}
+    skills = {job.skills}
+    experience = {job.experience}
+    minSalary = {job.minSalary}
+    maxSalary = {job.maxSalary}
+/>
+```
+
+Ví dụ object:
+
+```object
+{
+id: 1,
+logo: locationImg,
+companyName: 'Google Inc',
+location: 'California',
+category: 'UI/UX Desgin',
+jobType: 'Part Time',
+experience: 'Senior',
+minSalary: '700',
+maxSalary: '1500',
+skills: ['cloud', 'react'],
+}
+```
+
+### RecomendedJob trong folder recomended-job
+
+![img](../asses/readme/recomended-job.png)
+
+```argument
+<RecomendedJob 
+    key={item.id}
+    companyName={item.companyName}
+    logo = {item.logo}
+    jobs = {item.jobs}
+/>
+```
+Ví dụ object:
+
+```object
+{
+    id: '1',
     companyName: 'Google Inc',
-    location: 'California',
-    category: 'UI/UX Desgin',
-    jobType: 'Part Time',
-    experience: 'Senior',
-    minSalary: '700',
-    maxSalary: '1500',
-    skills: ['cloud', 'react'],
-}```
+    logo: locationImg,
+    jobs: [{
+        id: '1',
+        category: 'UI/UX Desgin',
+        jobType: 'Part Time',
+        location: 'California',
+    }, {
+        id: '2',
+        category: 'UI/UX Desgin',
+        jobType: 'Part Time',
+        location: 'California',
+    }]
+}
+```
+
+
