@@ -13,24 +13,12 @@ const OfferList = (props) => {
                     logo = {job.logo}
                     companyName = {job.companyName}
                     location = {job.location}
-                    jobName = {job.jobName}
-                    type = {job.type}
-                    submittedDate = {job.submittedDate}
-                />
-                <HighlightJob    
-                    logo = {job.logo}
-                    companyName = {job.companyName}
-                    location = {job.location}
-                    jobName = {job.jobName}
-                    type = {job.type}
-                    submittedDate = {job.submittedDate}
-                />
-                <HighlightJob    
-                    logo = {job.logo}
-                    companyName = {job.companyName}
-                    location = {job.location}
-                    jobName = {job.jobName}
-                    type = {job.type}
+                    category = {job.category}
+                    jobType = {job.jobType}
+                    skills = {job.skills}
+                    experience = {job.experience}
+                    minSalary = {job.minSalary}
+                    maxSalary = {job.maxSalary}
                     submittedDate = {job.submittedDate}
                 />
             </div>

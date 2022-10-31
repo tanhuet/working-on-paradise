@@ -7,12 +7,16 @@ import Personnel from "./highligh-job/Personnel"
 
 const DUMYJOB = [
     {
+        id: 1,
         logo: locationImg,
         companyName: 'Google Inc',
         location: 'California',
-        jobName: 'UI/UX Desgin',
-        type: 'Part Time',
-        submittedDate: '12/12/2012',
+        category: 'UI/UX Desgin',
+        jobType: 'Part Time',
+        experience: 'Senior',
+        minSalary: '700',
+        maxSalary: '1500',
+        skills: ['cloud', 'react'],
     },
 ]
 
