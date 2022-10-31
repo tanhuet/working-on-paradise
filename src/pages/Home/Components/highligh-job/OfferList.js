@@ -1,5 +1,5 @@
 import classes from "./OfferList.module.scss"
-import Offer from "./Offer"
+import HighlightJob from "../../../../components/highlight-job/HighlightJob"
 import { Fragment } from "react"
 
 const OfferList = (props) => {
@@ -8,7 +8,8 @@ const OfferList = (props) => {
         <Fragment>
             <h1 className={classes.title}>Grab These Exciting Offer And <span>APPLY NOW</span></h1>
             <div className={classes.list}>
-                <Offer    
+                <HighlightJob
+                    // class = {classes.red}
                     logo = {job.logo}
                     companyName = {job.companyName}
                     location = {job.location}
@@ -16,7 +17,7 @@ const OfferList = (props) => {
                     type = {job.type}
                     submittedDate = {job.submittedDate}
                 />
-                <Offer    
+                <HighlightJob    
                     logo = {job.logo}
                     companyName = {job.companyName}
                     location = {job.location}
@@ -24,7 +25,7 @@ const OfferList = (props) => {
                     type = {job.type}
                     submittedDate = {job.submittedDate}
                 />
-                <Offer    
+                <HighlightJob    
                     logo = {job.logo}
                     companyName = {job.companyName}
                     location = {job.location}

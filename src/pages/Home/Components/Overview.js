@@ -6,7 +6,7 @@ import Service from "./overview/Service"
 const Overview = () => {
     return (
         <React.Fragment>
-            <Highlight/>
+            <Highlight />
             <Feature />
             <Service />
         </React.Fragment>

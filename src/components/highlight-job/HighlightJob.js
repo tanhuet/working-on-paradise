@@ -1,9 +1,9 @@
-import classes from "./Offer.module.scss"
+import classes from "./HighlightJob.module.scss"
 import { Link } from "react-router-dom"
 
-const Offer = (props) => {
+const HighlightJob = (props) => {
     return (    
-            <div className={classes.card}>
+            <div className={`${classes.card} ${props.class}`}>
                 <Link>
                 <div className={classes.company}>
                     <div className={classes.logo}>
@@ -28,8 +28,7 @@ const Offer = (props) => {
                     </Link>
                 </div>
             </div>
-        
     )
 }
 
-export default Offer
+export default HighlightJob

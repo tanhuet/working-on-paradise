@@ -1,7 +1,7 @@
 import React from "react"
-import Brifcase from "../../icon/brifcase"
-import Rocket from "../../icon/rocket"
-import Talents from "../../icon/talents"
+import Brifcase from "../../../../components/icon/brifcase"
+import Rocket from "../../../../components/icon/rocket"
+import Talents from "../../../../components/icon/talents"
 import classes from './Highlight.module.scss'
 
 const Highlight = () => {

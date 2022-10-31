@@ -8,7 +8,7 @@ git checkout -b <branch_name> dev
 
 Flow conventions for creating branches and pull requests
 
-![pull request flow](src/components/asses/flow.png)
+![pull request flow](src/asses/flow.png)
 
 ## Run project
 

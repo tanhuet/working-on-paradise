@@ -1,5 +1,5 @@
 import { Fragment } from "react"
-import locationImg from "../asses/img-location.png"
+import locationImg from "../../../asses/img-location.png"
 import JobList from "./highligh-job/JobList"
 import JobPosting from "./highligh-job/JobPosting"
 import OfferList from "./highligh-job/OfferList"

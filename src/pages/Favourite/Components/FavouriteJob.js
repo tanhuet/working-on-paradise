@@ -1,6 +1,6 @@
-import Wrap from "../UI/Wrap"
+import Wrap from "../../../components//UI/Wrap"
 import classes from "./FavouriteJob.module.scss"
-import FilterImg from "../icon/filter"
+import FilterImg from "../../../components/icon/filter"
 import { useCallback, useEffect, useState } from "react"
 import JobCard from "./JobCard"
 import { useLocation, useNavigate } from 'react-router-dom';

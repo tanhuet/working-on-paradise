@@ -1,5 +1,5 @@
 // import classes from "./JobCard.module.scss"
-import Card from "../UI/Card"
+import Card from "../../../components/UI/Card"
 
 const JobCard = (props) => {
     return (

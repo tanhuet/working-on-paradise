@@ -1,5 +1,5 @@
 import classes from "./Personnel.module.scss"
-import PersonnelImg from "../../asses/personel-img.png"
+import PersonnelImg from "../../../../asses/personel-img.png"
 import { Link } from "react-router-dom"
 
 const Personnel = () => {

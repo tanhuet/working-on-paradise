@@ -1,9 +1,9 @@
 
 import classes from "./Service.module.scss"
-import supporter from "../../asses/supporter.png"
-import CareerImage from "../../asses/img-career.png"
-import InteractImage from "../../asses/img-interact.png"
-import LocationImage from "../../asses/img-location.png"
+import supporter from "../../../../asses/supporter.png"
+import CareerImage from "../../../../asses/img-career.png"
+import InteractImage from "../../../../asses/img-interact.png"
+import LocationImage from "../../../../asses/img-location.png"
 
 const Service = () => {
     return (
