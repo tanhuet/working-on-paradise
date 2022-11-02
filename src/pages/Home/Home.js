@@ -2,14 +2,15 @@ import React from "react"
 import Overview from "./Components/Overview"
 import HighlightJob from "./Components/HighlightJob"
 import HomeBackground from "../../components/layout/HomeBackground"
+import classes from "./Home.module.scss"
 
 const Home = () => {
     return (
-        <React.Fragment>
+        <div className={classes.warp}>
             <HomeBackground />
             <Overview />
             <HighlightJob />
-        </React.Fragment>
+        </div>
     )
 }
 
