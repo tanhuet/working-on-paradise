@@ -15,10 +15,10 @@ const Footer = () => {
                             <NavLink className={(navData) => (navData.isActive ? classes.active : '')} to='/category'>Category</NavLink>
                         </li>
                         <li>
-                            <NavLink className={(navData) => (navData.isActive ? classes.active : '')} to='/favourite'>Favourite</NavLink>
+                            <NavLink className={(navData) => (navData.isActive ? classes.active : '')} to='/cv'>CV</NavLink>
                         </li>
                         <li>
-                            <NavLink className={(navData) => (navData.isActive ? classes.active : '')} to='/cv'>CV</NavLink>
+                        <NavLink className={(navData) => (navData.isActive ? classes.active : '')} to='/account'>Account</NavLink>
                         </li>
                     </ul>
                 </div>
