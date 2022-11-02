@@ -30,6 +30,18 @@ const DUMYJOB = [
         maxSalary: '1500',
         skills: ['cloud', 'react'],
     },
+    {
+        id: 3,
+        logo: locationImg,
+        companyName: 'Google Inc',
+        location: 'California',
+        category: 'UI/UX Desgin',
+        jobType: 'Part Time',
+        experience: 'Senior',
+        minSalary: '700',
+        maxSalary: '1500',
+        skills: ['cloud', 'react'],
+    },
 ]
 
 const DUMYRECOMENDED = [

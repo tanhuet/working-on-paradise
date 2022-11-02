@@ -1,7 +1,7 @@
 import { Fragment } from "react"
 import classes from "./JobList.module.scss"
 import HighlightJob from "../../../../components/highlight-job/HighlightJob"
-import { Link } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import more from "../../../../asses/more.png"
 
 const JobList = (props) => {
@@ -76,7 +76,7 @@ const JobList = (props) => {
                     maxSalary = {job.maxSalary}
                     // submittedDate = {job.submittedDate}
                 />
-                <Link>
+                <NavLink to={'/category'}>
                     <div className={classes.more}>
                         <div className={classes.text}>
                             <p>100+ More <br/>Categories</p>
@@ -85,7 +85,7 @@ const JobList = (props) => {
                             <img src={more} className ={classes['more-img']} alt="more"/>
                         </div>
                     </div>
-                </Link>
+                </NavLink>
             </div>
         </Fragment>
     )
