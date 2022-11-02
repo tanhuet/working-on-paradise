@@ -1,4 +1,3 @@
-import { Fragment } from "react"
 import Wrap from "../UI/Wrap"
 import classes from "./RecomendedJob.module.scss"
 
@@ -17,12 +16,14 @@ const RecomendedJob = (props) => {
                 </div>
                 <div className={classes['job-list']}>
                     {props.jobs.map(item => (
-                        <Fragment>
+                        <div
+                            key={item.id}
+                        >
                             <div className={classes.line}></div>
                             <div className={classes.job}>
                                 <p>{item.category}<br/><span>{item.location} - {item.jobType}</span></p>
                             </div>
-                        </Fragment>
+                        </div>
                     ))}
                 </div>
             </div>
