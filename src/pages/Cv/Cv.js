@@ -1,6 +1,6 @@
 const Cv = () => {
     return (
-        <h2>This is CVv</h2>
+        <h2>This is CVVVVV</h2>
     )
 }
 
