@@ -14,8 +14,8 @@ body {
   font-family: 'Poppins';
   font-style: normal;
   background-color: white;
-  width: 1366px;
-  max-width: 95%;
+  width: 100%;
+  max-width: 1500px;
 }
 
 h1 h2 h3 h4 {
