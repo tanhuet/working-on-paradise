@@ -8,6 +8,7 @@ import Cv from "./pages/Cv/Cv";
 import AccountPage from "./pages/Account/AccountPage";
 import Edit from "./pages/Account/Edit";
 import JobDetail from "./pages/JobDetails/JobDetail";
+import CvDeails from "./pages/CvDetail/CvDetail"
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/category" element={<Category />} />
         <Route path="/favourite" element={<Favourite />} />
         <Route path="/cv" element={<Cv />} />
+        <Route path="/cv/:cvId" element={<CvDeails />} />
         <Route path="/account" element={<AccountPage />} />
         <Route path="/account/edit" element={<Edit />} />
         <Route path="/details" element={<JobDetail />} />
