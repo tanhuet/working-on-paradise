@@ -7,6 +7,8 @@ import Category from "./pages/Category/Category";
 import Cv from "./pages/Cv/Cv";
 import AccountPage from "./pages/Account/AccountPage";
 import Edit from "./pages/Account/Edit";
+import JobDetail from "./pages/JobDetails/JobDetail";
+
 function App() {
   return (
     <Layout>
@@ -18,6 +20,7 @@ function App() {
         <Route path="/cv" element={<Cv />} />
         <Route path="/account" element={<AccountPage />} />
         <Route path="/account/edit" element={<Edit />} />
+        <Route path="/details" element={<JobDetail />} />
       </Routes>
     </Layout>
   );
