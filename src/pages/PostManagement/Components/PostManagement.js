@@ -23,12 +23,7 @@ const PostManagement = (props) => {
         
         <div className={classes["post-list"]}>
           <div className={classes.title}>
-            Created posts
-          
-            <div className={classes.add}>
-              
-            </div>
-          
+            Created posts          
           </div>
           <div className={classes.list}>
             <HighlightPost
