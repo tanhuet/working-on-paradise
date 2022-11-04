@@ -3,7 +3,7 @@ import {Link} from "react-router-dom"
 
 const HighlightPost = (props) => {
     return (    
-        <div className={`${classes.card} ${props.class}`}>
+        <div className={classes.card}>
             <div className={classes.company}>
                 <Link>
                     <div className={classes['company-info']}>
