@@ -1,4 +1,6 @@
+import { Fragment, useState } from "react"
 import CvDetail from "./CvDetail"
+import EditCv from "./EditCv"
 
 const DUMMYCV = {
     id: '1',
@@ -63,8 +65,22 @@ const DUMMYCV = {
 }
 
 const CvDetailPage = () => {
+
+    const [isEdit, setIsEdit] = useState(false)
+
+    const editHandler = (isEdit) => {
+        setIsEdit(isEdit)
+    }
+
+    const viewHandler = (isEdit) => {
+        setIsEdit(isEdit)
+    }
+
     return (
-        <CvDetail cv = {DUMMYCV}/>
+        <Fragment>
+            {!isEdit && <CvDetail cv = {DUMMYCV} onEdit={editHandler} />}
+            {isEdit && <EditCv cv = {DUMMYCV} onEdit={viewHandler}/>}
+        </Fragment>
     )
 }
 
