@@ -1,0 +1,164 @@
+.form {
+    width: 100%;
+}
+
+.header {
+    background: #FFFFFF;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: center;
+}
+
+.header button {
+    background: rgba(51, 173, 255, 0.5);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    width: 158px;
+    height: 104px;
+    border: none;
+    color: #000000;
+    font-weight: 600;
+    font-size: 19px;
+    line-height: 22px;
+}
+
+.form {
+    h3 {
+        font-weight: 600;
+        font-size: 17px;
+        line-height: 13px;
+    }
+    p {
+        text-align: center;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 22px;
+    }
+    .name {
+        margin: 2rem 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.cv {
+    width: 70%;
+    // height: 3rem;
+    // border: solid;
+    margin: 0 auto;
+    display: flex;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.25);
+}
+
+.cv .info1 {
+    padding: 50px 50px 50px 30px;
+    width: 50%;
+    h2 {
+        color: #FF944D;
+        font-weight: 700;
+        font-size: 21px;
+        line-height: 19px;
+        margin-bottom: 2rem;
+        margin-top: 5rem;
+    }
+    .experience p, .activities p {
+        font-weight: 500;
+        font-size: 13px;
+        line-height: 15px;
+        word-break: normal;
+        word-spacing: normal;
+        text-align: justify;
+        color: rgba(0, 0, 0, 0.8);
+    }
+    .first {
+        .name-user {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+    .experience {
+        .exprience-detail {
+            .date {
+                width: auto;
+            }
+            .item {
+                margin: 30px 0;
+            }
+        }
+    }
+}
+
+.cv .first p{
+    margin-top: 10px;
+    padding: 0;
+}
+
+.cv .info1 .img {
+    background: #FFFFFF;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25);
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.cv .info1 .img img {
+   
+}
+
+
+.cv {
+    .info2 {
+        padding: 40px 20px 40px 50px;
+        flex: 1;
+        background: rgba(255, 194, 153, 0.3);
+    }
+}
+
+.info2 {
+    p {
+        text-align: left;
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 16px;
+    }
+    label {
+        text-align: left;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 16px;
+    }
+
+    .own-info {
+        margin-bottom: 7rem;
+    }
+
+    .education, .skills {
+        h2 {
+            margin-top: 3rem;
+            font-weight: 700;
+            font-size: 21px;
+            line-height: 19px;
+        }
+        h3 {
+            margin-left: -1rem;
+            font-weight: 600;
+            font-size: 17px;
+            line-height: 19px;
+        }
+        p {
+            margin-left: -1rem;
+            font-weight: 500;
+            font-size: 13px;
+            line-height: 15px;
+            word-break: normal;
+            word-spacing: normal;
+            text-align: justify;
+            color: rgba(0, 0, 0, 0.8);
+        }
+    }
+}

@@ -1,12 +1,22 @@
 import classes from "./FilterBar.module.scss"
 import FilterImg from "../icon/filter"
+import { useState } from "react"
 
 const FilterBar = () => {
+
+    const [isOpen, setIsOpen] = useState(false)
+
+    const openHandler = () => {
+        setIsOpen(pre => {
+            return !pre
+        })
+    }
+
     return (
         <div className={classes.bar}>
             <div className={classes.filter}>
                 <div className={classes['filter-button']}>
-                    <button>
+                    <button onClick={openHandler}>
                         <FilterImg />
                     </button>
                 </div>
@@ -14,7 +24,7 @@ const FilterBar = () => {
                     <input type="text" placeholder="Category, Company, TypeJob, ..."/>
                 </div>
             </div>   
-            <form>
+            {isOpen && <form>
                 <div className={classes.detail}>
                     <div className={classes['detail-left']}>
                         <div className={classes['company']}>
@@ -74,7 +84,7 @@ const FilterBar = () => {
                         </div>
                     </div>
                 </div>
-            </form>
+            </form>}
         </div>
     )
 }

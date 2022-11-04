@@ -1,6 +1,8 @@
 import { Fragment } from "react"
-import Job from "./Job"
 import classes from "./JobList.module.scss"
+import HighlightJob from "../../../../components/highlight-job/HighlightJob"
+import { NavLink } from "react-router-dom"
+import more from "../../../../asses/more.png"
 
 const JobList = (props) => {
     const job = props.jobs[0]
@@ -9,54 +11,81 @@ const JobList = (props) => {
             <h1 className={classes.h1}>BROWSE JOB CATEGORIES</h1>
         
             <div className={classes["job-list"]}>
-                <Job 
+                <HighlightJob
+                    class = {classes.wrap}
                     logo = {job.logo}
                     companyName = {job.companyName}
                     location = {job.location}
-                    jobName = {job.jobName}
-                    type = {job.type}
-                    submittedDate = {job.submittedDate}
+                    category = {job.category}
+                    jobType = {job.jobType}
+                    skills = {job.skills}
+                    experience = {job.experience}
+                    minSalary = {job.minSalary}
+                    maxSalary = {job.maxSalary}
+                    // submittedDate = {job.submittedDate}
                 />
-                               <Job 
+                                <HighlightJob
+                    class = {classes.wrap}
                     logo = {job.logo}
                     companyName = {job.companyName}
                     location = {job.location}
-                    jobName = {job.jobName}
-                    type = {job.type}
-                    submittedDate = {job.submittedDate}
+                    category = {job.category}
+                    jobType = {job.jobType}
+                    skills = {job.skills}
+                    experience = {job.experience}
+                    minSalary = {job.minSalary}
+                    maxSalary = {job.maxSalary}
+                    // submittedDate = {job.submittedDate}
                 />
-                               <Job 
+                                <HighlightJob
+                    class = {classes.wrap}
                     logo = {job.logo}
                     companyName = {job.companyName}
                     location = {job.location}
-                    jobName = {job.jobName}
-                    type = {job.type}
-                    submittedDate = {job.submittedDate}
+                    category = {job.category}
+                    jobType = {job.jobType}
+                    skills = {job.skills}
+                    experience = {job.experience}
+                    minSalary = {job.minSalary}
+                    maxSalary = {job.maxSalary}
+                    // submittedDate = {job.submittedDate}
                 />
-                               <Job 
+                                <HighlightJob
+                    class = {classes.wrap}
                     logo = {job.logo}
                     companyName = {job.companyName}
                     location = {job.location}
-                    jobName = {job.jobName}
-                    type = {job.type}
-                    submittedDate = {job.submittedDate}
+                    category = {job.category}
+                    jobType = {job.jobType}
+                    skills = {job.skills}
+                    experience = {job.experience}
+                    minSalary = {job.minSalary}
+                    maxSalary = {job.maxSalary}
+                    // submittedDate = {job.submittedDate}
                 />
-                               <Job 
+                                <HighlightJob
+                    class = {classes.wrap}
                     logo = {job.logo}
                     companyName = {job.companyName}
                     location = {job.location}
-                    jobName = {job.jobName}
-                    type = {job.type}
-                    submittedDate = {job.submittedDate}
+                    category = {job.category}
+                    jobType = {job.jobType}
+                    skills = {job.skills}
+                    experience = {job.experience}
+                    minSalary = {job.minSalary}
+                    maxSalary = {job.maxSalary}
+                    // submittedDate = {job.submittedDate}
                 />
-                               <Job 
-                    logo = {job.logo}
-                    companyName = {job.companyName}
-                    location = {job.location}
-                    jobName = {job.jobName}
-                    type = {job.type}
-                    submittedDate = {job.submittedDate}
-                />
+                <NavLink to={'/category'}>
+                    <div className={classes.more}>
+                        <div className={classes.text}>
+                            <p>100+ More <br/>Categories</p>
+                        </div>
+                        <div className={classes.img}>
+                            <img src={more} className ={classes['more-img']} alt="more"/>
+                        </div>
+                    </div>
+                </NavLink>
             </div>
         </Fragment>
     )

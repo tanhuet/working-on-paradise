@@ -1,16 +1,14 @@
 .img {
     margin: 0;
     padding: 0;
-    margin-left: -35px;
 }
 .img-category {
-    width: 104%;
+    width: 100%;
     height: 467.46px;
 }
 
 .filter-bar {
-    margin-left: -35px;
-    width: 106%;
+    width: 100%;
 }
 
 .highligh-job {
@@ -30,5 +28,5 @@
 .highligh-job .list {
     padding: 80px 80px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
