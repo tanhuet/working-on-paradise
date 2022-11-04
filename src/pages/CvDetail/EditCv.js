@@ -1,12 +1,10 @@
 import classes from "./EditCv.module.scss"
 import locationImg from "../../asses/img-location.png"
-import { Fragment, useRef } from "react"
+import { Fragment} from "react"
 
 const EditCv = (props) => {
 
     const CV = props.cv
-
-    const date = useRef(null)
 
     const saveHandler = (e) => {
         e.preventDefault()

@@ -6,7 +6,7 @@ const DUMMYCV = {
     id: '1',
     name: "Cv's Name",
     nameUser: "Job",
-    birthday: '23/02/2002',
+    birthday: new Date('2009-02-02'),
     phone: '0123456789',
     email: 'hiepxxxxxx@gmail.com',
     website: 'none',

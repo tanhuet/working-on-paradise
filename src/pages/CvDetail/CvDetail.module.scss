@@ -59,8 +59,10 @@
         font-weight: 700;
         font-size: 21px;
         line-height: 19px;
+        margin-bottom: 2rem;
+        margin-top: 5rem;
     }
-    .experience p {
+    .experience p, .activities p {
         font-weight: 500;
         font-size: 13px;
         line-height: 15px;
@@ -89,7 +91,7 @@
 }
 
 .cv .first p{
-    margin: 20px 0;
+    margin-top: 10px;
     padding: 0;
 }
 
@@ -129,5 +131,34 @@
         font-weight: 600;
         font-size: 16px;
         line-height: 16px;
+    }
+
+    .own-info {
+        margin-bottom: 7rem;
+    }
+
+    .education, .skills {
+        h2 {
+            margin-top: 3rem;
+            font-weight: 700;
+            font-size: 21px;
+            line-height: 19px;
+        }
+        h3 {
+            margin-left: -1rem;
+            font-weight: 600;
+            font-size: 17px;
+            line-height: 19px;
+        }
+        p {
+            margin-left: -1rem;
+            font-weight: 500;
+            font-size: 13px;
+            line-height: 15px;
+            word-break: normal;
+            word-spacing: normal;
+            text-align: justify;
+            color: rgba(0, 0, 0, 0.8);
+        }
     }
 }
