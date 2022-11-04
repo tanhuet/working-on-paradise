@@ -11,7 +11,7 @@ import SignUp from "./pages/SignUp/SignUp";
 import AccountPage from "./pages/Account/AccountPage";
 import Edit from "./pages/Account/Edit";
 import JobDetail from "./pages/JobDetails/JobDetail";
-import CvDetailPage from "./pages/CvDetail/CvDetailPage"
+import CvDetailPage from "./pages/CvDetail/CvDetailPage";
 
 function App() {
   return (
@@ -29,6 +29,7 @@ function App() {
         <Route path="/account" element={<AccountPage />} />
         <Route path="/account/edit" element={<Edit />} />
         <Route path="/details" element={<JobDetail />} />
+        <Route path='*' element={<p>NotFound</p>} />
       </Routes>
     </Layout>
   );

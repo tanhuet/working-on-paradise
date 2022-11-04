@@ -39,6 +39,9 @@
         justify-content: center;
         align-items: center;
     }
+    .name input {
+        // width: 300px;
+    }
 }
 
 .cv {
@@ -78,6 +81,10 @@
     }
     .experience {
         .exprience-detail {
+            input {
+                margin: 10px 0;
+                width: 170px;
+            }
             .date {
                 width: auto;
             }

@@ -1,34 +1,25 @@
 import classes from "./CvDetail.module.scss"
 import locationImg from "../../asses/img-location.png"
-import { Fragment, useState } from "react"
+import { Fragment} from "react"
+// import { Link } from "react-router-dom"
 
 const CvDetail = (props) => {
 
     const CV = props.cv
 
-    const [isEdit, setIsEdit] = useState(false)
-
-    const editModeHandler = () => {
-        setIsEdit(true)
-    }
-
-    const saveHandler = (e) => {
-        e.preventDefault()
-        
+    const editHandler = () => {
+        props.onEdit(true)
     }
 
     return (
         <Fragment>
-        <button onClick={editModeHandler}>Edit</button>
-        <form className={classes.form} onSubmit={saveHandler}>
+        <div className={classes.form}>
             <div className={classes.header}>
-                {/* <button>Save</button> */}
-                <button>Save</button>
+                <button onClick={editHandler}>Edit</button>
             </div>
             <div className={classes.name}>
                 <div>
-                    {!isEdit && <p>{CV.name}</p>}
-                    {isEdit && <input type="text" />}
+                    <p>{CV.name}</p>
                 </div>
             </div>
             <div className={classes.cv}>
@@ -40,8 +31,7 @@ const CvDetail = (props) => {
                         <p>Name</p>
                         <div className={classes['name-user']}>
                             <div>
-                                {!isEdit && <p>{CV.nameUser}</p>}
-                                {isEdit && <input type="text" />}
+                                <p>{CV.nameUser}</p>
                             </div>
                         </div>
                     </div>
@@ -51,13 +41,10 @@ const CvDetail = (props) => {
                         </h2>
                         <div className={classes['exprience-detail']}>
                             {CV.experience.map(item => (
-                                <div>
-                                    {!isEdit && <p>{item.startDate} - {item.endDate}</p>}
-                                    {isEdit && <input type="text" />}
-                                    {!isEdit && <h3>{item.position} - {item.company}</h3>}
-                                    {isEdit && <input type="text" />}
-                                    {!isEdit && <p>{item.description}</p>}
-                                    {isEdit && <input type="text" />}
+                                <div className={classes['item']} key={item.id}>
+                                    <p>{item.startDate} - {item.endDate}</p>
+                                    <h3>{item.position} - {item.company}</h3>
+                                    <p>{item.description}</p>
                                 </div>
                             ))}
                         </div>
@@ -70,7 +57,7 @@ const CvDetail = (props) => {
                     </div>
                 </div>
             </div>
-        </form>
+        </div>
         </Fragment>
     )
 }
