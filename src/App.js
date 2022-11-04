@@ -11,7 +11,7 @@ import SignUp from "./pages/SignUp/SignUp";
 import AccountPage from "./pages/Account/AccountPage";
 import Edit from "./pages/Account/Edit";
 import JobDetail from "./pages/JobDetails/JobDetail";
-import CvDeails from "./pages/CvDetail/CvDetail"
+import CvDetailPage from "./pages/CvDetail/CvDetailPage"
 
 function App() {
   return (
@@ -25,7 +25,7 @@ function App() {
         <Route path="/forgot" element={<ForgotPassWord />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/cv/:cvId" element={<CvDeails />} />
+        <Route path="/cv/:cvId" element={<CvDetailPage />} />
         <Route path="/account" element={<AccountPage />} />
         <Route path="/account/edit" element={<Edit />} />
         <Route path="/details" element={<JobDetail />} />
