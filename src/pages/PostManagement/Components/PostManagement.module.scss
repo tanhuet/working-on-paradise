@@ -51,7 +51,7 @@
         margin: auto;
         background: #9BE4E4;
         border-radius: 40px 40px 0px 0px;
-        padding-top: 20px;
+        display: flex;
         padding-left: 40px;
         font-weight: 600;
         font-size: 25px;
@@ -60,7 +60,18 @@
         color: #FFFFFF;
         text-shadow: 0px 4px 25px rgba(0, 0, 0, 0.75);
 
+        .add {
+            width: 35px;
+            height: 35px;
+            margin-left: 700px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: black;
         }
+    }
     
     .list {
         width: 1000px;
