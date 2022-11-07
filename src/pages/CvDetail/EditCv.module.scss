@@ -1,5 +1,10 @@
 .form {
-    width: 100%;
+    textarea {
+        text-align: left;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 16px;
+    }
 }
 
 .header {
@@ -39,9 +44,6 @@
         justify-content: center;
         align-items: center;
     }
-    .name input {
-        // width: 300px;
-    }
 }
 
 .cv {
@@ -62,8 +64,10 @@
         font-weight: 700;
         font-size: 21px;
         line-height: 19px;
+        margin-bottom: 2rem;
+        margin-top: 5rem;
     }
-    .experience p {
+    .experience input, .activities input {
         font-weight: 500;
         font-size: 13px;
         line-height: 15px;
@@ -81,10 +85,6 @@
     }
     .experience {
         .exprience-detail {
-            input {
-                margin: 10px 0;
-                width: 170px;
-            }
             .date {
                 width: auto;
             }
@@ -93,11 +93,6 @@
             }
         }
     }
-}
-
-.cv .first p{
-    margin: 20px 0;
-    padding: 0;
 }
 
 .cv .info1 .img {
@@ -125,7 +120,7 @@
 }
 
 .info2 {
-    p {
+    input {
         text-align: left;
         font-weight: 500;
         font-size: 15px;
@@ -136,5 +131,34 @@
         font-weight: 600;
         font-size: 16px;
         line-height: 16px;
+    }
+
+    .own-info {
+        margin-bottom: 7rem;
+    }
+
+    .education, .skills {
+        h2 {
+            margin-top: 3rem;
+            font-weight: 700;
+            font-size: 21px;
+            line-height: 19px;
+        }
+        h3 {
+            margin-left: -1rem;
+            font-weight: 600;
+            font-size: 17px;
+            line-height: 19px;
+        }
+        input {
+            margin-left: -1rem;
+            font-weight: 500;
+            font-size: 13px;
+            line-height: 15px;
+            word-break: normal;
+            word-spacing: normal;
+            text-align: justify;
+            color: rgba(0, 0, 0, 0.8);
+        }
     }
 }
