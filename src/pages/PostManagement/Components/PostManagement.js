@@ -23,7 +23,11 @@ const PostManagement = (props) => {
         
         <div className={classes["post-list"]}>
           <div className={classes.title}>
-            Created posts          
+            Created posts
+            <Link className={classes.add}>
+              <i class="fa fa-plus" aria-hidden="true"></i>
+            </Link>
+                     
           </div>
           <div className={classes.list}>
             <HighlightPost

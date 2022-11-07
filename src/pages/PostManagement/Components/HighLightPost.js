@@ -1,5 +1,7 @@
 import classes from "./HighlightJob.module.scss"
 import {Link} from "react-router-dom"
+import editImg from "../../../asses/edit_img.png"
+import deleteImg from "../../../asses/delete_img.png"
 
 const HighlightPost = (props) => {
     return (    
@@ -18,9 +20,12 @@ const HighlightPost = (props) => {
                         </div>
                     </div>
                 </Link>
-
-                <div></div>
-                <div></div>
+                <Link>
+                    <img className={classes.edit} src={editImg} alt=".."/>
+                </Link>
+                <Link>
+                    <img className={classes.delete} src={deleteImg} alt=".."/>
+                </Link>
             </div>
             <div className={classes.skill}>
                 <ul className={classes['skill-items']}>
