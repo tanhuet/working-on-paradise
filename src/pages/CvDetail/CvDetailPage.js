@@ -16,16 +16,16 @@ const DUMMYCV = {
         {
             id: '1',
             company: 'Google',
-            startDate: '10/10/2000',
-            endDate: '10/11/2001',
+            startDate: new Date('2000-10-10'),
+            endDate: new Date('2000-10-10'),
             position: 'Manager',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tincidunt eget nullam non nisi est sit amet facilisis. Nisl condimentum id venenatis a condimentum vitae sapien pellentesque habitant.',
         },
         {
             id: '2',
             company: 'Google',
-            startDate: '10/10/2000',
-            endDate: '10/11/2001',
+            startDate: new Date('2020-10-10'),
+            endDate: new Date('2000-10-10'),
             position: 'manager',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tincidunt eget nullam non nisi est sit amet facilisis. Nisl condimentum id venenatis a condimentum vitae sapien pellentesque habitant.',
         }
@@ -34,8 +34,8 @@ const DUMMYCV = {
         {
             id: '1',
             organization: 'Hiepdx',
-            startDate: '10/10/2000',
-            endDate: '10/11/2001',
+            startDate: new Date('2020-10-10'),
+            endDate: new Date('2020-10-10'),
             position: 'manager',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tincidunt eget nullam non nisi est sit amet facilisis. Nisl condimentum id venenatis a condimentum vitae sapien pellentesque habitant.',
         },
@@ -44,8 +44,8 @@ const DUMMYCV = {
         {
             id: '1',
             school: 'Hiepdx',
-            startDate: '10/10/2000',
-            endDate: '10/11/2001',
+            startDate: new Date('2020-10-10'),
+            endDate: new Date('2020-10-10'),
             position: 'manager',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tincidunt eget nullam non nisi est sit amet facilisis. Nisl condimentum id venenatis a condimentum vitae sapien pellentesque habitant.',
         },
@@ -53,7 +53,7 @@ const DUMMYCV = {
     skills: [
         {
             id: '1',
-            skill: 'cloud',
+            skill: 'design',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tincidunt eget nullam non nisi est sit amet facilisis. Nisl condimentum id venenatis a condimentum vitae sapien pellentesque habitant.',
         },
         {
