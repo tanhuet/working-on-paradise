@@ -42,7 +42,7 @@ const CvDetail = (props) => {
                         <div className={classes['exprience-detail']}>
                             {CV.experience.map(item => (
                                 <div className={classes['item']} key={item.id}>
-                                    <p>{item.startDate} - {item.endDate}</p>
+                                    <p>{item.startDate.toISOString().split('T')[0]} - {item.endDate.toISOString().split('T')[0]}</p>
                                     <h3>{item.position} - {item.company}</h3>
                                     <p>{item.description}</p>
                                 </div>
@@ -56,7 +56,7 @@ const CvDetail = (props) => {
                         <div className={classes['activities-detail']}>
                             {CV.activities.map(item => (
                                 <div className={classes['item']} key={item.id}>
-                                    <p>{item.startDate} - {item.endDate}</p>
+                                    <p>{item.startDate.toISOString().split('T')[0]} - {item.endDate.toISOString().split('T')[0]}</p>
                                     <h3>{item.position} - {item.organization}</h3>
                                     <p>{item.description}</p>
                                 </div>
@@ -84,7 +84,7 @@ const CvDetail = (props) => {
                         <div className={classes['education-detail']}>
                             {CV.education.map(item => (
                                 <div className={classes['item']} key={item.id}>
-                                    <p>{item.startDate} - {item.endDate}</p>
+                                    <p>{item.startDate.toISOString().split('T')[0]} - {item.endDate.toISOString().split('T')[0]}</p>
                                     <h3>{item.position} - {item.school}</h3>
                                     <p>{item.description}</p>
                                 </div>
