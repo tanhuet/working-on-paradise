@@ -12,6 +12,8 @@ import {
   registerSuccess,
 } from "./auth-slice";
 
+import { getAllUserStart, getAllUserSuccess, getAllUserFail } from "./user-slice"
+
 const urlApi = config.api.url;
 
 export const loginUser = async (user, dispatch, navigate) => {
@@ -47,3 +49,14 @@ export const logoutUser = async (dispatch, navigate, axiosJWT) => {
     dispatch(logoutFail());
   }
 };
+
+export const getAllUser = async (dispatch, navigate) => {
+  dispatch(getAllUserStart());
+  try {
+    const res = await axios.get(`${urlApi}/user/allUser`)
+    dispatch(getAllUserSuccess(res.data))
+    navigate(config.routes.signin)
+  } catch (err) {
+    dispatch(getAllUserFail())
+  }
+}
