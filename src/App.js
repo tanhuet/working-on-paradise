@@ -13,6 +13,8 @@ import Edit from "./pages/Account/Edit";
 import JobDetail from "./pages/JobDetails/JobDetail";
 import CvDetailPage from "./pages/CvDetail/CvDetailPage";
 import PostManagementPage from "./pages/PostManagement/PostManagementPage";
+import AccountEmployer from "./pages/account-employer/AccountEmpolyer";
+import AccountEmployerEdit from "./pages/account-employer/AccountEmployerEdit";
 
 function App() {
   return (
@@ -32,6 +34,8 @@ function App() {
         <Route path="/details" element={<JobDetail />} />
         <Route path='*' element={<p>NotFound</p>} />
         <Route path="/postmanagement" element={<PostManagementPage />} />
+        <Route path="/accountEmployer" element={<AccountEmployer />} />
+        <Route path="/accountEmployer/employerEdit" element={<AccountEmployerEdit />} />
       </Routes>
     </Layout>
   );
