@@ -1,21 +1,25 @@
 import Account from "./Componets/Account";
-
-const DUMMYUSER = {
-        id: '1',
-        name: 'Username',
-        phone: '0123456789',
-        email: 'uet@vnu.edu.vn',
-        address: 'E3, Vietnam University of Hanoi, 144 Xuan Thuy, Cau Giay, Ha Noi',
-        age: '20',
-        gender: 'Female',
-    }
+import { useSelector } from "react-redux";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import config from "../../config";
 
 const AccountPage = () => {
+  const userStore = useSelector((state) => state.auth.login?.currentUser);
+  const [user, setUser] = useState();
 
+  useEffect(() => {
+    var endPoint = "jobseeker";
+    if (userStore.role === "Employer") {
+      endPoint = "employer";
+    }
+    axios.get(`${config.api.url}/${endPoint}`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } }).then((res) => {
+      console.log(res.data);
+      setUser(res.data);
+    });
+  }, [userStore]);
 
-    return (
-        <Account user={DUMMYUSER}/>
-    );
-  };
-  
-  export default AccountPage;
+  return <Account user={user} />;
+};
+
+export default AccountPage;
