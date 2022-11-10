@@ -29,7 +29,7 @@ function App() {
         <Route path="/account" element={<AccountPage />} />
         <Route path="/details" element={<JobDetail />} />
         <Route path='*' element={<p>NotFound</p>} />
-        <Route path="/post/management" element={<PostManagementPage />} />
+        <Route path="/postmanagement" element={<PostManagementPage />} />
       </Routes>
     </Layout>
   );
