@@ -1,0 +1,28 @@
+.card {
+  background-color: #e9fbfa;
+  border-radius: 80px;
+  width: 800px;
+  height: max-content;
+  margin: auto;
+  margin-top: 2rem;
+  padding: 10px;
+}
+.card h1 {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 40px;
+  margin-left: 200px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  color: #235b5c;
+}
+.card .info {
+  margin-left: 100px;
+  margin-bottom: 50px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 1rem;
+  line-height: 30px;
+}

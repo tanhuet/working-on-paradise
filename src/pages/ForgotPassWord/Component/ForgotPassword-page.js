@@ -19,7 +19,7 @@ const ForgotPassWordPage = (props) => {
                        <input type="email" style={{ fontFamily: 'FontAwesome' }} placeholder=" &#xf0e0; Email" required />
                     </div>
                     
-                    <div className={classes["password"]}>
+                    {/* <div className={classes["password"]}>
                        <input
                           type="text"
                           style={{ fontFamily: 'FontAwesome' }}
@@ -32,7 +32,7 @@ const ForgotPassWordPage = (props) => {
                           placeholder=" &#xf023; Confirm Password"
                           required
                        />
-                    </div>
+                    </div> */}
                     
                  </div>
   
