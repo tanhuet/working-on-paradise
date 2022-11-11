@@ -9,10 +9,14 @@ import ForgotPassWord from "./pages/ForgotPassWord/ForgotPassword";
 import SignIn from "./pages/Signin/SignIn";
 import SignUp from "./pages/SignUp/SignUp";
 import AccountPage from "./pages/Account/AccountPage";
-import Edit from "./pages/Account/Edit";
 import JobDetail from "./pages/JobDetails/JobDetail";
 import CvDetailPage from "./pages/CvDetail/CvDetailPage";
 import PostManagementPage from "./pages/PostManagement/PostManagementPage";
+import EmployerDetails from "./pages/EmployerPost-Details/EmployerPost-Details";
+import EmployerCv from "./pages/Employer-Cv/Category";
+import AccountEmployer from "./pages/account-employer/AccountEmpolyer";
+import AccountEmployerEdit from "./pages/account-employer/AccountEmployerEdit";
+import AddPost from "./pages/ADD-POST-Employer/addPost";
 
 function App() {
   return (
@@ -28,10 +32,15 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/cv/:cvId" element={<CvDetailPage />} />
         <Route path="/account" element={<AccountPage />} />
-        <Route path="/account/edit" element={<Edit />} />
         <Route path="/details" element={<JobDetail />} />
-        <Route path='*' element={<p>NotFound</p>} />
+        <Route path="*" element={<p>NotFound</p>} />
         <Route path="/postmanagement" element={<PostManagementPage />} />
+        <Route path="/employer-post" element={<EmployerDetails />} />
+        <Route path="/employer-cv" element={<EmployerCv />} />
+        <Route path="/accountEmployer" element={<AccountEmployer />} />
+        <Route path="/accountEmployer/employerEdit" element={<AccountEmployerEdit />}/>
+        <Route path="/addPost" element={<AddPost />} />
+
       </Routes>
     </Layout>
   );
