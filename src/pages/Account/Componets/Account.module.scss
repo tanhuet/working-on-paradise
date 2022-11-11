@@ -7,7 +7,7 @@
         background: green;
         width: 150px;
         height: 150px;
-        margin-left: 20px;
+        margin-left: 50px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -43,8 +43,6 @@
 
 .style1 {
     text-align: center;
-    font-family: 'Poppins';
-    font-style: normal;
     font-weight: 600;
     font-size: 20px;
     line-height: 30px;
@@ -69,8 +67,6 @@
         border-radius: 20px;
 
         .style2 {
-            font-family: 'Poppins';
-            font-style: normal;
             font-weight: 600;
             font-size: 20px;
             line-height: 30px;
@@ -83,8 +79,6 @@
         border: none;
         background-color: rgba(0, 0, 0, 0);
         .style3 {
-            font-family: 'Poppins';
-            font-style: normal;
             font-weight: 600;
             font-size: 20px;
             line-height: 30px;
@@ -127,15 +121,13 @@
     margin-top: - 15px;
 
     .font {
-        font-family: 'Poppins';
-        font-style: normal;
         font-weight: 600;
         font-size: 20px;
         line-height: 30px;
         word-wrap: break-word;
         color: #000000;
         .editmake {
-            width: 400px;
+            width: 420px;
         }
     }
 
@@ -217,8 +209,6 @@
         }
 
         .style4 {
-            font-family: 'Poppins';
-            font-style: normal;
             font-weight: 600;
             font-size: 15px;
             line-height: 22px;
@@ -228,6 +218,61 @@
             color: #000000;
         }
     }
+    
+    .containerCarField {
+
+        .item1 {
+            width: 750px;
+            height: 100px;
+            margin-left: 50px;
+            margin-top: 27px;
+            display: flex;
+            
+            .a {
+                width: 220px;
+                height: 100px;
+            }
+        }
+
+        .item2 {
+            width: 750px;
+            height: 55px;
+            display: flex;
+            margin-left: 50px;
+            margin-top: 10px;
+
+            .b {
+                width: 220px;
+                height: 55px;
+            }
+        }
+
+        .item3 {
+            width: 750px;
+            height: 40px;
+            display: flex;
+            margin-left: 50px;
+            margin-top: 10px;
+
+            .c {
+                width: 220px;
+                height: 40px;
+            }
+        }
+
+        .item4 {
+            width: 750px;
+            height: 40px;
+            display: flex;
+            margin-left: 50px;
+            margin-top: 10px;
+            .d {
+                width: 220px;
+                height: 40px;
+            }
+        }
+    }
+
 }
 
 
