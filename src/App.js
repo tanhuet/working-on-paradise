@@ -16,6 +16,7 @@ import EmployerDetails from "./pages/EmployerPost-Details/EmployerPost-Details";
 import EmployerCv from "./pages/Employer-Cv/Category";
 import AccountEmployer from "./pages/account-employer/AccountEmpolyer";
 import AccountEmployerEdit from "./pages/account-employer/AccountEmployerEdit";
+import AddPost from "./pages/ADD-POST-Employer/addPost";
 
 function App() {
   return (
@@ -37,10 +38,9 @@ function App() {
         <Route path="/employer-post" element={<EmployerDetails />} />
         <Route path="/employer-cv" element={<EmployerCv />} />
         <Route path="/accountEmployer" element={<AccountEmployer />} />
-        <Route
-          path="/accountEmployer/employerEdit"
-          element={<AccountEmployerEdit />}
-        />
+        <Route path="/accountEmployer/employerEdit" element={<AccountEmployerEdit />}/>
+        <Route path="/addPost" element={<AddPost />} />
+
       </Routes>
     </Layout>
   );
