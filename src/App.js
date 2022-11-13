@@ -17,6 +17,7 @@ import EmployerCv from "./pages/Employer-Cv/Category";
 import AccountEmployer from "./pages/account-employer/AccountEmpolyer";
 import AccountEmployerEdit from "./pages/account-employer/AccountEmployerEdit";
 import AddPost from "./pages/ADD-POST-Employer/addPost";
+import ChangePassWord from "./pages/ChangePassWord/ChangePassword";
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
         <Route path="/accountEmployer" element={<AccountEmployer />} />
         <Route path="/accountEmployer/employerEdit" element={<AccountEmployerEdit />}/>
         <Route path="/addPost" element={<AddPost />} />
+        <Route path="/reset-password/:token" element={<ChangePassWord />} />
 
       </Routes>
     </Layout>
