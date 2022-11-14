@@ -1,11 +1,11 @@
 import classes from "./PostManagement.module.scss"
 import postImg from "../../../asses/post.png"
-import HighlightJob from "../../../components/highlight-job/HighlightJob";
+import HighLightCv from "./HighLightCv"
 import HighlightPost from "./HighLightPost";
 import {Link} from "react-router-dom"
 
 const PostManagement = (props) => {
-  const job = props.jobs[0]
+  const cv = props.cvs[0]
   const post = props.posts[0]
   return (
     <>
@@ -25,7 +25,7 @@ const PostManagement = (props) => {
           <div className={classes.title}>
             Created posts
             <Link className={classes.add}>
-              <i class="fa fa-plus" aria-hidden="true"></i>
+              <i class="fa fa-plus"></i>
             </Link>
                      
           </div>
@@ -69,37 +69,35 @@ const PostManagement = (props) => {
         <h1 className={classes["tittle-text"]}>IDEAL <span>CVs FOR </span>YOU</h1>
 
         <div className={classes["job-list"]}>
-          <HighlightJob
-            logo = {job.logo}
-            companyName = {job.companyName}
-            location = {job.location}
-            category = {job.category}
-            jobType = {job.jobType}
-            skills = {job.skills}
-            experience = {job.experience}
-            minSalary = {job.minSalary}
+          <HighLightCv
+            avatar = {cv.avatar}
+            userName = {cv.userName}
+            experience = {cv.experience}
+            age = {cv.age}
+            minSalary = {cv.minSalary}
+            maxSalary = {cv.maxSalary}
+            jobType = {cv.jobType}
+            skills = {cv.skills}
           />
-          <HighlightJob
-            logo = {job.logo}
-            companyName = {job.companyName}
-            location = {job.location}
-            category = {job.category}
-            jobType = {job.jobType}
-            skills = {job.skills}
-            experience = {job.experience}
-            minSalary = {job.minSalary}
-            maxSalary = {job.maxSalary}
+          <HighLightCv
+            avatar = {cv.avatar}
+            userName = {cv.userName}
+            experience = {cv.experience}
+            age = {cv.age}
+            minSalary = {cv.minSalary}
+            maxSalary = {cv.maxSalary}
+            jobType = {cv.jobType}
+            skills = {cv.skills}
           />
-          <HighlightJob
-            logo = {job.logo}
-            companyName = {job.companyName}
-            location = {job.location}
-            category = {job.category}
-            jobType = {job.jobType}
-            skills = {job.skills}
-            experience = {job.experience}
-            minSalary = {job.minSalary}
-            maxSalary = {job.maxSalary}
+          <HighLightCv
+            avatar = {cv.avatar}
+            userName = {cv.userName}
+            experience = {cv.experience}
+            age = {cv.age}
+            minSalary = {cv.minSalary}
+            maxSalary = {cv.maxSalary}
+            jobType = {cv.jobType}
+            skills = {cv.skills}
           />
         </div>
     </>
