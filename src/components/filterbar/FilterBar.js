@@ -2,7 +2,7 @@ import classes from "./FilterBar.module.scss"
 import FilterImg from "../icon/filter"
 import { useState } from "react"
 
-const FilterBar = () => {
+const FilterBar = (props) => {
 
     const [isOpen, setIsOpen] = useState(false)
 
@@ -10,6 +10,10 @@ const FilterBar = () => {
         setIsOpen(pre => {
             return !pre
         })
+    }
+
+    const filterHandler = (e) => {
+        e.prenventDefault()
     }
 
     return (
@@ -21,7 +25,14 @@ const FilterBar = () => {
                     </button>
                 </div>
                 <div className={classes['filter-search']}>
-                    <input type="text" placeholder="Category, Company, TypeJob, ..."/>
+                    <form onSubmit={filterHandler}>
+                    <input type="text" placeholder="Category, Company, TypeJob, ..." name="filter" list="job" />
+                        <datalist id="job" >
+                            {props.filter.slice(0, 7).map((item, index) => (    
+                                <option value={item} key={index} />
+                            ))}
+                        </datalist>
+                    </form>
                 </div>
             </div>   
             {isOpen && <form>
