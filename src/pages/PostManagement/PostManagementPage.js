@@ -1,18 +1,21 @@
 import PostManagement from "./Components/PostManagement";
 import locationImg from "../../asses/google.png"
+import { useState, useEffect } from "react";
+import axios from "axios";
+import config from "../../config";
+import { useSelector } from "react-redux";
 
-const DUMYJOB = [
+const CV = [
   {
       id: 1,
-      logo: locationImg,
-      companyName: 'Google Inc',
-      location: 'California',
-      category: 'UI/UX Desgin',
-      jobType: 'Part Time',
-      experience: 'Senior',
+      avatar: locationImg,
+      userName: 'Username',
+      experience: 'Senior Design',
+      age: 'XX',
       minSalary: '700',
       maxSalary: '1500',
-      skills: ['Senior Designer', 'Part Time'],
+      jobType: 'Part Time',
+      skills: ['Senior Designer', 'Full-Time'],
   },
 ]
 
@@ -31,8 +34,18 @@ const DUMYPOST = [
   },
 ]
 const PostManagementPage = () => {
+  // const [job, setJob] = useState();
+  // const userStore = useSelector((state) => state.auth.login?.currentUser);
+
+  // useEffect(() => {
+  //   axios.get(`${config.api.url}/job/all-mine`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } })
+  //     .then((res) => {
+  //       console.log(res.data);
+  //       setJob(res.data);
+  //   });
+  // }, [userStore]);
     return (
-      <PostManagement jobs={DUMYJOB} posts={DUMYPOST} />
+      <PostManagement cvs={CV} posts={DUMYPOST} />
     );
   };
   

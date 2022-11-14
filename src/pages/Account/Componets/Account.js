@@ -13,7 +13,7 @@ const Account = (props) => {
   const save = () => {
     setEditInfor(false);
   };
-
+ 
   const [editEx, setEditEx] = useState(false);
   const editExper = () => {
     setEditEx(true);
@@ -170,7 +170,9 @@ const Account = (props) => {
           <div>
             {editEx === false ? (
               <form className={classes.data} style={{ height: "181px" }}>
-                <div className={classes.font}></div>
+                <div className={classes.font}>
+                  <div className={classes.styleborder}></div>
+                </div>
               </form>
             ) : (
               <form className={classes.data} style={{ height: "181px" }}>
@@ -198,7 +200,9 @@ const Account = (props) => {
           <div>
             {editEdu === false ? (
               <form className={classes.data} style={{ height: "170px" }}>
-                <div className={classes.font}></div>
+                <div className={classes.font}>
+                  <div className={classes.styleborder}></div>
+                </div>
               </form>
             ) : (
               <form className={classes.data} style={{ height: "170px" }}>
@@ -226,7 +230,9 @@ const Account = (props) => {
           <div>
             {editAd === false ? (
               <form className={classes.data} style={{ height: "181px" }}>
-                <div className={classes.font}></div>
+                <div className={classes.font}>
+                  <div className={classes.styleborder}></div>
+                </div>
               </form>
             ) : (
               <form className={classes.data} style={{ height: "181px" }}>
