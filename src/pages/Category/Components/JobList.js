@@ -2,8 +2,42 @@ import classes from "./JobList.module.scss";
 import Wrap from "../../../components/UI/Wrap";
 import JobCard from "../../../components/job-card/JobCard";
 import RecomendedJob from "../../JobDetails/Components/recomended-job/RecomendedJob";
+import { useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const JobList = (props) => {
+
+  //state
+  const [filteredJobs, setFilteredJobs] = useState(props.jobs)
+
+  // dependency
+  const location = useLocation()
+  const queryParams = new URLSearchParams(location.search)
+  const filter = queryParams.get('filter')
+
+  //Filter Function
+  const filterJob = (jobList, condition) => {
+      if (!condition) return jobList
+      let jobs = jobList.filter((job) => {
+          return job.category.includes(condition)
+      })
+      jobs = jobs.concat(jobList.filter((job) => {
+        return job.companyName.includes(condition)
+      }))  
+      jobs = jobs.concat(jobList.filter((job) => {
+        return job.jobType.includes(condition)
+      }))
+      jobs = jobs.concat(jobList.filter((job) => {
+        return job.skills[0].includes(condition)
+      }))
+      return jobs
+  } 
+
+  useEffect(() => {
+    let filteredJobs = filterJob(props.jobs, filter)
+    setFilteredJobs(filteredJobs)
+  }, [filter, props.jobs])
+
   return (
     <div className={classes.main}>
       <Wrap className={classes["job-list"]}>
@@ -14,7 +48,7 @@ const JobList = (props) => {
           </p>
         </div>
         <div className={classes.list}>
-          {props.jobs.map((job) => (
+          {filteredJobs.map((job) => (
             <JobCard
               key={job.id}
               logo={job.logo}
@@ -24,8 +58,8 @@ const JobList = (props) => {
               jobType={job.jobType}
               skills={job.skills}
               experience={job.experience}
-              minSalary={job.minSalary}
-              maxSalary={job.maxSalary}
+              minSalary={job.salary}
+              maxSalary={job.salary}
             />
           ))}
         </div>
