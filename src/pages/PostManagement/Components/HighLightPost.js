@@ -1,4 +1,4 @@
-import classes from "./HighlightJob.module.scss"
+import classes from "./HighlightPost.module.scss"
 import {Link} from "react-router-dom"
 import editImg from "../../../asses/edit_img.png"
 import deleteImg from "../../../asses/delete_img.png"
