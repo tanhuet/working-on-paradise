@@ -85,7 +85,7 @@ const FilterBar = (props) => {
                             <div className={classes.title}>
                                 <p>Experience</p>
                             </div>
-                            <div className={classes.btn}>
+                            <div className={`${classes.btn} ${classes.exp}`}>
                                 <button>Fresher</button>
                                 <button>Internship</button>
                                 <button>Junior</button>
