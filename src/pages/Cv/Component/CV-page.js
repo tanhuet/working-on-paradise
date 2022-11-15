@@ -44,11 +44,11 @@ const CVPage = (props) => {
               <div
                 style={{
                     paddingTop: '30px',
-                  fontWeight: "600",
-                  fontSize: "20px",
-                  display: "flex",
-                  alignItems: "center",
-                  color: "#000000",
+                    fontWeight: "600",
+                    fontSize: "20px",
+                    display: "flex",
+                    alignItems: "center",
+                    color: "#000000",
                 }}
               >
                 CV's name

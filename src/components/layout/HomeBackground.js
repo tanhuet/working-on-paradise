@@ -1,13 +1,13 @@
 import { Fragment } from "react"
-// import classes from "./HomeBackground.module.scss"
+import classes from "./HomeBackground.module.scss"
 
 const HomeBackground = () => {
     return (
         <Fragment>
-            {/* <div className={`${classes.background} ${classes["background-first"]}`} />
+            <div className={`${classes.background} ${classes["background-first"]}`} />
             <div className={`${classes.background} ${classes["background-second"]}`} />
             <div className={`${classes.background} ${classes["background-third"]}`} />
-            <div className={`${classes.background} ${classes["background-fourth"]}`} /> */}
+            <div className={`${classes.background} ${classes["background-fourth"]}`} />
         </Fragment>
     )
 }
