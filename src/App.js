@@ -18,6 +18,8 @@ import AccountEmployer from "./pages/account-employer/AccountEmpolyer";
 import AccountEmployerEdit from "./pages/account-employer/AccountEmployerEdit";
 import AddPost from "./pages/ADD-POST-Employer/addPost";
 import ChangePassWord from "./pages/ChangePassWord/ChangePassword";
+import SetUpAccJobSeeker from "./pages/SignUp/Component/SetUpAccountJobSeeker/SetUpAccJobSeeker";
+import SetUpAccEmployer from "./pages/SignUp/Component/SetUpAccountJobSeeker/SetUpAccountEmployer";
 
 function App() {
   return (
@@ -42,6 +44,8 @@ function App() {
         <Route path="/accountEmployer/employerEdit" element={<AccountEmployerEdit />}/>
         <Route path="/addPost" element={<AddPost />} />
         <Route path="/reset-password/:token" element={<ChangePassWord />} />
+        <Route path="/setup-account-jobseeker" element={<SetUpAccJobSeeker />} />
+        <Route path="/setup-account-employer" element={<SetUpAccEmployer />} />
 
       </Routes>
     </Layout>
