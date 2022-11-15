@@ -66,12 +66,17 @@ const JobList = (props) => {
       </Wrap>
       <div className={classes["recomended-list"]}>
         {props.recomendedJobs.map((item) => (
-          <RecomendedJob
-            key={item.id}
-            companyName={item.companyName}
-            logo={item.logo}
-            jobs={item.jobs}
-          />
+          <>
+            <RecomendedJob
+              key={item.id}
+              companyName={item.companyName}
+              logo={item.logo}
+              jobs={item.jobs}
+            />
+            <div className={classes.break}>
+              
+            </div>
+          </>
         ))}
       </div>
     </div>
