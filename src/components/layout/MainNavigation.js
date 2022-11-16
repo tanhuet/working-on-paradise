@@ -19,67 +19,66 @@ const MainNavigation = () => {
 
   return (
     <header className={classes.header}>
-      <nav className={classes.nav}>
-        <div className={classes.left}>
+      <nav className={`navbar navbar-expand-lg navbar-light bg-light ${classes.nav}`}>
+        <div className={`container-fluid ${classes.container}`}>
           <div className={classes.img}></div>
-          <ul>
-            <li>
-              <NavLink className={(navData) => (navData.isActive ? classes.active : "")} to="/home">
-                Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink className={(navData) => (navData.isActive ? classes.active : "")} to="/category">
-                Category
-              </NavLink>
-            </li>
-            <li>
-              <NavLink className={(navData) => (navData.isActive ? classes.active : "")} to="/favourite">
-                Favourite
-              </NavLink>
-            </li>
-            <li>
-              <NavLink className={(navData) => (navData.isActive ? classes.active : "")} to="/cv">
-                CV
-              </NavLink>
-            </li>
-          </ul>
-        </div>
-        <div className={classes.center}>
-          <form>
-            <input type="text" placeholder="Search" />
-            {/* <button></button> */}
-          </form>
-        </div>
-        <div className={classes.right}>
-          {user ? (
-            //write code here if user login
-            <ul>
-              <li className={classes.signup}>
-                <NavLink className={(navData) => (navData.isActive ? classes.active : "")} to="/account">
-                  {user.name}
-                </NavLink>
-              </li>
-              <li className={classes.signin}>
-                <NavLink onClick={handleLogout} className={(navData) => (navData.isActive ? classes.active : "")}>
-                  Logout
-                </NavLink>
-              </li>
-            </ul>
-          ) : (
-            <ul>
-              <li className={classes.signin}>
-                <NavLink className={(navData) => (navData.isActive ? classes.active : "")} to="/signin">
-                  Sign in
-                </NavLink>
-              </li>
-              <li className={classes.signup}>
-                <NavLink className={(navData) => (navData.isActive ? classes.active : "")} to="/signup">
-                  Sign up
-                </NavLink>
-              </li>
-            </ul>
-          )}
+          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className={`collapse navbar-collapse ${classes.link}`} id="navbarSupportedContent">
+           {user?.role ==="JobSeeker" || !user ? 
+            (
+              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                <li className="nav-item">
+                  <NavLink className="nav-link active" aria-current="page" href="#" to="/home">Home</NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink className="nav-link" href="#" to="/category">Category</NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink className="nav-link" href="#" to="/favourite">Favourite</NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink className="nav-link" href="#" to="/CV">CV</NavLink>
+                </li>
+              </ul>
+            ) : (
+              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                <li className="nav-item">
+                  <NavLink className="nav-link active" aria-current="page" href="#" to="/home">Home</NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink className="nav-link" href="#" to="/post">Post</NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink className="nav-link" href="#" to="/Cv">CV</NavLink>
+                </li>
+              </ul>
+            )}
+            <form className="d-flex">
+              <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+              {/* <button type="submit"></button> */}
+            </form>
+            {user ? (
+              <ul className={`navbar-nav ${classes.auth}`}>
+                <li className="nav-item">
+                <NavLink className={`nav-link ${classes['btn-logout']}`} href="#" to="/account">{user.name}</NavLink>
+                </li>
+                <li className={`nav-item`}>
+                  <NavLink className="nav-link" href="#" to="/signup" onClick={handleLogout}>Logout</NavLink>
+                </li>
+              </ul>
+            ) : (
+              <ul className={`navbar-nav ${classes.auth}`}>
+                <li className="nav-item">
+                  <NavLink className="nav-link" href="#" to="/signin">Sign In</NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink className={`nav-link ${classes['btn-logout']}`} href="#" to="/signup">Sign Up</NavLink>
+                </li>
+              </ul>
+            )}
+          </div>
         </div>
       </nav>
     </header>
