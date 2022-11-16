@@ -29,8 +29,6 @@ const AddPostEmployer = (props) => {
   const handleChangeEndTime = (event) => {
     setEndTime(event.target.value);
   };
-  console.log(startTime);
-  console.log(endTime);
 
   const options = [
     { key: 1, text: "One", value: "1" },

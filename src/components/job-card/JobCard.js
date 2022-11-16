@@ -15,7 +15,7 @@ const JobCard = (props) => {
                         <div className={classes.detail}>
                             <div>{props.category}</div>
                             <div className={classes.introduction}>
-                                {props.companyName} - {props.location} - {props.experience} {props.category} - {props.jobType} - ${props.minSalary} to ${props.maxSalary}
+                                {props.companyName} - {props.location} - {props.experience} {props.category} - {props.jobType} - ${props.salary}
                             </div>
                         </div>
                     </div>

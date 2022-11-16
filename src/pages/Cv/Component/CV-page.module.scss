@@ -1,125 +1,149 @@
 .container-background {
-  //   background: pink;
+  padding: 10px 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-.body-top {
-  .create-cv {
-    margin-top: 1rem;
-    background: #c3efef;
-    border-radius: 60px;
-    height: fit-content;
-    // border-radius: 60px;
-    .image {
-      display: flex;
-      text-align: center;
-      justify-content: center;
-      //   padding: 8% 0;
-    }
-    img {
-      width: 210px;
-      height: 250px;
-    }
-    .content {
-      padding: 60px 0;
-      .content-create-cv {
-        font-family: "Poppins";
-        font-style: normal;
-        font-weight: 600;
-        font-size: 28px;
-        line-height: 45px;
-        color: #ffffff;
-        text-shadow: 0px 4px 50px rgba(0, 0, 0, 0.8);
-      }
-    }
-  }
-  .div-create-cv {
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    .button-create-cv {
-      margin-top: 20px;
-      background: #00ced1;
-      box-shadow: 0px 4px 50px 10px rgba(0, 251, 255, 0.75);
-      border-radius: 20px;
-      font-weight: 700;
-      font-size: 20px;
-      line-height: 30px;
-      color: #ffffff;
-      padding: 15px;
-      border: 1px solid transparent;
-    }
-  }
-  .Recommended-job {
-    .header-job {
-      font-weight: 600;
-      font-size: 25px;
-      line-height: 38px;
-      display: flex;
-      text-align: center;
-      align-items: center;
-      justify-content: center;
-      background: #9be4e4;
-      padding: 15px 0;
-      border-radius: 40px 40px 0px 0px;
-      color: #ffffff;
-      text-shadow: 0px 4px 25px rgba(0, 0, 0, 0.75);
-    }
-    .body-job {
-      background: #e9fbfa;
-      border-radius: 0px 0px 40px 40px;
-      padding: 20px 5px;
-      .address {
-        background: #ffffff;
-        border-radius: 40px;
-        margin: 0 8px;
-      }
-    }
 
-    .content-job {
-      font-weight: 600;
-      font-size: 20px;
-      line-height: 30px;
+.body-top-top {
+  display: flex;
+  margin-top: 50px;
+  justify-content: space-around;
+  .body-left {
+    width: 80%;
+    .advertisement {
       display: flex;
-      align-items: center;
-      color: #000000;
-      padding: 30px 15px 0 10px;
+      flex-direction: row;
+      width: fit-content;
+      padding: 60px 60px 60px 0px;
+      background: #c3efef;
+      border-radius: 60px;
+      justify-content: space-around;
+      .image {
+        object-fit: cover;
+        img {
+          width: 350px;
+        }
+      }
+      .content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        .content-create-cv {
+          font-family: "Poppins";
+          font-style: normal;
+          font-weight: 600;
+          font-size: 28px;
+          line-height: 45px;
+          color: #ffffff;
+          text-shadow: 0px 4px 50px rgba(0, 0, 0, 0.8);
+        }
+      }
+      .div-create-cv {
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        .button-create-cv {
+          margin-top: 20px;
+          background: #00ced1;
+          box-shadow: 0px 4px 50px 10px rgba(0, 251, 255, 0.75);
+          border-radius: 20px;
+          font-weight: 700;
+          font-size: 20px;
+          color: #ffffff;
+          padding: 0px 15px;
+          border: 1px solid transparent;
+        }
+      }
+    }
+    .created-cv {
+      margin-top: 50px;
+      width: 50%;
+      .header-create-cv {
+        padding: 10px 0 10px 25px;
+        background: #9be4e4;
+        border-radius: 40px 40px 0px 0px;
+        font-weight: 600;
+        font-size: 25px;
+        line-height: 38px;
+        display: flex;
+        align-items: center;
+        color: #ffffff;
+        text-shadow: 0px 4px 25px rgb(0 0 0 / 75%);
+      }
+      .body-create-cv {
+        padding: 40px;
+        background: #e9fbfa;
+        border-radius: 0px 0px 60px 60px;
+      }
+    }
+  }
+
+  .body-right {
+    .Recommended-job {
+      width: fit-content;
+
+      .header-job {
+        font-weight: 600;
+        font-size: 25px;
+        line-height: 38px;
+        display: flex;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        background: #9be4e4;
+        padding: 15px 0;
+        border-radius: 40px 40px 0px 0px;
+        color: #ffffff;
+        text-shadow: 0px 4px 25px rgba(0, 0, 0, 0.75);
+      }
+      .body-job {
+        background: #e9fbfa;
+        border-radius: 0px 0px 40px 40px;
+        padding: 20px 5px;
+        .address {
+          background: #ffffff;
+          border-radius: 40px;
+          margin: 0 8px;
+        }
+      }
+
+      .content-job {
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 30px;
+        display: flex;
+        align-items: center;
+        color: #000000;
+        padding: 30px 15px 0 10px;
+      }
     }
   }
 }
-.body-middle {
-  width: 50%;
-  .header-create-cv {
-    padding: 10px 0 10px 25px;
-    background: #9be4e4;
-    border-radius: 40px 40px 0px 0px;
-    font-weight: 600;
-    font-size: 25px;
-    line-height: 38px;
+
+.body-bottom {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 0px 0px 20px;
+  margin: 100px 0px;
+  .title {
     display: flex;
     align-items: center;
-    color: #ffffff;
-    text-shadow: 0px 4px 25px rgb(0 0 0 / 75%);
-  }
-  .body-create-cv {
-    padding: 10px 0 20px 35px;
-    background: #E9FBFA;
-    border-radius: 0px 0px 60px 60px;
-    .box-cv {
-      background: #ffffff;
-      border: 1px solid #000000;
-      box-shadow: 0px 4px 35px #56a5ec;
-      border-radius: 20px;
-      width: 40%;
-      max-width: 180px;
-      padding: 20px 5px 10px 5px;
-      button {
-        margin-right: 6px;
-        background: #7beadf;
-        border-radius: 60px;
-        border: 2px solid transparent;
-      }
+    justify-content: center;
+
+    span {
+      font-weight: 700;
+      font-size: 50px;
+      line-height: 75px;
     }
   }
-}
-.body-bottom {
 
+  .idea-job {
+    width: 100%;
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-around;
+  }
 }

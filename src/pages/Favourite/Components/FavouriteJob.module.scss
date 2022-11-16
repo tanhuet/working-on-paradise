@@ -1,47 +1,37 @@
+.favourite {
+    width: 60%;
+    margin-top: 2rem;
+    margin-left: 5%;
+} 
+
 .wrap {
-    width: 734px;
-    margin: 3rem auto;
-}
-.title {
-    padding: 1rem;
-    margin: 0;
+    padding: 40px 10px 10px 10px;
     background: #9BE4E4;
-    border-radius: 60px 60px 0px 0px;
-    color: #FFFFFF;
-    text-shadow: 0px 4px 25px rgba(0, 0, 0, 0.75);
-    font-weight: 600;
-    font-size: 30px;
-    line-height: 45px;
+    // border-radius: 60px 60px 0px 0px;
+    width: 100%;
 }
 
-.title p {
-    margin-top: -2rem;
+.filter-bar {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    margin-left: 0rem
+}
+
+.title {
+    margin-left: 2rem;
+    background: #9BE4E4;
+    color: #FFFFFF;
+    text-shadow: 0px 4px 25px rgba(0, 0, 0, 0.75);
     font-size: 15px;
 }
 
-.filter {
-    padding: 10px;
-    display: flex;
-    background: #C3EFEF;
-    justify-content: space-between;
-    // align-items: center;
+.title h1 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 30px;
 }
-.filter-button {
-    
-}
-.filter-bar {
-    display: flex;
-    background-color: #C3EFEF;
-    width: 100%;
-}
-.filter-bar-left {
 
-}
-.filter-search input{
-    padding: 0 10px;
-    background: #FFFFFF;
-    border-radius: 60px;
-    width: 339.47px;
-    height: 39.4px;
-    border: none;
+.recommened {
+
 }
