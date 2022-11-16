@@ -1,4 +1,8 @@
-import { Fragment } from "react"
+import { Fragment, useState } from "react"
+import { useEffect } from "react"
+import config from "../../../config"
+import axios from "axios"
+
 import locationImg from "../../../asses/img-location.png"
 import JobList from "./highligh-job/JobList"
 import JobPosting from "./highligh-job/JobPosting"
@@ -21,9 +25,41 @@ const DUMYJOB = [
 ]
 
 const HighlightJob = () => {
+
+    const [entireJobs, setEntireJobs] = useState();
+
+    useEffect(() => {
+        axios.get(`${config.api.url}/job/getPageSuggestion/5/1`)
+            .then((res) => {
+                setEntireJobs(res.data);
+            })
+            .catch(err => {
+                console.log(err)
+            });
+    }, [])
+
+    let jobs = [];
+    if (entireJobs) {
+        jobs = entireJobs.map((job) => {
+            let tags = job.tags.replace(" ", '').split(",")
+            tags = tags.slice(0, 2)
+            return {
+                id: job.id,
+                logo: job.authorAvatar,
+                companyName: job.authorName,
+                location: job.authorAddress,
+                category: job.title,
+                jobType: job.typeOfWorking,
+                experience: job.exp,
+                salary: job.salary,
+                skills: tags,
+            }
+        })
+    }
+
     return (
         <Fragment>
-            <JobList jobs={DUMYJOB}/>
+            <JobList jobs={jobs}/>
             <JobPosting />
             <OfferList jobs={DUMYJOB}/>
             <Personnel />

@@ -11,8 +11,10 @@ const JobList = (props) => {
             <h1 className={classes.h1}>BROWSE JOB CATEGORIES</h1>
         
             <div className={classes["job-list"]}>
+                {props.jobs.map(job => (
                 <HighlightJob
                     class = {classes.wrap}
+                    key = {job.id}
                     logo = {job.logo}
                     companyName = {job.companyName}
                     location = {job.location}
@@ -20,62 +22,10 @@ const JobList = (props) => {
                     jobType = {job.jobType}
                     skills = {job.skills}
                     experience = {job.experience}
-                    minSalary = {job.minSalary}
-                    maxSalary = {job.maxSalary}
-                    // submittedDate = {job.submittedDate}
+                    salary = {job.salary}
                 />
-                                <HighlightJob
-                    class = {classes.wrap}
-                    logo = {job.logo}
-                    companyName = {job.companyName}
-                    location = {job.location}
-                    category = {job.category}
-                    jobType = {job.jobType}
-                    skills = {job.skills}
-                    experience = {job.experience}
-                    minSalary = {job.minSalary}
-                    maxSalary = {job.maxSalary}
-                    // submittedDate = {job.submittedDate}
-                />
-                                <HighlightJob
-                    class = {classes.wrap}
-                    logo = {job.logo}
-                    companyName = {job.companyName}
-                    location = {job.location}
-                    category = {job.category}
-                    jobType = {job.jobType}
-                    skills = {job.skills}
-                    experience = {job.experience}
-                    minSalary = {job.minSalary}
-                    maxSalary = {job.maxSalary}
-                    // submittedDate = {job.submittedDate}
-                />
-                                <HighlightJob
-                    class = {classes.wrap}
-                    logo = {job.logo}
-                    companyName = {job.companyName}
-                    location = {job.location}
-                    category = {job.category}
-                    jobType = {job.jobType}
-                    skills = {job.skills}
-                    experience = {job.experience}
-                    minSalary = {job.minSalary}
-                    maxSalary = {job.maxSalary}
-                    // submittedDate = {job.submittedDate}
-                />
-                                <HighlightJob
-                    class = {classes.wrap}
-                    logo = {job.logo}
-                    companyName = {job.companyName}
-                    location = {job.location}
-                    category = {job.category}
-                    jobType = {job.jobType}
-                    skills = {job.skills}
-                    experience = {job.experience}
-                    minSalary = {job.minSalary}
-                    maxSalary = {job.maxSalary}
-                    // submittedDate = {job.submittedDate}
-                />
+                ))}
+
                 <NavLink to={'/category'}>
                     <div className={classes.more}>
                         <div className={classes.text}>

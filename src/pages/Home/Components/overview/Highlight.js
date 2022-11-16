@@ -1,10 +1,20 @@
-import React from "react"
+import React, { useRef } from "react"
+import { useNavigate } from "react-router-dom"
 import Brifcase from "../../../../components/icon/brifcase"
 import Rocket from "../../../../components/icon/rocket"
 import Talents from "../../../../components/icon/talents"
 import classes from './Highlight.module.scss'
 
 const Highlight = () => {
+
+    const navigate = useNavigate()
+
+    const suggestion = useRef('')
+
+    const submitHander = () => {
+        navigate(`/category?filter=${suggestion.current.value}`)
+    }
+
     return (
         <React.Fragment>
             <div className={classes['find-job']}>
@@ -14,8 +24,8 @@ const Highlight = () => {
                     <p>Thousand of Jobs here. Find Your New Job Today! New Job</p>
                     <p>Posting Today, Apply Now!</p>
                 </section>
-                <form>
-                    <input type='text' />
+                <form onSubmit={submitHander}>
+                    <input type="text" placeholder="Search" ref={suggestion}/>
                     <button>Search</button>
                 </form>
             </div>
