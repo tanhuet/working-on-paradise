@@ -16,8 +16,6 @@ const DUMMY_JOB = [
     jobType: "Part Time",
     skills: ["a", "b"],
     experience: "efsdfdfs",
-    // minSalary: '1000',
-    // maxSalary: '2000',
     salary: 1000,
   },
 ];
@@ -30,9 +28,9 @@ const Favourite = () => {
   useEffect(() => {
     if (userStore.role === "JobSeeker") {
       axios
-        .get(`${config.api.url}/job/all-mine`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } })
+        .get(`${config.api.url}/job/all`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } })
         .then((res) => {
-          console.log(res.data);
+          console.log(res.data)
           setEntireJobs(res.data);
         })
         .catch((err) => {
@@ -53,52 +51,26 @@ const Favourite = () => {
   let jobs = [];
   if (entireJobs) {
     jobs = entireJobs.map((job) => {
-      let tags = job.tags.replace(" ", "").split(",");
-      tags = tags.slice(0, 7);
-      return {
-        id: job.id,
-        logo: job.authorAvatar,
-        companyName: job.authorName,
-        location: job.authorAddress,
-        category: job.title,
-        jobType: job.typeOfWorking,
-        experience: job.exp,
-        minSalary: job.salary,
-        maxSalary: job.salary,
-        skills: tags,
-      };
-    });
-  }
-  let rJ = [];
-  if (recomendedJobs) {
-    console.log(recomendedJobs);
-    rJ = recomendedJobs.map((job) => {
-      return {
-        id: job.id,
-        companyName: job.authorName,
-        logo: job.authorAvatar,
-        jobs: [
-          {
-            id: "1",
+        let tags = job.tags.replace(" ", '').split(",")
+        tags = tags.slice(0, 7)
+        return {
+            id: job.id,
+            logo: job.authorAvatar,
+            companyName: job.authorName,
+            location: job.authorAddress,
             category: job.title,
             jobType: job.typeOfWorking,
-            location: job.authorAddress,
-          },
-          {
-            id: "2",
-            category: job.title,
-            jobType: job.typeOfWorking,
-            location: job.authorAddress,
-          },
-        ],
-      };
-    });
-    // setRecomendJobs(rJ)
+            experience: job.exp,
+            salary: job.salary,
+            skills: tags,
+        }
+    })
   }
+  console.log(jobs)
 
   return (
     <Fragment>
-      <FavouriteJob jobs={DUMMY_JOB} />
+      <FavouriteJob jobs={jobs} />
       {/* <RecomendedJob /> */}
     </Fragment>
   );

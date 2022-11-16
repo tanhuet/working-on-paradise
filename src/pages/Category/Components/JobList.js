@@ -33,6 +33,15 @@ const JobList = (props) => {
       return jobs
   } 
 
+  //panigator
+  const nextPage = () => {
+    props.onNextPage()
+  }
+
+  const prePage = () => {
+    props.onPrePage()
+  }
+
   useEffect(() => {
     let filteredJobs = filterJob(props.jobs, filter)
     setFilteredJobs(filteredJobs)
@@ -58,10 +67,13 @@ const JobList = (props) => {
               jobType={job.jobType}
               skills={job.skills}
               experience={job.experience}
-              minSalary={job.salary}
-              maxSalary={job.salary}
+              salary={job.salary}
             />
           ))}
+        </div>
+        <div className={classes['page-controller']}>
+          <button onClick={prePage}>Previous</button>
+          <button onClick={nextPage}>Next</button>
         </div>
       </Wrap>
       <div className={classes["recomended-list"]}>
@@ -74,7 +86,6 @@ const JobList = (props) => {
               jobs={item.jobs}
             />
             <div className={classes.break}>
-              
             </div>
           </>
         ))}
