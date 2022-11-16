@@ -25,8 +25,8 @@ const HighlightJob = (props) => {
 
     const scaleExperienceAndJobType = (str) => {
         let newStr;
-        if (str.length > 34) {
-            newStr = str.slice(0, 31) + "..."
+        if (str.length > 32) {
+            newStr = str.slice(0, 29) + "..."
             return newStr
         } 
         return str

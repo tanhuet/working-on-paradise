@@ -13,9 +13,7 @@ const Feature = () => {
                 <div className ={classes.card}>
                     <div className={`${classes.header} ${classes.create}`}></div>
                     <div className={classes.info}>
-                        <NavLink to='/signup'>Create</NavLink>
-                        <p></p>
-                        <NavLink to='/signup'>account</NavLink>
+                        <NavLink to='/signup'>Create <br />account</NavLink>
                         <p>First, create your</p>
                         <p>account</p>
                     </div>
