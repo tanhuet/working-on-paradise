@@ -1,5 +1,7 @@
 .favourite {
     width: 60%;
+    margin-top: 2rem;
+    margin-left: 5%;
 } 
 
 .wrap {
@@ -9,8 +11,14 @@
     width: 100%;
 }
 
-.title {
+.filter-bar {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    margin-left: 0rem
+}
 
+.title {
+    margin-left: 2rem;
     background: #9BE4E4;
     color: #FFFFFF;
     text-shadow: 0px 4px 25px rgba(0, 0, 0, 0.75);

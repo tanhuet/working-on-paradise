@@ -3,6 +3,40 @@ import { Link } from "react-router-dom"
 import FollowIcon from "../icon/follow"
 
 const HighlightJob = (props) => {
+
+    // scale function
+    const scaleCategory = (str) => {
+        let newStr;
+        if (str.length > 16) {
+            newStr = str.slice(0, 13) + "..."
+            return newStr
+        } 
+        return str
+    }
+
+    const scaleCompanyNameAndLocation = (str) => {
+        // let newStr;
+        // if (str.length > 17) {
+        //     newStr = str.slice(0, 15) + "..."
+        //     return newStr
+        // } 
+        return str
+    }
+
+    const scaleExperienceAndJobType = (str) => {
+        let newStr;
+        if (str.length > 34) {
+            newStr = str.slice(0, 31) + "..."
+            return newStr
+        } 
+        return str
+    }
+
+    const category = scaleCategory(props.category)
+    const companyNameAndLocation = scaleCompanyNameAndLocation(`${props.companyName}-${props.location}`)
+    const experienceAndJobType = scaleExperienceAndJobType(`${props.experience},${props.jobType}`)
+
+
     return (    
             <div className={`${classes.card} ${props.class}`}>
                 <div className={classes.company}>
@@ -12,8 +46,8 @@ const HighlightJob = (props) => {
                                 <img src={props.logo} alt=".." />
                             </div>
                             <div className={classes.info}>
-                                <h3>{props.category}</h3>
-                                <p>{props.companyName} - {props.location}</p>
+                                <h3>{category}</h3>
+                                <p>{companyNameAndLocation}</p>
                             </div>
                         </div>
                     </Link>
@@ -25,8 +59,8 @@ const HighlightJob = (props) => {
                 </div>
                 <div className={classes.jd}>
                     <ul>
-                        <li>{props.experience}, {props.jobType}</li>
-                        <li>${props.minSalary} - ${props.maxSalary}</li>
+                        <li>{experienceAndJobType}</li>
+                        <li>${props.salary}</li>
                     </ul>
                 </div>
                 <div className={classes.skill}>

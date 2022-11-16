@@ -8,9 +8,23 @@ import HighlightJob from "../../../components/highlight-job/HighlightJob"
 
 const CategoryTop = (props) => {
 
-    const company = props.entireJobs.map((job) => {
-        return job.companyName
+    // suggestion word
+    let suggestion = ""
+    props.entireJobs.forEach((job) => {
+        if (!suggestion.includes(job.companyName.toString())) {
+            suggestion += job.companyName.toString()
+            suggestion += ","
+        }
+        if (!suggestion.includes(job.category.toString())) {
+            suggestion += job.category.toString()
+            suggestion += ","
+        }
+        if (!suggestion.includes(job.jobType.toString())) {
+            suggestion += job.jobType.toString()
+            suggestion += ","
+        }
     })
+    suggestion = suggestion.slice(0, -1).split(",")
 
     return (
         <Fragment>
@@ -18,7 +32,7 @@ const CategoryTop = (props) => {
                 <img src={img} className ={classes['img-category']} alt="category"/>
             </div>
             <div className={classes['filter-bar']}>
-                <FilterBar filter = {company} />
+                <FilterBar filter = {suggestion} />
             </div>
             <div className={classes['highligh-job']}>
                 <p className={classes.title}>Exploring Amazing Jobs</p>
@@ -33,8 +47,7 @@ const CategoryTop = (props) => {
                             jobType = {job.jobType}
                             skills = {job.skills}
                             experience = {job.experience}
-                            minSalary = {job.minSalary}
-                            maxSalary = {job.maxSalary}
+                            salary = {job.salary}
                         />
                     ))}
                 </div>

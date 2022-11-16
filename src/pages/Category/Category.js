@@ -9,13 +9,33 @@ import axios from "axios"
 
 const Category = () => {
 
+    //state
+    const [page, setPage] = useState(1)
+
     //get API
     const userStore = useSelector((state) => state.auth.login?.currentUser);
     const [entireJobs, setEntireJobs] = useState();
     const [recomendedJobs, setRecomendJobs] = useState(null);
 
+    //panigator
+    const nextPageHandler = () => {
+        setPage(pre => {
+            return pre + 1
+        })
+    }
+
+    const prePageHandler = () => {
+        setPage(pre => {
+            if (pre > 1) {
+                return pre - 1
+            } else {
+                return pre
+            }
+        })
+    }
+
     useEffect(() => {
-        axios.get(`${config.api.url}/job/all`)
+        axios.get(`${config.api.url}/job/getPageSuggestion/7/${page.toString()}`)
             .then((res) => {
                 setEntireJobs(res.data);
             })
@@ -32,7 +52,7 @@ const Category = () => {
                     console.log(err)
                 });
         }
-    }, [userStore])
+    }, [userStore, page])
 
     // convert api to object
     let jobs = [];
@@ -49,8 +69,7 @@ const Category = () => {
                 category: job.title,
                 jobType: job.typeOfWorking,
                 experience: job.exp,
-                minSalary: job.salary,
-                maxSalary: job.salary,
+                salary: job.salary,
                 skills: tags,
             }
         })
@@ -68,8 +87,7 @@ const Category = () => {
                     category: job.category,
                     jobType: job.jobType,
                     experience: job.experience,
-                    minSalary: job.minSalary,
-                    maxSalary: job.maxSalary,
+                    salary: job.salary,
                     skills: tags,
                 }
             })
@@ -77,7 +95,6 @@ const Category = () => {
     }
     let rJ = []
     if (recomendedJobs !== null) {
-        console.log(recomendedJobs)
         rJ = recomendedJobs.map((job) => {
             return {
                 id: job.id,
@@ -102,9 +119,10 @@ const Category = () => {
     return (
         <Fragment>
             <CategoryTop jobs = {topJobs} entireJobs = {jobs} />
-            <JobList jobs ={jobs} recomendedJobs={rJ} />
+            <JobList jobs ={jobs} recomendedJobs={rJ} onNextPage={nextPageHandler} onPrePage={prePageHandler} />
         </Fragment>
     )
+    // 
 }
 
 export default Category
