@@ -1,0 +1,29 @@
+.box-cv {
+  background: #ffffff;
+  border: 1px solid #000000;
+  box-shadow: 0px 4px 35px #56a5ec;
+  border-radius: 20px;
+  width: 190px;
+  height: 190px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  .title {
+    font-weight: 500;
+    font-size: 18px;
+  }
+  p {
+    font-size: 13px;
+  }
+  .list-button {
+    padding: 5px 0px;
+    display: flex;
+    justify-content: space-between;
+    button {
+      background: #7beadf;
+      border-radius: 60px;
+      border: 2px solid transparent;
+    }
+  }
+}

@@ -35,18 +35,23 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/cv/:cvId" element={<CvDetailPage />} />
         <Route path="/account" element={<AccountPage />} />
-        <Route path="/details" element={<JobDetail />} />
+        <Route path="/details/:id" element={<JobDetail />} />
         <Route path="*" element={<p>NotFound</p>} />
         <Route path="/postmanagement" element={<PostManagementPage />} />
         <Route path="/employer-post" element={<EmployerDetails />} />
         <Route path="/employer-cv" element={<EmployerCv />} />
         <Route path="/accountEmployer" element={<AccountEmployer />} />
-        <Route path="/accountEmployer/employerEdit" element={<AccountEmployerEdit />}/>
+        <Route
+          path="/accountEmployer/employerEdit"
+          element={<AccountEmployerEdit />}
+        />
         <Route path="/addPost" element={<AddPost />} />
         <Route path="/reset-password/:token" element={<ChangePassWord />} />
-        <Route path="/setup-account-jobseeker" element={<SetUpAccJobSeeker />} />
+        <Route
+          path="/setup-account-jobseeker"
+          element={<SetUpAccJobSeeker />}
+        />
         <Route path="/setup-account-employer" element={<SetUpAccEmployer />} />
-
       </Routes>
     </Layout>
   );
