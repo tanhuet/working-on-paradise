@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Job from "./Job";
 import locationImg from "../../../../../asses/nawest.png";
 import locationImg1 from "../../../../../asses/image1.png";
-import Comment from "./UserComment";
+import UserComment from "./UserComment";
 
 const DUMYJOB = {
   logo: locationImg,
@@ -17,7 +17,7 @@ const DUMYJOB = {
   submittedDate: "12/12/2012",
 };
 
-const Offer = () => {
+const Comment = () => {
   return (
     <div className={classes.des}>
       <div className={classes.card}>
@@ -38,9 +38,9 @@ const Offer = () => {
           </div>
         </form>
         <div className={classes.company}>
-          <Comment />
+          <UserComment />
           <hr></hr>
-          <Comment />
+          <UserComment />
         </div>
       </div>
       <Job
@@ -56,4 +56,4 @@ const Offer = () => {
   );
 };
 
-export default Offer;
+export default Comment;

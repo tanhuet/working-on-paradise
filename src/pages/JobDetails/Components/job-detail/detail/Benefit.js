@@ -1,8 +1,7 @@
-import classes from "./Offer.module.scss";
+import classes from "./Benefit.module.scss";
 import { Link } from "react-router-dom";
 import Job from "./Job";
 import locationImg from "../../../../../asses/nawest.png";
-
 const DUMYJOB = {
   logo: locationImg,
   companyName: "NatWest. Group",
@@ -14,18 +13,19 @@ const DUMYJOB = {
   type: "Part Time",
   submittedDate: "12/12/2012",
 };
-const Offer = (props) => {
+
+const Benefit = (props) => {
   return (
-    <div className={classes.component}>
+    <div>
       <div className={classes.des}>
         <div className={classes.card}>
           <div className={classes.button}>
-            <Link className={classes.btn}>Job Description</Link>
+            <Link className={classes.btn}>Benefit</Link>
           </div>
           <Link>
             <div className={classes.company}>
               <div className={classes["info"]}>
-                {props.abc?.map((item, index) => (
+                {props.benefit?.map((item, index) => (
                   <p key={index}>● {item}</p>
                 ))}
                 {/* <p>
@@ -73,28 +73,21 @@ const Offer = (props) => {
             </div>
           </Link>
         </div>
-        <div className={classes.company2}>
-          <Job
-            logo={DUMYJOB.logo}
-            companyName={DUMYJOB.companyName}
-            jobName={DUMYJOB.jobName}
-            location={DUMYJOB.location}
-            recruitment={DUMYJOB.recruitment}
-            location1={DUMYJOB.location1}
-            recruitment1={DUMYJOB.recruitment1}
-          />
-          <Job
-            logo={DUMYJOB.logo}
-            companyName={DUMYJOB.companyName}
-            jobName={DUMYJOB.jobName}
-            location={DUMYJOB.location}
-            recruitment={DUMYJOB.recruitment}
-            location1={DUMYJOB.location1}
-            recruitment1={DUMYJOB.recruitment1}
-          />
-        </div>
+        <Job
+          logo={DUMYJOB.logo}
+          companyName={DUMYJOB.companyName}
+          jobName={DUMYJOB.jobName}
+          location={DUMYJOB.location}
+          recruitment={DUMYJOB.recruitment}
+          location1={DUMYJOB.location1}
+          recruitment1={DUMYJOB.recruitment1}
+        />
+      </div>
+      <div>
+        <button className={classes.button1}>Apply Now</button>
       </div>
     </div>
   );
 };
-export default Offer;
+
+export default Benefit;
