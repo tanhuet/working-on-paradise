@@ -22,8 +22,7 @@ Các tham số đầu vào:
     jobType = {job.jobType}
     skills = {job.skills}
     experience = {job.experience}
-    minSalary = {job.minSalary}
-    maxSalary = {job.maxSalary}
+    salary = {job.salary}
 />
 ```
 
@@ -38,8 +37,7 @@ location: 'California',
 category: 'UI/UX Desgin',
 jobType: 'Part Time',
 experience: 'Senior',
-minSalary: '700',
-maxSalary: '1500',
+salary: '700',
 skills: ['cloud', 'react'],
 }
 ```
