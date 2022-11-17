@@ -1,9 +1,37 @@
 import { Link } from "react-router-dom"
+import { useSelector } from "react-redux"
+import config from "../../config"
+import axios from "axios"
+
 import Card from "../UI/Card"
 import classes from "./JobCard.module.scss"
 import FollowIcon from "../icon/follow"
 
 const JobCard = (props) => {
+
+    const userStore = useSelector((state) => state.auth.login?.currentUser);
+
+    const followHanlder = async () => {
+        if (userStore) {
+            try {
+                const resFlag = await axios.get(`${config.api.url}/job/${props.id}/marked`, { headers: { Authorization: `Bearer ${userStore.accessToken}`}} )
+                console.log(resFlag.data)
+                let data
+                if (!resFlag.data) {
+                    data = await axios.post(`${config.api.url}/job/${props.id}/mark`, {} ,
+                    { headers: { Authorization: `Bearer ${userStore.accessToken}` }})
+                } else {
+                    data = await axios.delete(`${config.api.url}/job/${props.id}/unmark` ,
+                    { headers: { Authorization: `Bearer ${userStore.accessToken}` }})
+                }
+                console.log(data.data)
+            } catch (error) {
+                console.error(error);
+            }
+        }
+    }
+
+
     return (
         <Card>
             <div className={classes.job}> 
@@ -21,7 +49,7 @@ const JobCard = (props) => {
                     </div>
                 </Link>
                 <div className={classes.btn}>
-                    <button>
+                    <button onClick={followHanlder}>
                         <FollowIcon />
                     </button>
                 </div>

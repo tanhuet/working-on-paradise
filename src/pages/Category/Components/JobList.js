@@ -60,6 +60,7 @@ const JobList = (props) => {
           {filteredJobs.map((job) => (
             <JobCard
               key={job.id}
+              id={job.id}
               logo={job.logo}
               companyName={job.companyName}
               location={job.location}
