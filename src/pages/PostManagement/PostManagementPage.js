@@ -19,33 +19,39 @@ const CV = [
   },
 ]
 
-const DUMYPOST = [
-  {
-      id: 1,
-      logo: locationImg,
-      jobName: 'Google Inc',
-      company: 'Company',
-      location: 'Location',
-      typeOfJob: 'Type of Job',
-      typeOfWorkplace: 'Type of Workplace',
-      salary: 'Salary',
-      candidates: 'X candidates applied',
-      skills: ['Skill', 'Designer', 'FullTime'],
-  },
-]
 const PostManagementPage = () => {
-  // const [job, setJob] = useState();
-  // const userStore = useSelector((state) => state.auth.login?.currentUser);
+  const [job, setJob] = useState();
+  const userStore = useSelector((state) => state.auth.login?.currentUser);
 
-  // useEffect(() => {
-  //   axios.get(`${config.api.url}/job/all-mine`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } })
-  //     .then((res) => {
-  //       console.log(res.data);
-  //       setJob(res.data);
-  //   });
-  // }, [userStore]);
+  useEffect(() => {
+    axios.get(`${config.api.url}/job/all-mine`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } })
+      .then((res) => {
+        console.log(res.data);
+        setJob(res.data);
+    });
+  }, [userStore]);
+
+  let jobs = [];
+  if (job) {
+    jobs = job.map((job) => {
+        let tags = job.tags.replace(" ", '').split(",")
+        tags = tags.slice(0, 7)
+        return {
+            id: job.id,
+            logo: job.imageUrl,
+            jobName:job.title,
+            // companyName: job.authorName,
+            // location: job.authorAddress,
+            jobType: job.typeOfWorking,
+            experience: job.exp,
+            salary: job.salary,
+            skills: tags,
+        }
+    })
+  }
+  console.log(jobs)
     return (
-      <PostManagement cvs={CV} posts={DUMYPOST} />
+      <PostManagement cvs={CV} jobs={jobs} />
     );
   };
   
