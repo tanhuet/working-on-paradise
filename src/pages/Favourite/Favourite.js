@@ -30,7 +30,6 @@ const Favourite = () => {
       axios
         .get(`${config.api.url}/job/list-marked`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } })
         .then((res) => {
-          console.log(res.data)
           setEntireJobs(res.data);
         })
         .catch((err) => {
@@ -66,7 +65,6 @@ const Favourite = () => {
         }
     })
   }
-  console.log(jobs)
 
   return (
     <Fragment>

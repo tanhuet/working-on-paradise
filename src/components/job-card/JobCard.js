@@ -2,12 +2,14 @@ import { Link } from "react-router-dom"
 import { useSelector } from "react-redux"
 import config from "../../config"
 import axios from "axios"
+import { useNavigate } from "react-router-dom"
 
 import Card from "../UI/Card"
 import classes from "./JobCard.module.scss"
 import FollowIcon from "../icon/follow"
 
 const JobCard = (props) => {
+    const navigate = useNavigate()
 
     const userStore = useSelector((state) => state.auth.login?.currentUser);
 
@@ -15,16 +17,16 @@ const JobCard = (props) => {
         if (userStore) {
             try {
                 const resFlag = await axios.get(`${config.api.url}/job/${props.id}/marked`, { headers: { Authorization: `Bearer ${userStore.accessToken}`}} )
-                console.log(resFlag.data)
                 let data
                 if (!resFlag.data) {
                     data = await axios.post(`${config.api.url}/job/${props.id}/mark`, {} ,
                     { headers: { Authorization: `Bearer ${userStore.accessToken}` }})
+                    navigate('/favourite')
                 } else {
                     data = await axios.delete(`${config.api.url}/job/${props.id}/unmark` ,
                     { headers: { Authorization: `Bearer ${userStore.accessToken}` }})
+                    window.location.reload(false)
                 }
-                console.log(data.data)
             } catch (error) {
                 console.error(error);
             }

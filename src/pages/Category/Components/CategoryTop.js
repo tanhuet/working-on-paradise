@@ -40,6 +40,7 @@ const CategoryTop = (props) => {
                     {props.jobs.map(job => (
                         <HighlightJob 
                             key = {job.id}
+                            id = {job.id}
                             logo = {job.logo}
                             companyName = {job.companyName}
                             location = {job.location}
