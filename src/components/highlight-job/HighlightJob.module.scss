@@ -1,9 +1,11 @@
 .card a {
+    // font-size: 15px;
     text-decoration: none;
 }
 
 .card {
     padding: 20px;
+    padding-right: 0px;
     padding-top: 20px;
     width: 289px;
     height: 175px;
@@ -32,11 +34,15 @@
     display: flex;
 }
 
-.btn button {
+.btn { 
+    padding: 0;
     margin: 0;
-    padding:  0;
-    border: none;
-    background-color: #FFFFFF;
+    margin-right: -20px;
+    button {
+        margin: 0;
+        padding: 0;
+        background-color: transparent;
+    }
 }
 
 .info h3 {
