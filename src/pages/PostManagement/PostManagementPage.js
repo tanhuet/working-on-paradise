@@ -5,22 +5,9 @@ import axios from "axios";
 import config from "../../config";
 import { useSelector } from "react-redux";
 
-const CV = [
-  {
-      id: 1,
-      avatar: locationImg,
-      userName: 'Username',
-      experience: 'Senior Design',
-      age: 'XX',
-      minSalary: '700',
-      maxSalary: '1500',
-      jobType: 'Part Time',
-      skills: ['Senior Designer', 'Full-Time'],
-  },
-]
-
 const PostManagementPage = () => {
   const [job, setJob] = useState();
+  const [profile, setProfile] = useState();
   const userStore = useSelector((state) => state.auth.login?.currentUser);
 
   useEffect(() => {
@@ -28,32 +15,59 @@ const PostManagementPage = () => {
       .then((res) => {
         console.log(res.data);
         setJob(res.data);
-    });
+      });
+
+    axios.get(`${config.api.url}/employer/recommend-jobseeker/3`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } })
+      .then((res) => {
+        console.log(res.data);
+        setProfile(res.data);
+      });
+
   }, [userStore]);
 
   let jobs = [];
   if (job) {
     jobs = job.map((job) => {
-        let tags = job.tags.replace(" ", '').split(",")
-        tags = tags.slice(0, 7)
-        return {
-            id: job.id,
-            logo: job.imageUrl,
-            jobName:job.title,
-            // companyName: job.authorName,
-            // location: job.authorAddress,
-            jobType: job.typeOfWorking,
-            experience: job.exp,
-            salary: job.salary,
-            skills: tags,
-        }
+      let tags = job.tags.replace(" ", '').split(",")
+      tags = tags.slice(0, 7)
+      return {
+        id: job.id,
+        logo: job.imageUrl,
+        jobName: job.title,
+        companyName: job.authorName,
+        location: job.authorAddress,
+        jobType: job.typeOfWorking,
+        candidates: job.slots,
+        experience: job.exp,
+        salary: job.salary,
+        skills: tags,
+      }
     })
   }
   console.log(jobs)
-    return (
-      <PostManagement cvs={CV} jobs={jobs} />
-    );
-  };
-  
-  export default PostManagementPage;
-  
+
+  let profiles = [];
+  if (profile) {
+    profiles = profile.map((profile ) => {
+      let advanedSkill = profile.advanedSkill.replace(" ", '').split(",")
+      advanedSkill = advanedSkill.slice(0, 2)
+      return {
+        id: profile.id,
+        avatar: profile.avatar,
+        userName: profile.username,
+        experience: profile.experience,
+        age: profile.age,
+        salary: profile.salary,
+        jobType: profile.typeOfJob,
+        skills: advanedSkill,
+      }
+    })
+  }
+  console.log(profiles)
+
+  return (
+    <PostManagement profiles={profiles} jobs={jobs} />
+  );
+};
+
+export default PostManagementPage;

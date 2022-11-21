@@ -7,8 +7,9 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom"
 
 const PostManagement = (props) => {
-  const cv = props.cvs[0]
+  //const cv = props.cvs[0]
   const [jobMine, setJobMine] = useState(props.jobs)
+  const [cv, setCv] = useState(props.profiles)
 
   const location = useLocation()
   const queryParams = new URLSearchParams(location.search)
@@ -20,7 +21,13 @@ const PostManagement = (props) => {
       return job.category.includes(condition)
     })
     jobs = jobs.concat(jobList.filter((job) => {
+      return job.jobName.includes(condition)
+    }))
+    jobs = jobs.concat(jobList.filter((job) => {
       return job.companyName.includes(condition)
+    }))
+    jobs = jobs.concat(jobList.filter((job) => {
+      return job.location.includes(condition)
     }))
     jobs = jobs.concat(jobList.filter((job) => {
       return job.jobType.includes(condition)
@@ -30,11 +37,40 @@ const PostManagement = (props) => {
     }))
     return jobs
   }
-  
+
   useEffect(() => {
     let filteredJobs = jobMines(props.jobs, filter)
     setJobMine(filteredJobs)
   }, [filter, props.jobs])
+
+  const cvs = (cvList, condition) => {
+    if (!condition) return cvList
+    let profiles = cvList.filter((profile) => {
+      return profile.avatar.includes(condition)
+    })
+    profiles = profiles.concat(cvList.filter((profile) => {
+      return profile.userName.includes(condition)
+    }))
+    profiles = profiles.concat(cvList.filter((profile) => {
+      return profile.experience.includes(condition)
+    }))
+    profiles = profiles.concat(cvList.filter((profile) => {
+      return profile.age.includes(condition)
+    }))
+    profiles = profiles.concat(cvList.filter((profile) => {
+      return profile.jobType.includes(condition)
+    }))
+    profiles = profiles.concat(cvList.filter((profile) => {
+      return profile.skills[0].includes(condition)
+    }))
+    return profiles
+  }
+
+  useEffect(() => {
+    let filteredCvs = cvs(props.profiles, filter)
+    setCv(filteredCvs)
+  }, [filter, props.profiles])
+
   return (
     <>
       <div className={classes.container}>
@@ -55,58 +91,42 @@ const PostManagement = (props) => {
           <Link to="/addpost" className={classes.add}>
             <i className="fa fa-plus"></i>
           </Link>
-
         </div>
         <div className={classes.list}>
           {jobMine.map((job) => (
             <HighlightPost
               key={job.id}
               logo={job.logo}
-              company={job.jobName}
-              //location={job.location}
-              //category={job.category}
+              jobName={job.jobName}
+              company={job.companyName}
+              location={job.location}
+              category={job.category}
               typeOfJob={job.jobType}
               skills={job.skills}
-              candidates={job.experience}
+              experience={job.experience}
+              candidates={job.candidates}
               salary={job.salary}
             />
           ))}
         </div>
+
       </div>
 
       <h1 className={classes["tittle-text"]}>IDEAL <span>CVs FOR </span>YOU</h1>
 
       <div className={classes["job-list"]}>
-        <HighLightCv
-          avatar={cv.avatar}
-          userName={cv.userName}
-          experience={cv.experience}
-          age={cv.age}
-          minSalary={cv.minSalary}
-          maxSalary={cv.maxSalary}
-          jobType={cv.jobType}
-          skills={cv.skills}
-        />
-        <HighLightCv
-          avatar={cv.avatar}
-          userName={cv.userName}
-          experience={cv.experience}
-          age={cv.age}
-          minSalary={cv.minSalary}
-          maxSalary={cv.maxSalary}
-          jobType={cv.jobType}
-          skills={cv.skills}
-        />
-        <HighLightCv
-          avatar={cv.avatar}
-          userName={cv.userName}
-          experience={cv.experience}
-          age={cv.age}
-          minSalary={cv.minSalary}
-          maxSalary={cv.maxSalary}
-          jobType={cv.jobType}
-          skills={cv.skills}
-        />
+        {cv.map((profile) => (
+          <HighLightCv
+            key={profile.id}
+            avatar={profile.avatar}
+            userName={profile.userName}
+            experience={profile.experience}
+            age={profile.age}
+            salary={profile.salary}
+            jobType={profile.jobType}
+            skills={profile.skills}
+          />
+        ))}
       </div>
     </>
 
