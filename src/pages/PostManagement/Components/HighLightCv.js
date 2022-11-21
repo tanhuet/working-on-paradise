@@ -17,16 +17,11 @@ const HighlightJob = (props) => {
                             </div>
                         </div>
                     </Link>
-                    <div className={classes.btn}>
-                        <button>
-                            <FollowIcon />
-                        </button>
-                    </div>
                 </div>
                 <div className={classes.jd}>
                     <ul>
                         <li>Age: {props.age}</li>
-                        <li>Desired Salary: ${props.minSalary} - ${props.maxSalary}, {props.jobType}</li>
+                        <li>Desired Salary: {props.salary}, {props.jobType}</li>
                     </ul>
                 </div>
                 <div className={classes.skill}>

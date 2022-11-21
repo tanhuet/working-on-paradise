@@ -80,6 +80,17 @@
         background: #E9FBFA;
         border-radius: 0px 0px 60px 60px;
         padding: 5px;
+        
+        .page-controller {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .page-controller button {
+            margin-left: 1rem;
+            margin-right: 1rem;
+            border-radius: 50%;
+        }
     }
 }
 
