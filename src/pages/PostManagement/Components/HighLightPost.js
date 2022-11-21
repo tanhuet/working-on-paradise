@@ -20,12 +20,7 @@ const HighlightPost = (props) => {
                         </div>
                     </div>
                 </Link>
-                <Link>
-                    <img className={classes.edit} src={editImg} alt=".."/>
-                </Link>
-                <Link>
-                    <img className={classes.delete} src={deleteImg} alt=".."/>
-                </Link>
+                
             </div>
             <div className={classes.skill}>
                 <ul className={classes['skill-items']}>

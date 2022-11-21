@@ -16,6 +16,7 @@
 
     .company-info {
         display: flex;
+
         img {
             width: 35px;
             height: 35px;
@@ -24,12 +25,12 @@
     .edit {
         width: 25px;
         height: 25px;
-        margin-left: 125px;
+        //padding-left: 50px;
     }
     .delete {
         width: 25px;
         height: 25px;
-        margin-left: 10px;
+        //margin-left: 10px;
     }
 }
 

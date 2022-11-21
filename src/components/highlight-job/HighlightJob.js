@@ -1,5 +1,10 @@
 import classes from "./HighlightJob.module.scss"
+import { useSelector } from "react-redux"
+import config from "../../config"
+import axios from "axios"
+import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom"
+
 import FollowIcon from "../icon/follow"
 
 const HighlightJob = (props) => {
@@ -25,8 +30,8 @@ const HighlightJob = (props) => {
 
     const scaleExperienceAndJobType = (str) => {
         let newStr;
-        if (str.length > 34) {
-            newStr = str.slice(0, 31) + "..."
+        if (str.length > 32) {
+            newStr = str.slice(0, 29) + "..."
             return newStr
         } 
         return str
@@ -35,6 +40,29 @@ const HighlightJob = (props) => {
     const category = scaleCategory(props.category)
     const companyNameAndLocation = scaleCompanyNameAndLocation(`${props.companyName}-${props.location}`)
     const experienceAndJobType = scaleExperienceAndJobType(`${props.experience},${props.jobType}`)
+
+    const navigate = useNavigate()
+
+    const userStore = useSelector((state) => state.auth.login?.currentUser);
+
+    const followHanlder = async () => {
+        if (userStore) {
+            try {
+                const resFlag = await axios.get(`${config.api.url}/job/${props.id}/marked`, { headers: { Authorization: `Bearer ${userStore.accessToken}`}} )
+                if (!resFlag.data) {
+                    await axios.post(`${config.api.url}/job/${props.id}/mark`, {} ,
+                    { headers: { Authorization: `Bearer ${userStore.accessToken}` }})
+                    navigate('/favourite')
+                } else {
+                    await axios.delete(`${config.api.url}/job/${props.id}/unmark` ,
+                    { headers: { Authorization: `Bearer ${userStore.accessToken}` }})
+                    window.location.reload(false)
+                }
+            } catch (error) {
+                console.error(error);
+            }
+        }
+    }
 
 
     return (    
@@ -52,7 +80,7 @@ const HighlightJob = (props) => {
                         </div>
                     </Link>
                     <div className={classes.btn}>
-                        <button>
+                        <button onClick={followHanlder}>
                             <FollowIcon />
                         </button>
                     </div>

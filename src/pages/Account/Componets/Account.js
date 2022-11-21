@@ -1,49 +1,71 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Fragment } from "react";
 import { Link } from "react-router-dom";
-import classes from "./Account.module.scss";
+import classes from "./Account.module.scss"
+import axios from "axios";
+import { useSelector } from "react-redux";
+import config from "../../../config";
+import React from "react";
 
 const Account = (props) => {
   const USER = props.user;
 
   const [editInfor, setEditInfor] = useState(false);
-  const edit = () => {
-    setEditInfor(true);
-  };
-  const save = () => {
-    setEditInfor(false);
-  };
- 
   const [editEx, setEditEx] = useState(false);
-  const editExper = () => {
-    setEditEx(true);
-  };
-  const saveExper = () => {
-    setEditEx(false);
-  };
-
   const [editEdu, setEditEdu] = useState(false);
-  const editEducation = () => {
-    setEditEdu(true);
-  };
-  const saveEducaton = () => {
-    setEditEdu(false);
-  };
-
   const [editAd, setEditAd] = useState(false);
-  const editAdvan = () => {
-    setEditAd(true);
-  };
-  const saveAdvan = () => {
-    setEditAd(false);
-  };
-
   const [editCa, setEditCa] = useState(false);
-  const editCareer = () => {
-    setEditCa(true);
-  };
-  const saveCareer = () => {
-    setEditCa(false);
+
+  const [age, setAge] = useState();
+  const [address, setAddress] = useState();
+  const [gender, setGender] = useState();
+  const [experience, setExperience] = useState();
+  const [advanedSkill, setAdvanedSkill] = useState();
+  const [careerFeild, setCareerFeild] = useState();
+  const [typeOfJob, setTypeOfJob] = useState();
+  const [salary, setSalary] = useState();
+  const [workplace, setWorkplace] = useState();
+
+  const userStore = useSelector((state) => state.auth.login?.currentUser);
+
+  useEffect(() => {
+    axios.get(`${config.api.url}/jobseeker`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } })
+      .then((res) => {
+        //console.log(res.data);
+        setAge(res.data.age)
+        setAddress(res.data.address)
+        setGender(res.data.gender)
+        setExperience(res.data.experience)
+        setAdvanedSkill(res.data.advanedSkill)
+        setCareerFeild(res.data.careerFeild)
+        setTypeOfJob(res.data.typeOfJob)
+        setSalary(res.data.salary)
+        setWorkplace(res.data.workplace)
+      });
+  }, [userStore]);
+
+  const handleSubmit = (event) => {
+    setEditInfor(false)
+
+    console.log(1)
+    axios
+      .put(
+        `${config.api.url}/jobseeker`,
+        {
+          age: age,
+          gender: gender,
+          experience: experience,
+          advanedSkill: advanedSkill,
+          salary: salary,
+          workplace: workplace,
+          cv: "cv link",
+          careerFeild: careerFeild,
+          typeOfJob: typeOfJob,
+        },
+        { headers: { Authorization: `Bearer ${userStore.accessToken}` } }
+      ).then((res) => {
+        console.log(res.data);
+      })
   };
 
   return (
@@ -82,11 +104,11 @@ const Account = (props) => {
             </div>
             <div>
               {editInfor === false ? (
-                <button className={classes.edit} onClick={edit}>
+                <button className={classes.edit} onClick={() => setEditInfor(true)}>
                   <div className={classes.style3}>Edit</div>
                 </button>
               ) : (
-                <button className={classes.edit} onClick={save}>
+                <button className={classes.edit} onClick={handleSubmit}>
                   <div className={classes.style3}>Save</div>
                 </button>
               )}
@@ -95,7 +117,7 @@ const Account = (props) => {
 
           <div>
             {editInfor === false ? (
-              <form className={classes.data} onSubmit={edit}>
+              <form className={classes.data}>
                 <div className={classes.left}>
                   <div className={`${classes.font} ${classes.phone}`}>
                     <label>Phone Number: </label> <br />
@@ -103,7 +125,7 @@ const Account = (props) => {
                   </div>
                   <div className={`${classes.font} ${classes.address}`}>
                     <label>Permanent address: </label> <br />
-                    {USER.address}
+                    {address}
                   </div>
                 </div>
                 <div className={classes.right}>
@@ -113,38 +135,38 @@ const Account = (props) => {
                   </div>
                   <div className={`${classes.font} ${classes.age}`}>
                     <label>Age: </label> <br />
-                    {USER.age}
+                    {age}
                   </div>
                   <div className={`${classes.font} ${classes.gender}`}>
                     <label>Gender: </label> <br />
-                    {USER.gender}
+                    {gender}
                   </div>
                 </div>
               </form>
             ) : (
-              <form className={classes.data} onSubmit={save}>
+              <form className={classes.data} onSubmit={handleSubmit}>
                 <div className={classes.left}>
                   <div className={`${classes.font} ${classes.phone}`}>
                     <label>Phone Number:</label> <br />
-                    <input type={"text"} className={`${classes.font} ${classes.editmake}`} value={USER.phone}></input>
+                    <div className={`${classes.font} ${classes.editmake}`}>{USER.phone}</div>
                   </div>
                   <div className={`${classes.font} ${classes.address}`}>
                     <label>Permanent address:</label> <br />
-                    <textarea className={`${classes.font} ${classes.editmake}`} rows={"4"} colums={"40"} value={USER.address}></textarea>
+                    <textarea className={`${classes.font} ${classes.editmake}`} rows={"4"} colums={"40"} onChange={(e) => setAddress(e.target.value)} value={address}></textarea>
                   </div>
                 </div>
                 <div className={classes.right}>
                   <div className={`${classes.font} ${classes.email}`}>
                     <label>Email (Verified/Unverified):</label> <br />
-                    <input type={"text"} className={classes.font} value={USER.email}></input>
+                    <div className={classes.font}>{USER.email}</div>
                   </div>
                   <div className={`${classes.font} ${classes.age}`}>
                     <label>Age:</label> <br />
-                    <input type={"text"} className={classes.font} value={USER.age}></input>
+                    <input type={"text"} className={classes.font} onChange={(e) => setAge(e.target.value)} value={age}></input>
                   </div>
                   <div className={`${classes.font} ${classes.gender}`}>
                     <label>Gender:</label> <br />
-                    <input type={"text"} className={classes.font} value={USER.gender}></input>
+                    <input type={"text"} className={classes.font} onChange={(e) => setGender(e.target.value)} value={gender}></input>
                   </div>
                 </div>
               </form>
@@ -157,11 +179,11 @@ const Account = (props) => {
             </div>
             <div>
               {editEx === false ? (
-                <button className={`${classes.edit} ${classes.margin1}`} onClick={editExper}>
+                <button className={`${classes.edit} ${classes.margin1}`} onClick={() => setEditEx(true)}>
                   <div className={classes.style3}>Edit</div>
                 </button>
               ) : (
-                <button className={`${classes.edit} ${classes.margin1}`} onClick={saveExper}>
+                <button className={`${classes.edit} ${classes.margin1}`} onClick={() => {handleSubmit(); setEditEx(false)} }>
                   <div className={classes.style3}>Save</div>
                 </button>
               )}
@@ -171,12 +193,12 @@ const Account = (props) => {
             {editEx === false ? (
               <form className={classes.data} style={{ height: "181px" }}>
                 <div className={classes.font}>
-                  <div className={classes.styleborder}></div>
+                  <div className={classes.styleborder}>{experience}</div>
                 </div>
               </form>
             ) : (
-              <form className={classes.data} style={{ height: "181px" }}>
-                <textarea className={`${classes.font} ${classes.textexper}`}></textarea>
+              <form className={classes.data} style={{ height: "181px" }} onSubmit={handleSubmit}>
+                <textarea className={`${classes.font} ${classes.textexper}`} onChange={(e) => setExperience(e.target.value)} value={experience}></textarea>
               </form>
             )}
           </div>
@@ -187,11 +209,11 @@ const Account = (props) => {
             </div>
             <div>
               {editEdu === false ? (
-                <button className={`${classes.edit} ${classes.margin2}`} onClick={editEducation}>
+                <button className={`${classes.edit} ${classes.margin2}`} onClick={() => setEditEdu(true)}>
                   <div className={classes.style3}>Edit</div>
                 </button>
               ) : (
-                <button className={`${classes.edit} ${classes.margin2}`} onClick={saveEducaton}>
+                <button className={`${classes.edit} ${classes.margin2}`} onClick={() => setEditEdu(false)}>
                   <div className={classes.style3}>Save</div>
                 </button>
               )}
@@ -217,11 +239,11 @@ const Account = (props) => {
             </div>
             <div>
               {editAd === false ? (
-                <button className={`${classes.edit} ${classes.margin3}`} onClick={editAdvan}>
+                <button className={`${classes.edit} ${classes.margin3}`} onClick={() => setEditAd(true)}>
                   <div className={classes.style3}>Edit</div>
                 </button>
               ) : (
-                <button className={`${classes.edit} ${classes.margin3}`} onClick={saveAdvan}>
+                <button className={`${classes.edit} ${classes.margin3}`} onClick={() => {handleSubmit(); setEditAd(false)}}>
                   <div className={classes.style3}>Save</div>
                 </button>
               )}
@@ -231,12 +253,12 @@ const Account = (props) => {
             {editAd === false ? (
               <form className={classes.data} style={{ height: "181px" }}>
                 <div className={classes.font}>
-                  <div className={classes.styleborder}></div>
+                  <div className={classes.styleborder}>{advanedSkill}</div>
                 </div>
               </form>
             ) : (
-              <form className={classes.data} style={{ height: "181px" }}>
-                <textarea className={`${classes.font} ${classes.textexper}`}></textarea>
+              <form className={classes.data} style={{ height: "181px" }} onSubmit={handleSubmit}>
+                <textarea className={`${classes.font} ${classes.textexper}`} onChange={(e) => setAdvanedSkill(e.target.value)} value={advanedSkill}></textarea>
               </form>
             )}
           </div>
@@ -247,11 +269,11 @@ const Account = (props) => {
             </div>
             <div>
               {editCa === false ? (
-                <button className={`${classes.edit} ${classes.margin3}`} onClick={editCareer}>
+                <button className={`${classes.edit} ${classes.margin3}`} onClick={() => setEditCa(true)}>
                   <div className={classes.style3}>Edit</div>
                 </button>
               ) : (
-                <button className={`${classes.edit} ${classes.margin3}`} onClick={saveCareer}>
+                <button className={`${classes.edit} ${classes.margin3}`} onClick={() => {handleSubmit(); setEditCa(false)}}>
                   <div className={classes.style3}>Save</div>
                 </button>
               )}
@@ -263,47 +285,40 @@ const Account = (props) => {
                 <div className={classes.containerCarField}>
                   <div className={`${classes.font} ${classes.item1}`}>
                     <label className={classes.a}>Desired Career Field:</label>
-                    <p>
-                      Design <br />
-                      Media and Communications <br />
-                      Human Resource
-                    </p>
+                    {careerFeild}
                   </div>
                   <div className={`${classes.font} ${classes.item2}`}>
                     <label className={classes.b}>Type of Job:</label>
-                    <p>
-                      Freelancer <br />
-                      Remote <br />
-                    </p>
+                    {typeOfJob}
                   </div>
                   <div className={`${classes.font} ${classes.item3}`}>
                     <label className={classes.c}>Desired salary:</label>
-                    <p>VND 10.000.000</p>
+                    {salary}
                   </div>
                   <div className={`${classes.font} ${classes.item4}`}>
                     <label className={classes.d}>Desired workplace:</label>
-                    <p className={classes.font}>Hanoi, Vietnam</p>
+                    {workplace}
                   </div>
                 </div>
               </form>
             ) : (
-              <form className={classes.data} style={{ height: "324px" }}>
+              <form className={classes.data} style={{ height: "324px" }} onSubmit={handleSubmit}>
                 <div className={classes.containerCarField}>
                   <div className={`${classes.font} ${classes.item1}`}>
                     <label className={classes.a}>Desired Career Field:</label>
-                    <textarea className={classes.font} style={{ width: "450px" }}></textarea>
+                    <textarea className={classes.font} style={{ width: "450px" }} onChange={(e) => setCareerFeild(e.target.value)} value={careerFeild}></textarea>
                   </div>
                   <div className={`${classes.font} ${classes.item2}`}>
                     <label className={classes.b}>Type of Job:</label>
-                    <textarea className={classes.font} style={{ width: "450px" }}></textarea>
+                    <input className={classes.font} style={{ width: "450px" }} onChange={(e) => setTypeOfJob(e.target.value)} value={typeOfJob}></input>
                   </div>
                   <div className={`${classes.font} ${classes.item3}`}>
                     <label className={classes.c}>Desired salary:</label>
-                    <textarea className={classes.font} style={{ width: "450px" }}></textarea>
+                    <input className={classes.font} style={{ width: "450px" }} onChange={(e) => setSalary(e.target.value)} value={salary}></input>
                   </div>
                   <div className={`${classes.font} ${classes.item4}`}>
                     <label className={classes.d}>Desired workplace:</label>
-                    <textarea className={classes.font} style={{ width: "450px" }}></textarea>
+                    <input className={classes.font} style={{ width: "450px" }} onChange={(e) => setWorkplace(e.target.value)} value={workplace}></input>
                   </div>
                 </div>
               </form>
