@@ -9,32 +9,52 @@ import { useDispatch } from "react-redux";
 import { useState } from "react";
 import config from "../../../config";
 import axios from "axios";
+import SetUpAccJobSeeker from "./SetUpAccountJobSeeker/SetUpAccJobSeeker";
+import SetUpAccEmployer from "./SetUpAccountJobSeeker/SetUpAccountEmployer";
 
+// import ReactDOM from "react-dom";
+// import Popup from "reactjs-popup";
 
 const Register = (props) => {
   const [userName, setUserName] = useState("");
+  const [name, setName] = useState("");
+
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [passWord, setPassWord] = useState("");
   const [confirmPassWord, setConfirmPassWord] = useState("");
   const [remember, setRemember] = useState(true);
-  const [dropDownOption, setDropDownOption] = useState("jobseeker")
+  const [dropDownOption, setDropDownOption] = useState("Job Seeker");
+
+  const [isNextPage, setIsNextPage] = useState(false);
+  const [isJobSeeker, setIsJobSeeker] = useState(false);
+  // const [tags, setTags] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-//   const manyOptions = [
-//     {
-//       text: "Job Seeker",
-//       value: "1",
-//     },
-//     {
-//       text: "Employer",
-//       value: "2",
-//     },
-//   ];
+  const manyOptions = [
+    {
+      text: "Job Seeker",
+      value: "jobseeker",
+    },
+    {
+      text: "Employer",
+      value: "employer",
+    },
+  ];
+
+  const renderLabel = (label) => {
+    // setTags([...tags, label.text]);
+    return {
+      content: `${label.text}`,
+    };
+  };
 
   const handleChangeUsername = (event) => {
     setUserName(event.target.value);
+  };
+  const handleChangeName = (event) => {
+    setName(event.target.value);
   };
 
   const handleChangeEmail = (event) => {
@@ -57,51 +77,87 @@ const Register = (props) => {
     setRemember(event.target.checked);
   };
 
-  const handleChangeDropDown= (event) => {
-    setDropDownOption(event.target.value);
+  // const handleChangeDropDown= (event) => {
+  //   setDropDownOption(event.target.value);
+  // };
+
+  const handleChangeDropDown = (event, { data }) => {
+    setDropDownOption(`${event.target.textContent}`);
   };
 
   // useEffect(() => {
   //   console.log(dropDownOption);
   // }, [dropDownOption]);
-
   const handleSubmit = (event) => {
-    event.preventDefault();
-    const newUser = {
-      username: userName,
-      email: email,
-      phone: phoneNumber,
-      password: passWord,
-    };
-    const DUMMYUSER = {
-      username: "nguyen1",
-      name: "Tanh",
-      email: "nguyenphucnguyen305@gmail.com",
-      phone: "12335435",
-      avatar: "avatar",
-      password: "123",
-      address: "address",
-      age: 20,
-      gender: "male",
-      experience: "2 years",
-      advanedSkill: "advanced skill",
-      salary: 1000,
-      workplace: "Ha Noi",
-      cv: "cv link",
-      careerFeild: "web",
-      typeOfJob: "fulltime"
+    // event.preventDefault();
+    if (
+      userName !== "" &&
+      email !== "" &&
+      email !== "" &&
+      phoneNumber !== "" &&
+      passWord !== "" &&
+      confirmPassWord !== "" &&
+      passWord === confirmPassWord
+    ) {
+      setIsNextPage(true);
+      if (dropDownOption === "Job Seeker") {
+        setIsJobSeeker(true);
+      } else {
+        setIsJobSeeker(false);
+      }
     }
-    axios.post(`${config.api.url}/${dropDownOption}`, DUMMYUSER)
-      .then((res) => {
-        console.log(res.data);
-        // setUser(res.data);
-    });
-    // registerUser(newUser, dispatch, navigate, dropDownOption);
+    if (passWord !== "" && confirmPassWord !== "" && passWord !== confirmPassWord) {
+      alert('Password and ConfirmPassword is different. Please try again');
+    }
   };
-  
-  return (
+  const user = {
+    username: userName,
+    name: name,
+    email: email,
+    phone: phoneNumber,
+    password: passWord,
+    }
+
+  // const handleSubmit1 = (event) => {
+  //   event.preventDefault();
+  //   const newUser = {
+  //     username: userName,
+  //     email: email,
+  //     phone: phoneNumber,
+  //     password: passWord,
+  //   };
+  //   // setDropDownOption(dropDownOption.substring(1));
+  //   let optionUSer = dropDownOption === "Job Seeker" ? "jobseeker" : "employer";
+  //   const DUMMYUSERJOBSEEKER = {
+  //     username: userName,
+  //     name: userName,
+  //     email: email,
+  //     phone: phoneNumber,
+  //     avatar: "avatar",
+  //     password: passWord,
+  //     address: "address",
+  //     age: 20,
+  //     gender: "male",
+  //     experience: "2 years",
+  //     advanedSkill: "advanced skill",
+  //     salary: 1000,
+  //     workplace: "Ha Noi",
+  //     cv: "cv link",
+  //     careerFeild: "web",
+  //     typeOfJob: "fulltime",
+  //   };
+  //   axios
+  //     .post(`${config.api.url}/${optionUSer}`, DUMMYUSERJOBSEEKER)
+  //     .then((res) => {
+  //       console.log(res.data);
+  //       // setUser(res.data);
+  //     });
+  //   // registerUser(newUser, dispatch, navigate, dropDownOption);
+  // };
+
+  return !isNextPage ? (
     <div className={classes["container-fluid"]}>
-      <form className={classes.form} onSubmit={handleSubmit}>
+      <form className={classes.form}>
         <div className={classes["form"]}>
           <div className={classes["sign-up-register"]}>Sign Up</div>
 
@@ -114,6 +170,14 @@ const Register = (props) => {
                   type="text"
                   style={{ fontFamily: "FontAwesome" }}
                   placeholder=" &#xF007; Username"
+                  required
+                />
+                <input
+                  value={name}
+                  onChange={handleChangeName}
+                  type="text"
+                  style={{ fontFamily: "FontAwesome" }}
+                  placeholder=" &#xF007; Name"
                   required
                 />
               </div>
@@ -157,17 +221,22 @@ const Register = (props) => {
               </div>
 
               <div>
-              <span>Select User Type: 
+                {/* <span>Select User Type: 
               <select className={`ui dropdown`} value={dropDownOption} onChange={handleChangeDropDown}>
                   <option value="jobseeker" >Job Seeker</option>
                   <option value="employer">Employer</option>
-                 
                 </select>
-              </span>
-              
+              </span> */}
+                <Dropdown
+                  selection
+                  fluid
+                  options={manyOptions}
+                  renderLabel={renderLabel}
+                  onChange={handleChangeDropDown}
+                  placeholder="Select User Type: "
+                />
               </div>
             </div>
-            
 
             <div className={`form-group row`}>
               {/* <div class="col-sm-2"></div> */}
@@ -194,7 +263,7 @@ const Register = (props) => {
           </div>
 
           <div className={classes["submit-button"]}>
-            <button>
+            <button type="submit" onClick={handleSubmit}>
               Create Account
             </button>
             <div className={classes["sign-in-register"]}>
@@ -204,6 +273,10 @@ const Register = (props) => {
         </div>
       </form>
     </div>
+  ) : isJobSeeker ? (
+    <SetUpAccJobSeeker account={user} />
+  ) : (
+    <SetUpAccEmployer account={user}/>
   );
 };
 

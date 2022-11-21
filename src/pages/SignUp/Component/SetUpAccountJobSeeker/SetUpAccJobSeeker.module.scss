@@ -1,44 +1,49 @@
-
-input, button, textarea, select {
-    background: #7BEADF;
-border-radius: 20px;
-padding: 5px;
-border: 2px solid transparent;
-}
-select {
+.set-up-acc {
+  input,
+  button,
+  textarea,
+  select {
+    background: #7beadf;
+    border-radius: 20px;
+    padding: 5px;
+    border: 2px solid transparent;
+  }
+  select {
     width: 100%;
-}
-button, input {
+  }
+  button,
+  input {
     height: 40px;
     min-width: 81px;
     border-radius: 10px;
+  }
 }
 .row-in-column {
-    margin: 10px 0 10px 0;
+  margin: 10px 0 10px 0;
 }
 .row-in-column-content {
-    display: flex;
-    align-items: center;
-    justify-content: end;
-    font-weight: 600;
-    font-size: 20px;
-    line-height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 30px;
 }
 .button-save {
-    display: flex;
-    justify-content: end;
+  display: flex;
+  justify-content: end;
 }
 .title {
-    font-weight: 600;
-    font-size: 30px;
-    display: flex;
-    justify-content: center;
-    margin-top: 30px;
-    margin-bottom: 50px;
+  font-weight: 600;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 50px;
 }
 .img-setting {
-    display: flex;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
 }
