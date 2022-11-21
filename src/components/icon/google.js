@@ -1,5 +1,5 @@
 import React from "react";
-import google from "../../asses/logo_google.png";
+// import google from "../../asses/logo_google.png";
 import save from "../../asses/save.png";
 import classes from "./google.module.scss";
 
