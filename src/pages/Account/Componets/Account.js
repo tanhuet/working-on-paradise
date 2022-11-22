@@ -6,6 +6,7 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import config from "../../../config";
 import React from "react";
+import EducationEdit from "./EducationEdit";
 
 const Account = (props) => {
   const USER = props.user;
@@ -68,9 +69,18 @@ const Account = (props) => {
       })
   };
 
+  // Hiệp: khi bấm ra ngoài sẽ close education edit
+  const closeEducationEditHandler = () => {
+    setEditEdu(false)
+  }
+
   return (
     USER && (
       <Fragment>
+        {editEdu && <EducationEdit 
+          onCloseEditingEducation = {closeEducationEditHandler} 
+          // gọi API truyền props vào đây để sang bên EducationEdit
+        /> }
         <div className={classes.container1}>
           <div className={classes.circle}>
             <div className={classes.letter}>{USER.name.charAt(0).toUpperCase()}</div>
@@ -209,7 +219,7 @@ const Account = (props) => {
             </div>
             <div>
               {editEdu === false ? (
-                <button className={`${classes.edit} ${classes.margin2}`} onClick={() => setEditEdu(true)}>
+                <button className={`${classes.edit} ${classes.margin2}`} onClick={() => {setEditEdu(true)}}>
                   <div className={classes.style3}>Edit</div>
                 </button>
               ) : (
