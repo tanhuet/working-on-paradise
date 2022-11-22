@@ -3,6 +3,8 @@ import cvCreate from "../../../asses/cvCreate.png";
 import RecomendedJob from "../../JobDetails/Components/recomended-job/RecomendedJob";
 import HighlightJob from "../../../components/highlight-job/HighlightJob";
 import CvCard from "./CvCard";
+import { MdOutlineAddCircle } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const CVPage = (props) => {
   return (
@@ -16,15 +18,21 @@ const CVPage = (props) => {
             <div className={`${classes["content"]}`}>
               <div className={classes["content-create-cv"]}>Create your own CV and apply now</div>
               <div className={classes["div-create-cv"]}>
-                <button className={classes["button-create-cv"]}>Create now</button>
+                <Link to="/cv/:cvld">
+                  <button className={classes["button-create-cv"]}>Create now</button>
+                </Link>
               </div>
             </div>
           </div>
           <div className={classes["created-cv"]}>
             <div className={classes["create-cv"]}>
-              <div className={classes["header-create-cv"]}>Created CV</div>
+              <div className={classes["header-create-cv"]}>
+                <div className={classes["title-create-cv"]}>Created CV</div>
+
+                <MdOutlineAddCircle className={classes["add-cv-btn"]} />
+              </div>
               <div className={classes["body-create-cv"]}>
-                <CvCard />
+                <CvCard CvName="CV" CvLink="facebook.com" />
               </div>
             </div>
           </div>

@@ -51,7 +51,7 @@
           font-weight: 700;
           font-size: 20px;
           color: #ffffff;
-          padding: 0px 15px;
+          padding: 10px 15px;
           border: 1px solid transparent;
         }
       }
@@ -70,6 +70,13 @@
         align-items: center;
         color: #ffffff;
         text-shadow: 0px 4px 25px rgb(0 0 0 / 75%);
+        justify-content: space-between;
+        .title-create-cv {
+          margin-left: 10px;
+        }
+        .add-cv-btn {
+          margin-right: 30px;
+        }
       }
       .body-create-cv {
         padding: 40px;
