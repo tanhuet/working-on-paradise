@@ -17,13 +17,12 @@ const JobCard = (props) => {
         if (userStore) {
             try {
                 const resFlag = await axios.get(`${config.api.url}/job/${props.id}/marked`, { headers: { Authorization: `Bearer ${userStore.accessToken}`}} )
-                let data
                 if (!resFlag.data) {
-                    data = await axios.post(`${config.api.url}/job/${props.id}/mark`, {} ,
+                    await axios.post(`${config.api.url}/job/${props.id}/mark`, {} ,
                     { headers: { Authorization: `Bearer ${userStore.accessToken}` }})
                     navigate('/favourite')
                 } else {
-                    data = await axios.delete(`${config.api.url}/job/${props.id}/unmark` ,
+                    await axios.delete(`${config.api.url}/job/${props.id}/unmark` ,
                     { headers: { Authorization: `Bearer ${userStore.accessToken}` }})
                     window.location.reload(false)
                 }

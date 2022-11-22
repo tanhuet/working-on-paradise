@@ -1,6 +1,6 @@
 // import React, { useEffect, useState } from 'react';
 import Layout from "./components/layout/Layout";
-import { Routes, Route, Navigate, Redirect} from "react-router-dom";
+import { Routes, Route, Navigate} from "react-router-dom";
 import { useSelector } from "react-redux"
 
 //import page
