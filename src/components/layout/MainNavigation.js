@@ -41,6 +41,9 @@ const MainNavigation = () => {
                 <li className="nav-item">
                   <NavLink className="nav-link" href="#" to="/CV">CV</NavLink>
                 </li>
+                <li className="nav-item">
+                  <NavLink className="nav-link" href="#" to="/application">Application</NavLink>
+                </li>
               </ul>
             ) : (
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
