@@ -69,7 +69,13 @@ const LoginPage = (props) => {
             {/* <div class="col-sm-2"></div> */}
             <div className={`col-sm-5`}>
               <div className={classes["form-check"]}>
-                <input checked={remember} onChange={handleChangeCheckBox} className={classes["form-check-input"]} type="checkbox" id="gridCheck1" />
+                <input
+                  checked={remember}
+                  onChange={handleChangeCheckBox}
+                  className={classes["form-check-input"]}
+                  type="checkbox"
+                  id="gridCheck1"
+                />
                 <label className={classes["form-check-label"]} for="gridCheck1">
                   Remember me
                 </label>

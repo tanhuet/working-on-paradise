@@ -2,7 +2,7 @@ import React from "react";
 import HomeBackground from "../../components/layout/HomeBackground";
 import HighlightJob from "./Components/job-detail/HighlightJob";
 
-const EmployerDetails = () => {
+const EmployerJobDetail = () => {
   return (
     <React.Fragment>
       <HomeBackground />
@@ -12,4 +12,4 @@ const EmployerDetails = () => {
   );
 };
 
-export default EmployerDetails;
+export default EmployerJobDetail;
