@@ -1,4 +1,9 @@
 .form {
+
+    input {
+        margin-bottom: 5px;
+        border: solid thin;
+    }
     textarea {
         text-align: left;
         font-weight: 500;
@@ -151,7 +156,7 @@
             line-height: 19px;
         }
         input {
-            margin-left: -1rem;
+            // margin-left: -1rem;
             font-weight: 500;
             font-size: 13px;
             line-height: 15px;
