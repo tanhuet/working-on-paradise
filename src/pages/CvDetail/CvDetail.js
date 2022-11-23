@@ -4,6 +4,7 @@ import { Fragment } from "react";
 import axios from "axios";
 import config from "../../config";
 import { useSelector } from "react-redux";
+import swal from "sweetalert";
 
 const CvDetail = (props) => {
   const CV = props.cv;
@@ -15,7 +16,7 @@ const CvDetail = (props) => {
 
   const handleSaveToServer = () => {
     axios.post(`${config.api.url}/cv/generate`, { cv: CV }, { headers: { Authorization: `Bearer ${userStore.accessToken}` } }).then(() => {
-      alert("Successfully");
+      swal("Success!", "You have created a new CV!", "success");
     });
   };
 

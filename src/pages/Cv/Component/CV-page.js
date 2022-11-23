@@ -5,8 +5,21 @@ import HighlightJob from "../../../components/highlight-job/HighlightJob";
 import CvCard from "./CvCard";
 import { MdOutlineAddCircle } from "react-icons/md";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import config from "../../../config";
+import axios from "axios";
 
 const CVPage = (props) => {
+  const userStore = useSelector((state) => state.auth.login?.currentUser);
+  const [listCv, setListCv] = useState([]);
+
+  useEffect(() => {
+    axios.get(`${config.api.url}/jobseeker`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } }).then((res) => {
+      setListCv(res.data.cv.split(","));
+    });
+  }, [userStore]);
+
   return (
     <div className={`container-fluid ${classes["container-background"]}`}>
       <div className={`${classes["body-top-top"]}`}>
@@ -32,7 +45,9 @@ const CVPage = (props) => {
                 <MdOutlineAddCircle className={classes["add-cv-btn"]} />
               </div>
               <div className={classes["body-create-cv"]}>
-                <CvCard CvName="CV" CvLink="facebook.com" />
+                {listCv.map((cv, index) => (
+                  <CvCard CvName={"CV-" + index} CvLink={cv} />
+                ))}
               </div>
             </div>
           </div>
