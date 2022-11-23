@@ -1,25 +1,14 @@
 import classes from "./JobList.module.scss";
 import Wrap from "../../../components/UI/Wrap";
-import JobCard from "../../../components/job-card/JobCard";
-import { useEffect, useState } from "react";
-import axios from "axios";
-import config from "../../../config";
+import ApplicationCard from "./ApplicationCard";
+import { useEffect } from "react";
 
 const JobList = (props) => {
-  const [listJob, setListJob] = useState([]);
+  const application = props.application;
 
   useEffect(() => {
-    for (let ap of props.application) {
-      console.log(ap);
-      axios.get(`${config.api.url}/job/${ap.jobId}`).then((res) => {
-        console.log(res.data);
-        setListJob((pre) => {
-          return [...pre, res.data];
-        });
-      });
-    }
-  }, [listJob]);
-
+    console.log(application);
+  }, [application]);
   return (
     <div className={classes.main}>
       <Wrap className={classes["job-list"]}>
@@ -27,20 +16,22 @@ const JobList = (props) => {
           <p>Applied Job's posts</p>
         </div>
         <div className={classes.list}>
-          {listJob.map((job) => (
-            <JobCard
-              key={job.id}
-              id={job.id}
-              logo={job.authorAvatar}
-              companyName={job.authorName}
-              location={job.authorAddress}
-              category={job.tags}
-              jobType={job.typeOfWorking}
-              skills={job.tags}
-              experience={job.tags}
-              salary={job.salary}
-            />
-          ))}
+          {application
+            ? application.map((a) => (
+                <ApplicationCard
+                  id={a.job.id}
+                  logo={a.job.authorAvatar}
+                  companyName={a.job.authorName}
+                  location={a.job.authorAddress}
+                  experience={a.experience}
+                  status={a.status}
+                  title={a.job.title}
+                  jobType={a.job.typeOfWorking}
+                  salary={a.job.salary}
+                  skills={a.job.tags.split(",")}
+                />
+              ))
+            : null}
         </div>
       </Wrap>
     </div>

@@ -12,6 +12,7 @@ const Application = () => {
     axios
       .get(`${config.api.url}/application/mine`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } })
       .then((res) => {
+        // console.log(res.data);
         setApplication(res.data);
       })
       .catch((err) => {
@@ -19,19 +20,11 @@ const Application = () => {
       });
   }, [userStore]);
 
-  const jobApplied = [];
-
-  const handleGetJob = async () => {
-    for (let ap of application) {
-      const job = await axios.get(`${config.api.url}/job/${ap.jobId}`);
-      jobApplied.push(job.data);
-      console.log(jobApplied);
-    }
-  };
-
-  handleGetJob();
-
-  return <Fragment>{/* <JobList jobs={jobApplied} /> */}</Fragment>;
+  return (
+    <Fragment>
+      <JobList application={application} />
+    </Fragment>
+  );
   //
 };
 
