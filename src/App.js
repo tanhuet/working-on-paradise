@@ -23,6 +23,7 @@ import AddPost from "./pages/ADD-POST-Employer/addPost";
 import ChangePassWord from "./pages/ChangePassWord/ChangePassword";
 import SetUpAccJobSeeker from "./pages/SignUp/Component/SetUpAccountJobSeeker/SetUpAccJobSeeker";
 import SetUpAccEmployer from "./pages/SignUp/Component/SetUpAccountJobSeeker/SetUpAccountEmployer";
+import Application from "./pages/Application/Application";
 
 function App() {
   const userStore = useSelector((state) => state.auth.login?.currentUser);
@@ -35,6 +36,7 @@ function App() {
         <Route path="/category" element={<Category />} />
         {userStore?.role === "JobSeeker" && <Route path="/favourite" element={<Favourite />} />}
         {userStore?.role === "JobSeeker" && <Route path="/cv" element={<Cv />} />}
+        {userStore?.role === "JobSeeker" && <Route path="/application" element={<Application />} />}
         <Route path="/forgot" element={<ForgotPassWord />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
