@@ -1,5 +1,7 @@
-a {
+.des {
+  a {
   text-decoration: none;
+  }
 }
 .des {
   display: block;
@@ -128,7 +130,7 @@ a {
   margin-left: 250px;
   margin-top: 20px;
 }
-textarea {
+.des {textarea {
   background: #7beadf;
   font-family: "Poppins";
   font-weight: bold;
@@ -150,4 +152,5 @@ textarea {
   font-size: 20px;
   color: #f1eeee;
   font-family: "Poppins";
+}
 }

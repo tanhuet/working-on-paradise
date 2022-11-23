@@ -37,6 +37,7 @@ const Category = () => {
     useEffect(() => {
         axios.get(`${config.api.url}/job/getPageSuggestion/7/${page.toString()}`)
             .then((res) => {
+                console.log(res.data)
                 setEntireJobs(res.data);
             })
             .catch(err => {
@@ -71,6 +72,7 @@ const Category = () => {
                 experience: job.exp,
                 salary: job.salary,
                 skills: tags,
+                bookmark: job.bookmark,
             }
         })
         
@@ -89,6 +91,7 @@ const Category = () => {
                     experience: job.experience,
                     salary: job.salary,
                     skills: tags,
+                    bookmark: job.bookmark,
                 }
             })
         }
