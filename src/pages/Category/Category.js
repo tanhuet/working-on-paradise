@@ -35,14 +35,23 @@ const Category = () => {
     }
 
     useEffect(() => {
-        axios.get(`${config.api.url}/job/getPageSuggestion/7/${page.toString()}`)
-            .then((res) => {
-                console.log(res.data)
-                setEntireJobs(res.data);
-            })
-            .catch(err => {
-                console.log(err)
-            });
+        if (userStore) {
+            axios.get(`${config.api.url}/job/getPageSuggestion/7/${page.toString()}`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } })
+                .then((res) => {
+                    setEntireJobs(res.data);
+                })
+                .catch(err => {
+                    console.log(err)
+                });
+        } else {
+            axios.get(`${config.api.url}/job/getPageSuggestion/7/${page.toString()}` )
+                .then((res) => {
+                    setEntireJobs(res.data);
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }
         if (userStore) {
             if (userStore.role === 'JobSeeker')
             axios.get(`${config.api.url}/job/recommend/3`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } })

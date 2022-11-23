@@ -47,8 +47,6 @@ const JobList = (props) => {
     setFilteredJobs(filteredJobs)
   }, [filter, props.jobs])
 
-  console.log(filteredJobs[0])
-
   return (
     <div className={classes.main}>
       <Wrap className={classes["job-list"]}>
@@ -71,6 +69,7 @@ const JobList = (props) => {
               skills={job.skills}
               experience={job.experience}
               salary={job.salary}
+              bookmark={job.bookmark}
             />
           ))}
         </div>
