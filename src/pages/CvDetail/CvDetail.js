@@ -1,5 +1,4 @@
 import classes from "./CvDetail.module.scss";
-import locationImg from "../../asses/img-location.png";
 import { Fragment } from "react";
 import axios from "axios";
 import config from "../../config";
@@ -36,7 +35,7 @@ const CvDetail = (props) => {
           <div className={classes["info1"]}>
             <div className={classes.first}>
               <div className={classes.img}>
-                <img src={locationImg} alt="..." />
+                <img src={CV.logo} alt="..." />
               </div>
               <p>Name</p>
               <div className={classes["name-user"]}>
@@ -80,8 +79,8 @@ const CvDetail = (props) => {
           </div>
           <div className={classes["info2"]}>
             <div className={classes["own-info"]}>
-              <label>Date of birth:</label>
-              <p>{CV.birthday.toISOString().split("T")[0]}</p>
+              <label>Age:</label>
+              <p>{CV.age}</p>
               <label>Phone Number:</label>
               <p>{CV.phone}</p>
               <label>Email:</label>

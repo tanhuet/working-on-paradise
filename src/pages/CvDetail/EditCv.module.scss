@@ -10,6 +10,14 @@
         font-size: 12px;
         line-height: 16px;
     }
+    ::placeholder {
+        color: gray;
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 13px;
+        line-height: 15px;
+    }
 }
 
 .header {
@@ -112,7 +120,7 @@
     text-align: center;
 }
 .cv .info1 .img img {
-   
+    border-radius: 50%;
 }
 
 
