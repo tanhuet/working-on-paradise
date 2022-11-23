@@ -1,24 +1,9 @@
 import { Fragment } from "react";
 import FavouriteJob from "./Components/FavouriteJob";
-import locationImg from "../../asses/img-location.png";
 import { useSelector } from "react-redux";
 import config from "../../config";
 import axios from "axios";
 import { useState, useEffect } from "react";
-
-const DUMMY_JOB = [
-  {
-    id: "1",
-    logo: locationImg,
-    companyName: "Google Inc",
-    location: "California",
-    category: "UI/UX Desgin",
-    jobType: "Part Time",
-    skills: ["a", "b"],
-    experience: "efsdfdfs",
-    salary: 1000,
-  },
-];
 
 const Favourite = () => {
   //get API
@@ -62,6 +47,7 @@ const Favourite = () => {
             experience: job.exp,
             salary: job.salary,
             skills: tags,
+            bookmark: job.bookmark,
         }
     })
   }
