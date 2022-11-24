@@ -1,8 +1,7 @@
 import classes from "../../../components/highlight-job/HighlightJob.module.scss"
 import { Link } from "react-router-dom"
-import FollowIcon from "../../../components/icon/follow"
 
-const HighlightJob = (props) => {
+const HighlightCv = (props) => {
     return (    
             <div className={`${classes.card} ${props.class}`}>
                 <div className={classes.company}>
@@ -37,4 +36,4 @@ const HighlightJob = (props) => {
     )
 }
 
-export default HighlightJob
+export default HighlightCv

@@ -15,7 +15,7 @@ const AccountPage = () => {
     }
     axios.get(`${config.api.url}/${endPoint}`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } })
       .then((res) => {
-        console.log(res.data);
+        //console.log(res.data);
         setUser(res.data);
     });
   }, [userStore]);
