@@ -7,7 +7,6 @@ const Highlight = (props) => {
   function handleSubmit(event) {
     if (status === false) {
       props.skills.handleFuntion(true, "Back");
-      // props.skills.callbackSavehandle(false);
       setStatus(true);
     } else {
       props.skills.handleFuntion(false, "Edit");
@@ -47,52 +46,54 @@ const Highlight = (props) => {
             <Save />
           </div>
         </div>
-        <div className={classes.box}>
-          <div className={classes.boxName}>
-            <p>Basic Information</p>
-          </div>
-          <div className={classes.boxInfo}>
-            <div className={classes.boxLeft}>
-              <ul>
-                <li>
-                  <p>
-                    Salary: <span> {props.skills.salary} $</span>
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    Type of Job: <span> {props.skills.typeOfWorking}</span>
-                  </p>
-                </li>
+        {!status && (
+          <div className={classes.box}>
+            <div className={classes.boxName}>
+              <p>Basic Information</p>
+            </div>
+            <div className={classes.boxInfo}>
+              <div className={classes.boxLeft}>
+                <ul>
+                  <li>
+                    <p>
+                      Salary: <span> {props.skills.salary} $</span>
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Type of Job: <span> {props.skills.typeOfWorking}</span>
+                    </p>
+                  </li>
 
-                <li>
-                  <p>
-                    Gender: <span> {props.skills.gender}</span>
-                  </p>
-                </li>
-              </ul>
-            </div>
-            <div className={classes.boxRight}>
-              <ul>
-                <li>
-                  <p>
-                    Quantity: <span> {props.skills.quantity}</span>
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    Position: <span> {props.skills.positions}</span>
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    Experience: <span> {props.skills.exp}</span>
-                  </p>
-                </li>
-              </ul>
+                  <li>
+                    <p>
+                      Gender: <span> {props.skills.gender}</span>
+                    </p>
+                  </li>
+                </ul>
+              </div>
+              <div className={classes.boxRight}>
+                <ul>
+                  <li>
+                    <p>
+                      Quantity: <span> {props.skills.quantity}</span>
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Position: <span> {props.skills.positions}</span>
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Experience: <span> {props.skills.exp}</span>
+                    </p>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
     </React.Fragment>
   );

@@ -6,10 +6,16 @@ import { useSelector } from "react-redux";
 const Docs = (props) => {
   const userStore = useSelector((state) => state.auth.login?.currentUser);
   const [status, setStatus] = useState(false);
-  const [textarea1, setTextarea1] = useState("");
-  const [textarea2, setTextarea2] = useState("");
-  const [textarea3, setTextarea3] = useState("");
+  const [textarea1, setTextarea1] = useState(props.docs.description);
+  const [textarea2, setTextarea2] = useState(props.docs.requirements);
+  const [textarea3, setTextarea3] = useState(props.docs.benefits);
   const [textarea4, setTextarea4] = useState("");
+  const [salary, setSalary] = useState(props.docs.salary);
+  const [typeOfWorking, setTypeOfWorking] = useState(props.docs.typeOfWorking);
+  const [gender, setGender] = useState(props.docs.gender);
+  const [quantity, setQuantity] = useState(props.docs.quantity);
+  const [pos, setPos] = useState(props.docs.positions);
+  const [exp, setExp] = useState(props.docs.exp);
   const handleChange1 = (event) => {
     setTextarea1(event.target.value);
   };
@@ -25,6 +31,24 @@ const Docs = (props) => {
   const handleSubmit = (event) => {
     setStatus(true);
   };
+  const handleChangeSalary = (event) => {
+    setSalary(event.target.value);
+  };
+  const handleChangeType = (event) => {
+    setTypeOfWorking(event.target.value);
+  };
+  const handleChangeQuantity = (event) => {
+    setQuantity(event.target.value);
+  };
+  const handleChangeGender = (event) => {
+    setGender(event.target.value);
+  };
+  const handleChangePos = (event) => {
+    setPos(event.target.value);
+  };
+  const handleChangeExp = (event) => {
+    setExp(event.target.value);
+  };
   if (status === true) {
     let text = "Have you confirmed saving the changes?";
     if (window.confirm(text) === true) {
@@ -33,16 +57,26 @@ const Docs = (props) => {
           `https://tanhuet.site/job/${props.docs.id}`,
           {
             description: textarea1,
-            requirement: textarea2,
-            benefits: textarea4,
-            title: textarea3,
+            requirements: textarea2,
+            benefits: textarea3,
+            tags: props.docs.tags,
+            title: props.docs.title,
+            startTime: new Date().toISOString().slice(0, 10),
+            endTime: new Date().toISOString().slice(0, 10),
+            imageUrl: props.docs.imageUrl,
+            salary: salary,
+            typeOfWorking: typeOfWorking,
+            gender: gender,
+            positions: pos,
+            slots: quantity,
+            exp: exp,
           },
           {
             headers: { Authorization: `Bearer ${userStore.accessToken}` },
           }
         )
         .then(function (response) {
-          window.alert(response.data);
+          window.alert("Update success!");
         })
         .catch(function (error) {
           console.log(error);
@@ -54,6 +88,63 @@ const Docs = (props) => {
   return (
     <div>
       <div className={classes["des"]}>
+        <div className={classes.box}>
+          <div className={classes.boxName}>
+            <p>Basic Information</p>
+          </div>
+          <div className={classes.boxInfo}>
+            <div className={classes.boxLeft}>
+              <ul>
+                <li>
+                  <p>
+                    Salary:{" "}
+                    <input type="number" onChange={handleChangeSalary} />
+                    <span>$</span>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Type of Job:{" "}
+                    <input type="text" onChange={handleChangeType}></input>
+                  </p>
+                </li>
+
+                <li>
+                  <p>
+                    Gender:{" "}
+                    <select onChange={handleChangeGender}>
+                      <option value={props.docs.gender}>--Choose--</option>
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
+                    </select>
+                  </p>
+                </li>
+              </ul>
+            </div>
+            <div className={classes.boxRight}>
+              <ul>
+                <li>
+                  <p>
+                    Quantity:{" "}
+                    <input type="number" onChange={handleChangeQuantity} />
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Position: <input type="text" onChange={handleChangePos} />
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Experience:
+                    <input type="number" onChange={handleChangeExp} />
+                    <span> years</span>
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
         <div className={classes.card}>
           <div className={classes.button}>
             <Link className={classes.btn}>Job Description</Link>
