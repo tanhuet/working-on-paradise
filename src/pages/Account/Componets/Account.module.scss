@@ -2,6 +2,7 @@
     margin: 35px 0;
     display: flex;
     align-items: center;
+
     .circle {
         border-radius: 50%;
         background: green;
@@ -11,7 +12,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-    
+
         .letter {
             font-family: 'Poppins';
             font-style: normal;
@@ -21,6 +22,7 @@
             color: white;
         }
     }
+
     .text {
         font-family: 'Poppins';
         font-style: normal;
@@ -30,6 +32,7 @@
         margin-left: 80px;
     }
 }
+
 .group-item {
     background-color: white;
     display: flex;
@@ -46,15 +49,18 @@
     font-weight: 600;
     font-size: 20px;
     line-height: 30px;
+
     &:hover {
         color: #48CCCD;
     }
+
     color: #000000;
 }
 
 .title {
     display: flex;
     align-items: center;
+
     .makeup {
         width: 212px;
         height: 58px;
@@ -78,6 +84,7 @@
         margin-left: 500px;
         border: none;
         background-color: rgba(0, 0, 0, 0);
+
         .style3 {
             font-weight: 600;
             font-size: 20px;
@@ -108,7 +115,7 @@
 }
 
 .data {
-    width: 850px;
+    width: 55%;
     height: 307px;
     margin-left: 50px;
     overflow: auto;
@@ -126,6 +133,7 @@
         line-height: 30px;
         word-wrap: break-word;
         color: #000000;
+
         .editmake {
             width: 420px;
         }
@@ -133,7 +141,7 @@
 
     .left {
         width: 55%;
-        
+
         .phone {
             margin-top: 40px;
             margin-left: 40px;
@@ -144,28 +152,33 @@
             margin-left: 40px;
         }
     }
-    
+
     .right {
         width: 45%;
+
         .email {
             margin-top: 40px;
             margin-left: 50px;
         }
+
         .age {
             margin-top: 20px;
             margin-left: 50px;
         }
+
         .gender {
             margin-top: 20px;
             margin-left: 50px;
         }
     }
+
     .textexper {
         width: 760px;
         height: 150px;
         margin-left: 45px;
         margin-top: 15px;
     }
+
     .textedu {
         width: 760px;
         height: 140px;
@@ -187,7 +200,7 @@
         margin-top: 35px;
         margin-left: 50px;
         display: flex;
-        
+
         background: #FFFFFF;
         border: 1px solid #000000;
         box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
@@ -225,16 +238,16 @@
             color: #000000;
         }
     }
-    
+
     .containerCarField {
 
         .item1 {
             width: 750px;
-            height: 100px;
+            height: 50px;
             margin-left: 50px;
             margin-top: 27px;
             display: flex;
-            
+
             .a {
                 width: 220px;
                 height: 100px;
@@ -243,7 +256,7 @@
 
         .item2 {
             width: 750px;
-            height: 55px;
+            height: 50px;
             display: flex;
             margin-left: 50px;
             margin-top: 10px;
@@ -256,7 +269,7 @@
 
         .item3 {
             width: 750px;
-            height: 40px;
+            height: 50px;
             display: flex;
             margin-left: 50px;
             margin-top: 10px;
@@ -269,17 +282,37 @@
 
         .item4 {
             width: 750px;
-            height: 40px;
+            height: 50px;
             display: flex;
             margin-left: 50px;
             margin-top: 10px;
+
             .d {
                 width: 220px;
                 height: 40px;
             }
         }
     }
-
 }
 
+.dataEdu {
+    margin-top: -1rem;
 
+    .fontTitle {
+        margin-left: 4rem;
+        padding-top: 1rem;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 30px;
+        word-wrap: break-word;
+        color: #000000;
+    }
+
+    .font {
+        font-weight: 500;
+        font-size: 17px;
+        line-height: 26px;
+        margin-left: 5rem;
+        color: #000000;
+    }
+}
