@@ -1,19 +1,5 @@
 import classes from "./Offer.module.scss";
 import { Link } from "react-router-dom";
-import Job from "./Job";
-import locationImg from "../../../../../asses/nawest.png";
-
-const DUMYJOB = {
-  logo: locationImg,
-  companyName: "NatWest. Group",
-  location: "NatWest. Group - London, UK",
-  recruitment: "Enterprise Architect",
-  location1: "NatWest. Group - London, UK",
-  recruitment1: "Privacy Officer",
-  jobName: "UI/UX Desgin",
-  type: "Part Time",
-  submittedDate: "12/12/2012",
-};
 const Offer = (props) => {
   return (
     <div className={classes.component}>
@@ -24,8 +10,11 @@ const Offer = (props) => {
           </div>
           <Link>
             <div className={classes.company}>
-              <div className={classes.info}>
-                <p>
+              <div className={classes["info"]}>
+                {props.abc?.map((item, index) => (
+                  <p key={index}>● {item}</p>
+                ))}
+                {/* <p>
                   ● Interpret user stories, formal acceptance criteria, and
                   technical specifications into demonstrable user workflows or
                   low fidelity prototypes
@@ -65,7 +54,7 @@ const Offer = (props) => {
                   ● Work closely with project team to design the look-and-feel
                   of interfaces in AGILE environment
                 </p>
-                <p>● Lead stakeholders through the design process</p>
+                <p>● Lead stakeholders through the design process</p> */}
               </div>
             </div>
           </Link>

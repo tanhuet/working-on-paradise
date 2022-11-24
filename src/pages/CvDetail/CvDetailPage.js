@@ -1,87 +1,113 @@
-import { Fragment, useState } from "react"
-import CvDetail from "./CvDetail"
-import EditCv from "./EditCv"
-
-const DUMMYCV = {
-    id: '1',
-    name: "Cv's Name",
-    nameUser: "Job",
-    birthday: new Date('2009-02-02'),
-    phone: '0123456789',
-    email: 'hiepxxxxxx@gmail.com',
-    website: 'none',
-    address: '109xxxxxx',
-    sex: 'male',
-    experience: [
-        {
-            id: '1',
-            company: 'Google',
-            startDate: new Date('2000-10-10'),
-            endDate: new Date('2000-10-10'),
-            position: 'Manager',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tincidunt eget nullam non nisi est sit amet facilisis. Nisl condimentum id venenatis a condimentum vitae sapien pellentesque habitant.',
-        },
-        {
-            id: '2',
-            company: 'Google',
-            startDate: new Date('2020-10-10'),
-            endDate: new Date('2000-10-10'),
-            position: 'manager',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tincidunt eget nullam non nisi est sit amet facilisis. Nisl condimentum id venenatis a condimentum vitae sapien pellentesque habitant.',
-        }
-    ],
-    activities: [
-        {
-            id: '1',
-            organization: 'Hiepdx',
-            startDate: new Date('2020-10-10'),
-            endDate: new Date('2020-10-10'),
-            position: 'manager',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tincidunt eget nullam non nisi est sit amet facilisis. Nisl condimentum id venenatis a condimentum vitae sapien pellentesque habitant.',
-        },
-    ],
-    education: [
-        {
-            id: '1',
-            school: 'Hiepdx',
-            startDate: new Date('2020-10-10'),
-            endDate: new Date('2020-10-10'),
-            position: 'manager',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tincidunt eget nullam non nisi est sit amet facilisis. Nisl condimentum id venenatis a condimentum vitae sapien pellentesque habitant.',
-        },
-    ],
-    skills: [
-        {
-            id: '1',
-            skill: 'design',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tincidunt eget nullam non nisi est sit amet facilisis. Nisl condimentum id venenatis a condimentum vitae sapien pellentesque habitant.',
-        },
-        {
-            id: '2',
-            skill: 'cloud',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tincidunt eget nullam non nisi est sit amet facilisis. Nisl condimentum id venenatis a condimentum vitae sapien pellentesque habitant.',
-        },
-    ]
-}
+import { Fragment, useState, useEffect } from "react";
+import CvDetail from "./CvDetail";
+import EditCv from "./EditCv";
+import { useSelector } from "react-redux"
+import config from "../../config"
+import axios from "axios"
 
 const CvDetailPage = () => {
 
-    const [isEdit, setIsEdit] = useState(false)
+  const [isEdit, setIsEdit] = useState(false);
+  const userStore = useSelector((state) => state.auth.login?.currentUser);
+  const [profile, setProfile] = useState(null)
 
-    const editHandler = (isEdit) => {
-        setIsEdit(isEdit)
+  //fetch API current jobseeker
+  useEffect(() => {
+    const EXPERIENCE = [
+      {
+        id: "1",
+        company: "",
+        startDate: new Date("2000-10-10"),
+        endDate: new Date("2000-10-10"),
+        position: "",
+        description: ""
+      },
+      {
+        id: "2",
+        company: "",
+        startDate: new Date("2000-10-10"),
+        endDate: new Date("2000-10-10"),
+        position: "",
+        description: ""
+      },
+    ]
+    const ACTIVITIES = [
+      {
+        id: "1",
+        organization: "",
+        startDate: new Date("2020-10-10"),
+        endDate: new Date("2020-10-10"),
+        position: "",
+        description: ""
+      },
+    ]
+    const EDUCATION = [
+      {
+        id: "1",
+        school: "",
+        startDate: new Date("2020-10-10"),
+        endDate: new Date("2020-10-10"),
+        position: "",
+        description: ""
+      },
+    ]
+    const SKILLS = [
+      {
+        id: "1",
+        skill: "",
+        description: ""
+      },
+      {
+        id: "2",
+        skill: "",
+        description: ""
+      },
+    ]
+    if (userStore && userStore.role === 'JobSeeker') {
+      axios.get(`${config.api.url}/jobseeker`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } })
+          .then((res) => {
+              const profile = res.data
+              setProfile({
+                id: profile.id,
+                logo: profile.avatar,
+                name: profile.name,
+                nameUser: profile.name,
+                age: profile.age,
+                phone: profile.phone,
+                email: profile.email,
+                website: "none",
+                address: profile.address,
+                sex: profile.gender,
+                experience: EXPERIENCE,
+                activities: ACTIVITIES,
+                education: EDUCATION,
+                skills: SKILLS
+              })
+          })
+          .catch(err => {
+              console.log(err)
+          });
     }
+  }, [userStore])
 
-    const viewHandler = (isEdit) => {
-        setIsEdit(isEdit)
-    }
+  const editHandler = (isEdit) => {
+    setIsEdit(isEdit);
+  };
 
-    return (
-        <Fragment>
-            {!isEdit && <CvDetail cv = {DUMMYCV} onEdit={editHandler} />}
-            {isEdit && <EditCv cv = {DUMMYCV} onEdit={viewHandler}/>}
-        </Fragment>
-    )
-}
+  const viewHandler = (isEdit) => {
+    setIsEdit(isEdit);
+  };
 
-export default CvDetailPage
+  const saveInfoHandler = (cv) => {
+    setProfile(cv)
+  }
+
+  return (
+    <Fragment>
+      {!isEdit && profile !== null && <CvDetail cv={profile} onEdit={editHandler} />}
+      {isEdit && profile !==null && <EditCv cv={profile} onEdit={viewHandler} save={saveInfoHandler} />}
+    </Fragment>
+  );
+};
+
+export default CvDetailPage;

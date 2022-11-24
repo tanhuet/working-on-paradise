@@ -4,6 +4,8 @@ import { useState } from "react";
 import React, { useEffect } from "react";
 import axios from "axios";
 import config from "../../../../config";
+import swal from "sweetalert";
+import { useNavigate } from "react-router-dom";
 
 const SetUpAccJobSeeker = (props) => {
   const [age, setAge] = useState("");
@@ -60,6 +62,7 @@ const SetUpAccJobSeeker = (props) => {
 
     setSelectAvatar(event.target.files[0]);
   };
+  let navigate = useNavigate();
 
   const handleSubmitButton = async (event) => {
     event.preventDefault();
@@ -69,14 +72,8 @@ const SetUpAccJobSeeker = (props) => {
     formDataCV.append(`file`, selectedCV);
     formDataAvatar.append(`file`, selectedAvatar);
 
-    const cvLink = await axios.post(
-      `${config.api.url}/helper/upload`,
-      formDataCV
-    );
-    const avatarLink = await axios.post(
-      `${config.api.url}/helper/upload`,
-      formDataAvatar
-    );
+    const cvLink = await axios.post(`${config.api.url}/helper/upload`, formDataCV);
+    const avatarLink = await axios.post(`${config.api.url}/helper/upload`, formDataAvatar);
 
     const DUMMYJOBSEEKER = {
       username: props.account.username,
@@ -97,17 +94,22 @@ const SetUpAccJobSeeker = (props) => {
       typeOfJob: typeOfJob,
     };
 
-    const newJobseeker = await axios.post(
-      `${config.api.url}/jobseeker`,
-      DUMMYJOBSEEKER
-    );
+    axios
+      .post(`${config.api.url}/jobseeker`, DUMMYJOBSEEKER)
+      .then((res) => {
+        swal("Success!", "Your account has been created!", "success").then(() => {
+          navigate("/login");
+        });
+      })
+      .catch((err) =>
+        swal("Error!", err.response.data, "error").then(() => {
+          navigate("/signup");
+        })
+      );
   };
 
   return (
-    <div
-      className={`container-fluid ${classes["set-up-acc"]}`}
-      style={{ fontWeight: "bold" }}
-    >
+    <div className={`container-fluid ${classes["set-up-acc"]}`} style={{ fontWeight: "bold" }}>
       <div className={`row`}>
         <div className={`col-sm-5 ${classes["img-setting"]}`}>
           <img src={settingImage}></img>
@@ -121,16 +123,9 @@ const SetUpAccJobSeeker = (props) => {
 
           {/* row-content in colum content */}
           <div className={`row ${classes["row-in-column"]}`}>
-            <div className={`col-sm-3 ${classes["row-in-column-content"]}`}>
-              Age:
-            </div>
+            <div className={`col-sm-3 ${classes["row-in-column-content"]}`}>Age:</div>
             <div className={`col-sm-9`}>
-              <input
-                type="number"
-                value={age}
-                onChange={handleChangeAge}
-                required
-              ></input>
+              <input type="number" value={age} onChange={handleChangeAge} required></input>
               <button
                 value="male"
                 onClick={handleClickGender}
@@ -156,62 +151,33 @@ const SetUpAccJobSeeker = (props) => {
 
           {/* row-content in colum content */}
           <div className={`row ${classes["row-in-column"]}`}>
-            <div className={`col-sm-3 ${classes["row-in-column-content"]}`}>
-              Experience:
-            </div>
+            <div className={`col-sm-3 ${classes["row-in-column-content"]}`}>Experience:</div>
             <div className={`col-sm-9`}>
-              <textarea
-                rows={"4"}
-                columns={"40"}
-                style={{ width: "100%" }}
-                value={experience}
-                onChange={handleChangeExperience}
-              ></textarea>
+              <textarea rows={"4"} columns={"40"} style={{ width: "100%" }} value={experience} onChange={handleChangeExperience}></textarea>
             </div>
           </div>
 
           {/* row-content in colum content */}
           <div className={`row ${classes["row-in-column"]}`}>
-            <div className={`col-sm-3 ${classes["row-in-column-content"]}`}>
-              Advanced Skill:
-            </div>
+            <div className={`col-sm-3 ${classes["row-in-column-content"]}`}>Advanced Skill:</div>
             <div className={`col-sm-9`}>
-              <textarea
-                rows={"4"}
-                columns={"40"}
-                style={{ width: "100%" }}
-                value={advancedSkill}
-                onChange={handleChangeAdvancedSkill}
-              ></textarea>
+              <textarea rows={"4"} columns={"40"} style={{ width: "100%" }} value={advancedSkill} onChange={handleChangeAdvancedSkill}></textarea>
             </div>
           </div>
 
           {/* row-content in colum content */}
           <div className={`row ${classes["row-in-column"]}`}>
-            <div className={`col-sm-3 ${classes["row-in-column-content"]}`}>
-              Desired Salary:
-            </div>
+            <div className={`col-sm-3 ${classes["row-in-column-content"]}`}>Desired Salary:</div>
             <div className={`col-sm-9`}>
-              <input
-                type="number"
-                value={desiredSalary}
-                onChange={handleChangeDesiredSalary}
-                required
-              ></input>
+              <input type="number" value={desiredSalary} onChange={handleChangeDesiredSalary} required></input>
             </div>
           </div>
 
           {/* row-content in colum content */}
           <div className={`row ${classes["row-in-column"]}`}>
-            <div className={`col-sm-3 ${classes["row-in-column-content"]}`}>
-              Workplace:
-            </div>
+            <div className={`col-sm-3 ${classes["row-in-column-content"]}`}>Workplace:</div>
             <div className={`col-sm-9`}>
-              <select
-                className={`ui dropdown`}
-                value={workPlace}
-                onChange={handleChangeWorkPlace}
-              >
+              <select className={`ui dropdown`} value={workPlace} onChange={handleChangeWorkPlace}>
                 <option value="Remote">Remote</option>
                 <option value="On-site">On-site</option>
               </select>
@@ -220,57 +186,31 @@ const SetUpAccJobSeeker = (props) => {
 
           {/* row-content in colum content */}
           <div className={`row ${classes["row-in-column"]}`}>
-            <div className={`col-sm-3 ${classes["row-in-column-content"]}`}>
-              Type Of Job:
-            </div>
+            <div className={`col-sm-3 ${classes["row-in-column-content"]}`}>Type Of Job:</div>
             <div className={`col-sm-9`}>
-              <input
-                type="text"
-                style={{ width: "100%" }}
-                value={typeOfJob}
-                onChange={handleChangeTypeOfJob}
-                required
-              ></input>
+              <input type="text" style={{ width: "100%" }} value={typeOfJob} onChange={handleChangeTypeOfJob} required></input>
             </div>
           </div>
 
           {/* row-content in colum content */}
           <div className={`row ${classes["row-in-column"]}`}>
-            <div className={`col-sm-3 ${classes["row-in-column-content"]}`}>
-              Desired Career Field:
-            </div>
+            <div className={`col-sm-3 ${classes["row-in-column-content"]}`}>Desired Career Field:</div>
             <div className={`col-sm-9`}>
-              <input
-                type="text"
-                style={{ width: "100%" }}
-                value={desiredCareerField}
-                onChange={handleChangeDesiredCareerField}
-                required
-              ></input>
+              <input type="text" style={{ width: "100%" }} value={desiredCareerField} onChange={handleChangeDesiredCareerField} required></input>
             </div>
           </div>
 
           {/* row-content in colum content */}
           <div className={`row ${classes["row-in-column"]}`}>
-            <div className={`col-sm-3 ${classes["row-in-column-content"]}`}>
-              Address:
-            </div>
+            <div className={`col-sm-3 ${classes["row-in-column-content"]}`}>Address:</div>
             <div className={`col-sm-9`}>
-              <input
-                type="text"
-                style={{ width: "100%" }}
-                value={address}
-                onChange={handleChangeAddress}
-                required
-              ></input>
+              <input type="text" style={{ width: "100%" }} value={address} onChange={handleChangeAddress} required></input>
             </div>
           </div>
 
           {/* row-content in colum content */}
           <div className={`row ${classes["row-in-column"]}`}>
-            <div className={`col-sm-3 ${classes["row-in-column-content"]}`}>
-              CV:
-            </div>
+            <div className={`col-sm-3 ${classes["row-in-column-content"]}`}>CV:</div>
             <div className={`col-sm-9`}>
               <input type="file" value={cv} onChange={handleChangeCV} />
             </div>
@@ -278,9 +218,7 @@ const SetUpAccJobSeeker = (props) => {
 
           {/* row-content in colum content */}
           <div className={`row ${classes["row-in-column"]}`}>
-            <div className={`col-sm-3 ${classes["row-in-column-content"]}`}>
-              Avatar:
-            </div>
+            <div className={`col-sm-3 ${classes["row-in-column-content"]}`}>Avatar:</div>
             <div className={`col-sm-9`}>
               <input type="file" value={avatar} onChange={handleChangeAvatar} />
             </div>

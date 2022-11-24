@@ -3,17 +3,21 @@ a {
 }
 .des {
   margin-top: 11rem;
-  justify-content: space-between;
+  display: inline-grid;
+  grid-template-columns: auto auto auto;
+  margin-left: 50rem;
 }
 
 .card {
-  margin: auto;
+  margin: 20px;
   box-shadow: 0px 4px 20px 5px rgba(119, 116, 116, 0.25);
   width: 696px;
-  height: 810px;
+  height: max-content;
   padding: 10px;
   background: #ffffff;
   border-radius: 25px;
+  margin-top: 4rem;
+  margin-right: 20rem;
 }
 .company2 .Job {
   position: absolute;
@@ -38,6 +42,7 @@ a {
 .company .info {
   margin-left: 10px;
   margin-top: -20px;
+  margin-bottom: 3rem;
   font-family: "Poppins";
   font-style: normal;
   font-weight: 500;
