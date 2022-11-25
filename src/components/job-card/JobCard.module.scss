@@ -3,6 +3,10 @@
     padding-left: 0;
     display: flex;
     justify-content: space-between;
+
+    svg {
+        margin: 5px;
+    }
 }
 .info{
     display: flex;

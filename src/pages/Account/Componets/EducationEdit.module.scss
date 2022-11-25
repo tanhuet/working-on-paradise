@@ -1,0 +1,46 @@
+.form {
+    position: fixed;
+    width: 70%;
+    left: 15%;
+    top: 20vh;
+    background: white;
+    border-radius: 0px;
+    z-index: 200;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    padding: 3rem;
+}
+
+.fontTitle {
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 45px;
+    align-items: center;
+    text-align: center;
+    margin: 25px 0px 35px;
+
+    .title {
+        width: 70%;
+        align-items: center;
+        text-align: center;
+    }
+}
+
+.font {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 30px;
+    margin-left: 5%;
+}
+
+.style {
+    margin-left: 8%;
+    width: 50%;
+    height: 200px;
+}
+.styleButton {   
+    margin-left: 85%;
+}
+
+
+
+

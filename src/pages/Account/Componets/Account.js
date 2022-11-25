@@ -6,7 +6,8 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import config from "../../../config";
 import React from "react";
-
+import EducationEdit from "./EducationEdit";
+import Data from "./Data"
 const Account = (props) => {
   const USER = props.user;
 
@@ -25,13 +26,13 @@ const Account = (props) => {
   const [typeOfJob, setTypeOfJob] = useState();
   const [salary, setSalary] = useState();
   const [workplace, setWorkplace] = useState();
+  const [education, setEducation] = useState();
 
   const userStore = useSelector((state) => state.auth.login?.currentUser);
 
   useEffect(() => {
     axios.get(`${config.api.url}/jobseeker`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } })
       .then((res) => {
-        //console.log(res.data);
         setAge(res.data.age)
         setAddress(res.data.address)
         setGender(res.data.gender)
@@ -42,12 +43,15 @@ const Account = (props) => {
         setSalary(res.data.salary)
         setWorkplace(res.data.workplace)
       });
+
+    axios.get(`${config.api.url}/education/all-mine`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } })
+      .then((res) => {
+        console.log(res.data)
+        setEducation(res.data)
+      });
   }, [userStore]);
 
   const handleSubmit = (event) => {
-    setEditInfor(false)
-
-    console.log(1)
     axios
       .put(
         `${config.api.url}/jobseeker`,
@@ -63,14 +67,36 @@ const Account = (props) => {
           typeOfJob: typeOfJob,
         },
         { headers: { Authorization: `Bearer ${userStore.accessToken}` } }
-      ).then((res) => {
-        console.log(res.data);
-      })
+      )
   };
+
+  // Hiệp: khi bấm ra ngoài sẽ close education edit
+  const closeEducationEditHandler = () => {
+    setEditEdu(false)
+  }
+
+  let educations = [];
+  if (education) {
+    educations = education.map((data) => {
+      return {
+        id: data.id,
+        school: data.school,
+        degree: data.degree,
+        major: data.major,
+        startDate: data.startDate,
+        endDate: data.endDate,
+        description: data.description,
+      }
+    })
+  }
 
   return (
     USER && (
       <Fragment>
+        {editEdu && <EducationEdit
+          onCloseEditingEducation={closeEducationEditHandler}
+          education={educations}
+        />}
         <div className={classes.container1}>
           <div className={classes.circle}>
             <div className={classes.letter}>{USER.name.charAt(0).toUpperCase()}</div>
@@ -108,7 +134,7 @@ const Account = (props) => {
                   <div className={classes.style3}>Edit</div>
                 </button>
               ) : (
-                <button className={classes.edit} onClick={handleSubmit}>
+                <button className={classes.edit} onClick={() => { handleSubmit(); setEditInfor(false) }}>
                   <div className={classes.style3}>Save</div>
                 </button>
               )}
@@ -183,7 +209,7 @@ const Account = (props) => {
                   <div className={classes.style3}>Edit</div>
                 </button>
               ) : (
-                <button className={`${classes.edit} ${classes.margin1}`} onClick={() => {handleSubmit(); setEditEx(false)} }>
+                <button className={`${classes.edit} ${classes.margin1}`} onClick={() => { handleSubmit(); setEditEx(false) }}>
                   <div className={classes.style3}>Save</div>
                 </button>
               )}
@@ -208,30 +234,28 @@ const Account = (props) => {
               <div className={classes.style2}>Education</div>
             </div>
             <div>
-              {editEdu === false ? (
-                <button className={`${classes.edit} ${classes.margin2}`} onClick={() => setEditEdu(true)}>
-                  <div className={classes.style3}>Edit</div>
-                </button>
-              ) : (
-                <button className={`${classes.edit} ${classes.margin2}`} onClick={() => setEditEdu(false)}>
-                  <div className={classes.style3}>Save</div>
-                </button>
-              )}
+              <button className={`${classes.edit} ${classes.margin2}`} onClick={() => { setEditEdu(true) }}>
+                <div className={classes.style3}>Edit</div>
+              </button>
             </div>
           </div>
-          <div>
-            {editEdu === false ? (
-              <form className={classes.data} style={{ height: "170px" }}>
-                <div className={classes.font}>
-                  <div className={classes.styleborder}></div>
-                </div>
-              </form>
-            ) : (
-              <form className={classes.data} style={{ height: "170px" }}>
-                <textarea className={`${classes.font} ${classes.textedu}`}></textarea>
-              </form>
-            )}
+
+          <div className={classes.dataEdu}>
+            <Data>
+              {educations.map((data) => (
+                <>
+                  <div className={classes.fontTitle}>{data.school}</div>
+                  <div className={classes.font}>{data.major}</div>
+                  <div className={classes.font}>{data.degree}</div>
+                  <div className={classes.font}>{data.startDate} {data.endDate}</div>
+                  <div className={classes.font}>{data.description}</div>
+                </>
+
+              ))}
+
+            </Data>
           </div>
+
 
           <div id="list-item-4" className={classes.title}>
             <div className={classes.makeup} style={{ width: "182px" }}>
@@ -243,7 +267,7 @@ const Account = (props) => {
                   <div className={classes.style3}>Edit</div>
                 </button>
               ) : (
-                <button className={`${classes.edit} ${classes.margin3}`} onClick={() => {handleSubmit(); setEditAd(false)}}>
+                <button className={`${classes.edit} ${classes.margin3}`} onClick={() => { handleSubmit(); setEditAd(false) }}>
                   <div className={classes.style3}>Save</div>
                 </button>
               )}
@@ -273,7 +297,7 @@ const Account = (props) => {
                   <div className={classes.style3}>Edit</div>
                 </button>
               ) : (
-                <button className={`${classes.edit} ${classes.margin3}`} onClick={() => {handleSubmit(); setEditCa(false)}}>
+                <button className={`${classes.edit} ${classes.margin3}`} onClick={() => { handleSubmit(); setEditCa(false) }}>
                   <div className={classes.style3}>Save</div>
                 </button>
               )}
@@ -281,7 +305,7 @@ const Account = (props) => {
           </div>
           <div>
             {editCa === false ? (
-              <form className={classes.data} style={{ height: "324px" }}>
+              <form className={classes.data} style={{ height: "280px" }}>
                 <div className={classes.containerCarField}>
                   <div className={`${classes.font} ${classes.item1}`}>
                     <label className={classes.a}>Desired Career Field:</label>

@@ -35,13 +35,23 @@ const Category = () => {
     }
 
     useEffect(() => {
-        axios.get(`${config.api.url}/job/getPageSuggestion/7/${page.toString()}`)
-            .then((res) => {
-                setEntireJobs(res.data);
-            })
-            .catch(err => {
-                console.log(err)
-            });
+        if (userStore) {
+            axios.get(`${config.api.url}/job/getPageSuggestion/7/${page.toString()}`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } })
+                .then((res) => {
+                    setEntireJobs(res.data);
+                })
+                .catch(err => {
+                    console.log(err)
+                });
+        } else {
+            axios.get(`${config.api.url}/job/getPageSuggestion/7/${page.toString()}` )
+                .then((res) => {
+                    setEntireJobs(res.data);
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }
         if (userStore) {
             if (userStore.role === 'JobSeeker')
             axios.get(`${config.api.url}/job/recommend/3`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } })
@@ -71,6 +81,7 @@ const Category = () => {
                 experience: job.exp,
                 salary: job.salary,
                 skills: tags,
+                bookmark: job.bookmark,
             }
         })
         
@@ -89,6 +100,7 @@ const Category = () => {
                     experience: job.experience,
                     salary: job.salary,
                     skills: tags,
+                    bookmark: job.bookmark,
                 }
             })
         }

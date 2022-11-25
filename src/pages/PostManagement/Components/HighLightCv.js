@@ -1,8 +1,7 @@
 import classes from "../../../components/highlight-job/HighlightJob.module.scss"
 import { Link } from "react-router-dom"
-import FollowIcon from "../../../components/icon/follow"
 
-const HighlightJob = (props) => {
+const HighlightCv = (props) => {
     return (    
             <div className={`${classes.card} ${props.class}`}>
                 <div className={classes.company}>
@@ -17,16 +16,11 @@ const HighlightJob = (props) => {
                             </div>
                         </div>
                     </Link>
-                    <div className={classes.btn}>
-                        <button>
-                            <FollowIcon />
-                        </button>
-                    </div>
                 </div>
                 <div className={classes.jd}>
                     <ul>
                         <li>Age: {props.age}</li>
-                        <li>Desired Salary: ${props.minSalary} - ${props.maxSalary}, {props.jobType}</li>
+                        <li>Desired Salary: {props.salary}, {props.jobType}</li>
                     </ul>
                 </div>
                 <div className={classes.skill}>
@@ -42,4 +36,4 @@ const HighlightJob = (props) => {
     )
 }
 
-export default HighlightJob
+export default HighlightCv

@@ -63,6 +63,7 @@ const FavouriteJob = (props) => {
                         skills={job.skills}
                         experience={job.experience}
                         salary={job.salary}
+                        bookmark={job.bookmark}
                         />
                     ))}
                     </div>
