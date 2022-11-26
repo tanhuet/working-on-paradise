@@ -112,17 +112,12 @@ const Category = () => {
                 id: job.id,
                 companyName: job.authorName,
                 logo: job.authorAvatar,
-                jobs: [{
-                    id: "1",
-                    category: job.title,
-                    jobType: job.typeOfWorking,
-                    location: job.authorAddress,
-                }, {
-                    id: "2",
-                    category: job.title,
-                    jobType: job.typeOfWorking,
-                    location: job.authorAddress,
-            }]
+                jobName: job.title,
+                address: job.authorAddress,
+                position: job.positions,
+                salary: job.salary,
+                jobType: job.typeOfWorking,
+                slot: job.slots,
             }
         })
         // setRecomendJobs(rJ)
