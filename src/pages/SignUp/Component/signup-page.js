@@ -106,8 +106,12 @@ const Register = (props) => {
         setIsJobSeeker(false);
       }
     }
-    if (passWord !== "" && confirmPassWord !== "" && passWord !== confirmPassWord) {
-      alert('Password and ConfirmPassword is different. Please try again');
+    if (
+      passWord !== "" &&
+      confirmPassWord !== "" &&
+      passWord !== confirmPassWord
+    ) {
+      alert("Password and ConfirmPassword is different. Please try again");
     }
   };
   const user = {
@@ -116,7 +120,7 @@ const Register = (props) => {
     email: email,
     phone: phoneNumber,
     password: passWord,
-    }
+  };
 
   // const handleSubmit1 = (event) => {
   //   event.preventDefault();
@@ -163,59 +167,105 @@ const Register = (props) => {
 
           <div className={classes["account-register"]}>
             <div className={classes["input-box"]}>
-              <div className={classes["userAnswer"]}>
+              <div
+                className={classes["userAnswer"]}
+                style={{ position: "relative" }}
+              >
+                <i
+                  className={`fa fa-user-circle-o ${classes.icon}`}
+                  aria-hidden="true"
+                ></i>
                 <input
                   value={userName}
                   onChange={handleChangeUsername}
                   type="text"
-                  style={{ fontFamily: "FontAwesome" }}
-                  placeholder=" &#xF007; Username"
+                  // style={{ fontFamily: "FontAwesome" }}
+                  placeholder="Username"
                   required
                 />
+              </div>
+              <div
+                className={classes["userAnswer"]}
+                style={{ position: "relative" }}
+              >
+                <i
+                  className={`fa fa-user-circle-o ${classes.icon}`}
+                  aria-hidden="true"
+                ></i>
                 <input
                   value={name}
                   onChange={handleChangeName}
                   type="text"
-                  style={{ fontFamily: "FontAwesome" }}
-                  placeholder=" &#xF007; Name"
+                  // style={{ fontFamily: "FontAwesome" }}
+                  placeholder="Name"
                   required
                 />
               </div>
-              <div className={classes["email"]}>
+              <div
+                className={classes["email"]}
+                style={{ position: "relative" }}
+              >
+                <i
+                  className={`fa fa-envelope ${classes.icon}`}
+                  aria-hidden="true"
+                ></i>
                 <input
                   value={email}
                   onChange={handleChangeEmail}
                   type="email"
-                  style={{ fontFamily: "FontAwesome" }}
-                  placeholder=" &#xf0e0; Email"
+                  // style={{ fontFamily: "FontAwesome" }}
+                  placeholder="Email"
                   required
                 />
               </div>
-              <div className={classes["phone-number"]}>
+              <div
+                className={classes["phone-number"]}
+                style={{ position: "relative" }}
+              >
+                <i
+                  className={`fa fa-volume-control-phone ${classes.icon}`}
+                  aria-hidden="true"
+                ></i>
                 <input
                   value={phoneNumber}
                   onChange={handleChangePhoneNumber}
                   type="text"
-                  style={{ fontFamily: "FontAwesome" }}
-                  placeholder=" &#xf2a0; Phone Number"
+                  // style={{ fontFamily: "FontAwesome" }}
+                  placeholder="Phone Number"
                   required
                 />
               </div>
-              <div className={classes["password"]}>
+              <div
+                className={classes["password"]}
+                style={{ position: "relative" }}
+              >
+                <i
+                  className={`fa fa-lock ${classes.icon}`}
+                  aria-hidden="true"
+                ></i>
                 <input
                   value={passWord}
                   onChange={handleChangePassword}
                   type="text"
-                  style={{ fontFamily: "FontAwesome" }}
-                  placeholder=" &#xf023; Password"
+                  // style={{ fontFamily: "FontAwesome" }}
+                  placeholder="Password"
                   required
                 />
+              </div>
+              <div
+                className={classes["password"]}
+                style={{ position: "relative" }}
+              >
+                <i
+                  className={`fa fa-lock ${classes.icon}`}
+                  aria-hidden="true"
+                ></i>
                 <input
                   value={confirmPassWord}
                   onChange={handleChangeConfirmPassWord}
                   type="text"
-                  style={{ fontFamily: "FontAwesome" }}
-                  placeholder=" &#xf023; Confirm Password"
+                  // style={{ fontFamily: "FontAwesome" }}
+                  placeholder="Confirm Password"
                   required
                 />
               </div>
@@ -241,17 +291,18 @@ const Register = (props) => {
             <div className={`form-group row`}>
               {/* <div class="col-sm-2"></div> */}
               <div className={`col-sm-`}>
-                <div className={classes["form-check"]}>
+                <div className={classes["form-check"]} style={{marginTop: '30px'}}>
                   <input
                     checked={remember}
                     onChange={handleChangeCheckBox}
                     className={classes["form-check-input"]}
                     type="checkbox"
                     id="gridCheck1"
+                    style={{marginRight: '10px', marginLeft: '10px'}}
                   />
                   <label
                     className={classes["form-check-label"]}
-                    for="gridCheck1"
+                    htmlFor="gridCheck1"
                   >
                     I read and agree to <b>Terms & Conditions</b>
                   </label>
@@ -267,7 +318,7 @@ const Register = (props) => {
               Create Account
             </button>
             <div className={classes["sign-in-register"]}>
-              Already a member? <NavLink to="/signin">Sign In</NavLink>
+              Already a member? <NavLink to="/signin"><b>Sign In</b></NavLink>
             </div>
           </div>
         </div>
@@ -276,7 +327,7 @@ const Register = (props) => {
   ) : isJobSeeker ? (
     <SetUpAccJobSeeker account={user} />
   ) : (
-    <SetUpAccEmployer account={user}/>
+    <SetUpAccEmployer account={user} />
   );
 };
 

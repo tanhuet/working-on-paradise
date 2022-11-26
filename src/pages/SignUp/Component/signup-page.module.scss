@@ -16,6 +16,8 @@
     background: #ffffff;
     border-radius: 30px;
     width: 600px;
+    font-family: 'Poppins';
+    font-style: normal;
  
     .sign-up-register {
        // font-family: 'Poppins';
@@ -36,6 +38,17 @@
        margin: 0 20% 0 20%;
        .input-box {
           text-align: center;
+          .icon {
+            height: 1.5rem;
+            width: 1.5rem;
+    font-size: 20px;
+            padding: 4px;
+            position: absolute;
+            box-sizing: border-box;
+            top: 45%;
+            left: 2px;
+            transform: translateY(-50%);
+          }
           input, button {
              // font-family: 'Poppins';
              font-style: normal;
@@ -53,7 +66,7 @@
              height: 50px;
              // padding: 0 2% 0;
              margin: 15px 0;
-             padding-left: 5%;
+             padding-left: 8%;
           }
        }
  
@@ -69,6 +82,7 @@
           }
           .form-check {
             padding-left: 15%;
+            
           }
        }
     }
