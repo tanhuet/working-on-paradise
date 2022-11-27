@@ -42,24 +42,27 @@ const LoginPage = (props) => {
 
         <div className={classes["account"]}>
           <div className={classes["input-box"]}>
-            <div className={classes["userAnswer"]}>
+            <div className={classes["userAnswer"]} style={{position: 'relative'}}>
+            
+            <i className={`fa fa-user-circle-o ${classes.icon}`} aria-hidden="true"></i>
               <input
                 value={username}
                 onChange={handleChangeUsername}
                 type="text"
-                style={{ fontFamily: "FontAwesome" }}
-                placeholder=" &#xF007; Username"
+                // style={{ fontFamily: "FontAwesome" }}
+                placeholder="Username"
                 required
               />
             </div>
 
-            <div className={classes["password"]}>
+            <div className={classes["password"]} style={{position: 'relative'}}>
+            <i className={`fa fa-lock ${classes.icon}`} aria-hidden="true"></i>
               <input
                 value={password}
                 onChange={handleChangePassword}
-                type="text"
-                style={{ fontFamily: "FontAwesome" }}
-                placeholder=" &#xf023; Password"
+                type="password"
+                // style={{ fontFamily: "FontAwesome" }}
+                placeholder="Password"
                 required
               />
             </div>
@@ -67,7 +70,7 @@ const LoginPage = (props) => {
 
           <div className={`row form-group`}>
             {/* <div class="col-sm-2"></div> */}
-            <div className={`col-sm-5`}>
+            <div className={`col-sm-6`}>
               <div className={classes["form-check"]}>
                 <input
                   checked={remember}
@@ -75,13 +78,14 @@ const LoginPage = (props) => {
                   className={classes["form-check-input"]}
                   type="checkbox"
                   id="gridCheck1"
+                  style={{marginRight: '10px', marginLeft: '10px'}}
                 />
-                <label className={classes["form-check-label"]} for="gridCheck1">
+                <label className={classes["form-check-label"]} htmlFor="gridCheck1">
                   Remember me
                 </label>
               </div>
             </div>
-            <div className={`col-sm-7 ${classes["forgot-password"]}`}>
+            <div className={`col-sm-6 ${classes["forgot-password"]}`}>
               <NavLink to="/forgot">Forgot your Password?</NavLink>
             </div>
             {/* <div class="col-sm-2"></div> */}

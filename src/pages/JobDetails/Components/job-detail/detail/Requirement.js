@@ -1,21 +1,20 @@
 import classes from "./Requirement.module.scss";
 import { Link } from "react-router-dom";
 import Job from "./Job";
-import locationImg from "../../../../../asses/nawest.png";
-
-const DUMYJOB = {
-  logo: locationImg,
-  companyName: "NatWest. Group",
-  location: "NatWest. Group - London, UK",
-  recruitment: "Enterprise Architect",
-  location1: "NatWest. Group - London, UK",
-  recruitment1: "Privacy Officer",
-  jobName: "UI/UX Desgin",
-  type: "Part Time",
-  submittedDate: "12/12/2012",
-};
+import { useState } from "react";
 
 const Requirement = (props) => {
+  const [status, setStatus] = useState(props.req.redirect);
+  const handleRedirect = () => {
+    if (status === true) {
+      props.req.handleFuntion(false);
+      setStatus(false);
+    } else {
+      props.req.handleFuntion(true);
+      setStatus(true);
+    }
+  };
+  const recomend = props.req.recommend;
   return (
     <div className={classes.des}>
       <div className={classes.card}>
@@ -25,22 +24,26 @@ const Requirement = (props) => {
         <Link>
           <div className={classes.company}>
             <div className={classes["info"]}>
-              {props.req?.map((item, index) => (
+              {props.req.requirements?.map((item, index) => (
                 <p key={index}>● {item}</p>
               ))}
             </div>
           </div>
         </Link>
       </div>
-      <Job
-        logo={DUMYJOB.logo}
-        companyName={DUMYJOB.companyName}
-        jobName={DUMYJOB.jobName}
-        location={DUMYJOB.location}
-        recruitment={DUMYJOB.recruitment}
-        location1={DUMYJOB.location1}
-        recruitment1={DUMYJOB.recruitment1}
-      />
+      <Link href="#" to={`/details/${recomend.id}`} onClick={handleRedirect}>
+        <Job
+          logo={recomend.authorAvatar}
+          title={recomend.title}
+          companyName={recomend.authorName}
+          address={recomend.authorAddress}
+          position={recomend.positions}
+          salary={recomend.salary}
+          typeOfWorking={recomend.typeOfWorking}
+          quantity={recomend.quantity}
+          id={recomend.id}
+        />
+      </Link>
     </div>
   );
 };

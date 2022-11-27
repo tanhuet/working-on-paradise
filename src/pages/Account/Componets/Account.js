@@ -1,19 +1,21 @@
 import { useState, useEffect } from "react";
 import { Fragment } from "react";
 import { Link } from "react-router-dom";
-import classes from "./Account.module.scss"
+import classes from "./Account.module.scss";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import config from "../../../config";
 import React from "react";
 import EducationEdit from "./EducationEdit";
-import Data from "./Data"
+import Data from "./Data";
 const Account = (props) => {
   const USER = props.user;
 
   const [editInfor, setEditInfor] = useState(false);
   const [editEx, setEditEx] = useState(false);
-  const [editEdu, setEditEdu] = useState(false);
+  const [newEdu, setNewEdu] = useState(false);
+  const [canEditEducation, setCanEditEducation] = useState(false);
+  const [selectedEducation, setSelectedEducation] = useState();
   const [editAd, setEditAd] = useState(false);
   const [editCa, setEditCa] = useState(false);
 
@@ -31,49 +33,60 @@ const Account = (props) => {
   const userStore = useSelector((state) => state.auth.login?.currentUser);
 
   useEffect(() => {
-    axios.get(`${config.api.url}/jobseeker`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } })
-      .then((res) => {
-        setAge(res.data.age)
-        setAddress(res.data.address)
-        setGender(res.data.gender)
-        setExperience(res.data.experience)
-        setAdvanedSkill(res.data.advanedSkill)
-        setCareerFeild(res.data.careerFeild)
-        setTypeOfJob(res.data.typeOfJob)
-        setSalary(res.data.salary)
-        setWorkplace(res.data.workplace)
-      });
+    axios.get(`${config.api.url}/jobseeker`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } }).then((res) => {
+      setAge(res.data.age);
+      setAddress(res.data.address);
+      setGender(res.data.gender);
+      setExperience(res.data.experience);
+      setAdvanedSkill(res.data.advanedSkill);
+      setCareerFeild(res.data.careerFeild);
+      setTypeOfJob(res.data.typeOfJob);
+      setSalary(res.data.salary);
+      setWorkplace(res.data.workplace);
+    });
 
-    axios.get(`${config.api.url}/education/all-mine`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } })
-      .then((res) => {
-        console.log(res.data)
-        setEducation(res.data)
-      });
+    axios.get(`${config.api.url}/education/all-mine`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } }).then((res) => {
+      console.log(res.data);
+      setEducation(res.data);
+    });
   }, [userStore]);
 
   const handleSubmit = (event) => {
-    axios
-      .put(
-        `${config.api.url}/jobseeker`,
-        {
-          age: age,
-          gender: gender,
-          experience: experience,
-          advanedSkill: advanedSkill,
-          salary: salary,
-          workplace: workplace,
-          cv: "cv link",
-          careerFeild: careerFeild,
-          typeOfJob: typeOfJob,
-        },
-        { headers: { Authorization: `Bearer ${userStore.accessToken}` } }
-      )
+    axios.put(
+      `${config.api.url}/jobseeker`,
+      {
+        age: age,
+        gender: gender,
+        experience: experience,
+        advanedSkill: advanedSkill,
+        salary: salary,
+        workplace: workplace,
+        cv: "cv link",
+        careerFeild: careerFeild,
+        typeOfJob: typeOfJob,
+      },
+      { headers: { Authorization: `Bearer ${userStore.accessToken}` } }
+    );
+  };
+
+  const handleEditEducation = (education) => {
+    if (canEditEducation) {
+      console.log(education.id);
+      setSelectedEducation(education);
+    }
   };
 
   // Hiệp: khi bấm ra ngoài sẽ close education edit
-  const closeEducationEditHandler = () => {
-    setEditEdu(false)
-  }
+  const closeEducationEditHandler = (reload) => {
+    setCanEditEducation(false);
+    setNewEdu(false);
+    setSelectedEducation(null);
+    if (reload) {
+      axios.get(`${config.api.url}/education/all-mine`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } }).then((res) => {
+        setEducation(res.data);
+      });
+    }
+  };
 
   let educations = [];
   if (education) {
@@ -86,17 +99,15 @@ const Account = (props) => {
         startDate: data.startDate,
         endDate: data.endDate,
         description: data.description,
-      }
-    })
+      };
+    });
   }
 
   return (
     USER && (
       <Fragment>
-        {editEdu && <EducationEdit
-          onCloseEditingEducation={closeEducationEditHandler}
-          education={educations}
-        />}
+        {newEdu && <EducationEdit onCloseEditingEducation={closeEducationEditHandler} education={null} newEdu={true} />}
+        {canEditEducation && selectedEducation && <EducationEdit onCloseEditingEducation={closeEducationEditHandler} education={selectedEducation} />}
         <div className={classes.container1}>
           <div className={classes.circle}>
             <div className={classes.letter}>{USER.name.charAt(0).toUpperCase()}</div>
@@ -134,7 +145,13 @@ const Account = (props) => {
                   <div className={classes.style3}>Edit</div>
                 </button>
               ) : (
-                <button className={classes.edit} onClick={() => { handleSubmit(); setEditInfor(false) }}>
+                <button
+                  className={classes.edit}
+                  onClick={() => {
+                    handleSubmit();
+                    setEditInfor(false);
+                  }}
+                >
                   <div className={classes.style3}>Save</div>
                 </button>
               )}
@@ -145,25 +162,25 @@ const Account = (props) => {
             {editInfor === false ? (
               <form className={classes.data}>
                 <div className={classes.left}>
-                  <div className={`${classes.font} ${classes.phone}`}>
+                  <div className={`${classes.font} ${classes.itemLeft}`}>
                     <label>Phone Number: </label> <br />
                     {USER.phone}
                   </div>
-                  <div className={`${classes.font} ${classes.address}`}>
+                  <div className={`${classes.font} ${classes.itemLeft}`}>
                     <label>Permanent address: </label> <br />
                     {address}
                   </div>
                 </div>
                 <div className={classes.right}>
-                  <div className={`${classes.font} ${classes.email}`}>
+                  <div className={`${classes.font} ${classes.itemRight1}`}>
                     <label>Email (Verified/Unverified): </label> <br />
                     {USER.email}
                   </div>
-                  <div className={`${classes.font} ${classes.age}`}>
+                  <div className={`${classes.font} ${classes.itemRight2}`}>
                     <label>Age: </label> <br />
                     {age}
                   </div>
-                  <div className={`${classes.font} ${classes.gender}`}>
+                  <div className={`${classes.font} ${classes.itemRight2}`}>
                     <label>Gender: </label> <br />
                     {gender}
                   </div>
@@ -172,27 +189,33 @@ const Account = (props) => {
             ) : (
               <form className={classes.data} onSubmit={handleSubmit}>
                 <div className={classes.left}>
-                  <div className={`${classes.font} ${classes.phone}`}>
+                  <div className={`${classes.font} ${classes.itemLeft}`}>
                     <label>Phone Number:</label> <br />
-                    <div className={`${classes.font} ${classes.editmake}`}>{USER.phone}</div>
+                    <div className={classes.font}>{USER.phone}</div>
                   </div>
-                  <div className={`${classes.font} ${classes.address}`}>
+                  <div className={`${classes.font} ${classes.itemLeft}`}>
                     <label>Permanent address:</label> <br />
-                    <textarea className={`${classes.font} ${classes.editmake}`} rows={"4"} colums={"40"} onChange={(e) => setAddress(e.target.value)} value={address}></textarea>
+                    <textarea
+                      className={`${classes.font} ${classes.editmake}`}
+                      rows={"4"}
+                      colums={"40"}
+                      onChange={(e) => setAddress(e.target.value)}
+                      value={address}
+                    ></textarea>
                   </div>
                 </div>
                 <div className={classes.right}>
-                  <div className={`${classes.font} ${classes.email}`}>
+                  <div className={`${classes.font} ${classes.itemRight1}`}>
                     <label>Email (Verified/Unverified):</label> <br />
                     <div className={classes.font}>{USER.email}</div>
                   </div>
-                  <div className={`${classes.font} ${classes.age}`}>
+                  <div className={`${classes.font} ${classes.itemRight2}`}>
                     <label>Age:</label> <br />
-                    <input type={"text"} className={classes.font} onChange={(e) => setAge(e.target.value)} value={age}></input>
+                    <input type={"text"} className={classes.font} style={{width: "95%"}} onChange={(e) => setAge(e.target.value)} value={age}></input>
                   </div>
-                  <div className={`${classes.font} ${classes.gender}`}>
+                  <div className={`${classes.font} ${classes.itemRight2}`}>
                     <label>Gender:</label> <br />
-                    <input type={"text"} className={classes.font} onChange={(e) => setGender(e.target.value)} value={gender}></input>
+                    <input type={"text"} className={classes.font} style={{width: "95%"}} onChange={(e) => setGender(e.target.value)} value={gender}></input>
                   </div>
                 </div>
               </form>
@@ -205,11 +228,17 @@ const Account = (props) => {
             </div>
             <div>
               {editEx === false ? (
-                <button className={`${classes.edit} ${classes.margin1}`} onClick={() => setEditEx(true)}>
+                <button className={classes.edit} onClick={() => setEditEx(true)}>
                   <div className={classes.style3}>Edit</div>
                 </button>
               ) : (
-                <button className={`${classes.edit} ${classes.margin1}`} onClick={() => { handleSubmit(); setEditEx(false) }}>
+                <button
+                  className={classes.edit}
+                  onClick={() => {
+                    handleSubmit();
+                    setEditEx(false);
+                  }}
+                >
                   <div className={classes.style3}>Save</div>
                 </button>
               )}
@@ -217,14 +246,18 @@ const Account = (props) => {
           </div>
           <div>
             {editEx === false ? (
-              <form className={classes.data} style={{ height: "181px" }}>
+              <form className={classes.data} style={{ height: "190px" }}>
                 <div className={classes.font}>
                   <div className={classes.styleborder}>{experience}</div>
                 </div>
               </form>
             ) : (
-              <form className={classes.data} style={{ height: "181px" }} onSubmit={handleSubmit}>
-                <textarea className={`${classes.font} ${classes.textexper}`} onChange={(e) => setExperience(e.target.value)} value={experience}></textarea>
+              <form className={classes.data} style={{ height: "190px" }} onSubmit={handleSubmit}>
+                <textarea
+                  className={`${classes.font} ${classes.textexper}`}
+                  onChange={(e) => setExperience(e.target.value)}
+                  value={experience}
+                ></textarea>
               </form>
             )}
           </div>
@@ -234,28 +267,48 @@ const Account = (props) => {
               <div className={classes.style2}>Education</div>
             </div>
             <div>
-              <button className={`${classes.edit} ${classes.margin2}`} onClick={() => { setEditEdu(true) }}>
+              <button
+                className={classes.edit}
+                onClick={() => {
+                  setCanEditEducation(true);
+                }}
+              >
                 <div className={classes.style3}>Edit</div>
+              </button>
+              <button
+                className={classes.edit}
+                onClick={() => {
+                  setNewEdu(true);
+                }}
+              >
+                <div className={classes.style3}>New</div>
               </button>
             </div>
           </div>
 
-          <div className={classes.dataEdu}>
-            <Data>
-              {educations.map((data) => (
-                <>
-                  <div className={classes.fontTitle}>{data.school}</div>
-                  <div className={classes.font}>{data.major}</div>
-                  <div className={classes.font}>{data.degree}</div>
-                  <div className={classes.font}>{data.startDate} {data.endDate}</div>
-                  <div className={classes.font}>{data.description}</div>
-                </>
-
-              ))}
-
-            </Data>
-          </div>
-
+          {educations.length === 0 ? (
+            <div className={classes.data}>
+              <div className={classes.font}>
+                <div className={classes.styleborder}></div>
+              </div>
+            </div>
+          ) : (
+            <div className={classes.dataEdu}>
+              <Data>
+                {educations.map((data, index) => (
+                  <div key={index} className={canEditEducation ? classes.canEditEducation : ""} onClick={() => handleEditEducation(data)}>
+                    <div className={classes.fontTitle}>{data.school}</div>
+                    <div className={classes.font}>{data.major}</div>
+                    <div className={classes.font}>{data.degree}</div>
+                    <div className={classes.font}>
+                      {data.startDate} {data.endDate}
+                    </div>
+                    <div className={classes.font}>{data.description}</div>
+                  </div>
+                ))}
+              </Data>
+            </div>
+          )}
 
           <div id="list-item-4" className={classes.title}>
             <div className={classes.makeup} style={{ width: "182px" }}>
@@ -263,11 +316,17 @@ const Account = (props) => {
             </div>
             <div>
               {editAd === false ? (
-                <button className={`${classes.edit} ${classes.margin3}`} onClick={() => setEditAd(true)}>
+                <button className={classes.edit} onClick={() => setEditAd(true)}>
                   <div className={classes.style3}>Edit</div>
                 </button>
               ) : (
-                <button className={`${classes.edit} ${classes.margin3}`} onClick={() => { handleSubmit(); setEditAd(false) }}>
+                <button
+                  className={classes.edit}
+                  onClick={() => {
+                    handleSubmit();
+                    setEditAd(false);
+                  }}
+                >
                   <div className={classes.style3}>Save</div>
                 </button>
               )}
@@ -275,14 +334,18 @@ const Account = (props) => {
           </div>
           <div>
             {editAd === false ? (
-              <form className={classes.data} style={{ height: "181px" }}>
+              <form className={classes.data} style={{ height: "190px" }}>
                 <div className={classes.font}>
                   <div className={classes.styleborder}>{advanedSkill}</div>
                 </div>
               </form>
             ) : (
-              <form className={classes.data} style={{ height: "181px" }} onSubmit={handleSubmit}>
-                <textarea className={`${classes.font} ${classes.textexper}`} onChange={(e) => setAdvanedSkill(e.target.value)} value={advanedSkill}></textarea>
+              <form className={classes.data} style={{ height: "190px" }} onSubmit={handleSubmit}>
+                <textarea
+                  className={`${classes.font} ${classes.textexper}`}
+                  onChange={(e) => setAdvanedSkill(e.target.value)}
+                  value={advanedSkill}
+                ></textarea>
               </form>
             )}
           </div>
@@ -293,11 +356,17 @@ const Account = (props) => {
             </div>
             <div>
               {editCa === false ? (
-                <button className={`${classes.edit} ${classes.margin3}`} onClick={() => setEditCa(true)}>
+                <button className={classes.edit} onClick={() => setEditCa(true)}>
                   <div className={classes.style3}>Edit</div>
                 </button>
               ) : (
-                <button className={`${classes.edit} ${classes.margin3}`} onClick={() => { handleSubmit(); setEditCa(false) }}>
+                <button
+                  className={classes.edit}
+                  onClick={() => {
+                    handleSubmit();
+                    setEditCa(false);
+                  }}
+                >
                   <div className={classes.style3}>Save</div>
                 </button>
               )}
@@ -305,46 +374,57 @@ const Account = (props) => {
           </div>
           <div>
             {editCa === false ? (
-              <form className={classes.data} style={{ height: "280px" }}>
-                <div className={classes.containerCarField}>
-                  <div className={`${classes.font} ${classes.item1}`}>
-                    <label className={classes.a}>Desired Career Field:</label>
-                    {careerFeild}
-                  </div>
-                  <div className={`${classes.font} ${classes.item2}`}>
-                    <label className={classes.b}>Type of Job:</label>
-                    {typeOfJob}
-                  </div>
-                  <div className={`${classes.font} ${classes.item3}`}>
-                    <label className={classes.c}>Desired salary:</label>
-                    {salary}
-                  </div>
-                  <div className={`${classes.font} ${classes.item4}`}>
-                    <label className={classes.d}>Desired workplace:</label>
-                    {workplace}
-                  </div>
+              <form className={classes.data} style={{ height: "300px" }}>
+                <div className={`${classes.font} ${classes.itemCareer}`}>
+                  <label className={classes.a}>Desired Career Field:</label>
+                  {careerFeild}
+                </div>
+                <div className={`${classes.font} ${classes.itemCareer}`}>
+                  <label className={classes.a}>Type of Job:</label>
+                  {typeOfJob}
+                </div>
+                <div className={`${classes.font} ${classes.itemCareer}`}>
+                  <label className={classes.a}>Desired salary:</label>
+                  {salary}
+                </div>
+                <div className={`${classes.font} ${classes.itemCareer}`}>
+                  <label className={classes.a}>Desired workplace:</label>
+                  {workplace}
                 </div>
               </form>
             ) : (
-              <form className={classes.data} style={{ height: "324px" }} onSubmit={handleSubmit}>
-                <div className={classes.containerCarField}>
-                  <div className={`${classes.font} ${classes.item1}`}>
+              <form className={classes.data} style={{ height: "300px" }} onSubmit={handleSubmit}>
+                  <div className={`${classes.font} ${classes.itemCareer}`}>
                     <label className={classes.a}>Desired Career Field:</label>
-                    <textarea className={classes.font} style={{ width: "450px" }} onChange={(e) => setCareerFeild(e.target.value)} value={careerFeild}></textarea>
+                    <input
+                      className={classes.font}
+                      style={{ width: "65%" }}
+                      onChange={(e) => setCareerFeild(e.target.value)}
+                      value={careerFeild}
+                    ></input>
                   </div>
-                  <div className={`${classes.font} ${classes.item2}`}>
-                    <label className={classes.b}>Type of Job:</label>
-                    <input className={classes.font} style={{ width: "450px" }} onChange={(e) => setTypeOfJob(e.target.value)} value={typeOfJob}></input>
+                  <div className={`${classes.font} ${classes.itemCareer}`}>
+                    <label className={classes.a}>Type of Job:</label>
+                    <input
+                      className={classes.font}
+                      style={{ width: "65%" }}
+                      onChange={(e) => setTypeOfJob(e.target.value)}
+                      value={typeOfJob}
+                    ></input>
                   </div>
-                  <div className={`${classes.font} ${classes.item3}`}>
-                    <label className={classes.c}>Desired salary:</label>
-                    <input className={classes.font} style={{ width: "450px" }} onChange={(e) => setSalary(e.target.value)} value={salary}></input>
+                  <div className={`${classes.font} ${classes.itemCareer}`}>
+                    <label className={classes.a}>Desired salary:</label>
+                    <input className={classes.font} style={{ width: "65%" }} onChange={(e) => setSalary(e.target.value)} value={salary}></input>
                   </div>
-                  <div className={`${classes.font} ${classes.item4}`}>
-                    <label className={classes.d}>Desired workplace:</label>
-                    <input className={classes.font} style={{ width: "450px" }} onChange={(e) => setWorkplace(e.target.value)} value={workplace}></input>
+                  <div className={`${classes.font} ${classes.itemCareer}`}>
+                    <label className={classes.a}>Desired workplace:</label>
+                    <input
+                      className={classes.font}
+                      style={{ width: "65%" }}
+                      onChange={(e) => setWorkplace(e.target.value)}
+                      value={workplace}
+                    ></input>
                   </div>
-                </div>
               </form>
             )}
           </div>
@@ -354,7 +434,7 @@ const Account = (props) => {
               <div className={classes.style2}>CV</div>
             </div>
             <Link to="/cv/:cvld">
-              <button className={`${classes.edit} ${classes.margin4}`}>
+              <button className={classes.edit}>
                 <div className={classes.style3}>Edit</div>
               </button>
             </Link>

@@ -5,7 +5,6 @@ import { NavLink } from "react-router-dom"
 import more from "../../../../asses/more.png"
 
 const JobList = (props) => {
-    const job = props.jobs[0]
     return (
         <Fragment>
             <h1 className={classes.h1}>BROWSE JOB CATEGORIES</h1>
@@ -15,6 +14,7 @@ const JobList = (props) => {
                 <HighlightJob
                     class = {classes.wrap}
                     key = {job.id}
+                    id = {job.id}
                     logo = {job.logo}
                     companyName = {job.companyName}
                     location = {job.location}
@@ -23,6 +23,7 @@ const JobList = (props) => {
                     skills = {job.skills}
                     experience = {job.experience}
                     salary = {job.salary}
+                    bookmark = {job.bookmark}
                 />
                 ))}
 

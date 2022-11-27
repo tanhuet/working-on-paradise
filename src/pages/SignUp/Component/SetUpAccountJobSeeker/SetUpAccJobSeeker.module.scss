@@ -1,4 +1,6 @@
 .set-up-acc {
+  font-family: 'Poppins';
+  font-style: normal;
   input,
   button,
   textarea,
@@ -7,6 +9,8 @@
     border-radius: 20px;
     padding: 5px;
     border: 2px solid transparent;
+    font-family: 'Poppins';
+    font-style: normal;
   }
   select {
     width: 100%;

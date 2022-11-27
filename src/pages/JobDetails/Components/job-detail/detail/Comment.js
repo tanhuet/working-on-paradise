@@ -43,15 +43,6 @@ const Comment = () => {
           <UserComment />
         </div>
       </div>
-      <Job
-        logo={DUMYJOB.logo}
-        companyName={DUMYJOB.companyName}
-        jobName={DUMYJOB.jobName}
-        location={DUMYJOB.location}
-        recruitment={DUMYJOB.recruitment}
-        location1={DUMYJOB.location1}
-        recruitment1={DUMYJOB.recruitment1}
-      />
     </div>
   );
 };

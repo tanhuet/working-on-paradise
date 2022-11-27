@@ -33,8 +33,9 @@ const ForgotPassWordPage = (props) => {
 
         <div className={classes["account-forgot-pass"]}>
           <div className={classes["input-box"]}>
-            <div className={classes["email"]}>
-              <input type="email" style={{ fontFamily: "FontAwesome" }} placeholder=" &#xf0e0; Email" value={email} onChange={ChangeInput} required />
+            <div className={classes["email"]}  style={{position: 'relative'}}>
+            <i className={`fa fa-envelope ${classes.icon}`} aria-hidden="true"></i>
+              <input type="email" placeholder="Email" value={email} onChange={ChangeInput} required />
             </div>
           </div>
         </div>

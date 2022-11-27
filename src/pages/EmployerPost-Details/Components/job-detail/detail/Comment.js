@@ -1,8 +1,19 @@
 import classes from "./Comment.module.scss";
 import locationImg1 from "../../../../../asses/resume.png";
 import UserComment from "./UserComment";
-
-const Comment = () => {
+import axios from "axios";
+import { useEffect, useState } from "react";
+const Comment = (props) => {
+  const [comments, setComment] = useState();
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await axios
+        .get(`https://tanhuet.site/employer/${props.comment}/comments`)
+        .catch((error) => console.log(error));
+      setComment(response.data);
+    };
+    fetchData();
+  }, []);
   return (
     <div className={classes.des}>
       <div className={classes.card}>

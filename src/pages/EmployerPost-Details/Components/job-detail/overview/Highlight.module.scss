@@ -20,7 +20,7 @@
   font-size: 20px;
   color: #ffffff;
   font-family: "Poppins";
-  margin-left: 1000px;
+  margin-left: 840px;
   margin-top: 20px;
 }
 .button2 {
@@ -58,10 +58,21 @@
   margin-left: 100px;
 }
 .underHeader .icon1 {
-  margin-top: 17px;
+  margin-top: 25px;
+  margin-left: 10px;
 }
 .find-job section {
   // margin-left: 90px;
+}
+
+.icon1 .btn {
+  padding: 0;
+  margin: 0;
+  width: 55px;
+  border: none;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
 }
 
 .find-job section h1 {
@@ -217,9 +228,7 @@
   margin: 0;
   color: #000000;
 }
-.boxLeft input[type="text"] {
-  width: 20px;
-}
+
 .boxInfo p span {
   font-family: "Poppins";
   font-style: normal;

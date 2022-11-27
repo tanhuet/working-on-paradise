@@ -7,7 +7,6 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom"
 
 const PostManagement = (props) => {
-  //const cv = props.cvs[0]
   const [jobMine, setJobMine] = useState(props.jobs)
   const [cv, setCv] = useState(props.profiles)
 
