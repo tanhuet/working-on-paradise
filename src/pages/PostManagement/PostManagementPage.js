@@ -12,6 +12,7 @@ const PostManagementPage = () => {
   useEffect(() => {
     axios.get(`${config.api.url}/job/all-mine`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } })
       .then((res) => {
+        console.log(res.data)
         setJob(res.data);
       });
 
@@ -33,6 +34,7 @@ const PostManagementPage = () => {
         logo: job.imageUrl,
         jobName: job.title,
         companyName: job.authorName,
+        positions: job.positions,
         location: job.authorAddress,
         jobType: job.typeOfWorking,
         candidates: job.slots,
