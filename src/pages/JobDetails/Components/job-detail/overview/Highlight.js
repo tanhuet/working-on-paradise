@@ -5,7 +5,7 @@ import { Google } from "../../../../../components/icon/google";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import ReactImageFallback from "react-image-fallback";
-import config from "c:/Users/Asus/working-on-paradise/src/config";
+import config from "../../../../../config/index";
 import { useNavigate } from "react-router-dom";
 
 const Highlight = (props) => {
