@@ -24,6 +24,7 @@ import ChangePassWord from "./pages/ChangePassWord/ChangePassword";
 import SetUpAccJobSeeker from "./pages/SignUp/Component/SetUpAccountJobSeeker/SetUpAccJobSeeker";
 import SetUpAccEmployer from "./pages/SignUp/Component/SetUpAccountJobSeeker/SetUpAccountEmployer";
 import Application from "./pages/Application/Application";
+import Message from "./pages/Message";
 
 function App() {
   const userStore = useSelector((state) => state.auth.login?.currentUser);
@@ -52,6 +53,7 @@ function App() {
         <Route path="/reset-password/:token" element={<ChangePassWord />} />
         <Route path="/setup-account-jobseeker" element={<SetUpAccJobSeeker />} />
         <Route path="/setup-account-employer" element={<SetUpAccEmployer />} />
+        <Route path="/message" element={<Message />} />
         <Route path="*" element={<Navigate replace to="/home" />} />
       </Routes>
     </Layout>

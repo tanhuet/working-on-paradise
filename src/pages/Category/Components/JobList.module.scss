@@ -38,6 +38,7 @@
 }
 
 .recomended-list {
+    width: 22%;
     margin-right: 60px;
 }
 
@@ -51,7 +52,10 @@
 }
 
 .page-controller button {
-    margin-left: 1rem;
-    margin-right: 1rem;
+    border: none;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
     border-radius: 50%;
+    background-color: transparent ;
+    margin-bottom: 1rem;
 }

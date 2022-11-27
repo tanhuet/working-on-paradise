@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import classes from "./UserComment.module.scss";
 
 const UserComment = () => {

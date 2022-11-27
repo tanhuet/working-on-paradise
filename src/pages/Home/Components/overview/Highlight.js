@@ -11,7 +11,8 @@ const Highlight = () => {
 
     const suggestion = useRef('')
 
-    const submitHander = () => {
+    const submitHander = (e) => {
+        e.preventDefault()
         navigate(`/category?filter=${suggestion.current.value}`)
     }
 
@@ -43,9 +44,9 @@ const Highlight = () => {
                     <div className={classes.icon}>
                         <Rocket/>
                     </div>
-                    <div className={classes.info}>
-                        <h3>8K+</h3>
-                        <p>CURRENT JOBS</p>
+                    <div className={classes.info}>   
+                        <h3>400+</h3>
+                        <p>START-UPS</p>
                     </div>
                 </div>
                 <div className={classes.job}>
@@ -53,8 +54,8 @@ const Highlight = () => {
                         <Talents/>
                     </div>
                     <div className={classes.info}>
-                        <h3>8K+</h3>
-                        <p>CURRENT JOBS</p>
+                        <h3>20+</h3>
+                        <p>TALENTS</p>
                     </div>
                 </div>
             </div>

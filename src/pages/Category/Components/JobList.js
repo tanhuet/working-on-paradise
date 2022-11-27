@@ -1,9 +1,9 @@
 import classes from "./JobList.module.scss";
 import Wrap from "../../../components/UI/Wrap";
 import JobCard from "../../../components/job-card/JobCard";
-import RecomendedJob from "../../JobDetails/Components/recomended-job/RecomendedJob";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
+import RecommendedJob from "../../../components/recommended-job/RecommendedJob";
 
 const JobList = (props) => {
 
@@ -74,22 +74,38 @@ const JobList = (props) => {
           ))}
         </div>
         <div className={classes['page-controller']}>
-          <button onClick={prePage}>Previous</button>
-          <button onClick={nextPage}>Next</button>
+          <button onClick={prePage}>
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-chevron-double-left" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M8.354 1.646a.5.5 0 0 1 0 .708L2.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+            <path fill-rule="evenodd" d="M12.354 1.646a.5.5 0 0 1 0 .708L6.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+          </svg>
+          </button>
+          <button onClick={nextPage}>
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
+            <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
+          </svg>
+          </button>
         </div>
       </Wrap>
       <div className={classes["recomended-list"]}>
         {props.recomendedJobs.map((item) => (
-          <>
-            <RecomendedJob
+          <div key={item.id}>
+            <RecommendedJob
               key={item.id}
+              id={item.id}
               companyName={item.companyName}
               logo={item.logo}
-              jobs={item.jobs}
+              jobName={item.jobName}
+              address={item.address}
+              position={item.position}
+              salary={item.salary}
+              jobType={item.jobType}
+              slot={item.slot}
             />
             <div className={classes.break}>
             </div>
-          </>
+          </div>
         ))}
       </div>
     </div>

@@ -2,19 +2,21 @@ import classes from "./Offer.module.scss";
 import { Link } from "react-router-dom";
 import Job from "./Job";
 import locationImg from "../../../../../asses/nawest.png";
+import { useState } from "react";
 
-const DUMYJOB = {
-  logo: locationImg,
-  companyName: "NatWest. Group",
-  location: "NatWest. Group - London, UK",
-  recruitment: "Enterprise Architect",
-  location1: "NatWest. Group - London, UK",
-  recruitment1: "Privacy Officer",
-  jobName: "UI/UX Desgin",
-  type: "Part Time",
-  submittedDate: "12/12/2012",
-};
 const Offer = (props) => {
+  const [status, setStatus] = useState(props.abc.redirect);
+  const handleRedirect = () => {
+    if (status === true) {
+      props.abc.handleFuntion(false);
+      setStatus(false);
+    } else {
+      props.abc.handleFuntion(true);
+      setStatus(true);
+    }
+  };
+  const recomend1 = props.abc.recommend1;
+  const recomend2 = props.abc.recommend2;
   return (
     <div className={classes.component}>
       <div className={classes.des}>
@@ -25,73 +27,48 @@ const Offer = (props) => {
           <Link>
             <div className={classes.company}>
               <div className={classes["info"]}>
-                {props.abc?.map((item, index) => (
+                {props.abc.description?.map((item, index) => (
                   <p key={index}>● {item}</p>
                 ))}
-                {/* <p>
-                  ● Interpret user stories, formal acceptance criteria, and
-                  technical specifications into demonstrable user workflows or
-                  low fidelity prototypes
-                </p>
-                <p>
-                  ● Contribute to the validation of acceptance testing through
-                  in-person testing sessions or interviews
-                </p>
-                <p>
-                  ● Work closely with product owners to collect requirements and
-                  verify design feasibility
-                </p>
-                <p>
-                  ● Gather findings through various research methods and
-                  translate them into tangible designs for developers to
-                  implement
-                </p>
-                <p>
-                  ● Maintain and frequently update complex layered files for
-                  rapid prototyping
-                </p>
-                <p>
-                  ● Assist in documenting, designing, and sustaining a custom UI
-                  pattern library and web style guide for shared internal use
-                </p>
-                <p>
-                  ● Follow and contribute to design guidelines, best practices,
-                  and established UI patterns to create wireframes,
-                  high-fidelity mockups, and clickable prototypes that convey
-                  business requirements
-                </p>
-                <p>
-                  ● Work closely with product and engineering teams to iterate
-                  and deliver flawlessly
-                </p>
-                <p>
-                  ● Work closely with project team to design the look-and-feel
-                  of interfaces in AGILE environment
-                </p>
-                <p>● Lead stakeholders through the design process</p> */}
               </div>
             </div>
           </Link>
         </div>
         <div className={classes.company2}>
-          <Job
-            logo={DUMYJOB.logo}
-            companyName={DUMYJOB.companyName}
-            jobName={DUMYJOB.jobName}
-            location={DUMYJOB.location}
-            recruitment={DUMYJOB.recruitment}
-            location1={DUMYJOB.location1}
-            recruitment1={DUMYJOB.recruitment1}
-          />
-          <Job
-            logo={DUMYJOB.logo}
-            companyName={DUMYJOB.companyName}
-            jobName={DUMYJOB.jobName}
-            location={DUMYJOB.location}
-            recruitment={DUMYJOB.recruitment}
-            location1={DUMYJOB.location1}
-            recruitment1={DUMYJOB.recruitment1}
-          />
+          <Link
+            href="#"
+            to={`/details/${recomend1.id}`}
+            onClick={handleRedirect}
+          >
+            <Job
+              logo={recomend1.authorAvatar}
+              title={recomend1.title}
+              companyName={recomend1.authorName}
+              address={recomend1.authorAddress}
+              position={recomend1.positions}
+              salary={recomend1.salary}
+              typeOfWorking={recomend1.typeOfWorking}
+              quantity={recomend1.quantity}
+              id={recomend1.id}
+            />
+          </Link>
+          <Link
+            href="#"
+            to={`/details/${recomend2.id}`}
+            onClick={handleRedirect}
+          >
+            <Job
+              logo={recomend2.authorAvatar}
+              title={recomend2.title}
+              companyName={recomend2.authorName}
+              address={recomend2.authorAddress}
+              position={recomend2.positions}
+              salary={recomend2.salary}
+              typeOfWorking={recomend2.typeOfWorking}
+              quantity={recomend2.quantity}
+              id={recomend2.id}
+            />
+          </Link>
         </div>
       </div>
     </div>
