@@ -162,25 +162,25 @@ const Account = (props) => {
             {editInfor === false ? (
               <form className={classes.data}>
                 <div className={classes.left}>
-                  <div className={`${classes.font} ${classes.phone}`}>
+                  <div className={`${classes.font} ${classes.itemLeft}`}>
                     <label>Phone Number: </label> <br />
                     {USER.phone}
                   </div>
-                  <div className={`${classes.font} ${classes.address}`}>
+                  <div className={`${classes.font} ${classes.itemLeft}`}>
                     <label>Permanent address: </label> <br />
                     {address}
                   </div>
                 </div>
                 <div className={classes.right}>
-                  <div className={`${classes.font} ${classes.email}`}>
+                  <div className={`${classes.font} ${classes.itemRight1}`}>
                     <label>Email (Verified/Unverified): </label> <br />
                     {USER.email}
                   </div>
-                  <div className={`${classes.font} ${classes.age}`}>
+                  <div className={`${classes.font} ${classes.itemRight2}`}>
                     <label>Age: </label> <br />
                     {age}
                   </div>
-                  <div className={`${classes.font} ${classes.gender}`}>
+                  <div className={`${classes.font} ${classes.itemRight2}`}>
                     <label>Gender: </label> <br />
                     {gender}
                   </div>
@@ -189,11 +189,11 @@ const Account = (props) => {
             ) : (
               <form className={classes.data} onSubmit={handleSubmit}>
                 <div className={classes.left}>
-                  <div className={`${classes.font} ${classes.phone}`}>
+                  <div className={`${classes.font} ${classes.itemLeft}`}>
                     <label>Phone Number:</label> <br />
-                    <div className={`${classes.font} ${classes.editmake}`}>{USER.phone}</div>
+                    <div className={classes.font}>{USER.phone}</div>
                   </div>
-                  <div className={`${classes.font} ${classes.address}`}>
+                  <div className={`${classes.font} ${classes.itemLeft}`}>
                     <label>Permanent address:</label> <br />
                     <textarea
                       className={`${classes.font} ${classes.editmake}`}
@@ -205,17 +205,17 @@ const Account = (props) => {
                   </div>
                 </div>
                 <div className={classes.right}>
-                  <div className={`${classes.font} ${classes.email}`}>
+                  <div className={`${classes.font} ${classes.itemRight1}`}>
                     <label>Email (Verified/Unverified):</label> <br />
                     <div className={classes.font}>{USER.email}</div>
                   </div>
-                  <div className={`${classes.font} ${classes.age}`}>
+                  <div className={`${classes.font} ${classes.itemRight2}`}>
                     <label>Age:</label> <br />
-                    <input type={"text"} className={classes.font} onChange={(e) => setAge(e.target.value)} value={age}></input>
+                    <input type={"text"} className={classes.font} style={{width: "95%"}} onChange={(e) => setAge(e.target.value)} value={age}></input>
                   </div>
-                  <div className={`${classes.font} ${classes.gender}`}>
+                  <div className={`${classes.font} ${classes.itemRight2}`}>
                     <label>Gender:</label> <br />
-                    <input type={"text"} className={classes.font} onChange={(e) => setGender(e.target.value)} value={gender}></input>
+                    <input type={"text"} className={classes.font} style={{width: "95%"}} onChange={(e) => setGender(e.target.value)} value={gender}></input>
                   </div>
                 </div>
               </form>
@@ -228,12 +228,12 @@ const Account = (props) => {
             </div>
             <div>
               {editEx === false ? (
-                <button className={`${classes.edit} ${classes.margin1}`} onClick={() => setEditEx(true)}>
+                <button className={classes.edit} onClick={() => setEditEx(true)}>
                   <div className={classes.style3}>Edit</div>
                 </button>
               ) : (
                 <button
-                  className={`${classes.edit} ${classes.margin1}`}
+                  className={classes.edit}
                   onClick={() => {
                     handleSubmit();
                     setEditEx(false);
@@ -246,13 +246,13 @@ const Account = (props) => {
           </div>
           <div>
             {editEx === false ? (
-              <form className={classes.data} style={{ height: "181px" }}>
+              <form className={classes.data} style={{ height: "190px" }}>
                 <div className={classes.font}>
                   <div className={classes.styleborder}>{experience}</div>
                 </div>
               </form>
             ) : (
-              <form className={classes.data} style={{ height: "181px" }} onSubmit={handleSubmit}>
+              <form className={classes.data} style={{ height: "190px" }} onSubmit={handleSubmit}>
                 <textarea
                   className={`${classes.font} ${classes.textexper}`}
                   onChange={(e) => setExperience(e.target.value)}
@@ -268,7 +268,7 @@ const Account = (props) => {
             </div>
             <div>
               <button
-                className={`${classes.edit} ${classes.margin2}`}
+                className={classes.edit}
                 onClick={() => {
                   setCanEditEducation(true);
                 }}
@@ -276,7 +276,7 @@ const Account = (props) => {
                 <div className={classes.style3}>Edit</div>
               </button>
               <button
-                className={`${classes.edit} ${classes.margin2}`}
+                className={classes.edit}
                 onClick={() => {
                   setNewEdu(true);
                 }}
@@ -286,21 +286,29 @@ const Account = (props) => {
             </div>
           </div>
 
-          <div className={classes.dataEdu}>
-            <Data>
-              {educations.map((data, index) => (
-                <div key={index} className={canEditEducation ? classes.canEditEducation : ""} onClick={() => handleEditEducation(data)}>
-                  <div className={classes.fontTitle}>{data.school}</div>
-                  <div className={classes.font}>{data.major}</div>
-                  <div className={classes.font}>{data.degree}</div>
-                  <div className={classes.font}>
-                    {data.startDate} {data.endDate}
+          {educations.length === 0 ? (
+            <div className={classes.data}>
+              <div className={classes.font}>
+                <div className={classes.styleborder}></div>
+              </div>
+            </div>
+          ) : (
+            <div className={classes.dataEdu}>
+              <Data>
+                {educations.map((data, index) => (
+                  <div key={index} className={canEditEducation ? classes.canEditEducation : ""} onClick={() => handleEditEducation(data)}>
+                    <div className={classes.fontTitle}>{data.school}</div>
+                    <div className={classes.font}>{data.major}</div>
+                    <div className={classes.font}>{data.degree}</div>
+                    <div className={classes.font}>
+                      {data.startDate} {data.endDate}
+                    </div>
+                    <div className={classes.font}>{data.description}</div>
                   </div>
-                  <div className={classes.font}>{data.description}</div>
-                </div>
-              ))}
-            </Data>
-          </div>
+                ))}
+              </Data>
+            </div>
+          )}
 
           <div id="list-item-4" className={classes.title}>
             <div className={classes.makeup} style={{ width: "182px" }}>
@@ -308,12 +316,12 @@ const Account = (props) => {
             </div>
             <div>
               {editAd === false ? (
-                <button className={`${classes.edit} ${classes.margin3}`} onClick={() => setEditAd(true)}>
+                <button className={classes.edit} onClick={() => setEditAd(true)}>
                   <div className={classes.style3}>Edit</div>
                 </button>
               ) : (
                 <button
-                  className={`${classes.edit} ${classes.margin3}`}
+                  className={classes.edit}
                   onClick={() => {
                     handleSubmit();
                     setEditAd(false);
@@ -326,13 +334,13 @@ const Account = (props) => {
           </div>
           <div>
             {editAd === false ? (
-              <form className={classes.data} style={{ height: "181px" }}>
+              <form className={classes.data} style={{ height: "190px" }}>
                 <div className={classes.font}>
                   <div className={classes.styleborder}>{advanedSkill}</div>
                 </div>
               </form>
             ) : (
-              <form className={classes.data} style={{ height: "181px" }} onSubmit={handleSubmit}>
+              <form className={classes.data} style={{ height: "190px" }} onSubmit={handleSubmit}>
                 <textarea
                   className={`${classes.font} ${classes.textexper}`}
                   onChange={(e) => setAdvanedSkill(e.target.value)}
@@ -348,12 +356,12 @@ const Account = (props) => {
             </div>
             <div>
               {editCa === false ? (
-                <button className={`${classes.edit} ${classes.margin3}`} onClick={() => setEditCa(true)}>
+                <button className={classes.edit} onClick={() => setEditCa(true)}>
                   <div className={classes.style3}>Edit</div>
                 </button>
               ) : (
                 <button
-                  className={`${classes.edit} ${classes.margin3}`}
+                  className={classes.edit}
                   onClick={() => {
                     handleSubmit();
                     setEditCa(false);
@@ -366,61 +374,57 @@ const Account = (props) => {
           </div>
           <div>
             {editCa === false ? (
-              <form className={classes.data} style={{ height: "280px" }}>
-                <div className={classes.containerCarField}>
-                  <div className={`${classes.font} ${classes.item1}`}>
-                    <label className={classes.a}>Desired Career Field:</label>
-                    {careerFeild}
-                  </div>
-                  <div className={`${classes.font} ${classes.item2}`}>
-                    <label className={classes.b}>Type of Job:</label>
-                    {typeOfJob}
-                  </div>
-                  <div className={`${classes.font} ${classes.item3}`}>
-                    <label className={classes.c}>Desired salary:</label>
-                    {salary}
-                  </div>
-                  <div className={`${classes.font} ${classes.item4}`}>
-                    <label className={classes.d}>Desired workplace:</label>
-                    {workplace}
-                  </div>
+              <form className={classes.data} style={{ height: "300px" }}>
+                <div className={`${classes.font} ${classes.itemCareer}`}>
+                  <label className={classes.a}>Desired Career Field:</label>
+                  {careerFeild}
+                </div>
+                <div className={`${classes.font} ${classes.itemCareer}`}>
+                  <label className={classes.a}>Type of Job:</label>
+                  {typeOfJob}
+                </div>
+                <div className={`${classes.font} ${classes.itemCareer}`}>
+                  <label className={classes.a}>Desired salary:</label>
+                  {salary}
+                </div>
+                <div className={`${classes.font} ${classes.itemCareer}`}>
+                  <label className={classes.a}>Desired workplace:</label>
+                  {workplace}
                 </div>
               </form>
             ) : (
-              <form className={classes.data} style={{ height: "324px" }} onSubmit={handleSubmit}>
-                <div className={classes.containerCarField}>
-                  <div className={`${classes.font} ${classes.item1}`}>
+              <form className={classes.data} style={{ height: "300px" }} onSubmit={handleSubmit}>
+                  <div className={`${classes.font} ${classes.itemCareer}`}>
                     <label className={classes.a}>Desired Career Field:</label>
-                    <textarea
-                      className={classes.font}
-                      style={{ width: "450px" }}
-                      onChange={(e) => setCareerFeild(e.target.value)}
-                      value={careerFeild}
-                    ></textarea>
-                  </div>
-                  <div className={`${classes.font} ${classes.item2}`}>
-                    <label className={classes.b}>Type of Job:</label>
                     <input
                       className={classes.font}
-                      style={{ width: "450px" }}
+                      style={{ width: "65%" }}
+                      onChange={(e) => setCareerFeild(e.target.value)}
+                      value={careerFeild}
+                    ></input>
+                  </div>
+                  <div className={`${classes.font} ${classes.itemCareer}`}>
+                    <label className={classes.a}>Type of Job:</label>
+                    <input
+                      className={classes.font}
+                      style={{ width: "65%" }}
                       onChange={(e) => setTypeOfJob(e.target.value)}
                       value={typeOfJob}
                     ></input>
                   </div>
-                  <div className={`${classes.font} ${classes.item3}`}>
-                    <label className={classes.c}>Desired salary:</label>
-                    <input className={classes.font} style={{ width: "450px" }} onChange={(e) => setSalary(e.target.value)} value={salary}></input>
+                  <div className={`${classes.font} ${classes.itemCareer}`}>
+                    <label className={classes.a}>Desired salary:</label>
+                    <input className={classes.font} style={{ width: "65%" }} onChange={(e) => setSalary(e.target.value)} value={salary}></input>
                   </div>
-                  <div className={`${classes.font} ${classes.item4}`}>
-                    <label className={classes.d}>Desired workplace:</label>
+                  <div className={`${classes.font} ${classes.itemCareer}`}>
+                    <label className={classes.a}>Desired workplace:</label>
                     <input
                       className={classes.font}
-                      style={{ width: "450px" }}
+                      style={{ width: "65%" }}
                       onChange={(e) => setWorkplace(e.target.value)}
                       value={workplace}
                     ></input>
                   </div>
-                </div>
               </form>
             )}
           </div>
@@ -430,7 +434,7 @@ const Account = (props) => {
               <div className={classes.style2}>CV</div>
             </div>
             <Link to="/cv/:cvld">
-              <button className={`${classes.edit} ${classes.margin4}`}>
+              <button className={classes.edit}>
                 <div className={classes.style3}>Edit</div>
               </button>
             </Link>
