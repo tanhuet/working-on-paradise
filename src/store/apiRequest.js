@@ -29,6 +29,7 @@ export const loginUser = async (user, dispatch, navigate) => {
     dispatch(loginSuccess(res.data));
     navigate(config.routes.home);
   } catch (err) {
+    alert('Tài khoản hoặc mật khẩu không chính xác, làm ơn hãy thử lại');
     dispatch(loginFail());
   }
 };
