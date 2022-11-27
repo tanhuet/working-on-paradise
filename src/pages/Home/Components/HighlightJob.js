@@ -2,6 +2,7 @@ import { Fragment, useState } from "react"
 import { useEffect } from "react"
 import config from "../../../config"
 import axios from "axios"
+import { useSelector } from "react-redux"
 
 import locationImg from "../../../asses/img-location.png"
 import JobList from "./highligh-job/JobList"
@@ -25,18 +26,29 @@ const DUMYJOB = [
 ]
 
 const HighlightJob = () => {
+    const userStore = useSelector((state) => state.auth.login?.currentUser);
 
     const [entireJobs, setEntireJobs] = useState();
 
     useEffect(() => {
-        axios.get(`${config.api.url}/job/getPageSuggestion/5/1`)
+        if (userStore) {
+        axios.get(`${config.api.url}/job/getPageSuggestion/5/1`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } })
             .then((res) => {
                 setEntireJobs(res.data);
             })
             .catch(err => {
                 console.log(err)
             });
-    }, [])
+        } else {
+            axios.get(`${config.api.url}/job/getPageSuggestion/5/1`)
+            .then((res) => {
+                setEntireJobs(res.data);
+            })
+            .catch(err => {
+                console.log(err)
+            });
+        }
+    }, [userStore])
 
     let jobs = [];
     if (entireJobs) {
@@ -53,6 +65,7 @@ const HighlightJob = () => {
                 experience: job.exp,
                 salary: job.salary,
                 skills: tags,
+                bookmark: job.bookmark
             }
         })
     }

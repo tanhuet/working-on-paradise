@@ -1,15 +1,17 @@
-import { Fragment } from "react";
-import FavouriteJob from "./Components/FavouriteJob";
 import { useSelector } from "react-redux";
 import config from "../../config";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
+import classes from "./Favourite.module.scss"
+import FavouriteJob from "./Components/FavouriteJob";
+import RecommendedJobs from "./Components/RecommendedJobs"
+
 const Favourite = () => {
   //get API
   const userStore = useSelector((state) => state.auth.login?.currentUser);
   const [entireJobs, setEntireJobs] = useState();
-  const [recomendedJobs, setRecomendJobs] = useState();
+  const [recomendedJobs, setRecomendJobs] = useState(null);
   useEffect(() => {
     if (userStore.role === "JobSeeker") {
       axios
@@ -21,7 +23,7 @@ const Favourite = () => {
           console.log(err);
         });
       axios
-        .get(`${config.api.url}/job/recommend/3`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } })
+        .get(`${config.api.url}/job/recommend/1`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } })
         .then((res) => {
           setRecomendJobs(res.data);
         })
@@ -52,11 +54,29 @@ const Favourite = () => {
     })
   }
 
+  let rJ = []
+  if (recomendedJobs !== null) {
+      rJ = recomendedJobs.map((job) => {
+          return {
+              id: job.id,
+              companyName: job.authorName,
+              logo: job.authorAvatar,
+              jobName: job.title,
+              address: job.authorAddress,
+              position: job.positions,
+              salary: job.salary,
+              jobType: job.typeOfWorking,
+              slot: job.slots,
+          }
+      })
+      // setRecomendJobs(rJ)
+  }
+
   return (
-    <Fragment>
+    <div className={classes.wrap}>
       <FavouriteJob jobs={jobs} />
-      {/* <RecomendedJob /> */}
-    </Fragment>
+      <RecommendedJobs recomendedJobs={rJ}/>
+    </div>
   );
 };
 
