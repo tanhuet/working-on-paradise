@@ -85,7 +85,6 @@
   .edit {
     border: none;
     background-color: rgba(0, 0, 0, 0);
-    display: flex;
 
     .style3 {
       font-weight: 600;
@@ -236,15 +235,36 @@
     font-weight: 500;
     font-size: 17px;
     line-height: 26px;
-    margin-left: 5rem;
+    margin-left: 6rem;
     color: #000000;
   }
 
   .canEditEducation {
     border-radius: 25px;
-
+    width: 93%;
+    margin: 0 auto;
+    padding-bottom: 1rem;
     &:hover {
       background-color: #48cccd;
     }
+
+    .fontTitle {
+      margin-left: 2rem;
+      padding-top: 1rem;
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 30px;
+      word-wrap: break-word;
+      color: #000000;
+    }
+  
+    .font {
+      font-weight: 500;
+      font-size: 17px;
+      line-height: 26px;
+      margin-left: 4rem;
+      color: #000000;
+    }
+
   }
 }

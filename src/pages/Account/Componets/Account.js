@@ -173,7 +173,7 @@ const Account = (props) => {
                 </div>
                 <div className={classes.right}>
                   <div className={`${classes.font} ${classes.itemRight1}`}>
-                    <label>Email (Verified/Unverified): </label> <br />
+                    <label>Email: </label> <br />
                     {USER.email}
                   </div>
                   <div className={`${classes.font} ${classes.itemRight2}`}>
@@ -206,16 +206,16 @@ const Account = (props) => {
                 </div>
                 <div className={classes.right}>
                   <div className={`${classes.font} ${classes.itemRight1}`}>
-                    <label>Email (Verified/Unverified):</label> <br />
+                    <label>Email:</label> <br />
                     <div className={classes.font}>{USER.email}</div>
                   </div>
                   <div className={`${classes.font} ${classes.itemRight2}`}>
                     <label>Age:</label> <br />
-                    <input type={"text"} className={classes.font} style={{width: "95%"}} onChange={(e) => setAge(e.target.value)} value={age}></input>
+                    <input className={classes.font} style={{width: "95%"}} onChange={(e) => setAge(e.target.value)} value={age}></input>
                   </div>
                   <div className={`${classes.font} ${classes.itemRight2}`}>
                     <label>Gender:</label> <br />
-                    <input type={"text"} className={classes.font} style={{width: "95%"}} onChange={(e) => setGender(e.target.value)} value={gender}></input>
+                    <input className={classes.font} style={{width: "95%"}} onChange={(e) => setGender(e.target.value)} value={gender}></input>
                   </div>
                 </div>
               </form>
