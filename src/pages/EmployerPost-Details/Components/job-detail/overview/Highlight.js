@@ -3,7 +3,7 @@ import classes from "./Highlight.module.scss";
 import locationImg from "../../../../../asses/bg-defaut.png";
 import { Google, Save } from "../../../../../components/icon/google";
 import ReactImageFallback from "react-image-fallback";
-import config from "c:/Users/Asus/working-on-paradise/src/config";
+import config from "../../../../../config/index";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import axios from "axios";
