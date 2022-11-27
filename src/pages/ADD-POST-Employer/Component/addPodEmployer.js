@@ -160,9 +160,6 @@ const AddPostEmployer = (props) => {
                   <h3>{user?.address}</h3>
                 </span>
               </div>
-              <div className={`col-sm-5 order-2 ${classes["button-save"]}`}>
-                <button type="submit">Save</button>
-              </div>
             </div>
 
             <div className={classes.box}>
@@ -273,6 +270,17 @@ const AddPostEmployer = (props) => {
                   </ul>
                 </div>
               </div>
+              <div style={{margin: '0 5% 10px 5%'}}>
+              <Dropdown
+          multiple
+          selection
+          fluid
+          options={options}
+          renderLabel={renderLabel}
+          onChange={handleChangeTags}
+          placeholder="Choose an option Tags"
+        />
+              </div>
             </div>
 
             <div className={classes["item-list"]}>
@@ -330,17 +338,13 @@ const AddPostEmployer = (props) => {
                 </div>
               </div>
             </div>
+            <div className={`order-2 ${classes["button-save"]}`}>
+                <button type="submit">Save</button>
+              </div>
           </div>
+          
         </div>
-        <Dropdown
-          multiple
-          selection
-          fluid
-          options={options}
-          renderLabel={renderLabel}
-          onChange={handleChangeTags}
-          placeholder="Choose an option"
-        />
+        
       </form>
     </div>
   );
