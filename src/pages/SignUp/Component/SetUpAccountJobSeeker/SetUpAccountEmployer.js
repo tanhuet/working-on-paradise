@@ -7,6 +7,7 @@ import config from "../../../../config";
 
 const SetUpAccEmployer = (props) => {
   const [size, setSize] = useState("");
+  const [address, setAddress] = useState("");
   const [wallpaper, setWallpaper] = useState("");
   const [selectedWallpaper, setSelectWallpaper] = useState("");
   const [avatar, setAvatar] = useState("");
@@ -28,6 +29,9 @@ const SetUpAccEmployer = (props) => {
   };
   const handleChangeAbout = (event) => {
     setAbout(event.target.value);
+  };
+  const handleChangeAddress = (event) => {
+    setAddress(event.target.value);
   };
 
   const handleSubmitButton = async (event) => {
@@ -53,6 +57,7 @@ const SetUpAccEmployer = (props) => {
       email: props.account.email,
       phone: props.account.phone,
       avatar: avatarLink.data,
+      address: address,
       password: props.account.password,
       about: about,
       wallpaper: wallpaperLink.data,
@@ -91,6 +96,21 @@ const SetUpAccEmployer = (props) => {
                 type="number"
                 value={size}
                 onChange={handleChangeSize}
+                required
+              ></input>
+            </div>
+          </div>
+
+          {/* row-content in colum content */}
+          <div className={`row ${classes["row-in-column"]}`}>
+            <div className={`col-sm-3 ${classes["row-in-column-content"]}`}>
+              Address:
+            </div>
+            <div className={`col-sm-9`}>
+              <input
+                type="text"
+                value={address}
+                onChange={handleChangeAddress}
                 required
               ></input>
             </div>
