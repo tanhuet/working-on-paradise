@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { NavLink } from "react-router-dom";
 import classes from "./MainNavigation.module.scss";
 import { useNavigate } from "react-router-dom";
@@ -16,6 +16,13 @@ const MainNavigation = () => {
   const handleLogout = () => {
     logoutUser(dispatch, navigate, axiosJWT);
   };
+
+  const suggestion = useRef('')
+
+  const searchHander = (e) => {
+    e.preventDefault()
+    navigate(`/category?filter=${suggestion.current.value}`)
+  }
 
   return (
     <header className={classes.header}>
@@ -58,8 +65,8 @@ const MainNavigation = () => {
                 </li>
               </ul>
             )}
-            <form className="d-flex">
-              <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+            <form className="d-flex" onSubmit={searchHander}>
+              <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" ref={suggestion}/>
               {/* <button type="submit"></button> */}
             </form>
             {user ? (
