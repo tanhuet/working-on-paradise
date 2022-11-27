@@ -15,9 +15,13 @@ const CVPage = (props) => {
   const [listCv, setListCv] = useState([]);
 
   useEffect(() => {
-    axios.get(`${config.api.url}/jobseeker`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } }).then((res) => {
-      setListCv(res.data.cv.split(","));
-    });
+    axios
+      .get(`${config.api.url}/jobseeker`, {
+        headers: { Authorization: `Bearer ${userStore.accessToken}` },
+      })
+      .then((res) => {
+        setListCv(res.data.cv.split(","));
+      });
   }, [userStore]);
 
   return (
@@ -29,10 +33,14 @@ const CVPage = (props) => {
               <img src={cvCreate} alt="create cv" />
             </div>
             <div className={`${classes["content"]}`}>
-              <div className={classes["content-create-cv"]}>Create your own CV and apply now</div>
+              <div className={classes["content-create-cv"]}>
+                Create your own CV and apply now
+              </div>
               <div className={classes["div-create-cv"]}>
                 <Link to="/cv/:cvld">
-                  <button className={classes["button-create-cv"]}>Create now</button>
+                  <button className={classes["button-create-cv"]}>
+                    Create now
+                  </button>
                 </Link>
               </div>
             </div>
@@ -41,8 +49,9 @@ const CVPage = (props) => {
             <div className={classes["create-cv"]}>
               <div className={classes["header-create-cv"]}>
                 <div className={classes["title-create-cv"]}>Created CV</div>
-
-                <MdOutlineAddCircle className={classes["add-cv-btn"]} />
+                <Link to="/cv/:cvld">
+                  <MdOutlineAddCircle className={classes["add-cv-btn"]} />
+                </Link>
               </div>
               <div className={classes["body-create-cv"]}>
                 {listCv.map((cv, index) => (
@@ -56,7 +65,12 @@ const CVPage = (props) => {
         <div className={classes["body-right"]}>
           <div className={`col-sm-4 ${classes["Recommended-job"]}`}>
             {props.items.map((item) => (
-              <RecomendedJob key={item.id} companyName={item.companyName} logo={item.logo} jobs={item.jobs} />
+              <RecomendedJob
+                key={item.id}
+                companyName={item.companyName}
+                logo={item.logo}
+                jobs={item.jobs}
+              />
             ))}
           </div>
         </div>
