@@ -58,8 +58,10 @@
 }
 
 .title {
-  display: flex;
   align-items: center;
+  display: inline-flex;
+  justify-content: space-between;
+  width: 55%;
 
   .makeup {
     width: 212px;
@@ -81,41 +83,24 @@
   }
 
   .edit {
-    margin-left: 500px;
     border: none;
     background-color: rgba(0, 0, 0, 0);
+    display: flex;
 
     .style3 {
       font-weight: 600;
       font-size: 20px;
       line-height: 30px;
-      display: flex;
       align-items: center;
       text-align: center;
       color: #283288;
     }
   }
-
-  .margin1 {
-    margin-left: 558px;
-  }
-
-  .margin2 {
-    margin-left: 572px;
-  }
-
-  .margin3 {
-    margin-left: 530px;
-  }
-
-  .margin4 {
-    margin-left: 621px;
-  }
 }
 
 .data {
   width: 55%;
-  height: 307px;
+  height: 320px;
   margin-left: 50px;
   overflow: auto;
   display: flex;
@@ -125,6 +110,7 @@
   border-radius: 60px;
   margin-bottom: 80px;
   margin-top: -15px;
+  padding-top: 10px;
 
   .font {
     font-weight: 600;
@@ -132,57 +118,39 @@
     line-height: 30px;
     word-wrap: break-word;
     color: #000000;
+  }
 
-    .editmake {
-      width: 420px;
-    }
+  .editmake {
+    width: 90%;
   }
 
   .left {
     width: 55%;
 
-    .phone {
-      margin-top: 40px;
-      margin-left: 40px;
-    }
-
-    .address {
-      margin-top: 20px;
-      margin-left: 40px;
+    .itemLeft {
+      width: 80%;
+      margin: 27px auto;
     }
   }
 
   .right {
     width: 45%;
 
-    .email {
-      margin-top: 40px;
-      margin-left: 50px;
+    .itemRight1 {
+      width: 75%;
+      margin: 27px auto;
     }
 
-    .age {
-      margin-top: 20px;
-      margin-left: 50px;
-    }
-
-    .gender {
-      margin-top: 20px;
-      margin-left: 50px;
+    .itemRight2 {
+      width: 75%;
+      margin: 15px auto;
     }
   }
 
   .textexper {
-    width: 760px;
+    width: 90%;
     height: 150px;
-    margin-left: 45px;
-    margin-top: 15px;
-  }
-
-  .textedu {
-    width: 760px;
-    height: 140px;
-    margin-left: 45px;
-    margin-top: 15px;
+    margin: 15px auto;
   }
 
   .styleborder {
@@ -238,57 +206,15 @@
     }
   }
 
-  .containerCarField {
-    .item1 {
-      width: 750px;
+  .itemCareer {
+    width: 88%;
+    height: 50px;
+    margin: 10px auto;
+    display: flex;
+
+    .a {
+      width: 32%;
       height: 50px;
-      margin-left: 50px;
-      margin-top: 27px;
-      display: flex;
-
-      .a {
-        width: 220px;
-        height: 100px;
-      }
-    }
-
-    .item2 {
-      width: 750px;
-      height: 50px;
-      display: flex;
-      margin-left: 50px;
-      margin-top: 10px;
-
-      .b {
-        width: 220px;
-        height: 55px;
-      }
-    }
-
-    .item3 {
-      width: 750px;
-      height: 50px;
-      display: flex;
-      margin-left: 50px;
-      margin-top: 10px;
-
-      .c {
-        width: 220px;
-        height: 40px;
-      }
-    }
-
-    .item4 {
-      width: 750px;
-      height: 50px;
-      display: flex;
-      margin-left: 50px;
-      margin-top: 10px;
-
-      .d {
-        width: 220px;
-        height: 40px;
-      }
     }
   }
 }
@@ -315,6 +241,8 @@
   }
 
   .canEditEducation {
+    border-radius: 25px;
+
     &:hover {
       background-color: #48cccd;
     }

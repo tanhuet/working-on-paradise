@@ -1,5 +1,4 @@
 import PostManagement from "./Components/PostManagement";
-import locationImg from "../../asses/google.png"
 import { useState, useEffect } from "react";
 import axios from "axios";
 import config from "../../config";
@@ -13,13 +12,11 @@ const PostManagementPage = () => {
   useEffect(() => {
     axios.get(`${config.api.url}/job/all-mine`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } })
       .then((res) => {
-        console.log(res.data);
         setJob(res.data);
       });
 
     axios.get(`${config.api.url}/employer/recommend-jobseeker/3`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } })
       .then((res) => {
-        console.log(res.data);
         setProfile(res.data);
       });
 
@@ -27,7 +24,8 @@ const PostManagementPage = () => {
 
   let jobs = [];
   if (job) {
-    jobs = job.map((job) => {
+    jobs = job.slice(0, 3)
+    jobs = jobs.map((job) => {
       let tags = job.tags.replace(" ", '').split(",")
       tags = tags.slice(0, 7)
       return {
@@ -44,7 +42,6 @@ const PostManagementPage = () => {
       }
     })
   }
-  console.log(jobs)
 
   let profiles = [];
   if (profile) {
@@ -63,7 +60,6 @@ const PostManagementPage = () => {
       }
     })
   }
-  console.log(profiles)
 
   return (
     <PostManagement profiles={profiles} jobs={jobs} />
