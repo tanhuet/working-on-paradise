@@ -44,7 +44,7 @@ function App() {
         <Route path="/cv/:cvId" element={<CvDetailPage />} />
         {userStore?.role === "JobSeeker" && <Route path="/account" element={<AccountPage />} />}
         <Route path="/details/:id" element={<JobDetail />} />
-        <Route path="/postmanagement" element={<PostManagementPage />} />
+        <Route path="/post/management" element={<PostManagementPage />} />
         <Route path="/employer-post/:id" element={<EmployerJobDetail />} />
         <Route path="/employer-cv" element={<EmployerCv />} />
         <Route path="/accountEmployer" element={<AccountEmployer />} />

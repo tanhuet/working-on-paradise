@@ -29,13 +29,13 @@ const HighlightPost = (props) => {
                             <div className={classes.info}>
                                 <h3>{props.jobName}</h3>
                                 <p>{props.company} - {props.location} - {props.positions} - {props.typeOfJob
-                                } - {props.experience} - {props.salary} - {props.candidates} slots
+                                } - {props.experience} - ${props.salary} - {props.candidates} slots
                                 </p>
                             </div>
                         </div>
                     </Link>
                     <div>
-                        <Link>
+                        <Link to={"/post/details/" + props.id}>
                             <img className={classes.edit} src={editImg} alt="" />
                         </Link>
                         <button className={classes.delete} onClick={deletePost}>
