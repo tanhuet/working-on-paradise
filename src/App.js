@@ -26,6 +26,7 @@ import SetUpAccEmployer from "./pages/SignUp/Component/SetUpAccountJobSeeker/Set
 import Application from "./pages/Application/Application";
 import Message from "./pages/Message";
 import AccEmp from "./pages/account-employer/AccEmp";
+import JobSeekerInfo from "./pages/JobSeekerInfo/JobSeekerInfo";
 
 function App() {
   const userStore = useSelector((state) => state.auth.login?.currentUser);
