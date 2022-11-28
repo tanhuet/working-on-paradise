@@ -22,7 +22,7 @@ const Feature = () => {
                 <div className ={classes.card}>
                     <div className={`${classes.header} ${classes.search}`}></div>
                     <div className={classes.info}>
-                        <NavLink to='/cv'>Post Job</NavLink>
+                        <NavLink to='/addpost'>Post Job</NavLink>
                         <p>Secound, post</p>
                         <p>your job</p>
                     </div>

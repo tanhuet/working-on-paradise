@@ -2,6 +2,7 @@
 import Layout from "./components/layout/Layout";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 
 //import page
 import Home from "./pages/Home/Home";
@@ -27,16 +28,18 @@ import Application from "./pages/Application/Application";
 import Message from "./pages/Message";
 import AccEmp from "./pages/account-employer/AccEmp";
 import JobSeekerInfor from "./pages/JobSeekerInfor/JobSeekerInfor";
-import EmployerHome from "./pages/EmployerHome/EmployerHome";
+import EmployerHome from "./pages/EmployerHome/EmployerHome"
 
 function App() {
+  const location = useLocation()
   const userStore = useSelector((state) => state.auth.login?.currentUser);
+  const isWrap = location.pathname === '/message' ? false : true
 
   return (
-    <Layout>
+    isWrap ? <Layout>
       <Routes>
         <Route path="/" element={<Navigate replace to="/home" />} />
-        {userStore?.role === "JobSeeker" && <Route path="/home" element={<Home />} />}
+        {userStore?.role !== "Employer" && <Route path="/home" element={<Home />} />}
         {userStore?.role === "Employer" && <Route path="/home" element={<EmployerHome />} />}
         <Route path="/category" element={<Category />} />
         {userStore?.role === "JobSeeker" && <Route path="/favourite" element={<Favourite />} />}
@@ -59,10 +62,13 @@ function App() {
         <Route path="/reset-password/:token" element={<ChangePassWord />} />
         <Route path="/setup-account-jobseeker" element={<SetUpAccJobSeeker />} />
         <Route path="/setup-account-employer" element={<SetUpAccEmployer />} />
-        <Route path="/message" element={<Message />} />
         <Route path="*" element={<Navigate replace to="/home" />} />
       </Routes>
-    </Layout>
+    </Layout> 
+    :
+    <Routes>
+      <Route path="/message" element={<Message />} />
+    </Routes>
   );
 }
 

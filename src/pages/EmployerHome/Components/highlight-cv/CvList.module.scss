@@ -32,14 +32,17 @@
     height: 165px;
 }
 
-.text p{
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 22px;
-    text-align: center;
-    color: #000000;
+.text {
+    margin-bottom: 1.5rem;
+    p{
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 22px;
+        text-align: center;
+        color: #000000;
 
+    }
 }
 
 .img {
