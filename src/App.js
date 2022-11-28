@@ -17,14 +17,15 @@ import CvDetailPage from "./pages/CvDetail/CvDetailPage";
 import PostManagementPage from "./pages/PostManagement/PostManagementPage";
 import EmployerJobDetail from "./pages/EmployerPost-Details/EmployerJobDetail";
 import EmployerCv from "./pages/Employer-Cv/Category";
-import AccountEmployer from "./pages/account-employer/AccountEmpolyer";
-import AccountEmployerEdit from "./pages/account-employer/AccountEmployerEdit";
+// import AccountEmployer from "./pages/account-employer/AccountEmpolyer";
+// import AccountEmployerEdit from "./pages/account-employer/AccountEmployerEdit";
 import AddPost from "./pages/ADD-POST-Employer/addPost";
 import ChangePassWord from "./pages/ChangePassWord/ChangePassword";
 import SetUpAccJobSeeker from "./pages/SignUp/Component/SetUpAccountJobSeeker/SetUpAccJobSeeker";
 import SetUpAccEmployer from "./pages/SignUp/Component/SetUpAccountJobSeeker/SetUpAccountEmployer";
 import Application from "./pages/Application/Application";
 import Message from "./pages/Message";
+import AccEmp from "./pages/account-employer/AccEmp";
 
 function App() {
   const userStore = useSelector((state) => state.auth.login?.currentUser);
@@ -48,8 +49,9 @@ function App() {
         <Route path="/post/management" element={<PostManagementPage />} />
         <Route path="/employer-post/:id" element={<EmployerJobDetail />} />
         <Route path="/employer-cv" element={<EmployerCv />} />
-        <Route path="/accountEmployer" element={<AccountEmployer />} />
-        <Route path="/accountEmployer/employerEdit" element={<AccountEmployerEdit />} />
+        {/* <Route path="/accountEmployer" element={<AccountEmployer />} /> */}
+        <Route path ="/accountEmployer" element={<AccEmp/>} />
+        {/* <Route path="/accountEmployer/employerEdit" element={<AccountEmployerEdit />} /> */}
         <Route path="/addPost" element={<AddPost />} />
         <Route path="/reset-password/:token" element={<ChangePassWord />} />
         <Route path="/setup-account-jobseeker" element={<SetUpAccJobSeeker />} />
