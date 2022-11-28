@@ -68,7 +68,7 @@ const HighlightJob = (props) => {
     return (    
             <div className={`${classes.card} ${props.class}`}>
                 <div className={classes.company}>
-                    <Link>
+                    <Link to={"/details/" + props.id}>
                         <div className={classes['company-info']}>
                             <div className={classes.logo}>
                                 <img src={props.logo} alt=".." />
