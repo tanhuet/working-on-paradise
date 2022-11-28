@@ -37,7 +37,6 @@ const Account = (props) => {
 
   useEffect(() => {
     axios.get(`${config.api.url}/jobseeker`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } }).then((res) => {
-      console.log(res.data.cv)
       setAge(res.data.age);
       setAddress(res.data.address);
       setGender(res.data.gender);
@@ -121,9 +120,7 @@ const Account = (props) => {
         {newEdu && <EducationEdit onCloseEditingEducation={closeEducationEditHandler} education={null} newEdu={true} />}
         {canEditEducation && selectedEducation && <EducationEdit onCloseEditingEducation={closeEducationEditHandler} education={selectedEducation} />}
         <div className={classes.container1}>
-          <div className={classes.circle}>
-            <div className={classes.letter}>{USER.name.charAt(0).toUpperCase()}</div>
-          </div>
+          <img className={classes.circle} src={USER.avatar} alt=""/>
           <div className={classes.text}>{USER.name}</div>
         </div>
         <div id="list-example" className={classes["group-item"]}>
@@ -297,7 +294,7 @@ const Account = (props) => {
           </div>
 
           {educations.length === 0 ? (
-            <div className={classes.data}>
+            <div className={classes.data} style={{ height: "190px" }}>
               <div className={classes.font}>
                 <div className={classes.styleborder}></div>
               </div>

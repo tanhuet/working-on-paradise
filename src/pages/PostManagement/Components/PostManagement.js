@@ -14,9 +14,11 @@ const PostManagement = (props) => {
         </div>
         <div className={classes["container-text"]}>
           <div className={classes.text}>Manage your posts and look for potential CVs</div>
-          <Link to="/addpost">
-            <button className={classes.btn}>Post a Job</button>
-          </Link>
+          <div className={classes.makeup}>
+            <Link to="/addpost">
+              <button className={classes.btn}>Post a Job</button>
+            </Link>
+          </div>
         </div>
       </div>
 

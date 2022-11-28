@@ -17,7 +17,6 @@ const PostManagementPage = () => {
 
     axios.get(`${config.api.url}/employer/recommend-jobseeker/3`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } })
       .then((res) => {
-        console.log(res.data)
         setProfile(res.data);
       });
 
@@ -25,7 +24,7 @@ const PostManagementPage = () => {
 
   let jobs = [];
   if (job) {
-    jobs = job.slice(0, 3)
+    jobs = job.slice(0, 4)
     jobs = jobs.map((job) => {
       let tags = job.tags.replace(" ", '').split(",")
       tags = tags.slice(0, 7)

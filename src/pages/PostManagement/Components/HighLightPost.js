@@ -33,7 +33,6 @@ const HighlightPost = (props) => {
                     swal("Your post is safe!");
                 }
             });
-
     };
 
     return (
