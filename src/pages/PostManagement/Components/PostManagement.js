@@ -3,6 +3,7 @@ import postImg from "../../../asses/post.png"
 import HighLightCv from "./HighLightCv"
 import HighlightPost from "./HighLightPost";
 import { Link } from "react-router-dom"
+import Data from "./../../Account/Componets/Data"
 
 const PostManagement = (props) => {
 
@@ -29,7 +30,7 @@ const PostManagement = (props) => {
             <i className="fa fa-plus"></i>
           </Link>
         </div>
-        <div className={classes.list}>
+        <Data className={classes.list}>
           {props.jobs.map((job) => (
             <HighlightPost
               key={job.id}
@@ -47,7 +48,7 @@ const PostManagement = (props) => {
               salary={job.salary}
             />
           ))}
-        </div>
+        </Data>
 
       </div>
 

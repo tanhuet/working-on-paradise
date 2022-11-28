@@ -1,17 +1,11 @@
 .makeup {
-    margin: 1rem 2rem;
+    margin: 2rem 2rem;
 }
 .job {
     padding: 10px;
-    padding-left: 0;
     display: flex;
     justify-content: space-between;
     width: 100%;
-
-    svg {
-        margin: 5px;
-    }
-
     .edit {
         width: 25px;
         height: 25px;
@@ -25,13 +19,14 @@
 }
 .info{
     display: flex;
-    justify-content: space-between;
+    //justify-content: space-between;
+    width: 90%;
 }
 .info .logo img{
     margin-left: 15px;
     width: 40px;
     height: 40px;
-    margin-right: 20px;
+    margin-right: 40px;
 }
 
 .info .detail {
