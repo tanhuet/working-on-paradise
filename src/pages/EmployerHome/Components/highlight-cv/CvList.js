@@ -28,7 +28,7 @@ const CvList = (props) => {
                 <NavLink to={'/category'}>
                     <div className={classes.more}>
                         <div className={classes.text}>
-                            <p>100+ More <br/>Categories</p>
+                            <p>100+ More CVs</p>
                         </div>
                         <div className={classes.img}>
                             <img src={more} className ={classes['more-img']} alt="more"/>
