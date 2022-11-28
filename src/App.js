@@ -26,7 +26,7 @@ import SetUpAccEmployer from "./pages/SignUp/Component/SetUpAccountJobSeeker/Set
 import Application from "./pages/Application/Application";
 import Message from "./pages/Message";
 import AccEmp from "./pages/account-employer/AccEmp";
-import JobSeekerInfo from "./pages/JobSeekerInfo/JobSeekerInfo";
+import JobSeekerInfor from "./pages/JobSeekerInfor/JobSeekerInfor";
 
 function App() {
   const userStore = useSelector((state) => state.auth.login?.currentUser);
@@ -45,7 +45,7 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/cv/:cvId" element={<CvDetailPage />} />
         {userStore?.role === "JobSeeker" && <Route path="/account" element={<AccountPage />} />}
-        {userStore?.role === "Employer" && <Route path="/account/:jobseekerId" element={<JobSeekerInfo />} /> }
+        {userStore?.role === "Employer" && <Route path="/account/:jobseekerId" element={<JobSeekerInfor />} /> }
         <Route path="/details/:id" element={<JobDetail />} />
         <Route path="/post/management" element={<PostManagementPage />} />
         <Route path="/employer-post/:id" element={<EmployerJobDetail />} />
