@@ -27,6 +27,7 @@ import Application from "./pages/Application/Application";
 import Message from "./pages/Message";
 import AccEmp from "./pages/account-employer/AccEmp";
 import JobSeekerInfor from "./pages/JobSeekerInfor/JobSeekerInfor";
+import EmployerHome from "./pages/EmployerHome/EmployerHome";
 
 function App() {
   const userStore = useSelector((state) => state.auth.login?.currentUser);
@@ -35,7 +36,8 @@ function App() {
     <Layout>
       <Routes>
         <Route path="/" element={<Navigate replace to="/home" />} />
-        <Route path="/home" element={<Home />} />
+        {userStore?.role === "JobSeeker" && <Route path="/home" element={<Home />} />}
+        {userStore?.role === "Employer" && <Route path="/home" element={<EmployerHome />} />}
         <Route path="/category" element={<Category />} />
         {userStore?.role === "JobSeeker" && <Route path="/favourite" element={<Favourite />} />}
         {userStore?.role === "JobSeeker" && <Route path="/cv" element={<Cv />} />}
