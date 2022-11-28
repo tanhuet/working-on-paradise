@@ -55,6 +55,7 @@ const PostManagement = (props) => {
         {props.profiles.map((profile) => (
           <HighLightCv
             key={profile.id}
+            id={profile.id}
             avatar={profile.avatar}
             userName={profile.userName}
             experience={profile.experience}

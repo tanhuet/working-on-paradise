@@ -8,6 +8,8 @@ import config from "../../../config";
 import React from "react";
 import EducationEdit from "./EducationEdit";
 import Data from "./Data";
+import CvBox from "./CvBox";
+
 const Account = (props) => {
   const USER = props.user;
 
@@ -29,11 +31,13 @@ const Account = (props) => {
   const [salary, setSalary] = useState();
   const [workplace, setWorkplace] = useState();
   const [education, setEducation] = useState();
+  const [listCv, setListCv] = useState([]);
 
   const userStore = useSelector((state) => state.auth.login?.currentUser);
 
   useEffect(() => {
     axios.get(`${config.api.url}/jobseeker`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } }).then((res) => {
+      console.log(res.data.cv)
       setAge(res.data.age);
       setAddress(res.data.address);
       setGender(res.data.gender);
@@ -43,10 +47,10 @@ const Account = (props) => {
       setTypeOfJob(res.data.typeOfJob);
       setSalary(res.data.salary);
       setWorkplace(res.data.workplace);
+      setListCv(res.data.cv.split(","))
     });
 
     axios.get(`${config.api.url}/education/all-mine`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } }).then((res) => {
-      console.log(res.data);
       setEducation(res.data);
     });
   }, [userStore]);
@@ -75,6 +79,14 @@ const Account = (props) => {
       setSelectedEducation(education);
     }
   };
+
+  const handleSetCanEditEdu = () => {
+    if (canEditEducation) {
+      setCanEditEducation(false)
+    } else {
+      setCanEditEducation(true)
+    }
+  }
 
   // Hiệp: khi bấm ra ngoài sẽ close education edit
   const closeEducationEditHandler = (reload) => {
@@ -211,11 +223,11 @@ const Account = (props) => {
                   </div>
                   <div className={`${classes.font} ${classes.itemRight2}`}>
                     <label>Age:</label> <br />
-                    <input className={classes.font} style={{width: "95%"}} onChange={(e) => setAge(e.target.value)} value={age}></input>
+                    <input className={classes.font} style={{ width: "95%" }} onChange={(e) => setAge(e.target.value)} value={age}></input>
                   </div>
                   <div className={`${classes.font} ${classes.itemRight2}`}>
                     <label>Gender:</label> <br />
-                    <input className={classes.font} style={{width: "95%"}} onChange={(e) => setGender(e.target.value)} value={gender}></input>
+                    <input className={classes.font} style={{ width: "95%" }} onChange={(e) => setGender(e.target.value)} value={gender}></input>
                   </div>
                 </div>
               </form>
@@ -269,9 +281,7 @@ const Account = (props) => {
             <div>
               <button
                 className={classes.edit}
-                onClick={() => {
-                  setCanEditEducation(true);
-                }}
+                onClick={handleSetCanEditEdu}
               >
                 <div className={classes.style3}>Edit</div>
               </button>
@@ -394,37 +404,37 @@ const Account = (props) => {
               </form>
             ) : (
               <form className={classes.data} style={{ height: "300px" }} onSubmit={handleSubmit}>
-                  <div className={`${classes.font} ${classes.itemCareer}`}>
-                    <label className={classes.a}>Desired Career Field:</label>
-                    <input
-                      className={classes.font}
-                      style={{ width: "65%" }}
-                      onChange={(e) => setCareerFeild(e.target.value)}
-                      value={careerFeild}
-                    ></input>
-                  </div>
-                  <div className={`${classes.font} ${classes.itemCareer}`}>
-                    <label className={classes.a}>Type of Job:</label>
-                    <input
-                      className={classes.font}
-                      style={{ width: "65%" }}
-                      onChange={(e) => setTypeOfJob(e.target.value)}
-                      value={typeOfJob}
-                    ></input>
-                  </div>
-                  <div className={`${classes.font} ${classes.itemCareer}`}>
-                    <label className={classes.a}>Desired salary:</label>
-                    <input className={classes.font} style={{ width: "65%" }} onChange={(e) => setSalary(e.target.value)} value={salary}></input>
-                  </div>
-                  <div className={`${classes.font} ${classes.itemCareer}`}>
-                    <label className={classes.a}>Desired workplace:</label>
-                    <input
-                      className={classes.font}
-                      style={{ width: "65%" }}
-                      onChange={(e) => setWorkplace(e.target.value)}
-                      value={workplace}
-                    ></input>
-                  </div>
+                <div className={`${classes.font} ${classes.itemCareer}`}>
+                  <label className={classes.a}>Desired Career Field:</label>
+                  <input
+                    className={classes.font}
+                    style={{ width: "65%" }}
+                    onChange={(e) => setCareerFeild(e.target.value)}
+                    value={careerFeild}
+                  ></input>
+                </div>
+                <div className={`${classes.font} ${classes.itemCareer}`}>
+                  <label className={classes.a}>Type of Job:</label>
+                  <input
+                    className={classes.font}
+                    style={{ width: "65%" }}
+                    onChange={(e) => setTypeOfJob(e.target.value)}
+                    value={typeOfJob}
+                  ></input>
+                </div>
+                <div className={`${classes.font} ${classes.itemCareer}`}>
+                  <label className={classes.a}>Desired salary:</label>
+                  <input className={classes.font} style={{ width: "65%" }} onChange={(e) => setSalary(e.target.value)} value={salary}></input>
+                </div>
+                <div className={`${classes.font} ${classes.itemCareer}`}>
+                  <label className={classes.a}>Desired workplace:</label>
+                  <input
+                    className={classes.font}
+                    style={{ width: "65%" }}
+                    onChange={(e) => setWorkplace(e.target.value)}
+                    value={workplace}
+                  ></input>
+                </div>
               </form>
             )}
           </div>
@@ -433,18 +443,17 @@ const Account = (props) => {
             <div className={classes.makeup} style={{ width: "91px" }}>
               <div className={classes.style2}>CV</div>
             </div>
-            <Link to="/cv/:cvld">
+            <Link to="/CV">
               <button className={classes.edit}>
                 <div className={classes.style3}>Edit</div>
               </button>
             </Link>
           </div>
-          <div className={classes.data} style={{ height: "293px" }}>
-            <div className={classes.containercv}>
-              <button className={`${classes.share} ${classes.style4}`}>Share</button>
-              <button className={`${classes.download} ${classes.style4}`}>Download</button>
-            </div>
-          </div>
+          <Data className={classes.dataCv}>
+            {listCv.map((cv, index) => (
+              <CvBox CvName={"CV-" + index} CvLink={cv} />
+            ))}
+          </Data>
         </div>
       </Fragment>
     )

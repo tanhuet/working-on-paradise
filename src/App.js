@@ -44,6 +44,7 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/cv/:cvId" element={<CvDetailPage />} />
         {userStore?.role === "JobSeeker" && <Route path="/account" element={<AccountPage />} />}
+        {userStore?.role === "Employer" && <Route path="/account/:jobseekerId" element={<JobSeekerInfo />} /> }
         <Route path="/details/:id" element={<JobDetail />} />
         <Route path="/post/management" element={<PostManagementPage />} />
         <Route path="/employer-post/:id" element={<EmployerJobDetail />} />
