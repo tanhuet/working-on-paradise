@@ -12,12 +12,12 @@ const PostManagementPage = () => {
   useEffect(() => {
     axios.get(`${config.api.url}/job/all-mine`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } })
       .then((res) => {
-        console.log(res.data)
         setJob(res.data);
       });
 
     axios.get(`${config.api.url}/employer/recommend-jobseeker/3`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } })
       .then((res) => {
+        console.log(res.data)
         setProfile(res.data);
       });
 
@@ -31,7 +31,7 @@ const PostManagementPage = () => {
       tags = tags.slice(0, 7)
       return {
         id: job.id,
-        logo: job.imageUrl,
+        logo: job.authorAvatar,
         jobName: job.title,
         companyName: job.authorName,
         positions: job.positions,
