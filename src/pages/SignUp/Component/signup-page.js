@@ -1,7 +1,6 @@
 import classes from "./signup-page.module.scss";
 import "font-awesome/css/font-awesome.min.css";
 import { Dropdown } from "semantic-ui-react";
-import "semantic-ui-css/semantic.min.css";
 import React, { useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { registerUser } from "../../../store/apiRequest";

@@ -8,7 +8,7 @@ const RecommendedJob = (props) => {
       <div className={classes.title}>
         <p>Recommended Job</p>
       </div>
-      <Link>
+      <Link to = {"/details/" + props.id}>
       <div className={classes.introduction}>
         <div className={classes.img}>
           <img src={props.logo} alt=".." />
