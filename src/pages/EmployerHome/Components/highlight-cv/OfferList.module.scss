@@ -1,0 +1,53 @@
+.title {
+    margin: 10rem auto;
+    margin-bottom: 5rem;
+    text-align: center;
+    color: #235B5C;
+    font-weight: 700;
+    font-size: 40px;
+}
+
+.title span {
+    color: #FFCC00;
+
+}
+.list {
+    display: flex;
+    justify-content: center;
+}
+
+.border-color1 {
+    border: 4px solid #7B68EE;
+}
+
+.heart-color1 {
+    background-color: #7B68EE;
+}
+
+.apply-color1 {
+    background-color: #7B68EE;
+}
+
+.border-color2 {
+    border: 4px solid #00CED1;
+}
+
+.heart-color2 {
+    background-color: #00CED1;
+}
+
+.apply-color2 {
+    background: #00CED1;
+}
+
+.border-color3 {
+    border: 4px solid #00FF00;
+}
+
+.heart-color3 {
+    background-color: #00FF00;
+}
+
+.apply-color3 {
+    background: #00FF00;
+}
