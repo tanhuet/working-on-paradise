@@ -11,11 +11,14 @@ function ListMessage(props) {
   return (
     <div className={classes.wrapper}>
       {listMessage
-        ? listMessage.map((mess, index) => (
-            <div key={index} onClick={() => props.selectConversation(mess)}>
-              <MessageItem conversation={mess} />
-            </div>
-          ))
+        ? listMessage.map(
+            (mess, index) =>
+              mess.lastMsg && (
+                <div key={index} onClick={() => props.selectConversation(mess)}>
+                  <MessageItem conversation={mess} />
+                </div>
+              )
+          )
         : "No message"}
     </div>
   );

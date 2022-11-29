@@ -16,7 +16,9 @@ function MessageItem(props) {
       <div className={classes.info}>
         <div className={classes.name}>{conversation?.other.name}</div>
         <div className={classes.lastMessage}>
-          {conversation?.lastMessage.content.length > 20 ? `${conversation?.lastMessage.content.slice(0, 30)}...` : conversation?.lastMessage.content}
+          {conversation?.lastMessage?.content.length > 20
+            ? `${conversation?.lastMessage?.content.slice(0, 30)}...`
+            : conversation?.lastMessage?.content}
         </div>
       </div>
     </div>
