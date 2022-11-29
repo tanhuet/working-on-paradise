@@ -8,12 +8,8 @@ const AccountPage = () => {
   const userStore = useSelector((state) => state.auth.login?.currentUser);
   const [user, setUser] = useState();
 
-  useEffect(() => {
-    var endPoint = "jobseeker";
-    if (userStore.role === "Employer") {
-      endPoint = "employer";
-    }
-    axios.get(`${config.api.url}/${endPoint}`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } })
+  useEffect(() => { 
+    axios.get(`${config.api.url}/jobseeker`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } })
       .then((res) => {
         //console.log(res.data);
         setUser(res.data);

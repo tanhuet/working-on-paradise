@@ -3,6 +3,7 @@ import postImg from "../../../asses/post.png"
 import HighLightCv from "./HighLightCv"
 import HighlightPost from "./HighLightPost";
 import { Link } from "react-router-dom"
+import Data from "./../../Account/Componets/Data"
 
 const PostManagement = (props) => {
 
@@ -14,9 +15,11 @@ const PostManagement = (props) => {
         </div>
         <div className={classes["container-text"]}>
           <div className={classes.text}>Manage your posts and look for potential CVs</div>
-          <Link to="/addpost">
-            <button className={classes.btn}>Post a Job</button>
-          </Link>
+          <div className={classes.makeup}>
+            <Link to="/addpost">
+              <button className={classes.btn}>Post a Job</button>
+            </Link>
+          </div>
         </div>
       </div>
 
@@ -27,7 +30,7 @@ const PostManagement = (props) => {
             <i className="fa fa-plus"></i>
           </Link>
         </div>
-        <div className={classes.list}>
+        <Data className={classes.list}>
           {props.jobs.map((job) => (
             <HighlightPost
               key={job.id}
@@ -45,7 +48,7 @@ const PostManagement = (props) => {
               salary={job.salary}
             />
           ))}
-        </div>
+        </Data>
 
       </div>
 
@@ -55,6 +58,7 @@ const PostManagement = (props) => {
         {props.profiles.map((profile) => (
           <HighLightCv
             key={profile.id}
+            id={profile.id}
             avatar={profile.avatar}
             userName={profile.userName}
             experience={profile.experience}

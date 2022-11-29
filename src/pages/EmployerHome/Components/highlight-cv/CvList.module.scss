@@ -1,0 +1,59 @@
+.job-list a {
+    text-decoration: none;
+}
+
+.h1 {
+    text-align: center;
+    color: #235B5C;
+    font-weight: 700;
+    font-weight: bolder;
+    font-size: 50px;
+}
+
+.job-list {
+    margin: 4rem auto;
+    display: flex;
+    flex-wrap: wrap;
+    width: 1000px;
+    height: 500px;
+}
+
+.wrap {
+    margin: 0 20px;
+}
+
+.more {
+    margin: 0  20px;
+    background: #FFFFFF;
+    border: 7px solid #66D9FF;
+    border-radius: 40px;
+    padding: 30px;
+    width: 289px;
+    height: 165px;
+}
+
+.text {
+    margin-bottom: 1.5rem;
+    p{
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 22px;
+        text-align: center;
+        color: #000000;
+
+    }
+}
+
+.img {
+    margin-top: -1rem;
+    // border: solid;
+    display: flex;
+    justify-content: center;
+}
+.img img{
+    // border: solid;
+    width: 78.82px;
+    height: 44.43px;
+    opacity: 0.7;
+}

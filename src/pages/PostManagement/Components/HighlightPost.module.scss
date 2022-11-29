@@ -1,29 +1,11 @@
-.card {
-    padding: 35px;
-    padding-top: 20px;
-    width: 892.04px;
-    height: 150px;
-    margin: 40px auto;
-    background: #FFFFFF;
-    border: 1px solid #000000;
-    box-shadow: 0px 4px 35px #56A5EC;
-    border-radius: 40px;
-
+.makeup {
+    margin: 2rem 2rem;
 }
-
-.company {
-    display: inline-flex;
+.job {
+    padding: 10px;
+    display: flex;
     justify-content: space-between;
     width: 100%;
-
-    .company-info {
-        display: flex;
-
-        img {
-            width: 35px;
-            height: 35px;
-        }
-    }
     .edit {
         width: 25px;
         height: 25px;
@@ -33,24 +15,28 @@
         height: 25px;
         border: none;
         background-color: rgba(0, 0, 0, 0);
-        //margin-left: 10px;
     }
 }
+.info{
+    display: flex;
+    //justify-content: space-between;
+    width: 90%;
+}
+.info .logo img{
+    margin-left: 15px;
+    width: 40px;
+    height: 40px;
+    margin-right: 40px;
+}
 
-.info h3 {
-    margin-left: 40px;
+.info .detail {
     font-weight: 600;
     font-size: 15px;
     line-height: 22px;
     color: #000000;
 }
 
-.info p {
-    margin-left: 40px;
-    margin-bottom: 5px;
-    font-weight: 600;
-    font-size: 15px;
-    line-height: 22px;
+.info .introduction {
     color: rgba(0, 0, 0, 0.6);
 }
 
@@ -61,15 +47,15 @@
 
 .skill-items {
     display: flex;
+    margin: 0;
 }
 
 .item {
-    padding: 10px 25px;
-    margin-right: 20px;
+    padding: 7px 12px;
+    margin-right: 10px;
     background: #7BEADF;
     border-radius: 60px;
     color: rgba(0, 0, 0, 1);
     font-weight: 600;
     font-size: 13px;
 }
-

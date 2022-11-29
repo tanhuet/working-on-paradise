@@ -1,0 +1,47 @@
+.box-cv {
+    background: #ffffff;
+    border: 1px solid #000000;
+    box-shadow: 0px 4px 35px #56a5ec;
+    border-radius: 20px;
+    width: 23%;
+    height: 190px;
+    padding: 10px;
+    margin: 20px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    text-decoration: none;
+    color: #000000;
+
+    .title {
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 27px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+
+    .list-button {
+        display: flex;
+        justify-content: space-around;
+
+        button {
+            background: #7beadf;
+            border-radius: 60px;
+            padding: 8px 12px;
+            border: 2px solid transparent;
+            display: flex;
+            justify-content: center;
+        }
+
+        .share {
+            width: 40%;
+        }
+
+        .download {
+            width: 55%;
+        }
+    }
+}

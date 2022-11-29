@@ -22,8 +22,8 @@ const Feature = () => {
                 <div className ={classes.card}>
                     <div className={`${classes.header} ${classes.search}`}></div>
                     <div className={classes.info}>
-                        <NavLink to='/cv'>Search Job</NavLink>
-                        <p>Secound, search</p>
+                        <NavLink to='/addpost'>Post Job</NavLink>
+                        <p>Secound, post</p>
                         <p>your job</p>
                     </div>
                     <div className={`${classes.footer} ${classes.search}`}></div>
@@ -32,17 +32,18 @@ const Feature = () => {
                     <div className={`${classes.header} ${classes.upload}`}></div>
                     <div className={classes.info}>
                         <NavLink to='/category'>CV/Resume</NavLink>
-                        <p>Third, upload</p>
-                        <p>your CV</p>
+                        <p>Third, look for</p>
+                        <p>potential CVs</p>
                     </div>
                     <div className={`${classes.footer} ${classes.upload}`}></div>
                 </div>
                 <div className ={classes.card}>
                     <div className={`${classes.header} ${classes.apply}`}></div>
                     <div className={classes.info}>
-                        <NavLink to='/category'>Apply</NavLink>
-                        <p>Finnaly, click</p>
-                        <p>applying button</p>
+                        <NavLink to='/category'>Connect</NavLink>
+                        <p>Finally, connect</p>
+                        <p>to your</p>
+                        <p>candidates</p>
                     </div>
                     <div className={`${classes.footer} ${classes.apply}`}></div>
                 </div>

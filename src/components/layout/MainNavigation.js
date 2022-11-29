@@ -58,7 +58,7 @@ const MainNavigation = () => {
                   <NavLink className="nav-link active" aria-current="page" href="#" to="/home">Home</NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink className="nav-link" href="#" to="/post">Post</NavLink>
+                  <NavLink className="nav-link" href="#" to="/post/management">Post</NavLink>
                 </li>
                 <li className="nav-item">
                   <NavLink className="nav-link" href="#" to="/Cv">CV</NavLink>
@@ -75,7 +75,7 @@ const MainNavigation = () => {
                 <NavLink className={`nav-link ${classes['btn-logout']}`} href="#" to="/account">{user.name}</NavLink>
                 </li>
                 <li className={`nav-item`}>
-                  <NavLink className="nav-link" href="#" to="/signup" onClick={handleLogout}>Logout</NavLink>
+                  <NavLink className="nav-link" href="#" to="/signin" onClick={handleLogout}>Logout</NavLink>
                 </li>
               </ul>
             ) : (
