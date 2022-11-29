@@ -43,8 +43,10 @@ function Message() {
 
   return (
     <div className={classes.wrapper}>
-      <ListMessage listMesssage={listConversation} selectConversation={handleSelectConversation} />
-      <ChatArea conversation={selectedConversation} />
+      <div className={classes.content}>
+        <ListMessage listMesssage={listConversation} selectConversation={handleSelectConversation} />
+        <ChatArea conversation={selectedConversation} />
+      </div>
     </div>
   );
 }
