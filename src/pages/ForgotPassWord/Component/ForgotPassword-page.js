@@ -28,13 +28,13 @@ const ForgotPassWordPage = (props) => {
       <div className={classes["form"]}>
         <div className={classes["header-forgot"]}>
           <div className={classes["forgot-pass"]}>Forgot Password?</div>
-          <div className={classes["describe"]}>To reset your password, you need your email or mobile number that can be authenticated</div>
+          <div className={classes["describe"]}>To reset your password, you need your Email that can be authenticated</div>
         </div>
 
         <div className={classes["account-forgot-pass"]}>
           <div className={classes["input-box"]}>
             <div className={classes["email"]}  style={{position: 'relative'}}>
-            <i className={`fa fa-envelope ${classes.icon}`} aria-hidden="true"></i>
+            <i className={`fa fa-envelope ${classes.icon}`} aria-hidden="true" style={{marginLeft: '14px'}}></i>
               <input type="email" placeholder="Email" value={email} onChange={ChangeInput} required />
             </div>
           </div>

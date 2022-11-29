@@ -171,6 +171,7 @@ const Register = (props) => {
                 style={{ position: "relative" }}
               >
                 <i
+                style={{marginLeft: '14px'}}
                   className={`fa fa-user-circle-o ${classes.icon}`}
                   aria-hidden="true"
                 ></i>
@@ -188,6 +189,7 @@ const Register = (props) => {
                 style={{ position: "relative" }}
               >
                 <i
+                style={{marginLeft: '14px'}}
                   className={`fa fa-user-circle-o ${classes.icon}`}
                   aria-hidden="true"
                 ></i>
@@ -205,6 +207,7 @@ const Register = (props) => {
                 style={{ position: "relative" }}
               >
                 <i
+                style={{marginLeft: '14px'}}
                   className={`fa fa-envelope ${classes.icon}`}
                   aria-hidden="true"
                 ></i>
@@ -222,6 +225,7 @@ const Register = (props) => {
                 style={{ position: "relative" }}
               >
                 <i
+                style={{marginLeft: '14px'}}
                   className={`fa fa-volume-control-phone ${classes.icon}`}
                   aria-hidden="true"
                 ></i>
@@ -239,6 +243,7 @@ const Register = (props) => {
                 style={{ position: "relative" }}
               >
                 <i
+                style={{marginLeft: '14px'}}
                   className={`fa fa-lock ${classes.icon}`}
                   aria-hidden="true"
                 ></i>
@@ -256,6 +261,7 @@ const Register = (props) => {
                 style={{ position: "relative" }}
               >
                 <i
+                style={{marginLeft: '14px'}}
                   className={`fa fa-lock ${classes.icon}`}
                   aria-hidden="true"
                 ></i>
@@ -282,6 +288,7 @@ const Register = (props) => {
                   options={manyOptions}
                   renderLabel={renderLabel}
                   onChange={handleChangeDropDown}
+                  style={{fontWeight: 'bold', margin: '15px 0'}}
                   placeholder="Select User Type: "
                 />
               </div>
