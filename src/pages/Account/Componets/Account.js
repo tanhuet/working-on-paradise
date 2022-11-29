@@ -53,6 +53,7 @@ const Account = (props) => {
       setGender(res.data.gender);
       setExperience(res.data.experience);
       setAdvanedSkill(res.data.advanedSkill);
+      console.log(res.data.advanedSkill);
       setCareerFeild(res.data.careerFeild);
       setTypeOfJob(res.data.typeOfJob);
       setSalary(res.data.salary);
@@ -345,7 +346,7 @@ const Account = (props) => {
             </div>
           ) : (
             <div className={classes.dataEdu}>
-              <Data>
+              <Data isActive={canEditEducation}>
                 {educations.map((data, index) => (
                   <div key={index} className={canEditEducation ? classes.canEditEducation : ""} onClick={() => handleEditEducation(data)}>
                     <div className={classes.fontTitle}>{data.school}</div>
@@ -387,7 +388,7 @@ const Account = (props) => {
             {editAd === false ? (
               <form className={classes.data} style={{ height: "190px" }}>
                 <div className={classes.font}>
-                  <div className={classes.styleborder}>{advanedSkill}</div>
+                  <div className={classes.styleborder}><p>{advanedSkill}</p></div>
                 </div>
               </form>
             ) : (
