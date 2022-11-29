@@ -29,14 +29,27 @@ import Message from "./pages/Message";
 import AccEmp from "./pages/account-employer/AccEmp";
 import JobSeekerInfor from "./pages/JobSeekerInfor/JobSeekerInfor";
 import EmployerHome from "./pages/EmployerHome/EmployerHome"
+import { useEffect, useState } from "react";
 
 function App() {
   const location = useLocation()
+  // const [isFooter, setIsFooter] = useState(true)
+
   const userStore = useSelector((state) => state.auth.login?.currentUser);
-  const isWrap = location.pathname === '/message' ? false : true
+  const [isFooter, setIsFooter] = useState(true)
+  useEffect(() => {
+    if (location.pathname === '/message' || location.pathname === '/signin' || location.pathname === '/signup') {
+      setIsFooter(false)
+    } else {
+      setIsFooter(true)
+    }
+  }, [location.pathname])
+
+
+  console.log(isFooter, location.pathname)
 
   return (
-    isWrap ? <Layout>
+    <Layout isFooter = {isFooter}>
       <Routes>
         <Route path="/" element={<Navigate replace to="/home" />} />
         {userStore?.role !== "Employer" && <Route path="/home" element={<Home />} />}
@@ -63,12 +76,9 @@ function App() {
         <Route path="/setup-account-jobseeker" element={<SetUpAccJobSeeker />} />
         <Route path="/setup-account-employer" element={<SetUpAccEmployer />} />
         <Route path="*" element={<Navigate replace to="/home" />} />
+        <Route path="/message" element={<Message />} />
       </Routes>
     </Layout> 
-    :
-    <Routes>
-      <Route path="/message" element={<Message />} />
-    </Routes>
   );
 }
 
