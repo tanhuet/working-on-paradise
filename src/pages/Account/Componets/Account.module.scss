@@ -25,6 +25,11 @@
   input {
     border-radius: 15px;
     padding-left: 1%;
+    border: 1px solid black;
+    &:hover {
+      border: 1px solid #00b0b3;
+    }
+
   }
   .makeupButton {
     margin-right: 0px;
@@ -36,7 +41,7 @@
     }
     .save {
       height: 30px;
-      width: 25px;
+      width: 30px;
     }
   }
 }
@@ -119,6 +124,23 @@
   margin-top: -15px;
   padding-top: 10px;
 
+  input {
+    border-radius: 10px;
+    padding-left: 10px;
+    border: 1px solid black;
+    &:hover {
+      border: 1px solid #00b0b3;
+    }
+  }
+
+  textarea {
+    border-radius: 10px;
+    padding-left: 10px;
+    border: 1px solid black;
+    &:hover {
+      border: 1px solid #00b0b3;
+    }
+  }
   .font {
     font-weight: 600;
     font-size: 20px;
@@ -165,6 +187,10 @@
     margin-left: 45px;
     align-items: center;
     justify-content: center;
+
+    p{
+      white-space: pre-line;
+    }
   }
 
   .itemCareer {
@@ -218,7 +244,6 @@
       font-size: 20px;
       line-height: 30px;
       word-wrap: break-word;
-      color: #FF0000;
     }
 
     .font {
