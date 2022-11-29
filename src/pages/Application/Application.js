@@ -3,7 +3,11 @@ import JobList from "./Components/JobList";
 import { useSelector } from "react-redux";
 import config from "../../config";
 import axios from "axios";
+import Banner from "./Components/Banner";
+import classes from "./Application.module.scss";
+import IdeaPosition from "../../components/idea-position-footer/IdeaPositionFooter";
 // import locationImg from "../../asses/img-location.png"
+import google from "../../asses/google.png";
 
 const Application = () => {
   const userStore = useSelector((state) => state.auth.login?.currentUser);
@@ -20,9 +24,28 @@ const Application = () => {
       });
   }, [userStore]);
 
+  const JOBS = [
+    {
+      id: 1,
+      logo: google,
+      companyName: "Google Inc",
+      location: "California",
+      category: "UI/UX Desgin",
+      jobType: "Part Time",
+      experience: "Senior",
+      minSalary: "700",
+      maxSalary: "1500",
+      skills: ["cloud", "react"],
+    },
+  ];
+
   return (
     <Fragment>
-      <JobList application={application} />
+      <div className={classes.wrapper}>
+        <Banner />
+        <JobList application={application} />
+        <IdeaPosition jobs={JOBS} />
+      </div>
     </Fragment>
   );
   //

@@ -1,0 +1,120 @@
+.container {
+  width: 756.51px;
+  height: 348px;
+  margin: 40px auto;
+  display: flex;
+  background: #c3efef;
+  border-radius: 60px;
+
+  .container-img {
+    margin-top: 76px;
+    margin-left: 78px;
+  }
+
+  .container-text {
+    margin-top: 76px;
+    margin-left: 65px;
+    .text {
+      font-family: "Poppins";
+      font-style: normal;
+      font-weight: 600;
+      font-size: 30px;
+      line-height: 45px;
+      color: #ffffff;
+      text-shadow: 0px 4px 50px rgba(0, 0, 0, 0.8);
+    }
+    .makeup {
+      margin-top: 25px;
+      margin-left: 65px;
+    }
+    .btn {
+      width: 152.54px;
+      height: 72px;
+      background: #00ced1;
+      cursor: pointer;
+      box-shadow: 0px 4px 50px 10px rgba(0, 251, 255, 0.75);
+      border: 1px solid transparent;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 30px;
+      align-items: center;
+      text-align: center;
+      color: #ffffff;
+    }
+  }
+}
+
+.post-list {
+  margin-top: 65px;
+  .title {
+    width: 70%;
+    height: 81.35px;
+    margin: auto;
+    background: #9be4e4;
+    border-radius: 40px 40px 0px 0px;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 40px;
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 38px;
+    align-items: center;
+    color: #ffffff;
+    text-shadow: 0px 4px 25px rgba(0, 0, 0, 0.75);
+
+    .add {
+      width: 35px;
+      height: 35px;
+      margin-right: 50px;
+      background-color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: black;
+    }
+  }
+
+  .list {
+    width: 70%;
+    margin: 0 auto;
+    padding-top: 10px;
+    padding-bottom: 50px;
+    background: #e9fbfa;
+    border-radius: 0px 0px 60px 60px;
+    box-shadow: 0 0 0 0;
+    .page-controller {
+      display: flex;
+      justify-content: center;
+    }
+
+    .page-controller button {
+      margin-left: 1rem;
+      margin-right: 1rem;
+      border-radius: 50%;
+    }
+  }
+}
+
+.tittle-text {
+  font-weight: 700;
+  font-size: 50px;
+  line-height: 75px;
+  margin-top: 60px;
+  align-items: center;
+  text-align: center;
+  color: #ffcc00;
+
+  span {
+    color: #235b5c;
+  }
+}
+
+.job-list {
+  margin-top: 80px;
+  margin-bottom: 100px;
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+}

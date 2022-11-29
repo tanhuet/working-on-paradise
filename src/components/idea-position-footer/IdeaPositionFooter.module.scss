@@ -1,0 +1,26 @@
+.body-bottom {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 0px 0px 20px;
+  margin: 100px 0px;
+  .title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    span {
+      font-weight: 700;
+      font-size: 50px;
+      line-height: 75px;
+    }
+  }
+
+  .idea-job {
+    width: 100%;
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-around;
+  }
+}
