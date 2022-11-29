@@ -80,13 +80,13 @@ const EducationEdit = (props) => {
         <div className={classes.item}>
           <li className={classes.font}>
             <label className={classes.a}>Start Date:</label>
-            <input type="date" style={{ width: "60%" }} onChange={(e) => setStartDate(e.target.value)} value={startDate}></input>
+            <input type="date" min="1000-01-01" max="9999-12-31" style={{ width: "60%" }} onChange={(e) => setStartDate(e.target.value)} value={startDate}></input>
           </li>
         </div>
         <div className={classes.item}>
           <li className={classes.font}>
             <label className={classes.a}>End Date:</label>
-            <input type="date" style={{ width: "60%" }} onChange={(e) => setEndDate(e.target.value)} value={endDate}></input>
+            <input type="date" min="1000-01-01" max="9999-12-31" style={{ width: "60%" }} onChange={(e) => setEndDate(e.target.value)} value={endDate}></input>
           </li>
         </div>
         <div className={classes.item}>

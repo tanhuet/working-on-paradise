@@ -9,10 +9,13 @@ import React from "react";
 import EducationEdit from "./EducationEdit";
 import Data from "./Data";
 import CvBox from "./CvBox";
+import editButton from "../../../asses/editButton.png"
+import saveButton from "../../../asses/saveButton.png"
 
 const Account = (props) => {
   const USER = props.user;
 
+  const [editName, setEditName] = useState(false);
   const [editInfor, setEditInfor] = useState(false);
   const [editEx, setEditEx] = useState(false);
   const [newEdu, setNewEdu] = useState(false);
@@ -21,6 +24,8 @@ const Account = (props) => {
   const [editAd, setEditAd] = useState(false);
   const [editCa, setEditCa] = useState(false);
 
+  const [name, setName] = useState();
+  const [avatar, setAvatar] = useState();
   const [age, setAge] = useState();
   const [address, setAddress] = useState();
   const [gender, setGender] = useState();
@@ -36,6 +41,12 @@ const Account = (props) => {
   const userStore = useSelector((state) => state.auth.login?.currentUser);
 
   useEffect(() => {
+    axios.get(`${config.api.url}/user`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } }).then((res) => {
+      setName(res.data.name);
+      setAvatar(res.data.avatar);
+      setAddress(res.data.address);
+    });
+
     axios.get(`${config.api.url}/jobseeker`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } }).then((res) => {
       setAge(res.data.age);
       setAddress(res.data.address);
@@ -67,6 +78,16 @@ const Account = (props) => {
         cv: "cv link",
         careerFeild: careerFeild,
         typeOfJob: typeOfJob,
+      },
+      { headers: { Authorization: `Bearer ${userStore.accessToken}` } }
+    );
+
+    axios.put(
+      `${config.api.url}/user`,
+      {
+        name: name,
+        avatar: avatar,
+        address: address,
       },
       { headers: { Authorization: `Bearer ${userStore.accessToken}` } }
     );
@@ -120,8 +141,28 @@ const Account = (props) => {
         {newEdu && <EducationEdit onCloseEditingEducation={closeEducationEditHandler} education={null} newEdu={true} />}
         {canEditEducation && selectedEducation && <EducationEdit onCloseEditingEducation={closeEducationEditHandler} education={selectedEducation} />}
         <div className={classes.container1}>
-          <img className={classes.circle} src={USER.avatar} alt=""/>
-          <div className={classes.text}>{USER.name}</div>
+          <img className={classes.circle} src={avatar} alt="" />
+          {editName === false ? (
+            <>
+              <div className={classes.text}>{name}</div>
+              <button className={classes.makeupButton} onClick={() => setEditName(true)}>
+                <img className={classes.edit} src={editButton} alt="" />
+              </button>
+            </>
+          ) : (
+            <>
+              <input className={classes.text} value={name} onChange={(e) => setName(e.target.value)} style={{ width: "15%" }}></input>
+              <button
+                className={classes.makeupButton}
+                onClick={() => {
+                  handleSubmit();
+                  setEditName(false);
+                }}
+              >
+                <img className={classes.save} src={saveButton} alt="" />
+              </button>
+            </>
+          )}
         </div>
         <div id="list-example" className={classes["group-item"]}>
           <a className={`list-group-item list-group-item-action ${classes.style1}`} href="#list-item-1">
@@ -282,6 +323,9 @@ const Account = (props) => {
               >
                 <div className={classes.style3}>Edit</div>
               </button>
+              <span style={{ fontSize: 'large' }}>
+                |
+              </span>
               <button
                 className={classes.edit}
                 onClick={() => {
