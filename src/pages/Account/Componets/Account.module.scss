@@ -15,12 +15,29 @@
   }
 
   .text {
-    font-family: "Poppins";
+    margin-left: 80px;
     font-style: normal;
     font-weight: 600;
     font-size: 25px;
     line-height: 38px;
-    margin-left: 80px;
+    
+  }
+  input {
+    border-radius: 15px;
+    padding-left: 1%;
+  }
+  .makeupButton {
+    margin-right: 0px;
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+    .edit {
+      height: 25px;
+      width: 22px;
+    }
+    .save {
+      height: 30px;
+      width: 25px;
+    }
   }
 }
 
@@ -189,6 +206,7 @@
     width: 93%;
     margin: 0 auto;
     padding-bottom: 1rem;
+
     &:hover {
       background-color: #ABEDED;
     }
@@ -202,7 +220,7 @@
       word-wrap: break-word;
       color: #FF0000;
     }
-  
+
     .font {
       font-weight: 500;
       font-size: 17px;
