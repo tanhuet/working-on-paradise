@@ -1,0 +1,58 @@
+.job {
+  padding: 10px;
+  padding-left: 0;
+  display: flex;
+  justify-content: space-between;
+
+  svg {
+    margin: 5px;
+  }
+}
+.info {
+  display: flex;
+  justify-content: space-between;
+}
+.info .logo img {
+  width: 40px;
+  height: 40px;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+
+.info .detail {
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 22px;
+  color: #000000;
+}
+
+.info .introduction {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.btn button {
+  border: none;
+  background-color: white;
+}
+
+.skill {
+  // border: solid;
+  margin-top: 10px;
+  margin-left: -15px;
+}
+
+.skill-items {
+  display: flex;
+  margin: 0;
+}
+
+.item {
+  // width: 4rem;
+  padding: 7px 12px;
+  margin-right: 10px;
+  background: #7beadf;
+  border-radius: 60px;
+  color: rgba(0, 0, 0, 1);
+  font-weight: 600;
+  font-size: 13px;
+}

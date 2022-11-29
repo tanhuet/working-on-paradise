@@ -83,7 +83,7 @@ const Highlight = (props) => {
           <button className={classes.button1} onClick={handleSubmit}>
             {props.skills.button}
           </button>
-          <div className={classes.icon1}>
+          {/* <div className={classes.icon1}>
             <button className={classes.btn} onClick={followHanlder}>
               {!props.skills.bookmark && (
                 <svg
@@ -108,7 +108,7 @@ const Highlight = (props) => {
                 </svg>
               )}
             </button>
-          </div>
+          </div> */}
         </div>
         {!status && (
           <div className={classes.box}>

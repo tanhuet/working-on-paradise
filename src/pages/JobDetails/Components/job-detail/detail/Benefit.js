@@ -5,17 +5,6 @@ import locationImg from "../../../../../asses/nawest.png";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { useState } from "react";
-const DUMYJOB = {
-  logo: locationImg,
-  companyName: "NatWest. Group",
-  location: "NatWest. Group - London, UK",
-  recruitment: "Enterprise Architect",
-  location1: "NatWest. Group - London, UK",
-  recruitment1: "Privacy Officer",
-  jobName: "UI/UX Desgin",
-  type: "Part Time",
-  submittedDate: "12/12/2012",
-};
 
 const Benefit = (props) => {
   const [status, setStatus] = useState(props.benefit.redirect);

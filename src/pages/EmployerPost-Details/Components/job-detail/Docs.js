@@ -9,7 +9,7 @@ const Docs = (props) => {
   const [textarea1, setTextarea1] = useState(props.docs.description);
   const [textarea2, setTextarea2] = useState(props.docs.requirements);
   const [textarea3, setTextarea3] = useState(props.docs.benefits);
-  const [textarea4, setTextarea4] = useState("");
+  const [textarea4, setTextarea4] = useState(props.docs.about);
   const [salary, setSalary] = useState(props.docs.salary);
   const [typeOfWorking, setTypeOfWorking] = useState(props.docs.typeOfWorking);
   const [gender, setGender] = useState(props.docs.gender);
@@ -98,14 +98,22 @@ const Docs = (props) => {
                 <li>
                   <p>
                     Salary:{" "}
-                    <input type="number" onChange={handleChangeSalary} />
+                    <input
+                      type="number"
+                      onChange={handleChangeSalary}
+                      placeholder={salary}
+                    />
                     <span>$</span>
                   </p>
                 </li>
                 <li>
                   <p>
                     Type of Job:{" "}
-                    <input type="text" onChange={handleChangeType}></input>
+                    <input
+                      type="text"
+                      onChange={handleChangeType}
+                      placeholder={typeOfWorking}
+                    ></input>
                   </p>
                 </li>
 
@@ -113,8 +121,15 @@ const Docs = (props) => {
                   <p>
                     Gender:{" "}
                     <select onChange={handleChangeGender}>
-                      <option value={props.docs.gender}>--Choose--</option>
-                      <option value="male">Male</option>
+                      <option
+                        value={props.docs.gender}
+                        disabled
+                        selected
+                        hidden
+                      >
+                        {props.docs.gender}
+                      </option>
+                      {<option value="male">Male</option>}
                       <option value="female">Female</option>
                     </select>
                   </p>
@@ -126,18 +141,31 @@ const Docs = (props) => {
                 <li>
                   <p>
                     Quantity:{" "}
-                    <input type="number" onChange={handleChangeQuantity} />
+                    <input
+                      type="number"
+                      onChange={handleChangeQuantity}
+                      placeholder={quantity}
+                    />
                   </p>
                 </li>
                 <li>
                   <p>
-                    Position: <input type="text" onChange={handleChangePos} />
+                    Position:{" "}
+                    <input
+                      type="text"
+                      onChange={handleChangePos}
+                      placeholder={pos}
+                    />
                   </p>
                 </li>
                 <li>
                   <p>
                     Experience:
-                    <input type="number" onChange={handleChangeExp} />
+                    <input
+                      type="number"
+                      onChange={handleChangeExp}
+                      placeholder={exp}
+                    />
                     <span> years</span>
                   </p>
                 </li>
@@ -152,7 +180,11 @@ const Docs = (props) => {
           <Link>
             <div className={classes["info"]}>
               <form>
-                <textarea name="textValue" onChange={handleChange1} />
+                <textarea
+                  name="textValue"
+                  onChange={handleChange1}
+                  placeholder={textarea1}
+                />
               </form>
             </div>
           </Link>
@@ -164,7 +196,11 @@ const Docs = (props) => {
           <Link>
             <div className={classes["info"]}>
               <form>
-                <textarea name="textValue2" onChange={handleChange2} />
+                <textarea
+                  name="textValue2"
+                  onChange={handleChange2}
+                  placeholder={textarea2}
+                />
               </form>
             </div>
           </Link>
@@ -176,7 +212,11 @@ const Docs = (props) => {
           <Link>
             <div className={classes["info"]}>
               <form>
-                <textarea name="textValue3" onChange={handleChange3} />
+                <textarea
+                  name="textValue3"
+                  onChange={handleChange3}
+                  placeholder={textarea4}
+                />
               </form>
             </div>
           </Link>
@@ -188,7 +228,11 @@ const Docs = (props) => {
           <Link>
             <div className={classes["info"]}>
               <form>
-                <textarea name="textValue4" onChange={handleChange4} />
+                <textarea
+                  name="textValue4"
+                  onChange={handleChange4}
+                  placeholder={textarea3}
+                />
               </form>
             </div>
           </Link>

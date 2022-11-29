@@ -1,5 +1,4 @@
 import { Fragment, useEffect, useState } from "react";
-
 import Offer from "./detail/Offer";
 import Highlight from "./overview/Highlight";
 import Requirement from "./detail/Requirement";
@@ -8,7 +7,6 @@ import axios from "axios";
 import Benefit from "./detail/Benefit";
 import React from "react";
 import { useSelector } from "react-redux";
-import { redirect } from "react-router-dom";
 function createString(Strings, text) {
   const description = Strings?.split(text);
   return description;

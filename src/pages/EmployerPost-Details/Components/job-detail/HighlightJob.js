@@ -72,6 +72,7 @@ const HighlightJob = () => {
     description: persons.description,
     requirements: persons.requirements,
     benefits: persons.benefits,
+    about: persons.authorAbout,
   };
   let PERSON = {
     handleFuntion: callbackHandlerFunction,

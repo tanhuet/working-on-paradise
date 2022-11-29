@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import classes from "./Highlight.module.scss";
 import locationImg from "../../../../../asses/bg-defaut.png";
 import { Google } from "../../../../../components/icon/google";
@@ -7,25 +7,45 @@ import axios from "axios";
 import ReactImageFallback from "react-image-fallback";
 import config from "../../../../../config/index";
 import { useNavigate } from "react-router-dom";
-
+import swal from "sweetalert";
 const Highlight = (props) => {
   const userStore = useSelector((state) => state.auth.login?.currentUser);
   function handleSubmit(event) {
-    let text = "Do you confirm submitting your cv?";
-    if (window.confirm(text) === true) {
-      axios
-        .post(`https://tanhuet.site/job/${props.skills.id}/apply`, "", {
-          headers: { Authorization: `Bearer ${userStore.accessToken}` },
-        })
-        .then(function (response) {
-          props.skills.handleFuntion(true);
-          window.alert(response.data);
-        })
-        .catch(function (error) {
-          console.log(error);
-          window.alert("Something Wrong");
+    swal({
+      title: "Are you sure?",
+      text: "When you click Ok, you will submit your CV to the employer",
+      icon: "warning",
+      buttons: true,
+    }).then((willAccept) => {
+      if (willAccept) {
+        swal(
+          "Poof! Your information has been changed!",
+          {
+            icon: "success",
+          },
+          axios
+            .post(`https://tanhuet.site/job/${props.skills.id}/apply`, "", {
+              headers: { Authorization: `Bearer ${userStore.accessToken}` },
+            })
+            .then(function (response) {
+              props.skills.handleFuntion(true);
+              swal("Your CV has been submitted successfully", {
+                icon: "success",
+              });
+            })
+            .catch(function (error) {
+              console.log(error);
+              swal("Something wrong!", {
+                icon: "error",
+              });
+            })
+        );
+      } else {
+        swal("Your information remains unchanged!", {
+          icon: "info",
         });
-    }
+      }
+    });
   }
 
   const navigate = useNavigate();
@@ -103,7 +123,7 @@ const Highlight = (props) => {
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="45px"
-                  fill="currentColor"
+                  fill="#48CCCD"
                   class="bi bi-bookmark"
                   viewBox="0 0 16 16"
                 >
@@ -114,7 +134,7 @@ const Highlight = (props) => {
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="45px"
-                  fill="currentColor"
+                  fill="#48CCCD"
                   class="bi bi-bookmark-fill"
                   viewBox="0 0 16 16"
                 >

@@ -1,57 +1,58 @@
 .main {
-    margin-top: 5rem;
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
+  margin-top: 5rem;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .job-list {
-    margin-left: 5rem;
-    width: 60%;
+  margin: auto;
+  width: 60%;
 }
 
 .title {
-    padding: 40px;
-    background-color: #9BE4E4;
-    border-radius: 60px 60px 0px 0px;;
+  padding: 40px;
+  background-color: #9be4e4;
+  border-radius: 60px 60px 0px 0px;
 }
 
 .title p {
-    margin: 0;
-    padding: 0;
-    text-shadow: 0px 4px 25px rgba(0, 0, 0, 0.75);
-    color: #FFFFFF;
-    font-weight: 600;
-    font-size: 30px;
-    line-height: 45px;
+  margin: 0;
+  padding: 0;
+  text-shadow: 0px 4px 25px rgba(0, 0, 0, 0.75);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 45px;
 }
 
 .title span {
-    margin: 0;
-    padding: 0;
-    font-size: 20px;
-    line-height: 30px;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  line-height: 30px;
 }
 
 .list {
-    padding: 20px;
+  padding: 20px;
+  height: 800px;
+  overflow-y: scroll;
 }
 
 .recomended-list {
-    margin-right: 60px;
+  margin-right: 60px;
 }
 
 .break {
-    height: 5rem;
+  height: 5rem;
 }
 
 .page-controller {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .page-controller button {
-    margin-left: 1rem;
-    margin-right: 1rem;
-    border-radius: 50%;
+  background-color: transparent;
+  border: none;
 }

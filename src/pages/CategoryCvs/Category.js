@@ -1,128 +1,104 @@
-import { Fragment, useEffect, useState } from "react"
+import { Fragment, useEffect, useState } from "react";
 // import Card from "../../components/UI/Card"
-import CategoryTop from "./Components/CategoryTop"
-import JobList from "./Components/JobList"
-import { useSelector } from "react-redux"
-import config from "../../config"
-import axios from "axios"
+import CategoryTop from "./Components/CategoryTop";
+import JobList from "./Components/JobList";
+import { useSelector } from "react-redux";
+import config from "../../config";
+import axios from "axios";
+import Contact from "./Components/Contact";
 // import locationImg from "../../asses/img-location.png"
 
-const Category = () => {
+const CategoryCvs = () => {
+  //state
+  const [page, setPage] = useState(5);
 
-    //state
-    const [page, setPage] = useState(1)
+  //get API
+  const userStore = useSelector((state) => state.auth.login?.currentUser);
+  const [entireJobs, setEntireJobs] = useState();
 
-    //get API
-    const userStore = useSelector((state) => state.auth.login?.currentUser);
-    const [entireJobs, setEntireJobs] = useState();
-    const [recomendedJobs, setRecomendJobs] = useState(null);
+  //panigator
+  const nextPageHandler = () => {
+    setPage((pre) => {
+      return pre + 5;
+    });
+  };
 
-    //panigator
-    const nextPageHandler = () => {
-        setPage(pre => {
-            return pre + 1
-        })
-    }
+  // const prePageHandler = () => {
+  //     setPage(pre => {
+  //         if (pre > 1) {
+  //             return pre - 1
+  //         } else {
+  //             return pre
+  //         }
+  //     })
+  // }
 
-    const prePageHandler = () => {
-        setPage(pre => {
-            if (pre > 1) {
-                return pre - 1
-            } else {
-                return pre
-            }
-        })
-    }
-
-    useEffect(() => {
-        axios.get(`${config.api.url}/job/getPageSuggestion/7/${page.toString()}`)
-            .then((res) => {
-                setEntireJobs(res.data);
-            })
-            .catch(err => {
-                console.log(err)
-            });
-        if (userStore) {
-            if (userStore.role === 'JobSeeker')
-            axios.get(`${config.api.url}/job/recommend/3`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } })
-                .then((res) => {
-                    setRecomendJobs(res.data);
-                })
-                .catch(err => {
-                    console.log(err)
-                });
+  useEffect(() => {
+    axios
+      .get(
+        `${config.api.url}/employer/recommend-jobseeker/${page.toString()}`,
+        {
+          headers: { Authorization: `Bearer ${userStore.accessToken}` },
         }
-    }, [userStore, page])
+      )
+      .then((res) => {
+        setEntireJobs(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [userStore, page]);
+  // convert api to object
+  let jobs = [];
+  let topJobs = [];
+  if (entireJobs) {
+    jobs = entireJobs.map((job) => {
+      return {
+        id: job.id,
+        logo: job.avatar,
+        companyName: job.username,
+        location: job.address,
+        category: job.username,
+        jobType: job.typeOfJob,
+        experience: job.experience,
+        salary: job.salary,
+        skills: ["Skills", "Designer", "Full-time"],
+      };
+    });
 
-    // convert api to object
-    let jobs = [];
-    let topJobs = [];
-    if (entireJobs) {
-        jobs = entireJobs.map((job) => {
-            let tags = job.tags.replace(" ", '').split(",")
-            tags = tags.slice(0, 7)
-            return {
-                id: job.id,
-                logo: job.authorAvatar,
-                companyName: job.authorName,
-                location: job.authorAddress,
-                category: job.title,
-                jobType: job.typeOfWorking,
-                experience: job.exp,
-                salary: job.salary,
-                skills: tags,
-            }
-        })
-        
-        if (jobs) {
-            topJobs = jobs.slice(0, 3)
-            topJobs = topJobs.map((job) => {
-                // let tags = job.tags.replace(" ", '').split(",")
-                let tags = job.skills.slice(0, 2)
-                return {
-                    id: job.id,
-                    logo: job.logo,
-                    companyName: job.companyName,
-                    location: job.location,
-                    category: job.category,
-                    jobType: job.jobType,
-                    experience: job.experience,
-                    salary: job.salary,
-                    skills: tags,
-                }
-            })
-        }
+    if (jobs) {
+      topJobs = jobs.slice(0, 3);
+      topJobs = topJobs.map((job) => {
+        // let tags = job.tags.replace(" ", '').split(",")
+        let tags = job.skills.slice(0, 2);
+        return {
+          id: job.id,
+          logo: job.logo,
+          companyName: job.companyName,
+          location: job.location,
+          category: job.category,
+          jobType: job.jobType,
+          experience: job.experience,
+          salary: job.salary,
+          skills: tags,
+        };
+      });
     }
-    let rJ = []
-    if (recomendedJobs !== null) {
-        rJ = recomendedJobs.map((job) => {
-            return {
-                id: job.id,
-                companyName: job.authorName,
-                logo: job.authorAvatar,
-                jobs: [{
-                    id: "1",
-                    category: job.title,
-                    jobType: job.typeOfWorking,
-                    location: job.authorAddress,
-                }, {
-                    id: "2",
-                    category: job.title,
-                    jobType: job.typeOfWorking,
-                    location: job.authorAddress,
-            }]
-            }
-        })
-        // setRecomendJobs(rJ)
-    }
+  }
+  const CONTACT = {
+    hotline: "024 037547865",
+    company:
+      "E3, VietNam University of Ha Noi, 144 Xuan Thuy, Cau Giay, Ha Noi",
+    email: "uet@vnu.edu.vn",
+  };
+  return (
+    <Fragment>
+      <CategoryTop jobs={topJobs} entireJobs={jobs} />
+      <JobList jobs={jobs} onNextPage={nextPageHandler} />
+      <Contact contact={CONTACT} />
+    </Fragment>
+  );
+  //
+};
 
-    return (
-        <Fragment>
-            <CategoryTop jobs = {topJobs} entireJobs = {jobs} />
-            <JobList jobs ={jobs} recomendedJobs={rJ} onNextPage={nextPageHandler} onPrePage={prePageHandler} />
-        </Fragment>
-    )
-    // 
-}
-
-export default Category
+export default CategoryCvs;
