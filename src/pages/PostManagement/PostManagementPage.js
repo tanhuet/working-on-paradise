@@ -47,8 +47,8 @@ const PostManagementPage = () => {
   let profiles = [];
   if (profile) {
     profiles = profile.map((profile ) => {
-      let advanedSkill = profile.advanedSkill.replace(" ", '').split(",")
-      advanedSkill = advanedSkill.slice(0, 2)
+      let careerFeild = profile.careerFeild.replace(" ", '').split(",")
+      careerFeild = careerFeild.slice(0, 2)
       return {
         id: profile.id,
         avatar: profile.avatar,
@@ -57,7 +57,7 @@ const PostManagementPage = () => {
         age: profile.age,
         salary: profile.salary,
         jobType: profile.typeOfJob,
-        skills: advanedSkill,
+        skills: careerFeild,
       }
     })
   }
