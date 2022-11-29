@@ -12,7 +12,7 @@ const Layout = (props) => {
             <main>
                 {props.children}
             </main>
-            <Footer/>
+            {props.isFooter && <Footer/>}
         </div>
     )
 }

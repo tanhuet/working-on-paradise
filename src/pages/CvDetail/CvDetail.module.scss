@@ -138,12 +138,44 @@
 
   .own-info {
     margin-bottom: 7rem;
+    display: flex;
+    justify-content: left;
+    align-items: center; 
+      .own-info-icon {
+        border-radius: 20px;
+        display: block;
+        padding: 0px 5px;
+        background-color: rgba(255, 148, 77, 1);
+        margin-left: -4.7rem;
+        margin-right: 3rem;
+
+        div {
+          margin-top: 24px;
+          margin-bottom: 24px;
+        }
+      }
+
   }
 
   .education,
   .skills {
+    .head {
+      display: flex;
+      // border: solid;
+      justify-content: left;
+      align-items: center;
+      margin-left: -4.7rem;
+      margin-bottom: 2rem;
+
+      .icon {
+        background-color: rgba(255, 148, 77, 1);
+        border-radius: 50%;
+        padding: 8px;
+      }
+    } 
+
     h2 {
-      margin-top: 3rem;
+      margin-left: 3rem;
       font-weight: 700;
       font-size: 21px;
       line-height: 19px;
