@@ -111,11 +111,11 @@ const SetUpAccJobSeeker = (props) => {
   return (
     <div className={`container-fluid ${classes["set-up-acc"]}`} style={{ fontWeight: "bold" }}>
       <div className={`row`}>
-        <div className={`col-sm-5 ${classes["img-setting"]}`}>
+        <div className={`col-lg-4 col-md-12 col-sm-12 ${classes["img-setting"]}`}>
           <img src={settingImage}></img>
         </div>
         {/* colum content */}
-        <div className={`col-sm-6`}>
+        <div className={`col-lg-7 col-md-12 col-sm-12`}>
           {/* row-content in colum content */}
           <div className={`row ${classes["row-in-column"]}`}>
             <div className={classes["title"]}>Set Up Account</div>
@@ -169,7 +169,7 @@ const SetUpAccJobSeeker = (props) => {
           <div className={`row ${classes["row-in-column"]}`}>
             <div className={`col-sm-3 ${classes["row-in-column-content"]}`}>Desired Salary:</div>
             <div className={`col-sm-9`}>
-              <input type="number" value={desiredSalary} onChange={handleChangeDesiredSalary} required></input>
+              <input type="number" value={desiredSalary} onChange={handleChangeDesiredSalary} style={{height: '100%'}} required></input>
             </div>
           </div>
 
