@@ -1,7 +1,26 @@
+import { useSelector } from "react-redux";
 import CVPage from "./Component/CV-page";
 import address from "../../asses/address.png";
 import google from "../../asses/google.png";
+import config from "../../config";
+import axios from "axios";
+import { useState, useEffect } from "react";
 const Cv = () => {
+  const userStore = useSelector((state) => state.auth.login?.currentUser);
+  const [recomendedJobs, setRecomendJobs] = useState(null);
+  useEffect(() => {
+    if (userStore.role === "JobSeeker") {
+      axios
+        .get(`${config.api.url}/job/recommend/1`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } })
+        .then((res) => {
+          setRecomendJobs(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [userStore]);
+  
   const CVS = [
     {
       id: 1,
@@ -44,7 +63,25 @@ const Cv = () => {
       skills: ["cloud", "react"],
     },
   ];
-  return <CVPage cvs={CVS} items={ITEMS} jobs={JOBS} />;
+
+  let rJ = []
+  if (recomendedJobs !== null) {
+      rJ = recomendedJobs.map((job) => {
+          return {
+              id: job.id,
+              companyName: job.authorName,
+              logo: job.authorAvatar,
+              jobName: job.title,
+              address: job.authorAddress,
+              position: job.positions,
+              salary: job.salary,
+              jobType: job.typeOfWorking,
+              slot: job.slots,
+          }
+      })
+      // setRecomendJobs(rJ)
+  }
+  return <CVPage cvs={CVS} items={ITEMS} jobs={JOBS} recomendedJobs={rJ}/>;
 };
 
 export default Cv;

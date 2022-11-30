@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import config from "../../../config";
 import axios from "axios";
+import RecommendedJob from "../../../components/recommended-job/RecommendedJob";
 
 const CVPage = (props) => {
   const userStore = useSelector((state) => state.auth.login?.currentUser);
@@ -45,41 +46,56 @@ const CVPage = (props) => {
               </div>
             </div>
           </div>
-          <div className={classes["created-cv"]}>
-            <div className={classes["create-cv"]}>
-              <div className={classes["header-create-cv"]}>
-                <div className={classes["title-create-cv"]}>Created CV</div>
-                <Link to="/cv/:cvld">
-                  <MdOutlineAddCircle className={classes["add-cv-btn"]} />
-                </Link>
-              </div>
-              <div className={classes["body-create-cv"]}>
-                {listCv.map((cv, index) => (
-                  <CvCard CvName={"CV-" + index} CvLink={cv} />
-                ))}
+          <div className={`row`}>
+            <div className={`col-lg-8 col-md-8 ${classes["created-cv"]}`}>
+              <div className={classes["create-cv"]}>
+                <div className={classes["header-create-cv"]}>
+                  <div className={classes["title-create-cv"]}>Created CV</div>
+                  <Link to="/cv/:cvld">
+                    <MdOutlineAddCircle className={classes["add-cv-btn"]} />
+                  </Link>
+                </div>
+                <div className={classes["body-create-cv"]}>
+                  {listCv.map((cv, index) => (
+                    <CvCard CvName={"CV-" + index} CvLink={cv} />
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-
-        <div className={classes["body-right"]}>
-          <div className={`col-sm-4 ${classes["Recommended-job"]}`}>
-            {props.items.map((item) => (
-              <RecomendedJob
-                key={item.id}
-                companyName={item.companyName}
-                logo={item.logo}
-                jobs={item.jobs}
-              />
-            ))}
+            <div className={`col-lg-4 col-md-4 ${classes["created-cv"]}`}>
+              <div className={classes["body-right"]}>
+                <div className={classes["Recommended-job"]}>
+                  {props.recomendedJobs.map((item) => (
+                    // <RecomendedJob
+                    //   key={item.id}
+                    //   companyName={item.companyName}
+                    //   logo={item.logo}
+                    //   jobs={item.jobs}
+                    // />
+                    <RecommendedJob
+            key={item.id}
+            id={item.id}
+            companyName={item.companyName}
+            logo={item.logo}
+            jobName={item.jobName}
+            address={item.address}
+            position={item.position}
+            salary={item.salary}
+            jobType={item.jobType}
+            slot={item.slot}
+          />
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
       <div className={classes["body-bottom"]}>
         <div className={classes["title"]}>
-          <span style={{ color: "#FFCC00" }}>IDEAL </span>
-          <span>POSITION FOR </span>
+          <span style={{ color: "#FFCC00" }}>IDEAL&#160;</span>
+          <span>POSITION&#160;FOR&#160;</span>
           <span style={{ color: "#FFCC00" }}>YOU</span>
         </div>
 

@@ -76,11 +76,11 @@ const SetUpAccEmployer = (props) => {
       style={{ fontWeight: "bold" }}
     >
       <div className={`row`}>
-        <div className={`col-sm-5 ${classes["img-setting"]}`}>
+        <div className={`col-md-5 col-sm-12 ${classes["img-setting"]}`}>
           <img src={settingImage}></img>
         </div>
         {/* colum content */}
-        <div className={`col-sm-6`}>
+        <div className={`col-md-6 col-sm-12`}>
           {/* row-content in colum content */}
           <div className={`row ${classes["row-in-column"]}`}>
             <div className={classes["title"]}>Set Up Account</div>
@@ -95,6 +95,8 @@ const SetUpAccEmployer = (props) => {
               <input
                 type="number"
                 value={size}
+                min='0'
+                style={{width: '100px'}}
                 onChange={handleChangeSize}
                 required
               ></input>
@@ -110,6 +112,7 @@ const SetUpAccEmployer = (props) => {
               <input
                 type="text"
                 value={address}
+                style={{width: '100%'}}
                 onChange={handleChangeAddress}
                 required
               ></input>

@@ -21,7 +21,7 @@ const AddPostEmployer = (props) => {
   const [tags, setTags] = useState("");
 
   const userStore = useSelector((state) => state.auth.login?.currentUser);
-  const [startTime, setStartTime] = useState("2022/10/11");
+  const [startTime, setStartTime] = useState();
   const handleChangeStartTime = (event) => {
     setStartTime(event.target.value);
   };
@@ -153,10 +153,10 @@ const AddPostEmployer = (props) => {
                 <input
                   onChange={handleChangeJobTitle}
                   value={jobTitle}
-                  style={{ fontSize: "30px", fontWeight: "500" }}
+                  style={{ fontSize: "30px", fontWeight: "500", border: '2px solid rgba(213, 246, 246, 0.5)', borderRadius: '10px', paddingLeft: '5px' }}
                 ></input>
                 <br />
-                <span style={{ marginTop: "10px" }}>
+                <span style={{ marginTop: "10px", paddingLeft: '5px' }}>
                   <h3>{user?.address}</h3>
                 </span>
               </div>
@@ -194,24 +194,25 @@ const AddPostEmployer = (props) => {
                       </span>
                     </li>
 
-                    <li>
+                    <li  style={{marginBottom: '32px'}}>
                       <p1>Gender:</p1>
                       <br />
                       <select
                         className={`ui dropdown`}
                         value={dropDownOption}
                         onChange={handleChangeDropDown}
-                        style={{ height: "auto" }}
+                        style={{ height: "auto", borderRadius: '10px' }}
                       >
                         <option value="male">Male</option>
                         <option value="female">Female</option>
                       </select>
                     </li>
                     <li>
-                      <span>
-                        Start Time:{" "}<br/>
+                      <span className={classes.text}>
+                        <pl>Start Time:</pl>{" "}<br/>
                         <input
                           type="date"
+                          min="2000-01-01" max="2222-12-31"
                           value={startTime}
                           onChange={handleChangeStartTime}
                           required
@@ -257,10 +258,11 @@ const AddPostEmployer = (props) => {
                       </span>
                     </li>
                     <li>
-                      <span>
+                      <span className={classes.text}>
                         End Time:{" "}<br/>
                         <input
                           type="date"
+                          min="2000-01-01" max="2222-12-31"
                           value={endTime}
                           onChange={handleChangeEndTime}
                           required

@@ -1,5 +1,5 @@
 .container-background {
-  padding: 10px 180px;
+  // padding: 10px 180px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -14,7 +14,8 @@
     .advertisement {
       display: flex;
       flex-direction: row;
-      width: fit-content;
+      width: 90%;
+      min-width: 680px;
       padding: 60px 60px 60px 0px;
       background: #c3efef;
       border-radius: 60px;
@@ -37,17 +38,20 @@
           line-height: 45px;
           color: #ffffff;
           text-shadow: 0px 4px 50px rgba(0, 0, 0, 0.8);
+          text-align: center;
         }
       }
       .div-create-cv {
         display: flex;
         text-align: center;
         justify-content: center;
+        width: 100%;
         .button-create-cv {
+          width: auto;
           margin-top: 20px;
           background: #00ced1;
           box-shadow: 0px 4px 50px 10px rgba(0, 251, 255, 0.75);
-          border-radius: 20px;
+          border-radius: 15px;
           font-weight: 700;
           font-size: 20px;
           color: #ffffff;
@@ -58,7 +62,7 @@
     }
     .created-cv {
       margin-top: 50px;
-      width: 50%;
+      // width: 50%;
       .header-create-cv {
         padding: 10px 0 10px 25px;
         background: #9be4e4;
@@ -143,7 +147,7 @@
     align-items: center;
     justify-content: center;
 
-    span {
+    span{
       font-weight: 700;
       font-size: 50px;
       line-height: 75px;
