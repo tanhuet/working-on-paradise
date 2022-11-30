@@ -44,7 +44,7 @@ const LoginPage = (props) => {
           <div className={classes["input-box"]}>
             <div className={classes["userAnswer"]} style={{position: 'relative'}}>
             
-            <i className={`fa fa-user-circle-o ${classes.icon}`} aria-hidden="true"></i>
+            <i className={`fa fa-user-circle-o ${classes.icon}`} style={{marginLeft: '14px'}} aria-hidden="true"></i>
               <input
                 value={username}
                 onChange={handleChangeUsername}
@@ -56,7 +56,7 @@ const LoginPage = (props) => {
             </div>
 
             <div className={classes["password"]} style={{position: 'relative'}}>
-            <i className={`fa fa-lock ${classes.icon}`} aria-hidden="true"></i>
+            <i className={`fa fa-lock ${classes.icon}`} style={{marginLeft: '14px'}} aria-hidden="true"></i>
               <input
                 value={password}
                 onChange={handleChangePassword}
