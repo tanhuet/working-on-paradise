@@ -288,7 +288,7 @@ const AddPostEmployer = (props) => {
             <div className={classes["item-list"]}>
               <div className={classes["items-1"]}>
                 <div id="list-item-1" className={classes.title}>
-                  <div className={classes.makeup} style={{ width: "154px" }}>
+                  <div className={classes.makeup} style={{ width: "200px" }}>
                     <div className={classes.style1}>Job Description</div>
                   </div>
                 </div>
