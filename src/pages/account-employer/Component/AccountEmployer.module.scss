@@ -131,6 +131,7 @@
 
 .data {
     width: 850px;
+    min-width: 850px;
     height: 307px;
     margin-left: 50px;
     overflow: auto;
@@ -257,5 +258,10 @@
         }
     }
 }
-
+.map {
+    text-align: -webkit-center;
+    justify-content: center;
+    align-items: center;
+    display: -webkit-inline-box;
+}
 
