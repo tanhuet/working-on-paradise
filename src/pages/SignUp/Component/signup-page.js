@@ -297,7 +297,7 @@ const Register = (props) => {
             <div className={`form-group row`}>
               {/* <div class="col-sm-2"></div> */}
               <div className={`col-sm-`}>
-                <div className={classes["form-check"]} style={{marginTop: '30px'}}>
+                <div className={classes["form-check"]} style={{marginTop: '10px'}}>
                   <input
                     checked={remember}
                     onChange={handleChangeCheckBox}

@@ -85,7 +85,7 @@ const AccountEmployer = (props) => {
         </div>
 
         <div className={`row`}>
-          <div className={`col-xl-9`}>
+          <div className={`col-xl-8`}>
             <div
               data-spy="scroll"
               data-target="#list-example"
@@ -242,10 +242,10 @@ const AccountEmployer = (props) => {
               </div>
             </div>
           </div>
-          <div className={`col-xl-3 ${classes.map}`}>
+          <div className={`col-xl-4 ${classes.map}`}>
             <div
               className={`d-flex justify-content-center`}
-              style={{ marginLeft: "10%" }}
+              style={{ margin: '125px 65px', border: '4px solid #EEEEEE', borderRadius: '10px' }}
             >
               <Iframe
                 title="myFrame"

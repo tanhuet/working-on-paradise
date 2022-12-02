@@ -42,7 +42,7 @@ const ForgotPassWordPage = (props) => {
 
         <div className={classes["submit-button"]}>
           <button className={classes["reset-button"]} onClick={handleSubmit}>
-            Reset PassWord
+            Reset Password
           </button>
           <br />
           <button className={classes["login-button"]}>
