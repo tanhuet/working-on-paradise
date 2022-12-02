@@ -16,6 +16,8 @@ const Category = () => {
   const [entireJobs, setEntireJobs] = useState();
   const [recomendedJobs, setRecomendJobs] = useState(null);
 
+  const { innerWidth: width } = window;
+
   //panigator
   const nextPageHandler = () => {
     setPage((pre) => {
@@ -75,7 +77,11 @@ const Category = () => {
   if (entireJobs) {
     jobs = entireJobs.map((job) => {
       let tags = job.tags.replace(" ", "").split(",");
-      tags = tags.slice(0, 7);
+      if (width <= 1111) {
+        tags = tags.slice(0, 5);
+      } else {
+        tags = tags.slice(0, 5);
+      }
       return {
         id: job.id,
         logo: job.authorAvatar,
@@ -91,7 +97,11 @@ const Category = () => {
     });
     console.log(jobs);
     if (jobs) {
-      topJobs = jobs.slice(0, 3);
+      if (width <= 1000) {
+        topJobs = jobs.slice(0, 2);
+      } else {
+        topJobs = jobs.slice(0, 3);
+      }
       topJobs = topJobs.map((job) => {
         // let tags = job.tags.replace(" ", '').split(",")
         let tags = job.skills.slice(0, 2);
