@@ -171,6 +171,7 @@ const AddPostEmployer = (props) => {
                   <ul>
                     <li>
                       <p1>Salary:</p1>
+                      <br/>
                       <span>
                         {" "}
                         <input

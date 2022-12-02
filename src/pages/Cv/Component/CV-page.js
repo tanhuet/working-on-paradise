@@ -100,6 +100,8 @@ const CVPage = (props) => {
         </div>
 
         <div className={`row ${classes["idea-job"]}`}>
+          <div className={`col`}
+          style={{display: 'flex', justifyContent: 'end'}}>
           {props.jobs.map((job) => (
             <HighlightJob
               // class = {classes.red}
@@ -114,6 +116,9 @@ const CVPage = (props) => {
               maxSalary={job.maxSalary}
             />
           ))}
+          </div>
+          <div className={`col`}
+          style={{display: 'flex', justifyContent: 'center'}}>
           {props.jobs.map((job) => (
             <HighlightJob
               // class = {classes.red}
@@ -128,6 +133,9 @@ const CVPage = (props) => {
               maxSalary={job.maxSalary}
             />
           ))}
+          </div>
+          <div className={`col`}
+          style={{display: 'flex', justifyContent: 'start'}}>
           {props.jobs.map((job) => (
             <HighlightJob
               // class = {classes.red}
@@ -142,6 +150,7 @@ const CVPage = (props) => {
               maxSalary={job.maxSalary}
             />
           ))}
+          </div>
         </div>
       </div>
     </div>
