@@ -250,7 +250,7 @@ const Register = (props) => {
                 <input
                   value={passWord}
                   onChange={handleChangePassword}
-                  type="text"
+                  type="password"
                   // style={{ fontFamily: "FontAwesome" }}
                   placeholder="Password"
                   required
@@ -268,7 +268,7 @@ const Register = (props) => {
                 <input
                   value={confirmPassWord}
                   onChange={handleChangeConfirmPassWord}
-                  type="text"
+                  type="password"
                   // style={{ fontFamily: "FontAwesome" }}
                   placeholder="Confirm Password"
                   required

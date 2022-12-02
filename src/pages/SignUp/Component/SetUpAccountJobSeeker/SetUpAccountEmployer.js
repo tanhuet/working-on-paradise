@@ -4,6 +4,8 @@ import { useState } from "react";
 import React, { useEffect } from "react";
 import axios from "axios";
 import config from "../../../../config";
+import swal from "sweetalert";
+import { useNavigate } from "react-router-dom";
 
 const SetUpAccEmployer = (props) => {
   const [size, setSize] = useState("");
@@ -33,7 +35,7 @@ const SetUpAccEmployer = (props) => {
   const handleChangeAddress = (event) => {
     setAddress(event.target.value);
   };
-
+  let navigate = useNavigate();
   const handleSubmitButton = async (event) => {
     event.preventDefault();
     const formDataWallpaper = new FormData();
@@ -67,6 +69,16 @@ const SetUpAccEmployer = (props) => {
     const newJobseeker = await axios.post(
       `${config.api.url}/employer`,
       DUMMYJOBSEEKER
+    )
+    .then((res) => {
+      swal("Success!", "Your account has been created!", "success").then(() => {
+        navigate("/login");
+      });
+    })
+    .catch((err) =>
+      swal("Error!", err.response.data, "error").then(() => {
+        navigate("/signup");
+      })
     );
   };
 
