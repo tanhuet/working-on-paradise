@@ -53,12 +53,12 @@ const SetUpAccJobSeeker = (props) => {
     setAddress(event.target.value);
   };
   const handleChangeCV = (event) => {
-    // setCv(event.target.value);
+    setCv(event.target.value);
 
     setSelectCV(event.target.files[0]);
   };
   const handleChangeAvatar = (event) => {
-    // setCv(event.target.value);
+    setAvatar(event.target.value);
 
     setSelectAvatar(event.target.files[0]);
   };
@@ -220,7 +220,7 @@ const SetUpAccJobSeeker = (props) => {
           <div className={`row ${classes["row-in-column"]}`}>
             <div className={`col-sm-3 ${classes["row-in-column-content"]}`}>Avatar:</div>
             <div className={`col-sm-9`}>
-              <input type="file" value={avatar} onChange={handleChangeAvatar} />
+              <input type="file" onChange={handleChangeAvatar}  value={avatar}/>
             </div>
           </div>
 

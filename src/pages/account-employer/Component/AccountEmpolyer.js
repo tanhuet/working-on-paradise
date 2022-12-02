@@ -215,7 +215,7 @@ const AccountEmployer = (props) => {
                   >
                     <div
                       className={classes.font}
-                      style={{ height: "400px", padding: "20px" }}
+                      style={{ height: "auto", padding: "20px" }}
                     >
                       <div className={classes.styleborder}>{introduction}</div>
                     </div>
@@ -244,8 +244,8 @@ const AccountEmployer = (props) => {
           </div>
           <div className={`col-xl-4 ${classes.map}`}>
             <div
-              className={`d-flex justify-content-center`}
-              style={{ margin: '125px 65px', border: '4px solid #EEEEEE', borderRadius: '10px' }}
+              className={`d-flex justify-content-center ${classes.map2}`}
+              style={{ border: '4px solid #EEEEEE', borderRadius: '10px' }}
             >
               <Iframe
                 title="myFrame"

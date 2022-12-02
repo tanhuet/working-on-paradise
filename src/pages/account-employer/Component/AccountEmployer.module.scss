@@ -264,4 +264,9 @@
     align-items: center;
     display: -webkit-inline-box;
 }
+@media only screen and (min-width: 1200px) {
+    .map2 {
+      margin: 125px 65px 375px 65px;
+    }
+  }
 
