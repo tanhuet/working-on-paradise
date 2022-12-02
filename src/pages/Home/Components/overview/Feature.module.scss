@@ -1,5 +1,5 @@
 .feature {
-    width: 70%;
+    width: 100%;
     margin: 1rem auto;
     align-items: center;
 }
@@ -27,11 +27,12 @@
 
 .step {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    width: 100%;
 }
 
-.step .cart {
-    position: relative;
+.step .card {
+    margin: 0 30px;
 }
 
 .header {
@@ -42,7 +43,7 @@
 }
 
 .info {
-    height: 260px;
+    height: 240px;
     position: relative;
     border-radius: 40px;
     background-color: white;
@@ -72,6 +73,7 @@
     
 }
 .footer {
+    // margin: 0 10px;
     margin-left: 20px;
     width: 192.47px;
     height: 156.7px;
@@ -92,4 +94,95 @@
 
 .apply {
     background: #B0E0E6;
+}
+
+@media only screen and (max-width: 1000px) {
+    .feature {
+        width: 100%;
+        margin: 1rem auto;
+        align-items: center;
+    }
+    .param {
+        margin-bottom: 3rem;
+        text-align: center;
+    }
+    
+    .param p {
+        color: #318081;
+        font-weight: 600;
+        font-size: 15px;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .param h1 {
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        color: #235B5C;
+        font-weight: 700;
+        font-size: 30px;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .step {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        width: 100%;
+        // border: solid;
+        margin: 0 10px;
+    }
+    
+    .step .card {
+        margin: 0 0px;
+    }
+    
+    .header {
+        z-index: 3;
+        width: 150.47px;
+        height: 156.7px;
+        border-radius: 40px;
+    }
+    
+    .info {
+        height: 200px;
+        position: relative;
+        border-radius: 40px;
+        background-color: white;
+        margin: -152px 30px -152px 5px;
+        padding: 70px 20px;
+        z-index: 2;
+        // display: none;
+    }
+    
+    
+    .info a{
+        font-family: 'Poppins';
+        font-style: normal;
+        text-decoration: none;
+        color: black;
+        margin: 0;
+        padding: 0;
+        font-weight: bold;
+        font-size: 20px;
+    }
+    
+    .info p {
+        color: #A9A9A9;
+        margin: 0;
+        padding: 0;
+        font-weight: 500;
+        font-size: 14px;
+        
+    }
+    .footer {
+        margin-bottom: 30px;
+        margin-left: 20px;
+        margin-top: -10px;
+        width: 143.47px;
+        height: 156.7px;
+        border-radius: 40px;
+        z-index: 1;
+        // display: none;
+    }
 }

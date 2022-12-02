@@ -39,3 +39,39 @@
     left: 540px;
     top: 3780px;
 }
+
+@media only screen and (max-width: 1000px) {
+    .background-first {
+        width: 1000px;
+        height: 1000px;
+        left: -373px;
+        top: -386px;
+    }
+    
+    .background-second{
+        width: 700px;
+        height: 700px;
+        left: 265px;
+        top: 864px;
+    }
+    
+    .background-third{
+        width: 900px;
+        height: 900px;
+        left: 150px;
+        top: 2500px;
+    }
+    
+    .background-fourth {
+        display: none;
+        width: 1000px;
+        height: 1000px;
+        border-top-right-radius:0;
+        border-top-left-radius:100%;
+        border-bottom-right-radius:0;
+        border-bottom-left-radius:0;
+        background: #C0F2F2;
+        left: 540px;
+        top: 3780px;
+    }
+}
