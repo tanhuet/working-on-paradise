@@ -46,16 +46,15 @@
     display: flex;
 }
 
-li img {
+.main li img {
     padding: 5px;
-    
     height: 65px;
     width: 65px;
     border-radius: 25px;
     margin-right: 0;
 }
 
-li p {
+.main li p {
     margin-left: 50px;
     color: black;
     font-weight: bold;
@@ -72,4 +71,69 @@ li p {
 
 .location {
     background: #AED75B;
+}
+
+@media only screen and (max-width: 1000px) {
+    .service {
+        margin: 5rem 0;
+        margin-bottom: 8rem;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .service-img {
+        margin-left: 40px;
+        margin-right: 40px;
+    }
+    
+    .service-img img {
+        height: 300px;
+        width: 300px;
+    }
+
+    .text {
+        color: #808080;
+
+        h2 {
+            font-size: 20px;
+        }
+    }
+    
+    .text span {
+        color: #0099CC
+    }
+    
+    .main {
+        font-style: normal;
+        font-weight: 700;
+        margin-right: 16rem;
+    }
+    
+    .main ul {
+        margin-left: -30px;
+        padding: 0;
+        list-style: none;
+    }
+    
+    .main li {
+        margin: 20px 0 ;
+        align-items: center;
+        display: flex;
+    }
+    
+    .main li img {
+        padding: 5px;
+        height: 50px;
+        width: 50px;
+        border-radius: 25px;
+        margin-right: -2rem;
+    }
+    
+    .main li p {
+        margin-left: 50px;
+        color: black;
+        font-weight: bold;
+        font-size: 12px;
+    }
 }
