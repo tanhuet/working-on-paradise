@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins');
+
 .find-job {
     font-family: 'Poppins';
     font-style: normal;
@@ -12,7 +13,7 @@
 }
 
 .find-job section h1 {
-    font-size: 40px;
+    font-size: 50px;
 }
 
 .find-job p {
@@ -63,6 +64,11 @@
     align-items: center;
     width: 85%;
     margin: 5rem auto;
+
+    img {
+        width: 50px;
+        height: 50px;
+    }
 }
 .job {
     margin: -1rem 1.5rem;
@@ -94,4 +100,108 @@
     font-size: 15px;
     margin: 0;
     padding: 0;
+}
+
+@media only screen and (max-width: 1000px) {
+
+    .attainment { 
+        svg {
+            height: 30px;
+            width: 30px;
+        }
+        img {
+            height: 30px;
+            width: 30px;
+        }
+    }
+    
+    .find-job section h1 {
+        font-size: 40px;
+    }
+
+    .find-job section h2 {
+        font-size: 20px;
+    }
+    
+    .find-job p {
+        text-shadow: none;
+        font-size: 12px;
+    }
+    
+    .find-job span {
+        color: #2A6E6F;
+    }
+    
+    .find-job form {
+        margin-top: 20px;
+        margin-left: 20px;
+    }
+    
+    .find-job form input {
+        padding-left: 20px;
+        height: 45px;
+        width: 350px;
+        background: #FFFFFF;
+        border-radius: 400px;
+        border: none;
+    }
+    
+    .find-job form button {
+        border: none;
+        margin-left: -85px;
+        background: #48CCCD;
+        border-radius: 400px;
+        width: 81px;
+        height: 40px;
+        font-weight: bold;
+        font-size: 14px;
+    }
+    
+    .find-job form button:hover {
+        cursor: pointer;
+        background-color: #2A6E6F;
+    }
+    
+    .attainment {
+        background: #C0F2F2;
+        border-radius: 40px;
+        padding: 0 40px;
+        border: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 85%;
+        margin: 5rem auto;
+    }
+    .job {
+        margin: -1rem 1.5rem;
+        display: flex;
+        align-items: center;
+    }
+    
+    .attainment .icon {
+        margin: 2rem;
+        padding: 10px;
+        background: #FFFFFF;
+        border-radius: 25px;
+    }
+    
+    .attainment .info {
+        margin-left: -1rem;
+        font-weight: bold;
+    }
+    
+    .attainment h3 {
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        font-size: 24px;
+        color: #2A6E6F;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .attainment p {
+        font-size: 12px;
+        margin: 0;
+        padding: 0;
+    }
 }

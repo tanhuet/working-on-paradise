@@ -1,21 +1,27 @@
 .header {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  
+  top: 0;
+  padding: 0 0px;
+  background: #6CE0E0;
+  position: sticky;
+  z-index: 100;
+  margin: 0 -100%;
+
   .nav {
-    width: 100%;
-    margin: 0;
+    max-width: 1350px;
+    margin: 0 auto;
     padding: 0;
+    background: #6CE0E0 !important;
+    width: 100%;
     
     .container {
+      margin: 0 auto;
+      width: 100%;
       font-size: 16px;
       color: rgba(0, 0, 0, 1);
       font-family: 'Poppins';
       font-style: normal;
       font-weight: 600;
       background: #6CE0E0;
-      margin: 0;
       padding: 10px;
       display: flex;
       justify-content: space-around;
@@ -142,4 +148,40 @@
       }
     }
   }
+}
+
+@media only screen and (max-width: 990px) { 
+
+  .input {
+    margin-bottom: 5px;
+  }
+
+  .messager-icon {
+    display: none;
+  }
+
+}
+
+@media only screen and (min-width: 991px) {
+  .messager {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 1600px) {
+  .header {
+    top: 0;
+    padding: 0 0px;
+    background: #6CE0E0;
+    position: sticky;
+    z-index: 100;
+    width: 100%;
+    margin: 0 0px;
+    .nav {
+      margin: 0 auto;
+      padding: 0;
+      background: #6CE0E0;
+      width: 100%;
+    }
+  }  
 }
