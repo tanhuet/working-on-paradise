@@ -38,19 +38,34 @@ if (password === confirmPassword) {
 
         <div className={classes["account-forgot-pass"]}>
           <div className={classes["input-box"]}>
-            <div className={classes["password"]}>
+            <div className={classes["password"]}
+            style={{ position: "relative" }}>
+              <i
+                style={{marginLeft: '14px'}}
+                  className={`fa fa-lock ${classes.icon}`}
+                  aria-hidden="true"
+                ></i>
               <input
                 type="password"
                 style={{ fontFamily: "FontAwesome" }}
-                placeholder=" &#xf0e0; New Password"
+                placeholder="New Password"
                 onChange={onChangePassword}
                 value={password}
                 required
               />
+              
+            </div>
+            <div className={classes["password"]}
+            style={{ position: "relative" }}>
+              <i
+                style={{marginLeft: '14px'}}
+                  className={`fa fa-lock ${classes.icon}`}
+                  aria-hidden="true"
+                ></i>
               <input
                 type="password"
                 style={{ fontFamily: "FontAwesome" }}
-                placeholder=" &#xf0e0; Confirm Password"
+                placeholder="Confirm Password"
                 onChange={onChangeConfirmPassword}
                 value={confirmPassword}
                 required

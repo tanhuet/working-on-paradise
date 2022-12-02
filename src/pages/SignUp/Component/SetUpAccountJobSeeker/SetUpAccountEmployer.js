@@ -18,12 +18,12 @@ const SetUpAccEmployer = (props) => {
     setSize(event.target.value);
   };
   const handleChangeWallpaper = (event) => {
-    // setCv(event.target.value);
+    setWallpaper(event.target.value);
 
     setSelectWallpaper(event.target.files[0]);
   };
   const handleChangeAvatar = (event) => {
-    // setCv(event.target.value);
+    setAvatar(event.target.value);
 
     setSelectAvatar(event.target.files[0]);
   };
