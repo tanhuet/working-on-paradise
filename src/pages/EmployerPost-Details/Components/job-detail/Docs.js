@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import swal from "sweetalert";
+import config from "../../../../config";
 const Docs = (props) => {
   const userStore = useSelector((state) => state.auth.login?.currentUser);
   const [status, setStatus] = useState(false);
@@ -61,7 +62,7 @@ const Docs = (props) => {
         swal(
           axios
             .put(
-              `https://tanhuet.site/job/${props.docs.id}`,
+              `${config.api.url}/job/${props.docs.id}`,
               {
                 description: textarea1,
                 requirements: textarea2,
@@ -85,10 +86,7 @@ const Docs = (props) => {
             .then(function (response) {
               swal("Poof! Your information has been changed!", {
                 icon: "success",
-              }).then(
-                props.docs.saveFuntion(false),
-                props.docs.callbackHandlerFunction(false, "Edit")
-              );
+              }).then(props.docs.saveFuntion(false), props.docs.callbackHandlerFunction(false, "Edit"));
               //
             })
             .catch(function (error) {
@@ -119,23 +117,13 @@ const Docs = (props) => {
               <ul>
                 <li>
                   <p>
-                    Salary:{" "}
-                    <input
-                      type="number"
-                      onChange={handleChangeSalary}
-                      placeholder={salary}
-                    />
+                    Salary: <input type="number" onChange={handleChangeSalary} placeholder={salary} />
                     <span>$</span>
                   </p>
                 </li>
                 <li>
                   <p>
-                    Type of Job:{" "}
-                    <input
-                      type="text"
-                      onChange={handleChangeType}
-                      placeholder={typeOfWorking}
-                    ></input>
+                    Type of Job: <input type="text" onChange={handleChangeType} placeholder={typeOfWorking}></input>
                   </p>
                 </li>
 
@@ -143,12 +131,7 @@ const Docs = (props) => {
                   <p>
                     Gender:{" "}
                     <select onChange={handleChangeGender}>
-                      <option
-                        value={props.docs.gender}
-                        disabled
-                        selected
-                        hidden
-                      >
+                      <option value={props.docs.gender} disabled selected hidden>
                         {props.docs.gender}
                       </option>
                       {<option value="male">Male</option>}
@@ -162,32 +145,18 @@ const Docs = (props) => {
               <ul>
                 <li>
                   <p>
-                    Quantity:{" "}
-                    <input
-                      type="number"
-                      onChange={handleChangeQuantity}
-                      placeholder={quantity}
-                    />
+                    Quantity: <input type="number" onChange={handleChangeQuantity} placeholder={quantity} />
                   </p>
                 </li>
                 <li>
                   <p>
-                    Position:{" "}
-                    <input
-                      type="text"
-                      onChange={handleChangePos}
-                      placeholder={pos}
-                    />
+                    Position: <input type="text" onChange={handleChangePos} placeholder={pos} />
                   </p>
                 </li>
                 <li>
                   <p>
                     Experience:
-                    <input
-                      type="number"
-                      onChange={handleChangeExp}
-                      placeholder={exp}
-                    />
+                    <input type="number" onChange={handleChangeExp} placeholder={exp} />
                     <span> years</span>
                   </p>
                 </li>
@@ -202,11 +171,7 @@ const Docs = (props) => {
           <Link>
             <div className={classes["info"]}>
               <form>
-                <textarea
-                  name="textValue"
-                  onChange={handleChange1}
-                  placeholder={textarea1}
-                />
+                <textarea name="textValue" onChange={handleChange1} placeholder={textarea1} />
               </form>
             </div>
           </Link>
@@ -218,11 +183,7 @@ const Docs = (props) => {
           <Link>
             <div className={classes["info"]}>
               <form>
-                <textarea
-                  name="textValue2"
-                  onChange={handleChange2}
-                  placeholder={textarea2}
-                />
+                <textarea name="textValue2" onChange={handleChange2} placeholder={textarea2} />
               </form>
             </div>
           </Link>
@@ -234,11 +195,7 @@ const Docs = (props) => {
           <Link>
             <div className={classes["info"]}>
               <form>
-                <textarea
-                  name="textValue3"
-                  onChange={handleChange3}
-                  placeholder={textarea4}
-                />
+                <textarea name="textValue3" onChange={handleChange3} placeholder={textarea4} />
               </form>
             </div>
           </Link>
@@ -250,11 +207,7 @@ const Docs = (props) => {
           <Link>
             <div className={classes["info"]}>
               <form>
-                <textarea
-                  name="textValue4"
-                  onChange={handleChange4}
-                  placeholder={textarea3}
-                />
+                <textarea name="textValue4" onChange={handleChange4} placeholder={textarea3} />
               </form>
             </div>
           </Link>
