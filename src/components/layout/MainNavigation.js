@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 import classes from "./MainNavigation.module.scss";
 import { useNavigate } from "react-router-dom";
@@ -8,6 +8,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { logoutSuccess } from "../../store/auth-slice";
 
 const MainNavigation = () => {
+  const [isDisplayAccount, setIsDisplayAccount] = useState(false)
+
   const user = useSelector((state) => state.auth.login?.currentUser);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -22,6 +24,12 @@ const MainNavigation = () => {
   const searchHander = (e) => {
     e.preventDefault()
     navigate(`/category?filter=${suggestion.current.value}`)
+  }
+
+  const displayHandler = () => {
+    setIsDisplayAccount(pre => {
+      return !pre
+    })
   }
 
   return (
@@ -81,11 +89,43 @@ const MainNavigation = () => {
                 <li className={`nav-item ${classes.messager}`}>
                   <NavLink className="nav-link" href="#" to="/message">Chat</NavLink>
                 </li>
-                <li className="nav-item">
-                <NavLink className={`nav-link ${classes['btn-logout']}`} href="#" to="/account">{user.name}</NavLink>
+                <li className={classes['messager-icon']}> {/* notification icon not mesanger icon*/}
+                  <NavLink>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="black" class="bi bi-bell-fill" viewBox="0 0 16 16">
+                    <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
+                  </svg>
+                  </NavLink>
                 </li>
-                <li className={`nav-item`}>
-                  <NavLink className="nav-link" href="#" to="/signin" onClick={handleLogout}>Logout</NavLink>
+                <li className="nav-item">
+                <NavLink className={`nav-link ${classes['btn-logout']}`} href="#" onClick={displayHandler}>{user.name}</NavLink>
+                {isDisplayAccount && 
+                  <div className={classes.test}>
+                    <NavLink to="/account">
+                      <div className={classes.logout}>
+                        <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                          <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                          <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                        </svg>
+                        </div>
+                        <div>
+                          <NavLink className="nav-link" href="#" to="/account">Account</NavLink>
+                        </div>
+                      </div>
+                    </NavLink>
+                    <NavLink to="/signin" onClick={handleLogout}>
+                      <div className={classes.logout}>
+                        <div>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-door-closed-fill" viewBox="0 0 16 16">
+                            <path d="M12 1a1 1 0 0 1 1 1v13h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V2a1 1 0 0 1 1-1h8zm-2 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                          </svg>
+                        </div>
+                        <div>
+                          <NavLink className="nav-link" href="#" to="/signin" onClick={handleLogout}>Logout</NavLink>
+                        </div>
+                      </div>
+                    </NavLink>
+                  </div>}
                 </li>
               </ul>
             ) : (
