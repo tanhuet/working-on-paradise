@@ -102,11 +102,11 @@ const HighlightJob = () => {
 
   return (
     <Fragment>
-      {!clickStatus && !save && <Highlight skills={PERSON} />}
+      {<Highlight skills={PERSON} />}
       {!clickStatus && !save && <Offer abc={description} />}
       {!clickStatus && !save && <Requirement req={requirements} />}
       {!clickStatus && !save && <About about={about} />}
-      {!clickStatus && !save && <Comment comment={persons.author} />}
+      {!clickStatus && !save && <Comment comment={id} />}
       {clickStatus && !save && <Docs docs={DOCS} />}
     </Fragment>
   );
