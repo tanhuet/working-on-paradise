@@ -185,10 +185,20 @@
     display: none;
   }
 
+  .username {
+    display: none;
+  }
+
 }
 
 @media only screen and (min-width: 991px) {
   .messager {
+    display: none;
+  }
+  .account-text {
+    display: none;
+  }
+  .logout-text {
     display: none;
   }
 }

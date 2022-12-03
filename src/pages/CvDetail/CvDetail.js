@@ -27,9 +27,9 @@ const CvDetail = (props) => {
           <button onClick={handleSaveToServer}>Export</button>
         </div>
         <div className={classes.name}>
-          <div>
+          {/* <div>
             <p>{CV.name}</p>
-          </div>
+          </div> */}
         </div>
         <div className={classes.cv}>
           <div className={classes["info1"]}>
@@ -37,7 +37,7 @@ const CvDetail = (props) => {
               <div className={classes.img}>
                 <img src={CV.logo} alt="..." />
               </div>
-              <p>Name</p>
+              {/* <p>Name</p> */}
               <div className={classes["name-user"]}>
                 <div>
                   <p>{CV.nameUser}</p>
