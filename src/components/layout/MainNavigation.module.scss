@@ -26,6 +26,31 @@
       display: flex;
       justify-content: space-around;
       align-items: center;
+
+      .test{
+        position: fixed;
+        border: solid thin white;
+        border-radius: 7px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        background-color: #FFFFFF;
+        width: 200px;
+        top: 50px;
+        right: 20px;
+        padding: 5px 10px;
+
+        .logout {
+          display: flex;
+          justify-content: left;
+          align-items: center;
+          margin: 3px 0;
+          a {
+            margin-left: 14px;
+            color: black;
+            font-weight: 500;
+            font-size: 14px;
+          }
+        }
+      }
       
       .img {
         height: 40px;
