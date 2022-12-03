@@ -1,7 +1,6 @@
 import classes from "./Benefit.module.scss";
 import { Link } from "react-router-dom";
 import Job from "./Job";
-import locationImg from "../../../../../asses/nawest.png";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { useState } from "react";
@@ -69,7 +68,11 @@ const Benefit = (props) => {
         </Link>
       </div>
       <div>
-        <button className={classes.button1} onClick={handleSubmit} disabled={props.benefit.status}>
+        <button
+          className={classes.button1}
+          onClick={handleSubmit}
+          disabled={props.benefit.status}
+        >
           {props.benefit.button}
         </button>
       </div>
