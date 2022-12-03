@@ -115,9 +115,9 @@ const EditCv = (props) => {
                 <button>Save</button>
             </div>
             <div className={classes.name}>
-                <div>
+                {/* <div>
                     <input type="text" placeholder="Cv's Name" defaultValue={CV.name}/>
-                </div>
+                </div> */}
             </div>
             <div className={classes.cv}>
                 <div className={classes['info1']}>
@@ -125,7 +125,8 @@ const EditCv = (props) => {
                         <div className={classes.img}>
                             <img src={CV.logo} alt="..."/>
                         </div>
-                        <p>Name</p>
+                        {/* <p>Name</p> */}
+                        <br />
                         <div className={classes['name-user']}>
                             <div>
                                 <input type="text" defaultValue={CV.nameUser} ref={userName}/>
