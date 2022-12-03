@@ -19,10 +19,6 @@ const Highlight = (props) => {
     }).then((willAccept) => {
       if (willAccept) {
         swal(
-          "Poof! Your information has been changed!",
-          {
-            icon: "success",
-          },
           axios
             .post(`https://tanhuet.site/job/${props.skills.id}/apply`, "", {
               headers: { Authorization: `Bearer ${userStore.accessToken}` },
@@ -41,7 +37,7 @@ const Highlight = (props) => {
             })
         );
       } else {
-        swal("Your information remains unchanged!", {
+        swal("Sent unsuccessfully", {
           icon: "info",
         });
       }

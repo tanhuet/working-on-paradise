@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import swal from "sweetalert";
 const Docs = (props) => {
   const userStore = useSelector((state) => state.auth.login?.currentUser);
   const [status, setStatus] = useState(false);
@@ -50,39 +51,60 @@ const Docs = (props) => {
     setExp(event.target.value);
   };
   if (status === true) {
-    let text = "Have you confirmed saving the changes?";
-    if (window.confirm(text) === true) {
-      axios
-        .put(
-          `https://tanhuet.site/job/${props.docs.id}`,
-          {
-            description: textarea1,
-            requirements: textarea2,
-            benefits: textarea3,
-            tags: props.docs.tags,
-            title: props.docs.title,
-            startTime: new Date().toISOString().slice(0, 10),
-            endTime: new Date().toISOString().slice(0, 10),
-            imageUrl: props.docs.imageUrl,
-            salary: salary,
-            typeOfWorking: typeOfWorking,
-            gender: gender,
-            positions: pos,
-            slots: quantity,
-            exp: exp,
-          },
-          {
-            headers: { Authorization: `Bearer ${userStore.accessToken}` },
-          }
-        )
-        .then(function (response) {
-          window.alert("Update success!");
-        })
-        .catch(function (error) {
-          console.log(error);
-          window.alert("Something Wrong");
+    swal({
+      title: "Are you sure?",
+      text: "Have you confirmed saving the changes?",
+      icon: "warning",
+      buttons: true,
+    }).then((willAccept) => {
+      if (willAccept) {
+        swal(
+          axios
+            .put(
+              `https://tanhuet.site/job/${props.docs.id}`,
+              {
+                description: textarea1,
+                requirements: textarea2,
+                benefits: textarea3,
+                tags: props.docs.tags,
+                title: props.docs.title,
+                startTime: new Date().toISOString().slice(0, 10),
+                endTime: new Date().toISOString().slice(0, 10),
+                imageUrl: props.docs.imageUrl,
+                salary: salary,
+                typeOfWorking: typeOfWorking,
+                gender: gender,
+                positions: pos,
+                slots: quantity,
+                exp: exp,
+              },
+              {
+                headers: { Authorization: `Bearer ${userStore.accessToken}` },
+              }
+            )
+            .then(function (response) {
+              swal("Poof! Your information has been changed!", {
+                icon: "success",
+              }).then(
+                props.docs.saveFuntion(false),
+                props.docs.callbackHandlerFunction(false, "Edit")
+              );
+              //
+            })
+            .catch(function (error) {
+              console.log(error);
+              swal(`Error: ${error?.response.data}`, {
+                title: "Something wrong!",
+                icon: "error",
+              });
+            })
+        );
+      } else {
+        swal("No changed", {
+          icon: "info",
         });
-    }
+      }
+    });
     setStatus(false);
   }
   return (

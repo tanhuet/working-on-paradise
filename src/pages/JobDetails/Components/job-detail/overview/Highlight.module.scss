@@ -238,3 +238,244 @@
   margin: 0;
   color: #000000;
 }
+
+@media only screen and (max-width: 1600px) {
+  .find-job {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: bold;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin-left: 90px;
+  }
+  .underHeader .factory {
+    display: flex;
+    justify-content: space-around;
+  }
+  .underHeader .button1 {
+    border: none;
+    background: #48cccd;
+    border-radius: 50px;
+    width: 205px;
+    height: 50px;
+    font-weight: bold;
+    font-size: 20px;
+    color: #ffffff;
+    font-family: "Poppins";
+    margin-left: 840px;
+    margin-top: 20px;
+  }
+  .icon1 .btn {
+    padding: 0;
+    margin: 0;
+    width: 55px;
+    border: none;
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+  }
+  .button2 {
+    border: none;
+    background: #ffffff;
+  }
+  .img1 {
+    width: 100%;
+    height: 417px;
+  }
+  .info1 {
+    display: block;
+  }
+  .info1 h3 {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 45px;
+    margin-top: 10px;
+  }
+  .info1 p {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 30px;
+    display: block;
+    width: max-content;
+    align-items: center;
+
+    color: rgba(0, 0, 0, 0.6);
+  }
+  .underHeader .factory .icon {
+    margin-top: -75px;
+  }
+  .underHeader .icon1 {
+    margin-top: 24px;
+    margin-left: -55px;
+  }
+  .find-job section {
+    // margin-left: 90px;
+  }
+
+  .find-job section h1 {
+    font-size: 50px;
+  }
+
+  .find-job p {
+    text-shadow: none;
+  }
+
+  .find-job span {
+    color: #2a6e6f;
+  }
+
+  .find-job form {
+    margin-left: 20px;
+  }
+
+  .find-job form input {
+    padding-left: 20px;
+    height: 45px;
+    width: 350px;
+    background: #ffffff;
+    border-radius: 400px;
+    border: none;
+  }
+
+  .find-job form button {
+    border: none;
+    margin-left: -85px;
+    background: #48cccd;
+    border-radius: 400px;
+    width: 81px;
+    height: 40px;
+    font-weight: bold;
+    font-size: 15px;
+  }
+
+  .find-job form button:hover {
+    cursor: pointer;
+    background-color: #2a6e6f;
+  }
+
+  .attainment {
+    background: #c0f2f2;
+    border-radius: 40px;
+    // padding: 0;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 75%;
+    margin: 5rem auto;
+  }
+  .job {
+    margin: -1rem 1.5rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .attainment .icon {
+    margin: 2rem;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 25px;
+  }
+
+  .attainment .info {
+    margin-left: -1rem;
+    font-weight: bold;
+  }
+
+  .attainment h3 {
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-size: 40px;
+    color: #2a6e6f;
+    padding: 0;
+    margin: 0;
+  }
+
+  .attainment p {
+    font-size: 15px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .skill-items {
+    display: flex;
+    margin-left: -35px;
+  }
+
+  .item {
+    padding: 12px 15px;
+    margin-right: 15px;
+    background: #7beadf;
+    border-radius: 80px;
+    color: rgba(0, 0, 0, 1);
+    font-weight: 600;
+    font-size: 20px;
+    font-family: "Poppins";
+  }
+  .box {
+    margin: auto;
+    margin-top: 5rem;
+    background: rgba(0, 206, 209, 0.7);
+    border-radius: 30px;
+    padding: 15px 15px;
+    display: block;
+    width: max-content;
+    min-width: 850px;
+    font-family: "Poppins";
+  }
+  .boxName {
+    margin-left: 20px;
+    padding: 2px 20px;
+    background: #ffffff;
+    width: 220px;
+    height: 35px;
+    border-radius: 7px;
+    color: rgba(0, 0, 0, 1);
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  .boxInfo {
+    display: flex;
+  }
+  .boxLeft {
+    display: block;
+    margin-left: 50px;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 38px;
+    color: #000000;
+  }
+  .boxRight {
+    display: block;
+    margin: auto;
+    font-size: 19px;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 38px;
+  }
+  .boxInfo li {
+    width: max-content;
+    margin-bottom: 40px;
+  }
+  .boxInfo p {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 38px;
+    margin: 0;
+    color: #000000;
+  }
+  .boxInfo p span {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 30px;
+    margin: 0;
+    color: #000000;
+  }
+}

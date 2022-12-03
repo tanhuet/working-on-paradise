@@ -16,7 +16,7 @@ const HighlightJob = () => {
   const userStore = useSelector((state) => state.auth.login?.currentUser);
   const [persons, setPerson] = useState({});
   const [clickStatus, setStatus] = useState(false);
-  const [save, setSave] = useState(true);
+  const [save, setSave] = useState(false);
   const [button, setButton] = useState("Edit");
   const curUrl = window.location.href;
   const [mark, setMark] = useState();
@@ -37,7 +37,7 @@ const HighlightJob = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [clickStatus]);
   const callbackSavehandle = (status) => {
     setSave(status);
   };
@@ -52,6 +52,7 @@ const HighlightJob = () => {
     id: id,
     save: save,
     saveFuntion: callbackSavehandle,
+    callbackHandlerFunction: callbackHandlerFunction,
     skill: skills,
     jobType: persons.authorName,
     icon: persons.authorAvatar,
@@ -102,12 +103,12 @@ const HighlightJob = () => {
 
   return (
     <Fragment>
-      <Highlight skills={PERSON} />
-      {!clickStatus && <Offer abc={description} />}
-      {!clickStatus && <Requirement req={requirements} />}
-      {!clickStatus && <About about={about} />}
-      {!clickStatus && <Comment comment={persons.author} />}
-      {clickStatus && <Docs docs={DOCS} />}
+      {!clickStatus && !save && <Highlight skills={PERSON} />}
+      {!clickStatus && !save && <Offer abc={description} />}
+      {!clickStatus && !save && <Requirement req={requirements} />}
+      {!clickStatus && !save && <About about={about} />}
+      {!clickStatus && !save && <Comment comment={persons.author} />}
+      {clickStatus && !save && <Docs docs={DOCS} />}
     </Fragment>
   );
 };

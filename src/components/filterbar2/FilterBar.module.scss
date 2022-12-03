@@ -1,0 +1,134 @@
+.bar {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+.filter {
+  padding: 10px;
+  // border: solid;
+  background-color: #9be4e4;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filter-button button {
+  background: none;
+  border: none;
+}
+
+.filter-search {
+  width: 1300px;
+}
+
+.filter-search input {
+  padding: 0 20px;
+  height: 40px;
+  border: none;
+  background: #ffffff;
+  border-radius: 60px;
+  width: 100%;
+  color: rgba(0, 0, 0, 0.5);
+  font-weight: 600;
+  font-size: 15px;
+}
+.filter-search input ::placeholder {
+  font-family: "Poppins";
+  font-weight: 600;
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(175, 233, 233, 0.8);
+  border-radius: 0px 0px 60px 60px;
+  padding: 40px;
+  padding-left: 60px;
+}
+
+.detail-left {
+  width: 40%;
+}
+
+.detail-left div {
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  // align-items: center;
+}
+
+.detail-left div p {
+  margin-top: 8px;
+  color: #000000;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 22px;
+}
+
+.detail-left div input {
+  padding: 0 10px;
+  background: #ffffff;
+  border-radius: 50px;
+  height: 40px;
+  width: 60%;
+  border: none;
+}
+
+.detail-left .salary .inputSalary input {
+  width: 20%;
+}
+.detail-left .salary .inputSalary {
+  margin-left: 25px;
+  justify-content: space-evenly;
+  font-family: "Poppins";
+  align-items: center;
+}
+.detail-right {
+  margin-left: 4rem;
+  flex: 1;
+}
+
+.detail-right div {
+}
+
+.detail-right .button1 {
+  border: none;
+  background: #48cccd;
+  border-radius: 50px;
+  height: 40px;
+  width: 115.38px;
+  font-weight: bold;
+  font-size: 15px;
+  color: #ffffff;
+  font-family: "Poppins";
+  margin-left: 450px;
+  margin-top: 20px;
+}
+.detail-right .title p {
+  margin: 0;
+  padding: 0;
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 22px;
+}
+
+.detail-right .btn {
+  margin-bottom: 10px;
+}
+
+.detail-right .btn button {
+  margin-left: 10px;
+  height: 40px;
+  width: 115.38px;
+  background: #ffffff;
+  border-radius: 50px;
+  border: none;
+}
+
+.exp button {
+  margin-top: 10px;
+}

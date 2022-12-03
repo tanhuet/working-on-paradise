@@ -1,8 +1,8 @@
 import { Fragment } from "react";
-import img from "../../../asses/category-job.png";
+import img from "../../../asses/nhansu.png";
 
 import classes from "./CategoryTop.module.scss";
-import FilterBar from "../../../components/filterbar/FilterBar";
+import FilterBar from "../../../components/filterbar2/FilterBar";
 import HighlightJob from "../../../components/highlight-job/HighlightJob";
 // import { useLocation } from "react-router-dom"
 
@@ -34,7 +34,7 @@ const CategoryTop = (props) => {
         <FilterBar filter={suggestion} />
       </div>
       <div className={classes["highligh-job"]}>
-        <p className={classes.title}>Exploring Amazing Jobs</p>
+        <p className={classes.title}>Exploring Amazing CVs</p>
         <div className={classes.list}>
           {props.jobs.map((job) => (
             <HighlightJob

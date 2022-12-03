@@ -49,8 +49,6 @@ function App() {
     }
   }, [location.pathname]);
 
-  console.log(isFooter, location.pathname);
-
   return (
     <Layout isFooter={isFooter}>
       <Routes>
