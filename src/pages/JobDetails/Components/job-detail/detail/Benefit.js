@@ -5,6 +5,7 @@ import locationImg from "../../../../../asses/nawest.png";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { useState } from "react";
+import config from "../../../../../config";
 
 const Benefit = (props) => {
   const [status, setStatus] = useState(props.benefit.redirect);
@@ -23,7 +24,7 @@ const Benefit = (props) => {
     let text = "Do you confirm submitting your cv?";
     if (window.confirm(text) === true) {
       axios
-        .post(`https://tanhuet.site/job/${props.benefit.id}/apply`, "", {
+        .post(`${config.api.url}/job/${props.benefit.id}/apply`, "", {
           headers: { Authorization: `Bearer ${userStore.accessToken}` },
         })
         .then(function (response) {
@@ -68,11 +69,7 @@ const Benefit = (props) => {
         </Link>
       </div>
       <div>
-        <button
-          className={classes.button1}
-          onClick={handleSubmit}
-          disabled={props.benefit.status}
-        >
+        <button className={classes.button1} onClick={handleSubmit} disabled={props.benefit.status}>
           {props.benefit.button}
         </button>
       </div>

@@ -8,6 +8,7 @@ import Comment from "./detail/Comment";
 import React from "react";
 import Docs from "./Docs";
 import { useSelector, useStore } from "react-redux";
+import config from "../../../../config";
 function createString(Strings, text) {
   const description = Strings?.split(text);
   return description;
@@ -23,13 +24,11 @@ const HighlightJob = () => {
   const id = curUrl.split("employer-post/")[1];
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios
-        .get(`https://tanhuet.site/job/${id}`)
-        .catch((error) => console.log(error));
+      const response = await axios.get(`${config.api.url}/job/${id}`).catch((error) => console.log(error));
       setPerson(response.data);
       if (useStore.role === "JobSeeker") {
         const marks = await axios
-          .get(`https://tanhuet.site/job/${id}/marked`, {
+          .get(`${config.api.url}/job/${id}/marked`, {
             headers: { Authorization: `Bearer ${userStore.accessToken}` },
           })
           .catch((error) => console.log(error));

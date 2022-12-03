@@ -3,13 +3,12 @@ import locationImg1 from "../../../../../asses/resume.png";
 import UserComment from "./UserComment";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import config from "../../../../../config";
 const Comment = (props) => {
   const [comments, setComment] = useState();
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios
-        .get(`https://tanhuet.site/employer/${props.comment}/comments`)
-        .catch((error) => console.log(error));
+      const response = await axios.get(`${config.api.url}/employer/${props.comment}/comments`).catch((error) => console.log(error));
       setComment(response.data);
     };
     fetchData();
