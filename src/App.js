@@ -39,9 +39,11 @@ function App() {
   const [isFooter, setIsFooter] = useState(true);
   useEffect(() => {
     if (
+      // add path to display: none footer
       location.pathname === "/message" ||
       location.pathname === "/signin" ||
-      location.pathname === "/signup"
+      location.pathname === "/signup" ||
+      location.pathname === "/forgot" 
     ) {
       setIsFooter(false);
     } else {
