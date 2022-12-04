@@ -20,12 +20,11 @@ const HighlightJob = (props) => {
     }
 
     const scaleCompanyNameAndLocation = (str) => {
-        // let newStr;
-        // if (str.length > 17) {
-        //     newStr = str.slice(0, 15) + "..."
-        //     return newStr
-        // } 
-        return str
+        let newStr = str;
+        if (newStr.length < 24) {
+            newStr = str + "\n ..."
+        }
+        return newStr
     }
 
     const scaleExperienceAndJobType = (str) => {
@@ -75,7 +74,9 @@ const HighlightJob = (props) => {
                             </div>
                             <div className={classes.info}>
                                 <h3>{category}</h3>
-                                <p>{companyNameAndLocation}</p>
+                                {/* <p>{companyNameAndLocation}</p> */}
+                                <p>{props.companyName}</p>
+                                <p className={classes.location}>{props.location}</p>
                             </div>
                         </div>
                     </Link>

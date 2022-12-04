@@ -31,6 +31,38 @@
     font-size: 30px;
 }
 
-.recommened {
-
+@media only screen and (max-width: 1000px) {
+    .favourite {
+        width: 80%;
+        margin-left: 8%;
+    } 
+    
+    .wrap {
+        padding: 40px 10px 10px 10px;
+        background: #9BE4E4;
+        // border-radius: 60px 60px 0px 0px;
+        width: 100%;
+    }
+    
+    .filter-bar {
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+        margin-left: 0rem
+    }
+    
+    .title {
+        margin-left: 2rem;
+        background: #9BE4E4;
+        color: #FFFFFF;
+        text-shadow: 0px 4px 25px rgba(0, 0, 0, 0.75);
+        font-size: 15px;
+    }
+    
+    .title h1 {
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 30px;
+    }
 }
+
