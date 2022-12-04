@@ -6,6 +6,7 @@ import ButtonCamera from "../../../asses/ButtonCamera.png";
 import { useEffect, useState } from "react";
 import React from "react";
 import { Dropdown } from "semantic-ui-react";
+import { useNavigate } from "react-router-dom";
 
 const AddPostEmployer = (props) => {
   const [jobTitle, setJobTitle] = useState("Job Title");
@@ -79,6 +80,7 @@ const AddPostEmployer = (props) => {
   const handleChangeTags = (event, { data }) => {
     setTags(`${tags},${event.target.textContent}`);
   };
+  let navigate =  useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -108,6 +110,7 @@ const AddPostEmployer = (props) => {
       )
       .then((res) => {
         alert(res.data);
+        navigate('/post/management');
       })
       .catch((res) => {
         alert(res.response.data);

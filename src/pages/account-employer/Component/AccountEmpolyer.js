@@ -133,7 +133,7 @@ const AccountEmployer = (props) => {
                     </div>
                     <div className={classes.right}>
                       <div className={`${classes.font} ${classes.email}`}>
-                        <label>Email (Verified/Unverified): </label> <br />
+                        <label>Email: </label> <br />
                         {email}
                       </div>
                       <div className={`${classes.font} ${classes.size}`}>
