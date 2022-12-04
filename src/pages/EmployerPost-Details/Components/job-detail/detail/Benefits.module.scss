@@ -1,0 +1,101 @@
+a {
+  text-decoration: none;
+}
+.des {
+  display: flex;
+  margin-top: 6rem;
+  justify-content: center;
+}
+
+.card {
+  margin: auto;
+  box-shadow: 0px 4px 20px 5px rgba(119, 116, 116, 0.25);
+  width: 696px;
+  height: max-content;
+  padding: 10px;
+  background: #ffffff;
+  border-radius: 25px;
+  margin-top: 6rem;
+}
+
+.company {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  margin-left: 3px;
+  margin-top: 9px;
+}
+
+.company img {
+  width: 36.38px;
+  height: 30.61px;
+}
+
+.company .info {
+  margin-left: 10px;
+  margin-top: -20px;
+  margin-bottom: 3rem;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  color: #000000;
+}
+
+.info h3 {
+  color: #000000;
+  padding: 0;
+  margin: 0;
+}
+
+.info p {
+  padding: 0;
+  margin: 0;
+  font-size: 20px;
+}
+
+.job {
+  padding: 0;
+  margin: -25px;
+  margin-top: -3px;
+}
+
+.job ul {
+  list-style: none;
+}
+
+.card ul li {
+  color: #808080;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.card ul .name {
+  color: #000000;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.button {
+  width: 220.9px;
+  height: 70.69px;
+  margin-top: -30px;
+  margin-left: 1.2rem;
+}
+
+.btn {
+  text-decoration: none;
+  background: rgba(115, 217, 217, 0.7);
+  border-radius: 20px;
+  color: rgba(0, 0, 0, 0.75);
+  padding: 0.75rem 1.5rem;
+  border: 1px solid #00ced1;
+
+  cursor: pointer;
+  box-shadow: 0px 4px 30px rgba(0, 179, 179, 0.25);
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+}

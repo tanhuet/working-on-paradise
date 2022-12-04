@@ -7,6 +7,7 @@ import axios from "axios";
 import Comment from "./detail/Comment";
 import React from "react";
 import Docs from "./Docs";
+import Benefit from "./detail/Benefits";
 import { useSelector, useStore } from "react-redux";
 import config from "../../../../config";
 function createString(Strings, text) {
@@ -24,7 +25,9 @@ const HighlightJob = () => {
   const id = curUrl.split("employer-post/")[1];
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get(`${config.api.url}/job/${id}`).catch((error) => console.log(error));
+      const response = await axios
+        .get(`${config.api.url}/job/${id}`)
+        .catch((error) => console.log(error));
       setPerson(response.data);
       if (useStore.role === "JobSeeker") {
         const marks = await axios
@@ -99,13 +102,15 @@ const HighlightJob = () => {
   const description = createString(persons.description, "\n");
   const requirements = createString(persons.requirements, "\n");
   const about = createString(persons.authorAbout, "\n");
-
+  const benefit = createString(persons.benefits, "\n");
   return (
     <Fragment>
       {<Highlight skills={PERSON} />}
       {!clickStatus && !save && <Offer abc={description} />}
       {!clickStatus && !save && <Requirement req={requirements} />}
+
       {!clickStatus && !save && <About about={about} />}
+      {!clickStatus && !save && <Benefit req={benefit} />}
       {!clickStatus && !save && <Comment comment={id} />}
       {clickStatus && !save && <Docs docs={DOCS} />}
     </Fragment>
