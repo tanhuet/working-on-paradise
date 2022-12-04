@@ -12,6 +12,9 @@ const Favourite = () => {
   const userStore = useSelector((state) => state.auth.login?.currentUser);
   const [entireJobs, setEntireJobs] = useState();
   const [recomendedJobs, setRecomendJobs] = useState(null);
+
+  const { innerWidth: width } = window;
+
   useEffect(() => {
     if (userStore.role === "JobSeeker") {
       axios
@@ -38,7 +41,11 @@ const Favourite = () => {
   if (entireJobs) {
     jobs = entireJobs.map((job) => {
         let tags = job.tags.replace(" ", '').split(",")
-        tags = tags.slice(0, 7)
+        if (width < 1050) {
+          tags = tags.slice(0, 5)
+        } else {
+          tags = tags.slice(0, 6)
+        }
         return {
             id: job.id,
             logo: job.authorAvatar,

@@ -18,11 +18,11 @@ const Footer = () => {
                             <NavLink className={(navData) => (navData.isActive ? classes.active : '')} to='/home'>Home</NavLink>
                         </li>
                         <li>
-                            {userStore?.role === "JobSeeker" && <NavLink className={(navData) => (navData.isActive ? classes.active : '')} to='/category'>Category</NavLink>}
+                            {userStore?.role !== "Employer" && <NavLink className={(navData) => (navData.isActive ? classes.active : '')} to='/category'>Category</NavLink>}
                             {userStore?.role === "Employer" && <NavLink className={(navData) => (navData.isActive ? classes.active : '')} to='/post/management'>Post</NavLink>}
                         </li>
                         <li>
-                            {userStore?.role === "JobSeeker" && <NavLink className={(navData) => (navData.isActive ? classes.active : '')} to='/cv'>CV</NavLink>}
+                            {userStore?.role !== "Employer" && <NavLink className={(navData) => (navData.isActive ? classes.active : '')} to='/cv'>CV</NavLink>}
                             {userStore?.role === "Employer" && <NavLink className={(navData) => (navData.isActive ? classes.active : '')} to='/employer-cv'>CV</NavLink>}
                         </li>
                         <li>

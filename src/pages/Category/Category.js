@@ -80,7 +80,7 @@ const Category = () => {
       if (width <= 1111) {
         tags = tags.slice(0, 5);
       } else {
-        tags = tags.slice(0, 5);
+        tags = tags.slice(0, 6);
       }
       return {
         id: job.id,
