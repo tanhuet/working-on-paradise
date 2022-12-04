@@ -69,7 +69,7 @@ const MainNavigation = () => {
                   <NavLink className="nav-link" href="#" to="/post/management">Post</NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink className="nav-link" href="#" to="/Cv">CV</NavLink>
+                  <NavLink className="nav-link" href="#" to="/employer-cv">CV</NavLink>
                 </li>
               </ul>
             )}

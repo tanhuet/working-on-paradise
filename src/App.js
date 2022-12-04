@@ -44,7 +44,8 @@ function App() {
       location.pathname === "/message" ||
       location.pathname === "/signin" ||
       location.pathname === "/signup" ||
-      location.pathname === "/forgot"
+      location.pathname === "/forgot" ||
+      location.pathname.slice(0,15) === "/reset-password"
     ) {
       setIsFooter(false);
     } else {
@@ -68,13 +69,13 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/cv/:cvId" element={<CvDetailPage />} />
         {userStore?.role === "JobSeeker" && <Route path="/account" element={<AccountPage />} />}
+        {userStore?.role === "Employer" && <Route path="/account" element={<AccEmp />} />}
         {userStore?.role === "Employer" && <Route path="/account/:jobseekerId" element={<JobSeekerInfor />} />}
         <Route path="/details/:id" element={<JobDetail />} />
         <Route path="/post/management" element={<PostManagementPage />} />
         <Route path="/employer-post/:id" element={<EmployerJobDetail />} />
         <Route path="/employer-cv" element={<CategoryCvs />} />
         {/* <Route path="/accountEmployer" element={<AccountEmployer />} /> */}
-        <Route path="/accountEmployer" element={<AccEmp />} />
         {/* <Route path="/accountEmployer/employerEdit" element={<AccountEmployerEdit />} /> */}
         <Route path="/addPost" element={<AddPost />} />
         <Route path="/reset-password/:token" element={<ChangePassWord />} />
