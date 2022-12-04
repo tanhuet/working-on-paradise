@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import classes from "./Highlight.module.scss";
 import locationImg from "../../../../../asses/bg-defaut.png";
 import { Google } from "../../../../../components/icon/google";
@@ -6,9 +6,9 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import ReactImageFallback from "react-image-fallback";
 import config from "../../../../../config/index";
-import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 const Highlight = (props) => {
+  const [flag, setFlag] = useState(false);
   const userStore = useSelector((state) => state.auth.login?.currentUser);
   function handleSubmit(event) {
     swal({
@@ -30,8 +30,8 @@ const Highlight = (props) => {
               });
             })
             .catch(function (error) {
-              console.log(error);
-              swal("Something wrong!", {
+              swal(`Error: ${error?.response.data}`, {
+                title: "Something wrong!",
                 icon: "error",
               });
             })
@@ -44,24 +44,57 @@ const Highlight = (props) => {
     });
   }
 
-  const navigate = useNavigate();
   const followHanlder = async () => {
     if (userStore) {
       try {
-        const resFlag = await axios.get(`${config.api.url}/job/${props.skills.id}/marked`, {
-          headers: { Authorization: `Bearer ${userStore.accessToken}` },
-        });
-        if (!resFlag.data) {
-          await axios.post(`${config.api.url}/job/${props.skills.id}/mark`, {}, { headers: { Authorization: `Bearer ${userStore.accessToken}` } });
-          navigate("/favourite");
-        } else {
-          await axios.delete(`${config.api.url}/job/${props.skills.id}/unmark`, {
+        const resFlag = await axios.get(
+          `${config.api.url}/job/${props.skills.id}/marked`,
+          {
             headers: { Authorization: `Bearer ${userStore.accessToken}` },
-          });
-          window.location.reload(false);
+          }
+        );
+        if (!resFlag.data) {
+          await axios
+            .post(
+              `${config.api.url}/job/${props.skills.id}/mark`,
+              {},
+              { headers: { Authorization: `Bearer ${userStore.accessToken}` } }
+            )
+            .then(
+              swal("Success, Added to Favorite", {
+                icon: "success",
+              })
+            );
+          if (flag === false) {
+            props.skills.flagFuntion(true);
+            setFlag(true);
+          } else {
+            props.skills.flagFuntion(false);
+            setFlag(false);
+          }
+        } else {
+          await axios
+            .delete(`${config.api.url}/job/${props.skills.id}/unmark`, {
+              headers: { Authorization: `Bearer ${userStore.accessToken}` },
+            })
+            .then(
+              swal("Success, Deleted from Favorite", {
+                icon: "success",
+              })
+            );
+          if (flag === false) {
+            props.skills.flagFuntion(true);
+            setFlag(true);
+          } else {
+            props.skills.flagFuntion(false);
+            setFlag(false);
+          }
         }
       } catch (error) {
-        console.error(error);
+        swal(`Error: ${error?.response.data}`, {
+          title: "Something wrong!",
+          icon: "error",
+        });
       }
     }
   };
@@ -69,7 +102,12 @@ const Highlight = (props) => {
   return (
     <React.Fragment>
       <div className={classes.underHeader}>
-        <ReactImageFallback className={classes.img1} src={props.skills.imageUrl} alt=".." fallbackImage={locationImg} />
+        <ReactImageFallback
+          className={classes.img1}
+          src={props.skills.imageUrl}
+          alt=".."
+          fallbackImage={locationImg}
+        />
         <div className={classes.factory}>
           <div className={classes.icon}>
             <Google src={props.skills.icon} />
@@ -91,18 +129,34 @@ const Highlight = (props) => {
               </div>
             </div>
           </div>
-          <button className={classes.button1} onClick={handleSubmit} disabled={props.skills.status}>
+          <button
+            className={classes.button1}
+            onClick={handleSubmit}
+            disabled={props.skills.status}
+          >
             {props.skills.button}
           </button>
           <div className={classes.icon1}>
             <button className={classes.btn} onClick={followHanlder}>
               {!props.skills.bookmark && (
-                <svg xmlns="http://www.w3.org/2000/svg" width="45px" fill="#48CCCD" class="bi bi-bookmark" viewBox="0 0 16 16">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="45px"
+                  fill="#48CCCD"
+                  class="bi bi-bookmark"
+                  viewBox="0 0 16 16"
+                >
                   <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z" />
                 </svg>
               )}
               {props.skills.bookmark && (
-                <svg xmlns="http://www.w3.org/2000/svg" width="45px" fill="#48CCCD" class="bi bi-bookmark-fill" viewBox="0 0 16 16">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="45px"
+                  fill="#48CCCD"
+                  class="bi bi-bookmark-fill"
+                  viewBox="0 0 16 16"
+                >
                   <path d="M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z" />
                 </svg>
               )}

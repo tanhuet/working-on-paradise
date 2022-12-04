@@ -3,11 +3,13 @@ a {
 }
 
 .card {
+  margin: auto;
   margin-top: 80px;
+  margin-left: 20px;
   background: #e9fbfa;
   box-shadow: 0px 4px 20px 5px rgba(119, 116, 116, 0.25);
   border-radius: 40px;
-  width: 290px;
+  width: 350px;
   height: max-content;
   padding: 10px;
   align-items: center;
@@ -19,7 +21,7 @@ a {
   background: #ffffff;
   box-shadow: 0px 4px 20px 5px rgba(119, 116, 116, 0.25);
   border-radius: 40px;
-  width: 260px;
+  width: 320px;
   height: max-content;
   padding-bottom: 30px;
   margin-bottom: 20px;
@@ -145,7 +147,7 @@ hr {
 .makeup1 {
   margin-top: -10px;
   margin-left: -10px;
-  width: 290px;
+  width: 350px;
   height: 80px;
   background: #99e2e2;
   border-radius: 40px 40px 0px 0px;

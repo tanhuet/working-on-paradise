@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import { useState } from "react";
 import config from "../../../../../config";
+import swal from "sweetalert";
 
 const Benefit = (props) => {
   const [status, setStatus] = useState(props.benefit.redirect);
@@ -20,21 +21,37 @@ const Benefit = (props) => {
   const recomend = props.benefit.recommend;
   const userStore = useSelector((state) => state.auth.login?.currentUser);
   function handleSubmit(event) {
-    let text = "Do you confirm submitting your cv?";
-    if (window.confirm(text) === true) {
-      axios
-        .post(`${config.api.url}/job/${props.benefit.id}/apply`, "", {
-          headers: { Authorization: `Bearer ${userStore.accessToken}` },
-        })
-        .then(function (response) {
-          props.benefit.handleFuntion(true);
-          window.alert(response.data);
-        })
-        .catch(function (error) {
-          console.log(error);
-          window.alert("Something Wrong");
+    swal({
+      title: "Are you sure?",
+      text: "When you click Ok, you will submit your CV to the employer",
+      icon: "warning",
+      buttons: true,
+    }).then((willAccept) => {
+      if (willAccept) {
+        swal(
+          axios
+            .post(`${config.api.url}/job/${props.benefit.id}/apply`, "", {
+              headers: { Authorization: `Bearer ${userStore.accessToken}` },
+            })
+            .then(function (response) {
+              props.benefit.handleFuntion(true);
+              swal("Your CV has been submitted successfully", {
+                icon: "success",
+              });
+            })
+            .catch(function (error) {
+              swal(`Error: ${error?.response.data}`, {
+                title: "Something wrong!",
+                icon: "error",
+              });
+            })
+        );
+      } else {
+        swal("Sent unsuccessfully", {
+          icon: "info",
         });
-    }
+      }
+    });
   }
   return (
     <div>
