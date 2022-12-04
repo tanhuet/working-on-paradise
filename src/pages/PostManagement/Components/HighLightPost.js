@@ -23,11 +23,11 @@ const HighlightPost = (props) => {
                 if (willDelete) {
                     axios.delete(
                         `${config.api.url}/job/${props.id}`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } }
-                    ).then(() => {
-                        window.location.reload();
-                    })
+                    )
                     swal("Your post has been deleted!", {
                         icon: "success",
+                    }).then(() => {
+                        window.location.reload();
                     });
                 } else {
                     swal("Your post is safe!");
