@@ -1,12 +1,14 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import classes from "./Footer.module.scss"
+import { useSelector } from "react-redux";
 
 import fbIcon from "../../asses/facebook-icon.png"
 import instaIcon from "../../asses/instagram-icon.png"
 import twitterIcon from "../../asses/twitter-icon.png"
 
 const Footer = () => {
+    const userStore = useSelector((state) => state.auth.login?.currentUser);
     return (
         <footer>
             <div className={classes.footer}>
@@ -16,10 +18,12 @@ const Footer = () => {
                             <NavLink className={(navData) => (navData.isActive ? classes.active : '')} to='/home'>Home</NavLink>
                         </li>
                         <li>
-                            <NavLink className={(navData) => (navData.isActive ? classes.active : '')} to='/category'>Category</NavLink>
+                            {userStore?.role === "JobSeeker" && <NavLink className={(navData) => (navData.isActive ? classes.active : '')} to='/category'>Category</NavLink>}
+                            {userStore?.role === "Employer" && <NavLink className={(navData) => (navData.isActive ? classes.active : '')} to='/post/management'>Post</NavLink>}
                         </li>
                         <li>
-                            <NavLink className={(navData) => (navData.isActive ? classes.active : '')} to='/cv'>CV</NavLink>
+                            {userStore?.role === "JobSeeker" && <NavLink className={(navData) => (navData.isActive ? classes.active : '')} to='/cv'>CV</NavLink>}
+                            {userStore?.role === "Employer" && <NavLink className={(navData) => (navData.isActive ? classes.active : '')} to='/employer-cv'>CV</NavLink>}
                         </li>
                         <li>
                         <NavLink className={(navData) => (navData.isActive ? classes.active : '')} to='/account'>Account</NavLink>
