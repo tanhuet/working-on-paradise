@@ -5,13 +5,56 @@
 
   .circle {
     border-radius: 50%;
-    background: green;
     width: 150px;
     height: 150px;
-    margin-left: 50px;
+    margin-left: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
+  }
+
+  .form {
+    position: fixed;
+    width: 30%;
+    left: 35%;
+    top: 35%;
+    background: white;
+    border-radius: 10px;
+    z-index: 200;
+
+    .child {
+      padding: 2rem 0;
+      text-align: center;
+      border-bottom: 1px solid rgb(146, 146, 146);
+    }
+
+    .submit {
+      padding: 2rem 0;
+      text-align: center;
+      border-bottom: 1px solid black;
+      display: flex;
+      justify-content: space-around;
+
+      button {
+        width: 60px;
+        height: 30px;
+        background: #00CED1;
+        border: none;
+        box-shadow: 0px 4px 50px rgba(109, 212, 214, 0.5);
+        border-radius: 20px;
+        color: #FFFFFF;
+      }
+    }
+  }
+
+  input[type=file] {
+    width: 60%;
+    color: #444;
+    padding: 5px;
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid #555;
   }
 
   .text {
@@ -20,25 +63,28 @@
     font-weight: 600;
     font-size: 25px;
     line-height: 38px;
-    
   }
+
   input {
     border-radius: 15px;
     padding-left: 1%;
     border: 1px solid black;
+
     &:hover {
       border: 1px solid #00b0b3;
     }
 
   }
+
   .makeupButton {
-    margin-right: 0px;
     border: none;
     background-color: rgba(0, 0, 0, 0);
+
     .edit {
       height: 25px;
       width: 22px;
     }
+
     .save {
       height: 30px;
       width: 30px;
@@ -76,7 +122,7 @@
   justify-content: space-between;
   width: 55%;
 
-  .makeup {
+  .makeupItem1 {
     width: 212px;
     height: 58px;
     align-items: center;
@@ -93,6 +139,26 @@
       line-height: 30px;
       color: rgba(0, 0, 0, 0.75);
     }
+  }
+
+  .makeupItem2 {
+    @extend .makeupItem1;
+    width: 154px;
+  }
+
+  .makeupItem3 {
+    @extend .makeupItem1;
+    width: 140px;
+  }
+
+  .makeupItem45 {
+    @extend .makeupItem1;
+    width: 182px;
+  }
+
+  .makeupItem6 {
+    @extend .makeupItem1;
+    width: 90px;
   }
 
   .edit {
@@ -128,6 +194,7 @@
     border-radius: 10px;
     padding-left: 10px;
     border: 1px solid black;
+
     &:hover {
       border: 1px solid #00b0b3;
     }
@@ -137,10 +204,12 @@
     border-radius: 10px;
     padding-left: 10px;
     border: 1px solid black;
+
     &:hover {
       border: 1px solid #00b0b3;
     }
   }
+
   .font {
     font-weight: 600;
     font-size: 20px;
@@ -188,7 +257,7 @@
     align-items: center;
     justify-content: center;
 
-    p{
+    p {
       white-space: pre-line;
     }
   }
@@ -262,4 +331,107 @@
   display: flex;
   flex-wrap: wrap;
   padding-left: 2rem;
+}
+
+@media only screen and (max-width: 1000px) {
+  .container1 {
+    margin: 25px 0;
+
+    .circle {
+      width: 130px;
+      height: 130px;
+      margin-left: 80px;
+    }
+
+    .form {
+      .child {
+        padding: 1.5rem 0;
+
+        h2 {
+          font-weight: 800;
+          font-size: 20px;
+          line-height: 26px;
+        }
+      }
+
+      .submit {
+        padding: 1.5rem 0;
+
+        button {
+          width: 55px;
+          height: 25px;
+        }
+      }
+    }
+    .text{
+      margin-left: 60px;
+      font-size: 23px;
+      line-height: 35px;
+    }
+    input {
+      height: 35px;
+    }
+    .makeupButton {
+      .edit {
+        height: 22px;
+        width: 20px;
+      }
+  
+      .save {
+        height: 28px;
+        width: 28px;
+      }
+    }
+  }
+
+  .group-item {
+    margin: 40px auto;
+    height: 90px;
+  }
+  
+  .style1 {
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  .title {
+    align-items: center;
+    display: inline-flex;
+    justify-content: space-between;
+    width: 55%;
+  
+    .makeupItem1 {
+      width: 190px;
+      height: 55px;
+      margin-left: 70px;
+      border-radius: 18px;
+  
+      .style2 {
+        font-size: 18px;
+        line-height: 28px;
+      }
+    }
+    
+    .makeupItem2 {
+      width: 135px;
+    }
+
+    .makeupItem3 {
+      width: 120px;
+    }
+
+    .makeupItem45 {
+      width: 155px;
+    }
+
+    .makeupItem6 {
+      width: 65px;
+    }
+    .edit {
+      .style3 {
+        font-size: 18px;
+        line-height: 28px;
+      }
+    }
+  }
 }

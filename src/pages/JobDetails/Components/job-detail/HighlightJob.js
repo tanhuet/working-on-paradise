@@ -17,6 +17,7 @@ const HighlightJob = () => {
   const [persons, setPerson] = useState({});
   const [recommend, setRecomend] = useState();
   const [clickStatus, setStatus] = useState(false);
+  const [flag, setFlag] = useState(false);
   const [button, setButton] = useState("Apply");
   const [mark, setMark] = useState();
   const [redirect, setRedirect] = useState(false);
@@ -24,9 +25,13 @@ const HighlightJob = () => {
   const id = curUrl.split("details/")[1];
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get(`${config.api.url}/job/${id}`).catch((error) => console.log(error));
+      const response = await axios
+        .get(`${config.api.url}/job/${id}`)
+        .catch((error) => console.log(error));
       setPerson(response.data);
-      const jobRecomend = await axios.get(`${config.api.url}/job/recommend/5`).catch((error) => console.log(error));
+      const jobRecomend = await axios
+        .get(`${config.api.url}/job/recommend/5`)
+        .catch((error) => console.log(error));
       setRecomend(jobRecomend.data);
       const marks = await axios
         .get(`${config.api.url}/job/${id}/marked`, {
@@ -36,9 +41,12 @@ const HighlightJob = () => {
       setMark(marks.data);
     };
     fetchData();
-  }, [redirect]);
+  }, [redirect, flag]);
   const callbackRedirectFuntion = (redirect) => {
     setRedirect(redirect);
+  };
+  const callbackFlag = (flags) => {
+    setFlag(flags);
   };
   const callbackHandlerFunction = (status) => {
     if (status === true) {
@@ -49,6 +57,7 @@ const HighlightJob = () => {
   const skills = createString(persons.positions, "/");
   let PERSON = {
     handleFuntion: callbackHandlerFunction,
+    flagFuntion: callbackFlag,
     skill: skills,
     jobType: persons.authorName,
     icon: persons.authorAvatar,

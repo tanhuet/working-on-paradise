@@ -9,8 +9,9 @@ import React from "react";
 import EducationEdit from "./EducationEdit";
 import Data from "./Data";
 import CvBox from "./CvBox";
-import editButton from "../../../asses/editButton.png"
-import saveButton from "../../../asses/saveButton.png"
+import editButton from "../../../asses/editButton.png";
+import saveButton from "../../../asses/saveButton.png";
+import Backdrop from "../../../components/back-drop/Backdrop";
 
 const Account = (props) => {
   const USER = props.user;
@@ -26,6 +27,7 @@ const Account = (props) => {
 
   const [name, setName] = useState();
   const [avatar, setAvatar] = useState();
+  const [selectedAvatar, setSelectAvatar] = useState("");
   const [age, setAge] = useState();
   const [address, setAddress] = useState();
   const [gender, setGender] = useState();
@@ -53,7 +55,6 @@ const Account = (props) => {
       setGender(res.data.gender);
       setExperience(res.data.experience);
       setAdvanedSkill(res.data.advanedSkill);
-      console.log(res.data.advanedSkill);
       setCareerFeild(res.data.careerFeild);
       setTypeOfJob(res.data.typeOfJob);
       setSalary(res.data.salary);
@@ -65,6 +66,26 @@ const Account = (props) => {
       setEducation(res.data);
     });
   }, [userStore]);
+
+  const handleChangeAvatar = (event) => {
+    setSelectAvatar(event.target.files[0]);
+  };
+
+  const handleSubmitSave = async (event) => {
+    const newAvatar = new FormData();
+    newAvatar.append(`file`, selectedAvatar);
+    const avatarLink = await axios.post(`${config.api.url}/helper/upload`, newAvatar);
+    axios.put(`${config.api.url}/user`,
+      {
+        avatar: avatarLink.data,
+        name: name,
+        address: address,
+      },
+      { headers: { Authorization: `Bearer ${userStore.accessToken}` } }
+    ).then(() => {
+      window.location.reload();
+    });
+  };
 
   const handleSubmit = (event) => {
     axios.put(
@@ -86,8 +107,8 @@ const Account = (props) => {
     axios.put(
       `${config.api.url}/user`,
       {
-        name: name,
         avatar: avatar,
+        name: name,
         address: address,
       },
       { headers: { Authorization: `Bearer ${userStore.accessToken}` } }
@@ -136,13 +157,43 @@ const Account = (props) => {
     });
   }
 
+  const [isOpen, setIsOpen] = useState(false);
+  const openDialog = () => {
+    setIsOpen(true)
+  }
+  const handleClose = () => {
+    setIsOpen(false)
+  }
+
   return (
     USER && (
       <Fragment>
         {newEdu && <EducationEdit onCloseEditingEducation={closeEducationEditHandler} education={null} newEdu={true} />}
         {canEditEducation && selectedEducation && <EducationEdit onCloseEditingEducation={closeEducationEditHandler} education={selectedEducation} />}
         <div className={classes.container1}>
-          <img className={classes.circle} src={avatar} alt="" />
+          <div>
+            <img className={classes.circle} onClick={openDialog} src={avatar} alt="" />
+          </div>
+          {
+            isOpen &&
+            <Fragment>
+              <Backdrop onClose={handleClose} />
+              <form className={classes.form}>
+                <div className={classes.child}>
+                  <h2>Change avatar</h2>
+                </div>
+                <div className={classes.child}>
+                  <input type="file" onChange={handleChangeAvatar}></input>
+                  <i style={{marginLeft: '10px'}} className={"fa fa-camera"}/>
+                </div>
+                <div className={classes.submit}>
+                  <button onClick={handleClose}>Cancel</button>
+                  <button onClick={() => { handleSubmitSave(); setIsOpen(false); }}>Save</button>
+                </div>
+              </form>
+            </Fragment>
+          }
+
           {editName === false ? (
             <>
               <div className={classes.text}>{name}</div>
@@ -187,7 +238,7 @@ const Account = (props) => {
         </div>
         <div data-spy="scroll" data-target="#list-example" data-offset="0" className="scrollspy-example">
           <div id="list-item-1" className={classes.title}>
-            <div className={classes.makeup}>
+            <div className={classes.makeupItem1}>
               <div className={classes.style2}>Basic Information</div>
             </div>
             <div>
@@ -274,7 +325,7 @@ const Account = (props) => {
           </div>
 
           <div id="list-item-2" className={classes.title}>
-            <div className={classes.makeup} style={{ width: "154px" }}>
+            <div className={classes.makeupItem2}>
               <div className={classes.style2}>Experience</div>
             </div>
             <div>
@@ -314,7 +365,7 @@ const Account = (props) => {
           </div>
 
           <div id="list-item-3" className={classes.title}>
-            <div className={classes.makeup} style={{ width: "140px" }}>
+            <div className={classes.makeupItem3}>
               <div className={classes.style2}>Education</div>
             </div>
             <div>
@@ -363,7 +414,7 @@ const Account = (props) => {
           )}
 
           <div id="list-item-4" className={classes.title}>
-            <div className={classes.makeup} style={{ width: "182px" }}>
+            <div className={classes.makeupItem45}>
               <div className={classes.style2}>Advanced Skill</div>
             </div>
             <div>
@@ -403,7 +454,7 @@ const Account = (props) => {
           </div>
 
           <div id="list-item-5" className={classes.title}>
-            <div className={classes.makeup} style={{ width: "182px" }}>
+            <div className={classes.makeupItem45}>
               <div className={classes.style2}>Career Field</div>
             </div>
             <div>
@@ -482,7 +533,7 @@ const Account = (props) => {
           </div>
 
           <div id="list-item-6" className={classes.title}>
-            <div className={classes.makeup} style={{ width: "91px" }}>
+            <div className={classes.makeupItem6}>
               <div className={classes.style2}>CV</div>
             </div>
             <Link to="/CV">

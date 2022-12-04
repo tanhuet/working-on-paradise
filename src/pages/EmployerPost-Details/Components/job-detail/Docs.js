@@ -93,7 +93,6 @@ const Docs = (props) => {
               //
             })
             .catch(function (error) {
-              console.log(error);
               swal(`Error: ${error?.response.data}`, {
                 title: "Something wrong!",
                 icon: "error",
