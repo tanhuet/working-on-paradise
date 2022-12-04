@@ -7,7 +7,7 @@ import axios from "axios";
 import config from "../../config";
 // import socketIOClient from "socket.io-client";
 
-function Message() {
+function Message(props) {
   const userStore = useSelector((state) => state.auth.login?.currentUser);
   const [listConversation, setListConversation] = useState([]);
   const [selectedConversation, setSelectedConversation] = useState(null);
@@ -45,7 +45,7 @@ function Message() {
     <div className={classes.wrapper}>
       <div className={classes.content}>
         <ListMessage listMesssage={listConversation} selectConversation={handleSelectConversation} />
-        <ChatArea conversation={selectedConversation} />
+        <ChatArea conversation={selectedConversation} receiver={props.receiver} />
       </div>
     </div>
   );

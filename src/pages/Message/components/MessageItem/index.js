@@ -8,10 +8,16 @@ function MessageItem(props) {
     setConversation(props.conversation);
   }, [props.conversation]);
 
+  const onErrorImage = (image) => {
+    image.onError = "";
+    image.target.src = "https://jobsgo-storage.s3.ap-southeast-1.amazonaws.com/images/638cbf1120549255be3248de";
+    return true;
+  };
+
   return (
     <div className={classes.wrapper}>
       <div className={classes.avatar}>
-        <img src={conversation?.other.avatar} alt="avatar" />
+        <img src={conversation?.other.avatar} alt="avatar" onError={onErrorImage} />
       </div>
       <div className={classes.info}>
         <div className={classes.name}>{conversation?.other.name}</div>
