@@ -49,7 +49,7 @@ const Highlight = (props) => {
             {props.skills.button}
           </button>
         </div>
-        {!status && (
+        {(!status || !props.skills.save) && (
           <div className={classes.box}>
             <div className={classes.boxName}>
               <p>Basic Information</p>

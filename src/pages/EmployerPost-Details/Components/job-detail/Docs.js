@@ -151,6 +151,7 @@ const Docs = (props) => {
                       >
                         {props.docs.gender}
                       </option>
+                      {<option value="no-require">No-require</option>}
                       {<option value="male">Male</option>}
                       <option value="female">Female</option>
                     </select>
