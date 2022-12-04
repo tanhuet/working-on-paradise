@@ -4,7 +4,7 @@ import locationImg from "../../../../../asses/nhansu.png";
 import { Google } from "../../../../../components/icon/google";
 import ReactImageFallback from "react-image-fallback";
 const Highlight = (props) => {
-  const [status, setStatus] = useState(false);
+  const [status, setStatus] = useState(!props.skills.save);
   function handleSubmit(event) {
     if (status === false) {
       props.skills.handleFuntion(true, "Back");
@@ -14,6 +14,7 @@ const Highlight = (props) => {
       setStatus(false);
     }
   }
+
   return (
     <React.Fragment>
       <div className={classes.underHeader}>
@@ -49,7 +50,7 @@ const Highlight = (props) => {
             {props.skills.button}
           </button>
         </div>
-        {(!status || !props.skills.save) && (
+        {!status && (
           <div className={classes.box}>
             <div className={classes.boxName}>
               <p>Basic Information</p>

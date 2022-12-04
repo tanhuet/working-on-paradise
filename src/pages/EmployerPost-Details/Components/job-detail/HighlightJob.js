@@ -39,7 +39,7 @@ const HighlightJob = () => {
       }
     };
     fetchData();
-  }, [clickStatus]);
+  }, [clickStatus, save]);
   const callbackSavehandle = (status) => {
     setSave(status);
   };
