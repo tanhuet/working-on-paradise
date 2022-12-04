@@ -4,7 +4,7 @@ import locationImg from "../../../../../asses/nhansu.png";
 import { Google } from "../../../../../components/icon/google";
 import ReactImageFallback from "react-image-fallback";
 const Highlight = (props) => {
-  const [status, setStatus] = useState(!props.skills.save);
+  const [status, setStatus] = useState(false);
   function handleSubmit(event) {
     if (status === false) {
       props.skills.handleFuntion(true, "Back");

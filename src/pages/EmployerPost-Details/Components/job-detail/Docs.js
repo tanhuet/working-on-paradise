@@ -86,10 +86,7 @@ const Docs = (props) => {
             .then(function (response) {
               swal("Poof! Your information has been changed!", {
                 icon: "success",
-              }).then(
-                props.docs.saveFuntion(false),
-                props.docs.callbackHandlerFunction(false, "Edit")
-              );
+              }).then(window.location.reload(false));
               //
             })
             .catch(function (error) {
