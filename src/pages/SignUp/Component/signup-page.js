@@ -112,6 +112,15 @@ const Register = (props) => {
     ) {
       alert("Password and ConfirmPassword is different. Please try again");
     }
+    // const checkUser = {
+    //   username: userName,
+    //   email: email,
+    //   phone: phoneNumber,
+    // };
+    // axios.post(`${config.url.api}/user/check-exist`,checkUser)
+    // .catch((err) => {
+    //   alert(err.response.data);
+    // })
   };
   const user = {
     username: userName,
