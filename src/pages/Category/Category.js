@@ -5,6 +5,7 @@ import JobList from "./Components/JobList";
 import { useSelector } from "react-redux";
 import config from "../../config";
 import axios from "axios";
+import { useLocation } from "react-router-dom";
 // import locationImg from "../../asses/img-location.png"
 
 const Category = () => {
@@ -15,6 +16,11 @@ const Category = () => {
   const userStore = useSelector((state) => state.auth.login?.currentUser);
   const [entireJobs, setEntireJobs] = useState();
   const [recomendedJobs, setRecomendJobs] = useState(null);
+
+  // dependency
+  const location = useLocation()
+  const queryParams = new URLSearchParams(location.search)
+  const filter = queryParams.get('filter')
 
   const { innerWidth: width } = window;
 
@@ -37,8 +43,9 @@ const Category = () => {
 
   useEffect(() => {
     if (userStore) {
-      axios
-        .get(`${config.api.url}/job/getPageSuggestion/7/${page.toString()}`, {
+      if (filter !== null && filter.length > 0) {
+        axios
+        .get(`${config.api.url}/job/find-by-keyword/${filter}/7/${page.toString()}`, {
           headers: { Authorization: `Bearer ${userStore.accessToken}` },
         })
         .then((res) => {
@@ -47,15 +54,38 @@ const Category = () => {
         .catch((err) => {
           console.log(err);
         });
+      } else {
+        axios
+          .get(`${config.api.url}/job/getPageSuggestion/7/${page.toString()}`, {
+            headers: { Authorization: `Bearer ${userStore.accessToken}` },
+          })
+          .then((res) => {
+            setEntireJobs(res.data);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
     } else {
-      axios
-        .get(`${config.api.url}/job/getPageSuggestion/7/${page.toString()}`)
+      if (filter !== null && filter.length > 0) {
+        axios
+        .get(`${config.api.url}/job/find-by-keyword/${filter}/7/${page.toString()}`)
         .then((res) => {
           setEntireJobs(res.data);
         })
         .catch((err) => {
           console.log(err);
         });
+      } else {
+        axios
+          .get(`${config.api.url}/job/getPageSuggestion/7/${page.toString()}`)
+          .then((res) => {
+            setEntireJobs(res.data);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
     }
     if (userStore) {
       if (userStore.role === "JobSeeker")
@@ -70,7 +100,26 @@ const Category = () => {
             console.log(err);
           });
     }
-  }, [userStore, page]);
+  }, [userStore, page, filter]);
+
+  const filterHandler = async (data) => {
+    try {
+      if (userStore) {
+        const res = await axios.post(`${config.api.url}/job/filter/7/1`, data ,
+          {
+              headers: { Authorization: `Bearer ${userStore.accessToken}` },
+          }
+        )
+        setEntireJobs(res.data)
+      } else {
+        const res = await axios.post(`${config.api.url}/job/filter/7/1`, data)
+        setEntireJobs(res.data)
+      }
+    } catch(err) {
+      console.log(err)
+    }
+  }
+
   // convert api to object
   let jobs = [];
   let topJobs = [];
@@ -95,7 +144,6 @@ const Category = () => {
         bookmark: job.bookmark,
       };
     });
-    console.log(jobs);
     if (jobs) {
       if (width <= 1000) {
         topJobs = jobs.slice(0, 2);
@@ -140,7 +188,7 @@ const Category = () => {
 
   return (
     <Fragment>
-      <CategoryTop jobs={topJobs} entireJobs={jobs} />
+      <CategoryTop jobs={topJobs} entireJobs={jobs} onFilter={filterHandler} />
       <JobList
         jobs={jobs}
         recomendedJobs={rJ}
