@@ -7,7 +7,7 @@ import { logoutUser } from "../../store/apiRequest";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutSuccess } from "../../store/auth-slice";
 
-const MainNavigation = () => {
+const MainNavigation = (props) => {
   const [isDisplayAccount, setIsDisplayAccount] = useState(false)
 
   const user = useSelector((state) => state.auth.login?.currentUser);
@@ -74,7 +74,12 @@ const MainNavigation = () => {
               </ul>
             )}
             <form className="d-flex" onSubmit={searchHander}>
-              <input className={`form-control me-2 ${classes['input']}`} type="search" placeholder="Search" aria-label="Search" ref={suggestion}/>
+              <input className={`form-control me-2 ${classes['input']}`} type="search" placeholder="Search" aria-label="Search" ref={suggestion} onChange={(e) => {props.onChange(e.target.value)}} list="job"/>
+              <datalist id="job" >
+                {props.filter.map((item, index) => (    
+                    <option value={item} key={index} />
+                ))}
+              </datalist>
               {/* <button type="submit"></button> */}
             </form>
             {user ? (

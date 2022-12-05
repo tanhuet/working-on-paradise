@@ -1,37 +1,9 @@
 import classes from "./JobList.module.scss";
 import Wrap from "../../../components/UI/Wrap";
 import JobCard from "../../../components/job-card/JobCard";
-import { useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
 import RecommendedJob from "../../../components/recommended-job/RecommendedJob";
 
 const JobList = (props) => {
-
-  //state
-  const [filteredJobs, setFilteredJobs] = useState(props.jobs)
-
-  // dependency
-  const location = useLocation()
-  const queryParams = new URLSearchParams(location.search)
-  const filter = queryParams.get('filter')
-
-  //Filter Function
-  const filterJob = (jobList, condition) => {
-      if (!condition) return jobList
-      let jobs = jobList.filter((job) => {
-          return job.category.includes(condition)
-      })
-      jobs = jobs.concat(jobList.filter((job) => {
-        return job.companyName.includes(condition)
-      }))  
-      jobs = jobs.concat(jobList.filter((job) => {
-        return job.jobType.includes(condition)
-      }))
-      jobs = jobs.concat(jobList.filter((job) => {
-        return job.skills[0].includes(condition)
-      }))
-      return jobs
-  } 
 
   //panigator
   const nextPage = () => {
@@ -41,11 +13,6 @@ const JobList = (props) => {
   const prePage = () => {
     props.onPrePage()
   }
-
-  useEffect(() => {
-    let filteredJobs = filterJob(props.jobs, filter)
-    setFilteredJobs(filteredJobs)
-  }, [filter, props.jobs])
 
   return (
     <div className={classes.main}>
@@ -57,7 +24,7 @@ const JobList = (props) => {
           </p>
         </div>
         <div className={classes.list}>
-          {filteredJobs.map((job) => (
+          {props.jobs.map((job) => (
             <JobCard
               key={job.id}
               id={job.id}

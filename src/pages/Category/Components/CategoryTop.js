@@ -32,7 +32,7 @@ const CategoryTop = (props) => {
                 <img src={img} className ={classes['img-category']} alt="category"/>
             </div>
             <div className={classes['filter-bar']}>
-                <FilterBar filter = {suggestion} />
+                <FilterBar filter = {suggestion} onFilter = {props.onFilter} />
             </div>
             <div className={classes['highligh-job']}>
                 <p className={classes.title}>Exploring Amazing Jobs</p>
