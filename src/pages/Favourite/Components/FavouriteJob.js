@@ -48,7 +48,7 @@ const FavouriteJob = (props) => {
                         <p>Examine the list of past jobs you have saved. To avoid missing out on a professional <br/> opportunity, apply straightaway.</p>
                     </div>
                     <div className={classes['filter-bar']}>
-                        <FilterBar filter = {[]} />
+                        <FilterBar filter = {[]} display={"none"} />
                     </div>
                     <div className={classes.list}>
                     {filteredJobs.map((job) => (
