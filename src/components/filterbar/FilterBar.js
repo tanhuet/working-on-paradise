@@ -4,7 +4,6 @@ import { useRef, useState } from "react"
 
 const FilterBar = (props) => {
 
-
     const [isOpen, setIsOpen] = useState(false)
     const [typeOfWorkplace, setTypeOfWorkplace] = useState('')
     const [typeOfJob, setTypeOfJob] = useState('')
@@ -60,7 +59,7 @@ const FilterBar = (props) => {
                     </form>
                 </div>
             </div>   
-            {isOpen && <form>
+            {isOpen && props.display !== "none" && <form>
                 <div className={classes.detail}>
                     <div className={classes['detail-left']}>
                         <div className={classes['company']}>
