@@ -15,6 +15,8 @@ const Layout = (props) => {
             if (a.length > 0) {
                 const res = await axios.get(`${config.api.url}/job/suggest-keyword/5/${a}`)
                 setSuggestion(res.data)
+            } else {
+                setSuggestion([])
             }
         }, 500);
         return () => {
