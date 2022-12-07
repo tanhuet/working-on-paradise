@@ -17,7 +17,10 @@ const Favourite = () => {
     // dependency
     const location = useLocation()
     const queryParams = new URLSearchParams(location.search)
-    const filter = queryParams.get('filter')
+    let filter = queryParams.get('filter')
+    if (filter !== null && filter !== undefined && filter.length > 0) {
+      filter = filter.replace('/', '%2F')
+    }
 
   const { innerWidth: width } = window;
 
