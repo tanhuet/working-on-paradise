@@ -25,7 +25,7 @@ const CvList = (props) => {
                 />
                 ))}
 
-                <NavLink to={'/category'}>
+                <NavLink to={'/employer-cv'}>
                     <div className={classes.more}>
                         <div className={classes.text}>
                             <p>100+ More CVs</p>

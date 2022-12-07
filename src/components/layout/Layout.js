@@ -13,7 +13,7 @@ const Layout = (props) => {
     useEffect(() => {
         let timer = setTimeout(async () => {
             if (a.length > 0) {
-                const res = await axios.get(`${config.api.url}/job/suggest-keyword/5/${a}`)
+                const res = await axios.get(`${config.api.url}/job/suggest-keyword/5/${a.replace('/', '%2F')}`)
                 setSuggestion(res.data)
             } else {
                 setSuggestion([])
