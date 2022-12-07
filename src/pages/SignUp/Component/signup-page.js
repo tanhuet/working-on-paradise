@@ -118,8 +118,8 @@ const Register = (props) => {
     //   phone: phoneNumber,
     // };
     // axios.post(`${config.url.api}/user/check-exist`,checkUser)
-    // .catch((err) => {
-    //   alert(err.response.data);
+    // .then((res) => {
+    //   console.log(res.data);
     // })
   };
   const user = {

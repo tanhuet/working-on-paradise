@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 const SetUpAccJobSeeker = (props) => {
   const [age, setAge] = useState("");
-  const [gender, setGender] = useState("male");
+  const [gender, setGender] = useState("no-require");
   const [experience, setExperience] = useState("");
   const [advancedSkill, setAdvancedSkill] = useState("");
   const [desiredSalary, setDesiredSalary] = useState("");

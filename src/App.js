@@ -20,7 +20,7 @@ import EmployerJobDetail from "./pages/EmployerPost-Details/EmployerJobDetail";
 import CategoryCvs from "./pages/CategoryCvs/Category";
 import AccountEmployer from "./pages/account-employer/AccEmp";
 // import AccountEmployerEdit from "./pages/account-employer/AccountEmployerEdit";
-import AddPost from "./pages/ADD-POST-Employer/addPost";
+import AddPost from "./pages/Add-Post-Employer/addPost";
 import ChangePassWord from "./pages/ChangePassWord/ChangePassword";
 import SetUpAccJobSeeker from "./pages/SignUp/Component/SetUpAccountJobSeeker/SetUpAccJobSeeker";
 import SetUpAccEmployer from "./pages/SignUp/Component/SetUpAccountJobSeeker/SetUpAccountEmployer";
