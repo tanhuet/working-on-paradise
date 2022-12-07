@@ -304,7 +304,7 @@ const AccountEmployer = (props) => {
           <div className={`col-xl-4 ${classes.map}`}>
             <div
               className={`d-flex justify-content-center ${classes.map2}`}
-              style={{ border: "4px solid #EEEEEE", borderRadius: "10px" }}
+              style={{ border: "4px solid #EEEEEE", borderRadius: "10px", maxHeight: '500px' }}
             >
               <Iframe
                 title="myFrame"
