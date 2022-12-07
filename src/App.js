@@ -1,7 +1,7 @@
 // import React, { useEffect, useState } from 'react';
 import Layout from "./components/layout/Layout";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useStore } from "react-redux";
 import { useLocation } from "react-router-dom";
 
 //import page
@@ -31,6 +31,7 @@ import JobSeekerInfor from "./pages/JobSeekerInfor/JobSeekerInfor";
 import EmployerHome from "./pages/EmployerHome/EmployerHome";
 import { useEffect, useState } from "react";
 import ImportData from "./pages/ImportData";
+import EmployerInfo from "./pages/EmployerInfo/EmployerInfo";
 
 function App() {
   const location = useLocation();
@@ -69,6 +70,7 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/cv/:cvId" element={<CvDetailPage />} />
         {userStore?.role === "JobSeeker" && <Route path="/account" element={<AccountPage />} />}
+        {userStore?.role === "JobSeeker" && <Route path="/employerInfo/:employerId" element={<EmployerInfo/>} />}
         {userStore?.role === "Employer" && <Route path="/account" element={<AccEmp />} />}
         {userStore?.role === "Employer" && <Route path="/account/:jobseekerId" element={<JobSeekerInfor />} />}
         <Route path="/details/:id" element={<JobDetail />} />
@@ -83,6 +85,10 @@ function App() {
         <Route path="/setup-account-employer" element={<SetUpAccEmployer />} />
         <Route path="*" element={<Navigate replace to="/home" />} />
         <Route path="/message" element={<Message />} />
+
+
+        <Route path="/employerInfo" element={<EmployerInfo/>} />
+        
       </Routes>
     </Layout>
   );

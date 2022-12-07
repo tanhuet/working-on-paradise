@@ -81,7 +81,7 @@ const Favourite = () => {
   if (recomendedJobs !== null) {
       rJ = recomendedJobs.map((job) => {
           return {
-              id: job.id,
+              id: job.author,
               companyName: job.authorName,
               logo: job.authorAvatar,
               jobName: job.title,
