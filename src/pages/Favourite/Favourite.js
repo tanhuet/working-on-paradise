@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import config from "../../config";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 import classes from "./Favourite.module.scss"
 import FavouriteJob from "./Components/FavouriteJob";
@@ -13,10 +14,24 @@ const Favourite = () => {
   const [entireJobs, setEntireJobs] = useState();
   const [recomendedJobs, setRecomendJobs] = useState(null);
 
+    // dependency
+    const location = useLocation()
+    const queryParams = new URLSearchParams(location.search)
+    const filter = queryParams.get('filter')
+
   const { innerWidth: width } = window;
 
   useEffect(() => {
     if (userStore.role === "JobSeeker") {
+      if (filter !== null && filter.length > 0) {
+        axios.get(`${config.api.url}/job/favourite/find-by-keyword/${filter}/7/1`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } })
+          .then((res) => {
+            setEntireJobs(res.data);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      } else {
       axios
         .get(`${config.api.url}/job/list-marked`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } })
         .then((res) => {
@@ -25,6 +40,7 @@ const Favourite = () => {
         .catch((err) => {
           console.log(err);
         });
+      }
       axios
         .get(`${config.api.url}/job/recommend/1`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } })
         .then((res) => {
@@ -34,7 +50,7 @@ const Favourite = () => {
           console.log(err);
         });
     }
-  }, [userStore]);
+  }, [userStore, filter]);
 
   // convert api to object
   let jobs = [];
