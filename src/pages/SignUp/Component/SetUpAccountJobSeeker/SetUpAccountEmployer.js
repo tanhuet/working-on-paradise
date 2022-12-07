@@ -88,11 +88,11 @@ const SetUpAccEmployer = (props) => {
       style={{ fontWeight: "bold" }}
     >
       <div className={`row`}>
-        <div className={`col-md-5 col-sm-12 ${classes["img-setting"]}`}>
+        <div className={`col-lg-5 col-sm-12 ${classes["img-setting"]}`}>
           <img src={settingImage}></img>
         </div>
         {/* colum content */}
-        <div className={`col-md-6 col-sm-12`}>
+        <div className={`col-lg-6 col-sm-12`}>
           {/* row-content in colum content */}
           <div className={`row ${classes["row-in-column"]}`}>
             <div className={classes["title"]}>Set Up Account</div>

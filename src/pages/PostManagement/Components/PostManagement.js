@@ -4,6 +4,7 @@ import HighLightCv from "./HighLightCv"
 import HighlightPost from "./HighLightPost";
 import { Link } from "react-router-dom"
 import Data from "./../../Account/Componets/Data"
+import { useEffect } from "react";
 
 const PostManagement = (props) => {
 
