@@ -120,7 +120,7 @@ const Docs = (props) => {
                     <input
                       type="number"
                       onChange={handleChangeSalary}
-                      placeholder={salary}
+                      value={salary}
                     />
                     <span>$</span>
                   </p>
@@ -131,7 +131,7 @@ const Docs = (props) => {
                     <input
                       type="text"
                       onChange={handleChangeType}
-                      placeholder={typeOfWorking}
+                      value={typeOfWorking}
                     ></input>
                   </p>
                 </li>
@@ -164,28 +164,20 @@ const Docs = (props) => {
                     <input
                       type="number"
                       onChange={handleChangeQuantity}
-                      placeholder={quantity}
+                      value={quantity}
                     />
                   </p>
                 </li>
                 <li>
                   <p>
                     Position:{" "}
-                    <input
-                      type="text"
-                      onChange={handleChangePos}
-                      placeholder={pos}
-                    />
+                    <input type="text" onChange={handleChangePos} value={pos} />
                   </p>
                 </li>
                 <li>
                   <p>
                     Experience:
-                    <input
-                      type="number"
-                      onChange={handleChangeExp}
-                      placeholder={exp}
-                    />
+                    <input onChange={handleChangeExp} value={exp} />
                     <span> years</span>
                   </p>
                 </li>
@@ -203,7 +195,7 @@ const Docs = (props) => {
                 <textarea
                   name="textValue"
                   onChange={handleChange1}
-                  placeholder={textarea1}
+                  value={textarea1}
                 />
               </form>
             </div>
@@ -219,7 +211,7 @@ const Docs = (props) => {
                 <textarea
                   name="textValue2"
                   onChange={handleChange2}
-                  placeholder={textarea2}
+                  value={textarea2}
                 />
               </form>
             </div>
@@ -235,7 +227,7 @@ const Docs = (props) => {
                 <textarea
                   name="textValue3"
                   onChange={handleChange3}
-                  placeholder={textarea4}
+                  value={textarea4}
                 />
               </form>
             </div>
@@ -251,7 +243,7 @@ const Docs = (props) => {
                 <textarea
                   name="textValue4"
                   onChange={handleChange4}
-                  placeholder={textarea3}
+                  value={textarea3}
                 />
               </form>
             </div>

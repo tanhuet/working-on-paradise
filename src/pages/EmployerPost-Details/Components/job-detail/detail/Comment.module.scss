@@ -168,3 +168,14 @@ a {
   color: #f1eeee;
   font-family: "Poppins";
 }
+@media only screen and (max-width: 1000px) {
+  .card {
+    margin: auto;
+    box-shadow: 0px 4px 20px 5px rgba(119, 116, 116, 0.25);
+    width: max-content;
+    height: auto;
+    padding: 10px;
+    background: #d4f7f5;
+    border-radius: 25px;
+  }
+}

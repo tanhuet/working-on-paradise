@@ -24,7 +24,7 @@
 
   color: rgba(0, 0, 0, 0.8);
 }
-.name .img1 {
+.boxInfo .img1 {
   border: 1px solid black;
   border-radius: 50%;
   width: 60px;
@@ -75,6 +75,7 @@
 }
 .boxButton {
   display: flex;
+  justify-content: center;
 }
 .button2 {
   border: none;
@@ -85,8 +86,8 @@
   width: 150px;
   height: 50px;
   padding: auto;
-  font-weight: 500;
-  font-size: 18px;
+  font-weight: 600;
+  font-size: 20px;
   line-height: 30px;
   text-align: center;
   color: black;
@@ -99,7 +100,84 @@
   text-align: center;
   font-family: "Poppins";
 }
-@media only screen and (max-width: 1200px) {
+.box {
+  margin: auto;
+  margin-top: 5rem;
+  background: rgba(0, 206, 209, 0.7);
+  border-radius: 30px;
+  padding: 15px 15px;
+  display: block;
+  width: max-content;
+  min-width: 850px;
+  font-family: "Poppins";
+}
+.boxName {
+  margin-left: 20px;
+  padding: 2px 20px;
+  background: #ffffff;
+  width: 220px;
+  height: 35px;
+  border-radius: 7px;
+  color: rgba(0, 0, 0, 1);
+  font-weight: 600;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.boxInfo {
+  display: flex;
+  justify-content: space-around;
+}
+.boxLeft {
+  display: block;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 38px;
+  color: #000000;
+}
+.boxRight {
+  display: block;
+  font-size: 19px;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 38px;
+}
+.boxInfo li {
+  width: max-content;
+}
+.boxInfo p {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 38px;
+  margin: 0;
+  color: #000000;
+}
+.boxInfo p span {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  margin: 0;
+  color: #000000;
+}
+.boxInfo li {
+  list-style-type: none;
+}
+.des hr {
+  width: 100%;
+}
+@media only screen and (max-width: 700px) {
+  .boxInfo {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
   .name {
     display: flex;
     flex-direction: column;
@@ -159,10 +237,8 @@
     border-radius: 20px;
     width: 150px;
     height: 50px;
-    padding: auto;
-    margin: auto;
-    font-weight: 500;
-    font-size: 18px;
+    font-weight: 600;
+    font-size: 20px;
     line-height: 30px;
     text-align: center;
     color: black;
@@ -174,5 +250,67 @@
     line-height: 30px;
     text-align: center;
     font-family: "Poppins";
+  }
+  .box {
+    margin: auto;
+    margin-top: 5rem;
+    background: rgba(0, 206, 209, 0.7);
+    border-radius: 30px;
+    padding: 15px 15px;
+    display: block;
+    width: max-content;
+    min-width: 850px;
+    font-family: "Poppins";
+  }
+  .boxName {
+    margin-left: 20px;
+    padding: 2px 20px;
+    background: #ffffff;
+    width: 220px;
+    height: 35px;
+    border-radius: 7px;
+    color: rgba(0, 0, 0, 1);
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  .boxInfo {
+    display: flex;
+    justify-content: space-around;
+  }
+  .boxLeft {
+    display: block;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 38px;
+    color: #000000;
+  }
+  .boxRight {
+    display: block;
+    font-size: 19px;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 38px;
+  }
+  .boxInfo li {
+    width: max-content;
+  }
+  .boxInfo p {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 38px;
+    margin: 0;
+    color: #000000;
+  }
+  .boxInfo p span {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 30px;
+    margin: 0;
+    color: #000000;
   }
 }
