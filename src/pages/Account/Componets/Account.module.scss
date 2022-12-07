@@ -73,7 +73,6 @@
     &:hover {
       border: 1px solid #00b0b3;
     }
-
   }
 
   .makeupButton {
@@ -235,12 +234,12 @@
     width: 45%;
 
     .itemRight1 {
-      width: 75%;
+      width: 80%;
       margin: 27px auto;
     }
 
     .itemRight2 {
-      width: 75%;
+      width: 80%;
       margin: 15px auto;
     }
   }
@@ -264,15 +263,32 @@
 
   .itemCareer {
     width: 88%;
-    height: 50px;
-    margin: 10px auto;
+    height: 40px;
+    margin: 8px auto;
     display: flex;
 
     .a {
       width: 32%;
-      height: 50px;
+      height: 40px;
+      margin-right: 5%;
+    }
+
+    input {
+      height: 40px;
     }
   }
+}
+
+.dataItem234 {
+  @extend.data;
+  height: 190px;
+}
+
+.dataItem5 {
+  @extend.data;
+  height: 290px;
+  padding-top: 15px;
+  padding-bottom: 10px;
 }
 
 .dataEdu {
@@ -322,7 +338,6 @@
       margin-left: 4rem;
       color: #000000;
     }
-
   }
 }
 
@@ -363,20 +378,23 @@
         }
       }
     }
-    .text{
+
+    .text {
       margin-left: 60px;
       font-size: 23px;
       line-height: 35px;
     }
+
     input {
       height: 35px;
     }
+
     .makeupButton {
       .edit {
         height: 22px;
         width: 20px;
       }
-  
+
       .save {
         height: 28px;
         width: 28px;
@@ -388,7 +406,7 @@
     margin: 40px auto;
     height: 90px;
   }
-  
+
   .style1 {
     font-size: 18px;
     line-height: 28px;
@@ -398,20 +416,20 @@
     align-items: center;
     display: inline-flex;
     justify-content: space-between;
-    width: 55%;
-  
+    width: 65%;
+
     .makeupItem1 {
       width: 190px;
       height: 55px;
       margin-left: 70px;
       border-radius: 18px;
-  
+
       .style2 {
         font-size: 18px;
         line-height: 28px;
       }
     }
-    
+
     .makeupItem2 {
       width: 135px;
     }
@@ -427,11 +445,64 @@
     .makeupItem6 {
       width: 65px;
     }
+
     .edit {
       .style3 {
         font-size: 18px;
         line-height: 28px;
       }
+    }
+  }
+
+  .data {
+    width: 65%;
+    height: 275px;
+    margin-left: 40px;
+    border-radius: 40px;
+    .font {
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 28px;
+    }
+
+    .left {
+      .itemLeft {
+        margin: 18px auto;
+      }
+    }
+  
+    .right {
+      .itemRight1 {
+        margin: 18px auto;
+      }
+      .itemRight2 {
+        margin: 12px auto;
+      }
+    }
+
+    .textexper {
+      height: 110px;
+    }
+  }
+
+  .dataItem234 {
+    height: 150px;
+  }
+
+  .dataEdu {
+    .fontTitle {
+      margin-left: 3rem;
+      padding-top: 1rem;
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 28px; 
+    }
+
+    .font {
+      font-weight: 500;
+      font-size: 15px;
+      line-height: 25px;
+      margin-left: 5rem;
     }
   }
 }

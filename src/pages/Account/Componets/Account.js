@@ -184,7 +184,7 @@ const Account = (props) => {
                 </div>
                 <div className={classes.child}>
                   <input type="file" onChange={handleChangeAvatar}></input>
-                  <i style={{marginLeft: '10px'}} className={"fa fa-camera"}/>
+                  <i style={{marginLeft: '10px'}} className={"fa fa-camera"} />
                 </div>
                 <div className={classes.submit}>
                   <button onClick={handleClose}>Cancel</button>
@@ -348,13 +348,13 @@ const Account = (props) => {
           </div>
           <div>
             {editEx === false ? (
-              <form className={classes.data} style={{ height: "190px" }}>
+              <form className={classes.dataItem234}>
                 <div className={classes.font}>
                   <div className={classes.styleborder}>{experience}</div>
                 </div>
               </form>
             ) : (
-              <form className={classes.data} style={{ height: "190px" }} onSubmit={handleSubmit}>
+              <form className={classes.dataItem234} onSubmit={handleSubmit}>
                 <textarea
                   className={`${classes.font} ${classes.textexper}`}
                   onChange={(e) => setExperience(e.target.value)}
@@ -390,7 +390,7 @@ const Account = (props) => {
           </div>
 
           {educations.length === 0 ? (
-            <div className={classes.data} style={{ height: "190px" }}>
+            <div className={classes.dataItem234}>
               <div className={classes.font}>
                 <div className={classes.styleborder}></div>
               </div>
@@ -437,13 +437,13 @@ const Account = (props) => {
           </div>
           <div>
             {editAd === false ? (
-              <form className={classes.data} style={{ height: "190px" }}>
+              <form className={classes.dataItem234}>
                 <div className={classes.font}>
                   <div className={classes.styleborder}><p>{advanedSkill}</p></div>
                 </div>
               </form>
             ) : (
-              <form className={classes.data} style={{ height: "190px" }} onSubmit={handleSubmit}>
+              <form className={classes.dataItem234} onSubmit={handleSubmit}>
                 <textarea
                   className={`${classes.font} ${classes.textexper}`}
                   onChange={(e) => setAdvanedSkill(e.target.value)}
@@ -477,7 +477,7 @@ const Account = (props) => {
           </div>
           <div>
             {editCa === false ? (
-              <form className={classes.data} style={{ height: "300px" }}>
+              <form className={classes.dataItem5}>
                 <div className={`${classes.font} ${classes.itemCareer}`}>
                   <label className={classes.a}>Desired Career Field:</label>
                   {careerFeild}
@@ -496,7 +496,7 @@ const Account = (props) => {
                 </div>
               </form>
             ) : (
-              <form className={classes.data} style={{ height: "300px" }} onSubmit={handleSubmit}>
+              <form className={classes.dataItem5} onSubmit={handleSubmit}>
                 <div className={`${classes.font} ${classes.itemCareer}`}>
                   <label className={classes.a}>Desired Career Field:</label>
                   <input
