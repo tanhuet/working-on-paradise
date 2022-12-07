@@ -25,9 +25,13 @@ const HighlightJob = () => {
   const id = curUrl.split("details/")[1];
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get(`${config.api.url}/job/${id}`).catch((error) => console.log(error));
+      const response = await axios
+        .get(`${config.api.url}/job/${id}`)
+        .catch((error) => console.log(error));
       setPerson(response.data);
-      const jobRecomend = await axios.get(`${config.api.url}/job/recommend/5`).catch((error) => console.log(error));
+      const jobRecomend = await axios
+        .get(`${config.api.url}/job/recommend/5`)
+        .catch((error) => console.log(error));
       setRecomend(jobRecomend.data);
       const marks = await axios
         .get(`${config.api.url}/job/${id}/marked`, {
@@ -55,11 +59,12 @@ const HighlightJob = () => {
     handleFuntion: callbackHandlerFunction,
     flagFuntion: callbackFlag,
     skill: skills,
-    jobType: persons.authorName,
+    jobType: persons.title,
+    company: persons.authorName,
     icon: persons.authorAvatar,
     imageUrl: persons.imageUrl,
     address: persons.authorAddress,
-    daysPost: "2",
+    daysPost: -new Date().getDate() + new Date(persons.createdAt).getDate(),
     salary: persons.salary,
     quantity: persons.slots,
     typeOfWorking: persons.typeOfWorking,

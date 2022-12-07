@@ -24,7 +24,6 @@ const Highlight = (props) => {
           alt=".."
           fallbackImage={locationImg}
         />
-
         <div className={classes.company1}>
           <div className={classes.factory}>
             <div className={classes.icon}>
@@ -33,7 +32,8 @@ const Highlight = (props) => {
             <div className={classes.info1}>
               <h3>{props.skills.jobType}</h3>
               <p>
-                {props.skills.address} - {props.skills.daysPost} days ago
+                {props.skills.company} - {props.skills.address} -{" "}
+                {props.skills.daysPost} days ago
               </p>
               <div className={classes.skill}>
                 <ul className={classes["skill-items"]}>
