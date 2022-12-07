@@ -1,19 +1,56 @@
 import classes from "./FilterBar.module.scss"
 import FilterImg from "../icon/filter"
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
+import { useNavigate } from "react-router-dom";
+
+const useOnClickOutside = (ref, handler) => {
+    useEffect(
+      () => {
+        const listener = (event) => {
+          // Do nothing if clicking ref's element or descendent elements
+          if (!ref.current || ref.current.contains(event.target)) {
+            return;
+          }
+          handler(event);
+        };
+        document.addEventListener("mousedown", listener);
+        document.addEventListener("touchstart", listener);
+        return () => {
+          document.removeEventListener("mousedown", listener);
+          document.removeEventListener("touchstart", listener);
+        };
+      },
+      // Add ref and handler to effect dependencies
+      // It's worth noting that because passed in handler is a new ...
+      // ... function on every render that will cause this effect ...
+      // ... callback/cleanup to run every render. It's not a big deal ...
+      // ... but to optimize you can wrap handler in useCallback before ...
+      // ... passing it into this hook.
+      [ref, handler]
+    );
+}
 
 const FilterBar = (props) => {
+
+    const navigate = useNavigate()
 
     const [isOpen, setIsOpen] = useState(false)
     const [typeOfWorkplace, setTypeOfWorkplace] = useState('')
     const [typeOfJob, setTypeOfJob] = useState('')
     const [experience, setExperience] = useState('')
+    const [isModalOpen, setModalOpen] = useState(false);
+    const [text, setText] = useState(null)
+
     const company = useRef('')
     const category = useRef('')
     const skill = useRef('')
     const location = useRef('')
     const minSalary = useRef(0)
     const maxSalry = useRef(10000000)
+
+    const ref = useRef()
+
+    useOnClickOutside(ref, () => setModalOpen(false));
 
     const openHandler = () => {
         setIsOpen(pre => {
@@ -22,7 +59,10 @@ const FilterBar = (props) => {
     }
 
     const filterHandler = (e) => {
-        e.prenventDefault()
+        e.preventDefault()
+        setModalOpen(false)
+        setText("")
+        navigate(`/${props.page}?filter=${text}`)
     }
 
     const filterDetailHandler = () => {
@@ -49,13 +89,38 @@ const FilterBar = (props) => {
                     </button>
                 </div>
                 <div className={classes['filter-search']}>
-                    <form onSubmit={filterHandler}>
-                    <input type="text" placeholder="Category, Company, TypeJob, ..." name="filter" list="job" />
+                    {/* <form onSubmit={filterHandler}>
+                    <input type="text" placeholder="Category, Company, TypeJob, ..." />
                         <datalist id="job" >
                             {props.filter.slice(0, 7).map((item, index) => (    
                                 <option value={item} key={index} />
                             ))}
                         </datalist>
+                    </form> */}
+                    <form onSubmit={filterHandler} style={{position: "relative"}} ref={ref}>
+                        <input type="search" aria-label="Search" placeholder="Category, Company, TypeJob, ..." onClick={() => {setModalOpen(true)}} onChange={(e) => {setText(e.target.value); props.onChange(e.target.value)}} value={text}/>
+                        {props.filter.length > 0 && isModalOpen && <div className={classes.sugestion} style={{
+                            padding: "0",
+                            paddingTop: "5px",
+                            margin: "0",
+                            position: "absolute",
+                            top: "39px",
+                            backgroundColor: "white",
+                            width: "99.5%",
+                            borderRadius: "10px",
+                            border: "black solid thin",
+                            borderTop: "none",
+                        }}>
+                            <ul style={{listStyle: "none", display: "block", width: "100%", margin: "0", padding: "0",}}>
+                            {props.filter.map((item, index) => (    
+                                <li key={index} style={{display: "block",fontWeight: "200", margin: "0", padding: "5px 10px ", borderBottom: "1px solid gray", color: "black"}} onClick={(e) => {
+                                    console.log(e.target.innerText)
+                                    setText(e.target.innerText)
+                                    props.onChange(e.target.innerText)
+                                  }}>{item}</li>
+                            ))}
+                            </ul>
+                        </div>}
                     </form>
                 </div>
             </div>   

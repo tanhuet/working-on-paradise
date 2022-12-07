@@ -1,30 +1,36 @@
-import { Fragment } from "react"
+import { Fragment, useState } from "react"
 import img from "../../../asses/category-job.png"
+import { useEffect } from "react"
+import axios from "axios"
+import config from "../../../config"
 
 import classes from "./CategoryTop.module.scss"
 import FilterBar from "../../../components/filterbar/FilterBar"
 import HighlightJob from "../../../components/highlight-job/HighlightJob"
-// import { useLocation } from "react-router-dom"
 
 const CategoryTop = (props) => {
 
-    // suggestion word
-    let suggestion = ""
-    props.entireJobs.forEach((job) => {
-        if (!suggestion.includes(job.companyName.toString())) {
-            suggestion += job.companyName.toString()
-            suggestion += ","
-        }
-        if (!suggestion.includes(job.category.toString())) {
-            suggestion += job.category.toString()
-            suggestion += ","
-        }
-        if (!suggestion.includes(job.jobType.toString())) {
-            suggestion += job.jobType.toString()
-            suggestion += ","
-        }
-    })
-    suggestion = suggestion.slice(0, -1).split(",")
+    const [a, setA] = useState('') 
+    const [suggestion, setSuggestion] = useState([])
+
+    useEffect(() => {
+        let timer = setTimeout(async () => {
+            if (a.length > 0) {
+                const res = await axios.get(`${config.api.url}/job/suggest-keyword/5/${a.replace('/', '%2F')}`)
+                setSuggestion(res.data)
+            } else {
+                setSuggestion([])
+            }
+        }, 500);
+        return () => {
+            clearTimeout(timer);
+        };
+        
+    }, [a])
+
+    const changeSuggestionHandler = (suggestion) => {
+        setA(suggestion)
+    }
 
     return (
         <Fragment>
@@ -32,7 +38,7 @@ const CategoryTop = (props) => {
                 <img src={img} className ={classes['img-category']} alt="category"/>
             </div>
             <div className={classes['filter-bar']}>
-                <FilterBar filter = {suggestion} onFilter = {props.onFilter} />
+                <FilterBar filter = {suggestion} onFilter = {props.onFilter} onChange={changeSuggestionHandler} page={"category"}/>
             </div>
             <div className={classes['highligh-job']}>
                 <p className={classes.title}>Exploring Amazing Jobs</p>

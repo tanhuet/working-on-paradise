@@ -116,18 +116,12 @@ const MainNavigation = (props) => {
             )}
             <form className="d-flex" onSubmit={searchHander} style={{position: "relative"}} ref={inputRef} onClick={() => {setModalOpen(true)}}>
               <input  className={`form-control me-2 ${classes['input']}`} type="search" placeholder="Search" aria-label="Search" onChange={(e) => {setText(e.target.value) ;props.onChange(e.target.value)}} value={text}/>
-              {/* <datalist id="job" >
-                {props.filter.map((item, index) => (    
-                    <option value={item} key={index} />
-                ))}
-              </datalist> */}
-              {/* <button type="submit"></button> */}
               {props.filter.length > 0 && isModalOpen &&  <div className={classes.sugestion} style={{
                 padding: "0",
-                paddingTop: "10px",
+                paddingTop: "5px",
                 margin: "0",
                 position: "absolute",
-                top: "35px",
+                top: "36px",
                 backgroundColor: "white",
                 width: "98%",
                 borderRadius: "10px",
@@ -136,7 +130,7 @@ const MainNavigation = (props) => {
               }}>
                 <ul style={{listStyle: "none", display: "block", width: "100%", margin: "0", padding: "0",}}>
                   {props.filter.map((item, index) => (    
-                      <li style={{display: "block",fontWeight: "200", margin: "0", padding: "0 10px "}}  onClick={(e) => {
+                      <li key={index} style={{display: "block",fontWeight: "200", margin: "0", padding: "5px 10px ", borderBottom: "1px solid #86b7fe", color: "black"}}  onClick={(e) => {
                         setText(e.target.innerText)
                         props.onChange(e.target.innerText)
                       }}>{item}</li>

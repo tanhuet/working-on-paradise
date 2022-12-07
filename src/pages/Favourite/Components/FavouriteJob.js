@@ -1,41 +1,35 @@
 import Wrap from "../../../components//UI/Wrap"
 import classes from "./FavouriteJob.module.scss"
 import { Fragment, useEffect, useState } from "react"
+import axios from "axios"
+import config from "../../../config"
+
 import FilterBar from "../../../components/filterbar/FilterBar"
 import JobCard from "../../../components/job-card/JobCard"
-import { useLocation } from "react-router-dom"
 
 const FavouriteJob = (props) => {
 
-    const [filteredJobs, setFilteredJobs] = useState(props.jobs)
-
-    //Filter Function
-    const filterJob = (jobList, condition) => {
-        if (!condition) return jobList
-        let jobs = jobList.filter((job) => {
-            return job.category.includes(condition)
-        })
-        jobs = jobs.concat(jobList.filter((job) => {
-            return job.companyName.includes(condition)
-        }))  
-        jobs = jobs.concat(jobList.filter((job) => {
-            return job.jobType.includes(condition)
-        }))
-        jobs = jobs.concat(jobList.filter((job) => {
-            return job.skills[0].includes(condition)
-        }))
-        return jobs
-    }
-
-      // dependency
-    const location = useLocation()
-    const queryParams = new URLSearchParams(location.search)
-    const filter = queryParams.get('filter')
+    const [a, setA] = useState('') 
+    const [suggestion, setSuggestion] = useState([])
 
     useEffect(() => {
-        let filteredJobs = filterJob(props.jobs, filter)
-        setFilteredJobs(filteredJobs)
-    }, [filter, props.jobs])
+        let timer = setTimeout(async () => {
+            if (a.length > 0) {
+                const res = await axios.get(`${config.api.url}/job/suggest-keyword/5/${a.replace('/', '%2F')}`)
+                setSuggestion(res.data)
+            } else {
+                setSuggestion([])
+            }
+        }, 500);
+        return () => {
+            clearTimeout(timer);
+        };
+        
+    }, [a])
+
+    const changeSuggestionHandler = (suggestion) => {
+        setA(suggestion)
+    }
 
     return (
         <Fragment>
@@ -48,10 +42,10 @@ const FavouriteJob = (props) => {
                         <p>Examine the list of past jobs you have saved. To avoid missing out on a professional <br/> opportunity, apply straightaway.</p>
                     </div>
                     <div className={classes['filter-bar']}>
-                        <FilterBar filter = {[]} display={"none"} />
+                    <FilterBar filter = {suggestion} display = "none" onChange={changeSuggestionHandler} page={"favourite"}/>
                     </div>
                     <div className={classes.list}>
-                    {filteredJobs.map((job) => (
+                    {props.jobs.map((job) => (
                         <JobCard
                         key={job.id}
                         id = {job.id}

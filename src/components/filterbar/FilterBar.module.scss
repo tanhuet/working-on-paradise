@@ -4,21 +4,29 @@
     width: 100%;
 }
 .filter {
-    padding: 10px;
-    // border: solid;
+    padding: 10px 20px;
+    padding-right: 50px;
     background-color: #9BE4E4;;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.filter-button button{
-    background: none;
-    border: none;
+.filter-button {
+    margin-right: 20px;
+
+    button {
+        background: none;
+        border: none;
+    }
 }
 
 .filter-search {
     width: 1300px;
+    li:hover {
+        background-color: #E6E6E6;
+        cursor: pointer;
+    }
 }
 
 .filter-search input{
