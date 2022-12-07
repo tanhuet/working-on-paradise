@@ -114,7 +114,6 @@ const FilterBar = (props) => {
                             <ul style={{listStyle: "none", display: "block", width: "100%", margin: "0", padding: "0",}}>
                             {props.filter.map((item, index) => (    
                                 <li key={index} style={{display: "block",fontWeight: "200", margin: "0", padding: "5px 10px ", borderBottom: "1px solid gray", color: "black"}} onClick={(e) => {
-                                    console.log(e.target.innerText)
                                     setText(e.target.innerText)
                                     props.onChange(e.target.innerText)
                                   }}>{item}</li>

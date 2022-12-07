@@ -20,7 +20,10 @@ const Category = () => {
   // dependency
   const location = useLocation()
   const queryParams = new URLSearchParams(location.search)
-  const filter = queryParams.get('filter')
+  let filter = queryParams.get('filter')
+  if (filter !== null && filter !== undefined && filter.length > 0) {
+    filter = filter.replace('/', '%2F')
+  }
 
   const { innerWidth: width } = window;
 
@@ -45,7 +48,7 @@ const Category = () => {
     if (userStore) {
       if (filter !== null && filter.length > 0) {
         axios
-        .get(`${config.api.url}/job/find-by-keyword/${filter}/7/${page.toString()}`, {
+        .get(`${config.api.url}/job/find-by-keyword/${filter}/8/${page.toString()}`, {
           headers: { Authorization: `Bearer ${userStore.accessToken}` },
         })
         .then((res) => {
@@ -56,7 +59,7 @@ const Category = () => {
         });
       } else {
         axios
-          .get(`${config.api.url}/job/getPageSuggestion/7/${page.toString()}`, {
+          .get(`${config.api.url}/job/getPageSuggestion/8/${page.toString()}`, {
             headers: { Authorization: `Bearer ${userStore.accessToken}` },
           })
           .then((res) => {
@@ -105,14 +108,14 @@ const Category = () => {
   const filterHandler = async (data) => {
     try {
       if (userStore) {
-        const res = await axios.post(`${config.api.url}/job/filter/7/1`, data ,
+        const res = await axios.post(`${config.api.url}/job/filter/8/1`, data ,
           {
               headers: { Authorization: `Bearer ${userStore.accessToken}` },
           }
         )
         setEntireJobs(res.data)
       } else {
-        const res = await axios.post(`${config.api.url}/job/filter/7/1`, data)
+        const res = await axios.post(`${config.api.url}/job/filter/8/1`, data)
         setEntireJobs(res.data)
       }
     } catch(err) {
