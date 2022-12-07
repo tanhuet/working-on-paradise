@@ -38,18 +38,20 @@ const HighlightPost = (props) => {
     return (
         <Card className={classes.makeup}>
             <div className={classes.job}>
-                <div className={classes.info}>
-                    <div className={classes.logo}>
-                        <img src={props.logo} alt=".." />
-                    </div>
-                    <div className={classes.detail}>
-                        <div>{props.jobName}</div>
-                        <div className={classes.introduction}>
-                            {props.company} - {props.location} - {props.positions} - {props.typeOfJob
-                            } - {props.experience} - ${props.salary} - {props.candidates} slots
+                <Link to={"/employer-post/" + props.id}>
+                    <div className={classes.info}>
+                        <div className={classes.logo}>
+                            <img src={props.logo} alt=".." />
+                        </div>
+                        <div className={classes.detail}>
+                            <div>{props.jobName}</div>
+                            <div className={classes.introduction}>
+                                {props.company} - {props.location} - {props.positions} - {props.typeOfJob
+                                } - {props.experience} - ${props.salary} - {props.candidates} slots
+                            </div>
                         </div>
                     </div>
-                </div>
+                </Link>
                 <div>
                     <Link to={"/employer-post/" + props.id}>
                         <img className={classes.edit} src={editImg} alt="" />
