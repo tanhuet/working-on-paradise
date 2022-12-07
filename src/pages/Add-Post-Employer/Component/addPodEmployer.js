@@ -10,9 +10,9 @@ import { useNavigate } from "react-router-dom";
 
 const AddPostEmployer = (props) => {
   const [jobTitle, setJobTitle] = useState("Job Title");
-  const [dropDownOption, setDropDownOption] = useState("male");
+  const [dropDownOption, setDropDownOption] = useState("no-require");
   const [salary, setSalary] = useState("");
-  const [typeOfJob, setTypeOfJob] = useState("");
+  const [typeOfJob, setTypeOfJob] = useState("fulltime");
   const [quantity, setQuantity] = useState("");
   const [position, setPosition] = useState("");
   const [experience, setExperience] = useState("");
@@ -188,28 +188,35 @@ const AddPostEmployer = (props) => {
                     </li>
                     <li>
                       <p1>Type of Job:</p1>
-                      <span>
+                      <br />
+                      <select
+                        className={`ui dropdown`}
+                        value={dropDownOption}
+                        onChange={handleChangeTypeOfJob}
+                        style={{ height: "auto", borderRadius: '10px' }}
+                      >
+                        <option value="fulltime">Full-time</option>
+                        <option value="parttime">Part-time</option>
+                      </select>
+                      {/* <span>
                         {" "}
                         <input
                           onChange={handleChangeTypeOfJob}
                           value={typeOfJob}
                           required
                         ></input>
-                      </span>
+                      </span> */}
                     </li>
-
-                    <li  style={{marginBottom: '32px'}}>
-                      <p1>Gender:</p1>
-                      <br />
-                      <select
-                        className={`ui dropdown`}
-                        value={dropDownOption}
-                        onChange={handleChangeDropDown}
-                        style={{ height: "auto", borderRadius: '10px' }}
-                      >
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                      </select>
+                    <li>
+                      <p1>Position:</p1>
+                      <span>
+                        {" "}
+                        <input
+                          onChange={handleChangePosition}
+                          value={position}
+                          required
+                        ></input>
+                      </span>
                     </li>
                     <li>
                       <span className={classes.text}>
@@ -239,17 +246,22 @@ const AddPostEmployer = (props) => {
                         ></input>
                       </span>
                     </li>
-                    <li>
-                      <p1>Position:</p1>
-                      <span>
-                        {" "}
-                        <input
-                          onChange={handleChangePosition}
-                          value={position}
-                          required
-                        ></input>
-                      </span>
+                    <li >
+                      <p1>Gender:</p1>
+                      <br />
+                      <select
+                      
+                        className={`ui dropdown`}
+                        value={dropDownOption}
+                        onChange={handleChangeDropDown}
+                        style={{ height: "auto", borderRadius: '10px' }}
+                      >
+                        <option value="no-require">No</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                      </select>
                     </li>
+                    
                     <li>
                       <p1>Experience:</p1>
                       <span>
