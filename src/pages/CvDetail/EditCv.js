@@ -172,7 +172,7 @@ const EditCv = (props) => {
                                         <input type="text" placeholder="company" defaultValue={CV.experience[1].company} ref={companyExperience2} />
                                     </div>
                                 )}
-                                {<textarea name="w3review" rows="6" cols="50" defaultValue={CV.experience[1].description} ref={descriptionExperience2} placeholder="Some information about your old company"/> }
+                                {<textarea name="w3review" rows="6" defaultValue={CV.experience[1].description} ref={descriptionExperience2} placeholder="Some information about your old company"/> }
                             </div>
                         </div>
                     </div>

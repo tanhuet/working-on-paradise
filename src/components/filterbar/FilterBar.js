@@ -98,7 +98,7 @@ const FilterBar = (props) => {
                         </datalist>
                     </form> */}
                     <form onSubmit={filterHandler} style={{position: "relative"}} ref={ref}>
-                        <input type="search" aria-label="Search" placeholder="Category, Company, TypeJob, ..." onClick={() => {setModalOpen(true)}} onChange={(e) => {setText(e.target.value); props.onChange(e.target.value)}} value={text}/>
+                        <input type="search" aria-label="Search" placeholder="Category, Company, TypeJob, ..." onClick={() => {setModalOpen(true)}} onChange={(e) => {setModalOpen(true); setText(e.target.value); props.onChange(e.target.value)}} value={text}/>
                         {props.filter.length > 0 && isModalOpen && <div className={classes.sugestion} style={{
                             padding: "0",
                             paddingTop: "5px",

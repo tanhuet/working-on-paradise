@@ -3,11 +3,14 @@ import classes from "./FavouriteJob.module.scss"
 import { Fragment, useEffect, useState } from "react"
 import axios from "axios"
 import config from "../../../config"
+import { useSelector } from "react-redux"
 
 import FilterBar from "../../../components/filterbar/FilterBar"
 import JobCard from "../../../components/job-card/JobCard"
 
 const FavouriteJob = (props) => {
+
+    const userStore = useSelector((state) => state.auth.login?.currentUser);
 
     const [a, setA] = useState('') 
     const [suggestion, setSuggestion] = useState([])
@@ -15,7 +18,7 @@ const FavouriteJob = (props) => {
     useEffect(() => {
         let timer = setTimeout(async () => {
             if (a.length > 0) {
-                const res = await axios.get(`${config.api.url}/job/suggest-keyword/5/${a.replace('/', '%2F')}`)
+                const res = await axios.get(`${config.api.url}/job/favourite/suggest-keyword/5/${a.replace('/', '%2F')}`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } })
                 setSuggestion(res.data)
             } else {
                 setSuggestion([])
@@ -25,7 +28,7 @@ const FavouriteJob = (props) => {
             clearTimeout(timer);
         };
         
-    }, [a])
+    }, [a, userStore])
 
     const changeSuggestionHandler = (suggestion) => {
         setA(suggestion)
