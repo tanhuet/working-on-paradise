@@ -9,7 +9,6 @@ import axios from "axios";
 
 const AccountEmployer = (props) => {
   const USER = props.user;
-
   const [editIntro, setEditIntro] = useState(false);
   const [editInfo, setEditInfo] = useState(false);
 
@@ -55,13 +54,12 @@ const AccountEmployer = (props) => {
       { headers: { Authorization: `Bearer ${userStore.accessToken}` } }
     );
   };
-
   // };
 
   return (
     USER && (
       <Fragment>
-        <div className={classes.container1}>
+        <div className={classes["container1-1"]}>
           <div className={classes.circle}>
             <div className={classes.letter}>
               {USER.name.charAt(0).toUpperCase()}
@@ -72,15 +70,16 @@ const AccountEmployer = (props) => {
         <div id="list-example" className={classes["group-item"]}>
           <a
             className={`list-group-item list-group-item-action ${classes.style1}`}
-            href="#list-item-1"
-          >
-            Introduction
-          </a>
-          <a
-            className={`list-group-item list-group-item-action ${classes.style1}`}
             href="#list-item-2"
           >
             Basic Information
+          </a>
+          <a
+            className={`list-group-item list-group-item-action ${classes.style1}`}
+            href="#list-item-1"
+          >
+            
+            Introduction
           </a>
         </div>
 

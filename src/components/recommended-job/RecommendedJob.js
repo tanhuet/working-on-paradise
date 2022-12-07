@@ -8,12 +8,15 @@ const RecommendedJob = (props) => {
       <div className={classes.title}>
         <p>Recommended Job</p>
       </div>
-      <Link to = {"/details/" + props.id}>
+      
       <div className={classes.introduction}>
+      <Link to = {"/details/" + props.id}>
         <div className={classes.img}>
           <img src={props.logo} alt=".." />
         </div>
-        <p>{props.jobName}</p>
+        </Link>
+        <Link to = {"/employerInfo/" + props.id}><p>{props.jobName}</p></Link>
+        <Link to = {"/details/" + props.id}>
         <div className={classes.info}>
           <ul>
             <li>{props.companyName}</li>
@@ -24,8 +27,9 @@ const RecommendedJob = (props) => {
             <li>slot: {props.slot}</li>
           </ul>
       </div>
-      </div>
       </Link>
+      </div>
+      
     </Wrap>
   );
 };
