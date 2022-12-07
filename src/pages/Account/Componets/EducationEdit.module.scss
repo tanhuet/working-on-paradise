@@ -2,12 +2,18 @@
     position: fixed;
     width: 70%;
     left: 15%;
-    top: 20vh;
+    top: 15%;
     background: white;
     border-radius: 0px;
     z-index: 200;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
     padding: 3rem;
+
+    .b {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
 
     input {
         border-radius: 10px;
@@ -59,27 +65,105 @@
 
 .item {
     width: 90%;
-    height: 30px;
+    margin: 5px;
+    margin-left: 30px;
 
     .a {
-        width: 17%;
-        height: 30px;
+        width: 20%;
     }
 }
 
 .style {
     margin-left: 10%;
-    width: 65%;
-    height: 200px;
+    width: 67%;
+    height: 180px;
 }
 
-.styleButton {
-    width: 80px;
-    height: 35px;
-    margin-left: 85%;
-    background: #00CED1;
-    border: none;
-    box-shadow: 0px 4px 50px rgba(0, 251, 255, 0.5);
-    border-radius: 20px;
-    color: #FFFFFF;
+.listButton {
+    display: flex;
+    justify-content: space-between;
+
+    .styleButtonCancle {
+        width: 80px;
+        height: 35px;
+        margin-left: 40px;
+        margin-top: 15px;
+        background: #00CED1;
+        border: none;
+        box-shadow: 0px 4px 50px rgba(0, 251, 255, 0.5);
+        border-radius: 20px;
+        color: #FFFFFF;
+    }
+    
+    .styleButtonSave {
+        @extend.styleButtonCancle;
+        margin-right: 40px;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .form {
+        padding: 2rem;
+        input {
+            border-radius: 7px;
+        }
+    
+        textarea {
+            border-radius: 7px;
+        }
+    }
+    
+    .fontTitle {
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 28px;
+        margin: 20px 0px 25px;
+    
+        .title {
+            width: 80%;
+        }
+    }
+    
+    .font {
+        font-size: 14px;
+        line-height: 24px;
+        margin-left: 10%;
+    }
+    
+    .font1 {
+        font-size: 14px;
+        line-height: 24px;
+        margin-left: 10%;
+    }
+    
+    .item {
+        width: 90%;
+        margin: 5px;
+        margin-left: 20px;
+    
+        .a {
+            width: 24%;
+        }
+    }
+    
+    .style {
+        margin-left: 10%;
+        width: 65%;
+        height: 130px;
+    }
+    
+    .listButton {
+    
+        .styleButtonCancle {
+            width: 60px;
+            height: 30px;
+            margin-left: 30px;
+            margin-top: 15px;
+            font-size: 13px;
+        }
+        
+        .styleButtonSave {
+            margin-left: 30px;
+        }
+    }
 }

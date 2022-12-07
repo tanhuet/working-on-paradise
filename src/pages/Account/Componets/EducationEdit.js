@@ -63,40 +63,44 @@ const EducationEdit = (props) => {
         <div className={classes.fontTitle}>
           <input className={classes.title} onChange={(e) => setSchool(e.target.value)} value={school}></input>
         </div>
-        <div className={classes.item}>
-          <li className={classes.font}>
-            <label className={classes.a}>Major:</label>
-            <input style={{ width: "60%" }} onChange={(e) => setMajor(e.target.value)} value={major}></input>
-          </li>
-        </div>
 
-        <div className={classes.item}>
-          <li className={classes.font}>
-            <label className={classes.a}>Degree:</label>
-            <input style={{ width: "60%" }} onChange={(e) => setDegree(e.target.value)} value={degree}></input>
-          </li>
-        </div>
+        <div className={classes.b}>
+          <div className={classes.item}>
+            <div className={classes.font}>
+              <label className={classes.a}>Major:</label>
+              <input style={{ width: "60%" }} onChange={(e) => setMajor(e.target.value)} value={major}></input>
+            </div>
+          </div>
 
-        <div className={classes.item}>
-          <li className={classes.font}>
-            <label className={classes.a}>Start Date:</label>
-            <input type="date" min="1000-01-01" max="9999-12-31" style={{ width: "60%" }} onChange={(e) => setStartDate(e.target.value)} value={startDate}></input>
-          </li>
+          <div className={classes.item}>
+            <div className={classes.font}>
+              <label className={classes.a}>Degree:</label>
+              <input style={{ width: "60%" }} onChange={(e) => setDegree(e.target.value)} value={degree}></input>
+            </div>
+          </div>
+
+          <div className={classes.item}>
+            <div className={classes.font}>
+              <label className={classes.a}>Start Date:</label>
+              <input type="date" min="1000-01-01" max="9999-12-31" style={{ width: "60%" }} onChange={(e) => setStartDate(e.target.value)} value={startDate}></input>
+            </div>
+          </div>
+          <div className={classes.item}>
+            <div className={classes.font}>
+              <label className={classes.a}>End Date:</label>
+              <input type="date" min="1000-01-01" max="9999-12-31" style={{ width: "60%" }} onChange={(e) => setEndDate(e.target.value)} value={endDate}></input>
+            </div>
+          </div>
+          <div className={classes.item}>
+            <div className={classes.font}>
+              <label className={classes.a}>Description:</label>
+            </div>
+          </div>
+          <textarea className={`${classes.font1} ${classes.style}`} onChange={(e) => setDescription(e.target.value)} value={description}></textarea>
         </div>
-        <div className={classes.item}>
-          <li className={classes.font}>
-            <label className={classes.a}>End Date:</label>
-            <input type="date" min="1000-01-01" max="9999-12-31" style={{ width: "60%" }} onChange={(e) => setEndDate(e.target.value)} value={endDate}></input>
-          </li>
-        </div>
-        <div className={classes.item}>
-          <li className={classes.font}>
-            <label className={classes.a}>Description:</label>
-          </li>
-        </div>
-        <textarea className={`${classes.font1} ${classes.style}`} onChange={(e) => setDescription(e.target.value)} value={description}></textarea>
-        <div>
-          <button className={classes.styleButton} type="submit">Save</button>
+        <div className={classes.listButton}>
+          <button className={classes.styleButtonCancle} onClick={props.onCloseEditingEducation}>Cancel</button>
+          <button className={classes.styleButtonSave} type="submit">Save</button>
         </div>
       </form>
     </Fragment>
