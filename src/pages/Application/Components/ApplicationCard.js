@@ -5,6 +5,16 @@ import Card from "../../../components/UI/Card";
 import classes from "./ApplicationCard.module.scss";
 
 const ApplicationCard = (props) => {
+  const listSkills = () => {
+    let skills = [];
+    for (let i = 0; i < props.skills.length; i++) {
+      if (skills.length >= 3) break;
+      if (props.skills[i] && props.skills[i].length > 0) skills.push(props.skills[i]);
+    }
+
+    return skills;
+  };
+
   return (
     <Card>
       <div className={classes.job}>
@@ -25,7 +35,7 @@ const ApplicationCard = (props) => {
       </div>
       <div className={classes.skill}>
         <ul className={classes["skill-items"]}>
-          {props.skills.map((item) => (
+          {listSkills().map((item) => (
             <div key={item} className={classes.item}>
               {item}
             </div>
