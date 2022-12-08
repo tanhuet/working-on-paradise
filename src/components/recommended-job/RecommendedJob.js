@@ -15,7 +15,7 @@ const RecommendedJob = (props) => {
           <img src={props.logo} alt=".." />
         </div>
         </Link>
-        <Link to = {"/employerInfo/" + props.id}><p>{props.jobName}</p></Link>
+        <Link to = {"/employerInfo/" + props.author}><p>{props.jobName}</p></Link>
         <Link to = {"/details/" + props.id}>
         <div className={classes.info}>
           <ul>

@@ -75,6 +75,7 @@ const CVPage = (props) => {
                     <RecommendedJob
             key={item.id}
             id={item.id}
+            author={item.author}
             companyName={item.companyName}
             logo={item.logo}
             jobName={item.jobName}

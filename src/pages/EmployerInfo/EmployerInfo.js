@@ -9,53 +9,8 @@ import React from "react";
 import axios from "axios";
 
 const EmployerInfo = () => {
-  //   const [editIntro, setEditIntro] = useState(false);
-  //   const [editInfo, setEditInfo] = useState(false);
 
-  //   const [introduction, setIntroduction] = useState();
-  //   const [phone, setPhone] = useState();
-  //   const [address, setAddress] = useState();
-  //   const [email, setEmail] = useState();
-  //   const [size, setSize] = useState();
-
-  //   const userStore = useSelector((state) => state.auth.login?.currentUser);
-
-  //   useEffect(() => {
-  //     axios
-  //       .get(`${config.api.url}/employer`, {
-  //         headers: { Authorization: `Bearer ${userStore.accessToken}` },
-  //       })
-  //       .then((res) => {
-  //         setPhone(res.data.phone);
-  //         setEmail(res.data.email);
-  //         setAddress(res.data.address);
-  //         setIntroduction(res.data.about);
-  //         setSize(res.data.size);
-  //       });
-  //   }, [userStore]);
-
-  //   const handleSubmit = (event) => {
-  //     axios.put(
-  //       `${config.api.url}/employer`,
-  //       {
-  //         about: introduction,
-  //         wallpaper: "wallpaper",
-  //         size: size,
-  //       },
-  //       { headers: { Authorization: `Bearer ${userStore.accessToken}` } }
-  //     );
-  //     axios.put(
-  //       `${config.api.url}/user`,
-  //       {
-  //         name: USER.name,
-  //         avatar: USER.avatar,
-  //         address: address,
-  //       },
-  //       { headers: { Authorization: `Bearer ${userStore.accessToken}` } }
-  //     );
-  //   };
-
-  // };
+ 
 
   const userStore = useSelector((state) => state.auth.login?.currentUser);
 
@@ -80,12 +35,6 @@ const EmployerInfo = () => {
         setSize(res.data.size);
     })
   },  [userStore, employerId]);
-  console.log(name);
-  console.log(phone);
-  console.log(email);
-  console.log(address);
-  console.log(introduction);
-  console.log(size);
   
   
   return (

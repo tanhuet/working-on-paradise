@@ -27,6 +27,8 @@ const Register = (props) => {
 
   const [isNextPage, setIsNextPage] = useState(false);
   const [isJobSeeker, setIsJobSeeker] = useState(false);
+
+  const [notice, setNotice] = useState("");
   // const [tags, setTags] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -87,8 +89,12 @@ const Register = (props) => {
   // useEffect(() => {
   //   console.log(dropDownOption);
   // }, [dropDownOption]);
-  const handleSubmit = (event) => {
-    // event.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const validate = await checkUser();
+    if (!validate) {
+      return;
+    }
     if (
       userName !== "" &&
       email !== "" &&
@@ -112,15 +118,7 @@ const Register = (props) => {
     ) {
       alert("Password and ConfirmPassword is different. Please try again");
     }
-    // const checkUser = {
-    //   username: userName,
-    //   email: email,
-    //   phone: phoneNumber,
-    // };
-    // axios.post(`${config.url.api}/user/check-exist`,checkUser)
-    // .then((res) => {
-    //   console.log(res.data);
-    // })
+
   };
   const user = {
     username: userName,
@@ -130,42 +128,22 @@ const Register = (props) => {
     password: passWord,
   };
 
-  // const handleSubmit1 = (event) => {
-  //   event.preventDefault();
-  //   const newUser = {
-  //     username: userName,
-  //     email: email,
-  //     phone: phoneNumber,
-  //     password: passWord,
-  //   };
-  //   // setDropDownOption(dropDownOption.substring(1));
-  //   let optionUSer = dropDownOption === "Job Seeker" ? "jobseeker" : "employer";
-  //   const DUMMYUSERJOBSEEKER = {
-  //     username: userName,
-  //     name: userName,
-  //     email: email,
-  //     phone: phoneNumber,
-  //     avatar: "avatar",
-  //     password: passWord,
-  //     address: "address",
-  //     age: 20,
-  //     gender: "male",
-  //     experience: "2 years",
-  //     advanedSkill: "advanced skill",
-  //     salary: 1000,
-  //     workplace: "Ha Noi",
-  //     cv: "cv link",
-  //     careerFeild: "web",
-  //     typeOfJob: "fulltime",
-  //   };
-  //   axios
-  //     .post(`${config.api.url}/${optionUSer}`, DUMMYUSERJOBSEEKER)
-  //     .then((res) => {
-  //       console.log(res.data);
-  //       // setUser(res.data);
-  //     });
-  //   // registerUser(newUser, dispatch, navigate, dropDownOption);
-  // };
+  const checkUser = async () => {
+    
+     const templeUser = {
+      username: userName,
+      email: email,
+      phone: phoneNumber,
+    };
+    try{
+    let res = (await axios.post(`${config.api.url}/user/check-exist`,templeUser)).response
+    setNotice('');
+    return true;
+  } catch (error) {
+    setNotice(error.response.data);
+    return false;
+  }
+  }
 
   return !isNextPage ? (
     <div className={classes["container-fluid"]}>
@@ -174,6 +152,9 @@ const Register = (props) => {
           <div className={classes["sign-up-register"]}>Sign Up</div>
 
           <div className={classes["account-register"]}>
+          {notice !== "" ? <p style={{color: 'red'}}>{notice}&nbsp;&nbsp;<i class="fa fa-exclamation-triangle" aria-hidden="true"></i></p> : ''}
+          
+          
             <div className={classes["input-box"]}>
               <div
                 className={classes["userAnswer"]}
