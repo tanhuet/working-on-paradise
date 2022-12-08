@@ -1,4 +1,4 @@
-import classes from "../../../components/highlight-job/HighlightJob.module.scss"
+import classes from "./HighLightCv.module.scss"
 import { Link } from "react-router-dom"
 
 const HighlightCv = (props) => {

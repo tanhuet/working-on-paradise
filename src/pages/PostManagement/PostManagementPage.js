@@ -27,7 +27,7 @@ const PostManagementPage = () => {
     jobs = job.slice(0, 4)
     jobs = jobs.map((job) => {
       let tags = job.tags.replace(" ", '').split(",")
-      tags = tags.slice(0, 7)
+      tags = tags.slice(0, 5)
       return {
         id: job.id,
         logo: job.authorAvatar,

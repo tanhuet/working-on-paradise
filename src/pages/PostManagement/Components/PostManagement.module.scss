@@ -5,7 +5,7 @@
     display: flex;
     background: #C3EFEF;
     border-radius: 60px;
-    
+
     .container-img {
         margin-top: 76px;
         margin-left: 78px;
@@ -14,8 +14,8 @@
     .container-text {
         margin-top: 76px;
         margin-left: 65px;
+
         .text {
-            font-family: 'Poppins';
             font-style: normal;
             font-weight: 600;
             font-size: 30px;
@@ -23,10 +23,12 @@
             color: #FFFFFF;
             text-shadow: 0px 4px 50px rgba(0, 0, 0, 0.8);
         }
+
         .makeup {
             margin-top: 25px;
             margin-left: 65px;
         }
+
         .btn {
             width: 152.54px;
             height: 72px;
@@ -47,6 +49,7 @@
 
 .post-list {
     margin-top: 65px;
+
     .title {
         width: 70%;
         height: 81.35px;
@@ -75,20 +78,21 @@
             color: black;
         }
     }
-    
+
     .list {
         width: 70%;
         margin: 0 auto;
         padding-top: 10px;
         padding-bottom: 50px;
         background: #E9FBFA;
-        border-radius: 0px 0px 60px 60px;
+        border-radius: 0px 0px 40px 40px;
         box-shadow: 0 0 0 0;
+
         .page-controller {
             display: flex;
             justify-content: center;
         }
-        
+
         .page-controller button {
             margin-left: 1rem;
             margin-right: 1rem;
@@ -105,18 +109,85 @@
     align-items: center;
     text-align: center;
     color: #FFCC00;
-    
+
     span {
         color: #235B5C;
     }
 }
 
-.job-list {
+.cv-list {
     margin-top: 80px;
     margin-bottom: 100px;
     display: flex;
     justify-content: center;
-    gap: 80px; 
+    gap: 80px;
 }
 
+@media only screen and (max-width: 1000px) {
+    .container {
+        width: 700px;
+        height: 300px;
+        border-radius: 50px;
 
+        .container-img {
+            margin-top: 68px;
+            margin-left: 70px;
+        }
+
+        .container-text {
+            margin-top: 76px;
+            margin-left: 65px;
+
+            .text {
+                font-size: 27px;
+                line-height: 40px;
+            }
+
+            .makeup {
+                margin-top: 25px;
+                margin-left: 75px;
+            }
+
+            .btn {
+                width: 135px;
+                height: 65px;
+                border-radius: 18px;
+                font-size: 18px;
+                line-height: 28px;
+            }
+        }
+    }
+
+    .post-list {
+        margin-top: 60px;
+
+        .title {
+            height: 75px;
+            border-radius: 38px 38px 0px 0px;
+            padding-left: 40px;
+            font-size: 23px;
+            line-height: 35px;
+
+            .add {
+                width: 32px;
+                height: 32px;
+            }
+        }
+
+        .list {
+            padding-top: 5px;
+            padding-bottom: 35px;
+            border-radius: 0px 0px 38px 38px;
+        }
+    }
+
+    .tittle-text {
+        font-size: 45px;
+        line-height: 70px;
+    }
+
+    .cv-list {
+        margin-top: 60px;
+        gap: 40px;
+    }
+}
