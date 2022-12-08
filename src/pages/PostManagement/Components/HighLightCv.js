@@ -20,7 +20,7 @@ const HighlightCv = (props) => {
                 <div className={classes.jd}>
                     <ul>
                         <li>Age: {props.age}</li>
-                        <li>Desired Salary: {props.salary}, {props.jobType}</li>
+                        <li>Desired Salary: ${props.salary}</li>
                     </ul>
                 </div>
                 <div className={classes.skill}>
