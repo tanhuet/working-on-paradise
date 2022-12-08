@@ -52,7 +52,7 @@ const HighlightPost = (props) => {
                         </div>
                     </div>
                 </Link>
-                <div>
+                <div className={classes.listButton}>
                     <Link to={"/employer-post/" + props.id}>
                         <img className={classes.edit} src={editImg} alt="" />
                     </Link>

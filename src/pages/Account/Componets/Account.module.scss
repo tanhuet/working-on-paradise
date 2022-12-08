@@ -120,7 +120,7 @@
   display: inline-flex;
   justify-content: space-between;
   width: 55%;
-
+  
   .makeupItem1 {
     width: 212px;
     height: 58px;
@@ -263,14 +263,13 @@
 
   .itemCareer {
     width: 88%;
-    height: 40px;
     margin: 8px auto;
     display: flex;
-
+   
     .a {
       width: 32%;
-      height: 40px;
       margin-right: 5%;
+      word-wrap: break-word;
     }
 
     input {
@@ -413,9 +412,6 @@
   }
 
   .title {
-    align-items: center;
-    display: inline-flex;
-    justify-content: space-between;
     width: 65%;
 
     .makeupItem1 {
@@ -460,7 +456,6 @@
     margin-left: 40px;
     border-radius: 40px;
     .font {
-      font-weight: 600;
       font-size: 18px;
       line-height: 28px;
     }
@@ -489,17 +484,18 @@
     height: 150px;
   }
 
+  .dataItem5 {
+    height: 300px;
+  }
   .dataEdu {
     .fontTitle {
       margin-left: 3rem;
       padding-top: 1rem;
-      font-weight: 600;
       font-size: 18px;
       line-height: 28px; 
     }
 
     .font {
-      font-weight: 500;
       font-size: 15px;
       line-height: 25px;
       margin-left: 5rem;

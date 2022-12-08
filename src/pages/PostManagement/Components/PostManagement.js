@@ -4,7 +4,6 @@ import HighLightCv from "./HighLightCv"
 import HighlightPost from "./HighLightPost";
 import { Link } from "react-router-dom"
 import Data from "./../../Account/Componets/Data"
-import { useEffect } from "react";
 
 const PostManagement = (props) => {
 
@@ -55,7 +54,7 @@ const PostManagement = (props) => {
 
       <h1 className={classes["tittle-text"]}>IDEAL <span>CVs FOR </span>YOU</h1>
 
-      <div className={classes["job-list"]}>
+      <div className={classes["cv-list"]}>
         {props.profiles.map((profile) => (
           <HighLightCv
             key={profile.id}

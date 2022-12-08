@@ -96,7 +96,7 @@ const JobSeekerInfor = () => {
       </div>
       <div data-spy="scroll" data-target="#list-example" data-offset="0" className="scrollspy-example">
         <div id="list-item-1" className={classes.title}>
-          <div className={classes.makeup}>
+          <div className={classes.makeupItem1}>
             <div className={classes.style2}>Basic Information</div>
           </div>
         </div>
@@ -129,23 +129,23 @@ const JobSeekerInfor = () => {
       </div>
 
       <div id="list-item-2" className={classes.title}>
-        <div className={classes.makeup} style={{ width: "154px" }}>
+        <div className={classes.makeupItem2}>
           <div className={classes.style2}>Experience</div>
         </div>
       </div>
-      <div className={classes.data} style={{ height: "190px" }}>
+      <div className={classes.dataItem234}>
         <div className={classes.font}>
           <div className={classes.styleborder}>{experience}</div>
         </div>
       </div>
 
       <div id="list-item-3" className={classes.title}>
-        <div className={classes.makeup} style={{ width: "140px" }}>
+        <div className={classes.makeupItem3}>
           <div className={classes.style2}>Education</div>
         </div>
       </div>
       {educations.length === 0 ? (
-        <div className={classes.data} style={{ height: "190px" }}>
+        <div className={classes.dataItem234}>
           <div className={classes.font}>
             <div className={classes.styleborder}></div>
           </div>
@@ -167,22 +167,22 @@ const JobSeekerInfor = () => {
       )}
 
       <div id="list-item-4" className={classes.title}>
-        <div className={classes.makeup} style={{ width: "182px" }}>
+        <div className={classes.makeupItem45}>
           <div className={classes.style2}>Advanced Skill</div>
         </div>
       </div>
-      <div className={classes.data} style={{ height: "190px" }}>
+      <div className={classes.dataItem234}>
         <div className={classes.font}>
           <div className={classes.styleborder}>{advanedSkill}</div>
         </div>
       </div>
 
       <div id="list-item-5" className={classes.title}>
-        <div className={classes.makeup} style={{ width: "182px" }}>
+        <div className={classes.makeupItem45}>
           <div className={classes.style2}>Career Field</div>
         </div>
       </div>
-      <div className={classes.data} style={{ height: "300px" }}>
+      <div className={classes.dataItem5}>
         <div className={`${classes.font} ${classes.itemCareer}`}>
           <label className={classes.a}>Desired Career Field:</label>
           {careerFeild}
@@ -202,7 +202,7 @@ const JobSeekerInfor = () => {
       </div>
 
       <div id="list-item-6" className={classes.title}>
-        <div className={classes.makeup} style={{ width: "91px" }}>
+        <div className={classes.makeupItem6}>
           <div className={classes.style2}>CV</div>
         </div>
       </div>
