@@ -87,7 +87,7 @@ function App() {
         <Route path="/message" element={<Message />} />
 
 
-        <Route path="/employerInfo" element={<EmployerInfo/>} />
+      
         
       </Routes>
     </Layout>

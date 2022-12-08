@@ -68,7 +68,8 @@ const Cv = () => {
   if (recomendedJobs !== null) {
       rJ = recomendedJobs.map((job) => {
           return {
-              id: job.author,
+              id: job.id,
+              author: job.author,
               companyName: job.authorName,
               logo: job.authorAvatar,
               jobName: job.title,
