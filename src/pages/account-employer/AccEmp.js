@@ -21,7 +21,7 @@ const AccEmp = () => {
       //console.log(res.data);
       setUser(res.data);
     });
-  });
+  }, [userStore]);
   return <AccountEmployer user={user} />;
 };
 export default AccEmp;

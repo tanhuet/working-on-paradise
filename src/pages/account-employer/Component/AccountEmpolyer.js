@@ -6,7 +6,8 @@ import { useSelector } from "react-redux";
 import config from "../../../config";
 import React from "react";
 import axios from "axios";
-import commentAccEmployer from "../../../asses/comment-accEmployer.png";
+import Comment from "./Comment";
+import Backdrop from "../../../components/back-drop/Backdrop";
 
 const AccountEmployer = (props) => {
   const USER = props.user;
@@ -21,7 +22,17 @@ const AccountEmployer = (props) => {
 
   const userStore = useSelector((state) => state.auth.login?.currentUser);
 
+  const [name, setName] = useState();
+  const [avatar, setAvatar] = useState();
+  const [selectedAvatar, setSelectAvatar] = useState("");
+
+
   useEffect(() => {
+    axios.get(`${config.api.url}/user`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } }).then((res) => {
+      setName(res.data.name);
+      setAvatar(res.data.avatar);
+      setAddress(res.data.address);
+    });
     axios
       .get(`${config.api.url}/employer`, {
         headers: { Authorization: `Bearer ${userStore.accessToken}` },
@@ -57,16 +68,67 @@ const AccountEmployer = (props) => {
   };
   // };
 
+ 
+
+  const handleChangeAvatar = (event) => {
+    setSelectAvatar(event.target.files[0]);
+   
+  };
+  const handleSubmitSave = async (event) => {
+    const newAvatar = new FormData();
+    newAvatar.append(`file`, selectedAvatar);
+    const avatarLink = await axios.post(`${config.api.url}/helper/upload`, newAvatar);
+    axios.put(`${config.api.url}/user`,
+      {
+        avatar: avatarLink.data,
+        name: name,
+        address: address,
+      },
+      { headers: { Authorization: `Bearer ${userStore.accessToken}` } }
+    ).then(() => {
+      window.location.reload();
+    });
+  };
+  const [isOpen, setIsOpen] = useState(false);
+  const openDialog = () => {
+    setIsOpen(true)
+  }
+  const handleClose = () => {
+    setIsOpen(false)
+  }
+ 
   return (
     USER && (
       <Fragment>
         <div className={classes["container1-1"]}>
-          <div className={classes.circle}>
-            <div className={classes.letter}>
+          <div className={classes["edit-img"]}>
+            {/* <div className={classes.letter}>
               {USER.name.charAt(0).toUpperCase()}
-            </div>
+            </div> */}
+            <div>
+            <img className={classes.circle} onClick={openDialog} src={avatar} alt="" />
           </div>
-          <div className={classes.text}>{USER.name}</div>
+          {
+            isOpen &&
+            <Fragment>
+              <Backdrop onClose={handleClose} />
+              <form className={classes.form}>
+                <div className={classes.child}>
+                  <h2>Change avatar</h2>
+                </div>
+                <div className={classes.child}>
+                  <input type="file" onChange={handleChangeAvatar}></input>
+                  <i style={{marginLeft: '10px'}} className={"fa fa-camera"} />
+                </div>
+                <div className={classes.submit}>
+                  <button onClick={handleClose}>Cancel</button>
+                  <button onClick={() => { handleSubmitSave(); setIsOpen(false); }}>Save</button>
+                </div>
+              </form>
+            </Fragment>
+          }
+          </div>
+          <div className={classes.text}>{name}</div>
         </div>
         <div id="list-example" className={classes["group-item"]}>
           <a
@@ -239,65 +301,7 @@ const AccountEmployer = (props) => {
                   </form>
                 )}
               </div>
-
-              {/* table comment-account-employer */}
-              <div className={classes["comment-accEmployer"]}>
-                {/* dong 1 */}
-                <div className={`row`}>
-                  <div className={`col-sm-2`}>
-                    <img
-                      src={commentAccEmployer}
-                      width="100px"
-                      height="100px"
-                    />
-                  </div>
-                  <div className={`col-sm-4 ${classes["title-left-comment"]}`}>
-                    Comments
-                  </div>
-                  <div className={`col-sm-6 ${classes["title-right-comment"]}`}>
-                    Sign in / Sign up to comment
-                  </div>
-                </div>
-                {/* nhap them comment */}
-                <div>
-                  <textarea
-                    className={`${classes.font} ${classes.textexper}`}
-                    placeholder="Add comment here..."
-                    style={{
-                      height: "auto",
-                      minHeight: "200px",
-                      padding: "10px",
-                      marginBottom: "10px",
-                    }}
-                  ></textarea>
-                </div>
-                
-                <div className={classes['button-post']}><button>Post</button></div>
-
-                {/* cac comment cu */}
-                <div className={classes["comment-old"]}>
-                  {/* comment so 1 */}
-                  <div>
-                    <div className={`row`}>
-                      <div className={`col-sm-4 ${classes["username-old"]}`}>Username</div>
-                      <div className={`col-sm-4 ${classes["mins-old"]}`}>2 mins ago</div>
-                    </div>
-                    <div>content comment</div>
-                    <hr style={{width: '100%'}}/>
-                  </div>
-
-                  {/* comment so 2 */}
-                  <div>
-                    <div className={`row`}>
-                      <div className={`col-sm-4 ${classes["username-old"]}`}>Username</div>
-                      <div className={`col-sm-4 ${classes["mins-old"]}`}>2 mins ago</div>
-                    </div>
-                    <div>content comment</div>
-                    <hr style={{width: '100%'}}/>
-                  </div>
-
-                </div>
-              </div>
+              <Comment />
 
             </div>
           </div>
