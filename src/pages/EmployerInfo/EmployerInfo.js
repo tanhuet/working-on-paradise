@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import config from "../../config";
 import React from "react";
 import axios from "axios";
+import Comment from "../account-employer/Component/Comment";
 
 const EmployerInfo = () => {
 
@@ -122,11 +123,12 @@ const EmployerInfo = () => {
                 </form>
             </div>
           </div>
+          <Comment />
         </div>
         <div className={`col-xl-4 ${classes.map}`}>
           <div
             className={`d-flex justify-content-center ${classes.map2}`}
-            style={{ border: "4px solid #EEEEEE", borderRadius: "10px" }}
+            style={{ border: "4px solid #EEEEEE", borderRadius: "10px", maxHeight: '500px'}}
           >
             <Iframe
               title="myFrame"

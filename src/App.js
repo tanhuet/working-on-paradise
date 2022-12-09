@@ -18,7 +18,7 @@ import CvDetailPage from "./pages/CvDetail/CvDetailPage";
 import PostManagementPage from "./pages/PostManagement/PostManagementPage";
 import EmployerJobDetail from "./pages/EmployerPost-Details/EmployerJobDetail";
 import CategoryCvs from "./pages/CategoryCvs/Category";
-import AccountEmployer from "./pages/account-employer/AccEmp";
+// import AccountEmployer from "./pages/account-employer/AccEmp";
 // import AccountEmployerEdit from "./pages/account-employer/AccountEmployerEdit";
 import AddPost from "./pages/Add-Post-Employer/addPost";
 import ChangePassWord from "./pages/ChangePassWord/ChangePassword";
@@ -77,7 +77,7 @@ function App() {
         <Route path="/post/management" element={<PostManagementPage />} />
         <Route path="/employer-post/:id" element={<EmployerJobDetail />} />
         <Route path="/employer-cv" element={<CategoryCvs />} />
-        <Route path="/accountEmployer" element={<AccountEmployer />} />
+        {/* <Route path="/accountEmployer" element={<AccountEmployer />} /> */}
         {/* <Route path="/accountEmployer/employerEdit" element={<AccountEmployerEdit />} /> */}
         <Route path="/addPost" element={<AddPost />} />
         <Route path="/reset-password/:token" element={<ChangePassWord />} />
