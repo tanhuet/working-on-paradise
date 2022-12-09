@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import ReactImageFallback from "react-image-fallback";
 import config from "../../../../../config/index";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import swal from "sweetalert";
 const Highlight = (props) => {
   const [flag, setFlag] = useState(false);
@@ -14,37 +14,41 @@ const Highlight = (props) => {
   const navigate = useNavigate();
 
   function handleSubmit(event) {
-    swal({
-      title: "Are you sure?",
-      text: "When you click Ok, you will submit your CV to the employer",
-      icon: "warning",
-      buttons: true,
-    }).then((willAccept) => {
-      if (willAccept) {
-        swal(
-          axios
-            .post(`${config.api.url}/job/${props.skills.id}/apply`, "", {
-              headers: { Authorization: `Bearer ${userStore.accessToken}` },
-            })
-            .then(function (response) {
-              props.skills.handleFuntion(true);
-              swal("Your CV has been submitted successfully", {
-                icon: "success",
-              });
-            })
-            .catch(function (error) {
-              swal(`Error: ${error?.response.data}`, {
-                title: "Something wrong!",
-                icon: "error",
-              });
-            })
-        );
-      } else {
-        swal("Sent unsuccessfully", {
-          icon: "info",
-        });
-      }
-    });
+    if (userStore === null) {
+      navigate(`/signin`);
+    } else {
+      swal({
+        title: "Are you sure?",
+        text: "When you click Ok, you will submit your CV to the employer",
+        icon: "warning",
+        buttons: true,
+      }).then((willAccept) => {
+        if (willAccept) {
+          swal(
+            axios
+              .post(`${config.api.url}/job/${props.skills.id}/apply`, "", {
+                headers: { Authorization: `Bearer ${userStore.accessToken}` },
+              })
+              .then(function (response) {
+                props.skills.handleFuntion(true);
+                swal("Your CV has been submitted successfully", {
+                  icon: "success",
+                });
+              })
+              .catch(function (error) {
+                swal(`Error: ${error?.response.data}`, {
+                  title: "Something wrong!",
+                  icon: "error",
+                });
+              })
+          );
+        } else {
+          swal("Sent unsuccessfully", {
+            icon: "info",
+          });
+        }
+      });
+    }
   }
 
   const followHanlder = async () => {
@@ -120,39 +124,46 @@ const Highlight = (props) => {
           alt=".."
           fallbackImage={locationImg}
         />
+
         <div className={classes.factory}>
-          <div className={classes.icon}>
-            <Google src={props.skills.icon} />
-          </div>
-          <div className={classes.company1}>
-            <div className={classes.info1}>
-              <h3>{props.skills.jobType}</h3>
-              <p>
-                {props.skills.company} - {props.skills.address} -{" "}
-                {props.skills.daysPost} days ago
-              </p>
-              <div className={classes.skill}>
-                <ul className={classes["skill-items"]}>
-                  {props.skills?.skill?.map((item) => (
-                    <div key={item} className={classes.item}>
-                      {item}
-                    </div>
-                  ))}
-                </ul>
-              </div>
+          <Link to={"/employerInfo/" + props.skills.authorId}>
+            <div className={classes.icon}>
+              <Google src={props.skills.icon} />
             </div>
+          </Link>
+
+          <div className={classes.company1}>
+            <Link to={"/employerInfo/" + props.skills.authorId}>
+              <div className={classes.info1}>
+                <h3>{props.skills.jobType}</h3>
+                <p>
+                  {props.skills.company} - {props.skills.address} -{" "}
+                  {props.skills.daysPost} days ago
+                </p>
+                <div className={classes.skill}>
+                  <ul className={classes["skill-items"]}>
+                    {props.skills?.skill?.map((item) => (
+                      <div key={item} className={classes.item}>
+                        {item}
+                      </div>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </Link>
           </div>
-          <button className={classes.button1} onClick={handleContact}>
-            Contact
-          </button>
-          <button
-            className={classes.button1}
-            onClick={handleSubmit}
-            disabled={props.skills.status}
-          >
-            {props.skills.button}
-          </button>
-          <div className={classes.icon1}>
+          <div className={classes.tagButton}>
+            <button className={classes.button1} onClick={handleContact}>
+              Contact
+            </button>
+            <button
+              className={classes.button1}
+              onClick={handleSubmit}
+              disabled={props.skills.status}
+            >
+              {props.skills.button}
+            </button>
+
             <button className={classes.btn} onClick={followHanlder}>
               {!props.skills.bookmark && (
                 <svg

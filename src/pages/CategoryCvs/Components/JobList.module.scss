@@ -1,13 +1,12 @@
 .main {
   margin-top: 5rem;
   display: flex;
-  justify-content: space-between;
   width: 100%;
 }
 
 .job-list {
   margin: auto;
-  width: 60%;
+  width: 70%;
 }
 
 .title {
@@ -34,7 +33,7 @@
 }
 
 .list {
-  padding: 20px;
+  // padding: 20px;
   height: 800px;
   overflow-y: scroll;
 }
@@ -58,4 +57,10 @@
 }
 .page-controller button svg:hover {
   fill: #99e2e2;
+}
+@media only screen and (max-width: 1000px) {
+  .job-list {
+    margin: auto;
+    width: 100%;
+  }
 }

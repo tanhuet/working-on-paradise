@@ -8,17 +8,19 @@ import Benefit from "./detail/Benefit";
 import React from "react";
 import { useSelector } from "react-redux";
 import config from "../../../../config";
+
 function createString(Strings, text) {
   const description = Strings?.split(text);
   return description;
 }
 const HighlightJob = () => {
   const userStore = useSelector((state) => state.auth.login?.currentUser);
+
   const [persons, setPerson] = useState({});
   const [recommend, setRecomend] = useState();
-  const [clickStatus, setStatus] = useState(false);
+
   const [flag, setFlag] = useState(false);
-  const [button, setButton] = useState("Apply");
+
   const [mark, setMark] = useState();
   const [redirect, setRedirect] = useState(false);
   const curUrl = window.location.href;
@@ -26,7 +28,9 @@ const HighlightJob = () => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios
-        .get(`${config.api.url}/job/${id}`)
+        .get(`${config.api.url}/job/${id}`, {
+          headers: { Authorization: `Bearer ${userStore.accessToken}` },
+        })
         .catch((error) => console.log(error));
       setPerson(response.data);
       const jobRecomend = await axios
@@ -48,6 +52,15 @@ const HighlightJob = () => {
   const callbackFlag = (flags) => {
     setFlag(flags);
   };
+  const [button, setButton] = useState("Apply");
+  const [clickStatus, setStatus] = useState(false);
+  useEffect(() => {
+    if (persons.apply) {
+      setButton("Applied");
+      setStatus(true);
+    }
+  });
+
   const callbackHandlerFunction = (status) => {
     if (status === true) {
       setButton("Applied");
@@ -59,6 +72,7 @@ const HighlightJob = () => {
     handleFuntion: callbackHandlerFunction,
     flagFuntion: callbackFlag,
     skill: skills,
+    authorId: persons.author,
     jobType: persons.title,
     company: persons.authorName,
     icon: persons.authorAvatar,

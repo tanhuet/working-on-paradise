@@ -48,6 +48,7 @@ const CategoryTop = (props) => {
               skills={job.skills}
               experience={job.experience}
               salary={job.salary}
+              age={job.age}
             />
           ))}
         </div>

@@ -26,7 +26,7 @@
   margin-top: 20px;
   margin-left: 20px;
 }
-.icon1 .btn {
+.tagButton .btn {
   padding: 0;
   margin: 0;
   width: 55px;
@@ -53,6 +53,7 @@
   font-size: 40px;
   line-height: 45px;
   margin-top: 10px;
+  color: #000000;
 }
 .info1 p {
   font-family: "Poppins";
@@ -217,6 +218,7 @@
   font-weight: 500;
   font-size: 20px;
   line-height: 38px;
+  overflow: hidden;
 }
 .boxInfo li {
   width: max-content;
@@ -240,8 +242,19 @@
   margin: 0;
   color: #000000;
 }
-
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1050px) and (min-width: 950px) {
+  .tagButton .btn {
+    padding: 0;
+    margin: 0;
+    width: 55px;
+    border: none;
+    margin-left: 70px;
+    margin-top: 20px;
+    padding: 0;
+    background-color: transparent;
+  }
+}
+@media only screen and (max-width: 900px) {
   .underHeader .company1 {
     display: flex;
     flex-direction: column;
@@ -255,7 +268,7 @@
     border: none;
     background: #48cccd;
     border-radius: 50px;
-    width: 150px;
+    min-width: 150px;
     height: 50px;
     font-weight: bold;
     font-size: 20px;
@@ -265,6 +278,16 @@
     margin-top: 20px;
     margin-left: 10px;
   }
+  .tagButton .btn {
+    padding: 0;
+    margin: 0;
+    width: 55px;
+    border: none;
+    margin-left: 55px;
+    margin-top: 20px;
+    padding: 0;
+    background-color: transparent;
+  }
   .box {
     margin: auto;
     margin-top: 5rem;
@@ -272,7 +295,8 @@
     border-radius: 30px;
     padding: 15px 15px;
     display: block;
-    width: 100%;
+    width: 600px;
+    min-width: 700px;
     font-family: "Poppins";
   }
 }

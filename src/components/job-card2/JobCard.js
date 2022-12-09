@@ -7,7 +7,7 @@ const JobCard = (props) => {
   return (
     <Card>
       <div className={classes.job}>
-        <Link to={"/details/" + props.id}>
+        <Link to={"/account/" + props.id}>
           <div className={classes.info}>
             <div className={classes.logo}>
               <ReactImageFallback

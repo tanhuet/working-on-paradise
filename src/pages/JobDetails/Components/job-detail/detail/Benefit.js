@@ -1,5 +1,5 @@
 import classes from "./Benefit.module.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Job from "./Job";
 import { useSelector } from "react-redux";
 import axios from "axios";
@@ -8,6 +8,7 @@ import config from "../../../../../config";
 import swal from "sweetalert";
 
 const Benefit = (props) => {
+  const navigate = useNavigate();
   const [status, setStatus] = useState(props.benefit.redirect);
   const handleRedirect = () => {
     if (status === true) {
@@ -21,37 +22,41 @@ const Benefit = (props) => {
   const recomend = props.benefit.recommend;
   const userStore = useSelector((state) => state.auth.login?.currentUser);
   function handleSubmit(event) {
-    swal({
-      title: "Are you sure?",
-      text: "When you click Ok, you will submit your CV to the employer",
-      icon: "warning",
-      buttons: true,
-    }).then((willAccept) => {
-      if (willAccept) {
-        swal(
-          axios
-            .post(`${config.api.url}/job/${props.benefit.id}/apply`, "", {
-              headers: { Authorization: `Bearer ${userStore.accessToken}` },
-            })
-            .then(function (response) {
-              props.benefit.handleFuntion(true);
-              swal("Your CV has been submitted successfully", {
-                icon: "success",
-              });
-            })
-            .catch(function (error) {
-              swal(`Error: ${error?.response.data}`, {
-                title: "Something wrong!",
-                icon: "error",
-              });
-            })
-        );
-      } else {
-        swal("Sent unsuccessfully", {
-          icon: "info",
-        });
-      }
-    });
+    if (userStore === null) {
+      navigate(`/signin`);
+    } else {
+      swal({
+        title: "Are you sure?",
+        text: "When you click Ok, you will submit your CV to the employer",
+        icon: "warning",
+        buttons: true,
+      }).then((willAccept) => {
+        if (willAccept) {
+          swal(
+            axios
+              .post(`${config.api.url}/job/${props.benefit.id}/apply`, "", {
+                headers: { Authorization: `Bearer ${userStore.accessToken}` },
+              })
+              .then(function (response) {
+                props.benefit.handleFuntion(true);
+                swal("Your CV has been submitted successfully", {
+                  icon: "success",
+                });
+              })
+              .catch(function (error) {
+                swal(`Error: ${error?.response.data}`, {
+                  title: "Something wrong!",
+                  icon: "error",
+                });
+              })
+          );
+        } else {
+          swal("Sent unsuccessfully", {
+            icon: "info",
+          });
+        }
+      });
+    }
   }
   return (
     <div>

@@ -62,7 +62,8 @@ const CategoryCvs = () => {
         jobType: job.typeOfJob,
         experience: job.experience,
         salary: job.salary,
-        skills: ["Skills", "Designer", "Full-time"],
+        age: job.age,
+        skills: ["Web", "Mobile"],
       };
     });
 
@@ -80,6 +81,7 @@ const CategoryCvs = () => {
           jobType: job.jobType,
           experience: job.experience,
           salary: job.salary,
+          age: job.age,
           skills: tags,
         };
       });

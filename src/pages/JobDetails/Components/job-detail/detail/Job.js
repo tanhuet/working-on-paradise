@@ -7,7 +7,7 @@ const Job = (props) => {
     <div className={classes.card}>
       <div className={classes.makeup1}>
         <div className={classes.recomment}>
-          <h3>Recommened Job</h3>
+          <h3>Recommended Job</h3>
         </div>
       </div>
       <div className={classes.detail}>

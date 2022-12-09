@@ -92,6 +92,7 @@ const HighlightJob = () => {
     daysPost: -new Date().getDate() + new Date(persons.createdAt).getDate(),
     salary: persons.salary,
     quantity: persons.slots,
+    authorId: persons.author,
     typeOfWorking: persons.typeOfWorking,
     gender: persons.gender !== "" ? persons.gender : "No Requirement",
     positions: persons.positions,

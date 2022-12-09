@@ -3,6 +3,7 @@ import classes from "./Highlight.module.scss";
 import locationImg from "../../../../../asses/nhansu.png";
 import { Google } from "../../../../../components/icon/google";
 import ReactImageFallback from "react-image-fallback";
+import { Link } from "react-router-dom";
 const Highlight = (props) => {
   const [status, setStatus] = useState(false);
   function handleSubmit(event) {
@@ -24,28 +25,31 @@ const Highlight = (props) => {
           alt=".."
           fallbackImage={locationImg}
         />
+
         <div className={classes.company1}>
-          <div className={classes.factory}>
-            <div className={classes.icon}>
-              <Google src={props.skills.icon} />
-            </div>
-            <div className={classes.info1}>
-              <h3>{props.skills.jobType}</h3>
-              <p>
-                {props.skills.company} - {props.skills.address} -{" "}
-                {props.skills.daysPost} days ago
-              </p>
-              <div className={classes.skill}>
-                <ul className={classes["skill-items"]}>
-                  {props.skills?.skill?.map((item) => (
-                    <div key={item} className={classes.item}>
-                      {item}
-                    </div>
-                  ))}
-                </ul>
+          <Link to={"/employerInfo/" + props.skills.authorId}>
+            <div className={classes.factory}>
+              <div className={classes.icon}>
+                <Google src={props.skills.icon} />
+              </div>
+              <div className={classes.info1}>
+                <h3>{props.skills.jobType}</h3>
+                <p>
+                  {props.skills.company} - {props.skills.address} -{" "}
+                  {props.skills.daysPost} days ago
+                </p>
+                <div className={classes.skill}>
+                  <ul className={classes["skill-items"]}>
+                    {props.skills?.skill?.map((item) => (
+                      <div key={item} className={classes.item}>
+                        {item}
+                      </div>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </div>
-          </div>
+          </Link>
           <button className={classes.button1} onClick={handleSubmit}>
             {props.skills.button}
           </button>

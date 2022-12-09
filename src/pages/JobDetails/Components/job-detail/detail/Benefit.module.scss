@@ -6,7 +6,7 @@ a {
   margin: auto;
   margin-top: 6rem;
   margin-top: 5rem;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 
 .card {
@@ -17,6 +17,7 @@ a {
   background: #ffffff;
   border-radius: 25px;
   margin-top: 6rem;
+  min-height: 250px;
 }
 
 .company {
@@ -122,6 +123,7 @@ a {
     background: #ffffff;
     border-radius: 25px;
     margin-top: 6rem;
+    min-height: 250px;
   }
 
   .company {
