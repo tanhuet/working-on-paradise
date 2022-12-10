@@ -38,6 +38,11 @@ const SetUpAccEmployer = (props) => {
   let navigate = useNavigate();
   const handleSubmitButton = async (event) => {
     event.preventDefault();
+
+    if (wallpaper === "" || avatar === "") {
+      alert('Please upload wallpaper or avatar');
+    }
+
     const formDataWallpaper = new FormData();
     const formDataAvatar = new FormData();
 

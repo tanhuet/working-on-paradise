@@ -142,7 +142,7 @@ const AddPostEmployer = (props) => {
                 <div className={`dot ${classes["avatar-add-post"]}`}>
                   <img
                     src={user?.avatar}
-                    style={{ borderRadius: "50%", width: "150px" }}
+                    style={{ borderRadius: "50%", width: "150px", height: '150px' }}
                   />
                 </div>
                 <div className={classes["button-camera"]}>
