@@ -30,7 +30,7 @@ const SetUpAccJobSeeker = (props) => {
   const handleClickGender = (event) => {
     setGender(event.target.value);
   };
-  console.log(gender);
+
   const handleChangeExperience = (event) => {
     setExperience(event.target.value);
   };
@@ -66,6 +66,9 @@ const SetUpAccJobSeeker = (props) => {
 
   const handleSubmitButton = async (event) => {
     event.preventDefault();
+    if (avatar === "") {
+      alert('Please upload avatar');
+    }
     const formDataCV = new FormData();
     const formDataAvatar = new FormData();
 

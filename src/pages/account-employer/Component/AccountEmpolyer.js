@@ -26,6 +26,8 @@ const AccountEmployer = (props) => {
   const [avatar, setAvatar] = useState();
   const [selectedAvatar, setSelectAvatar] = useState("");
 
+  const [wallpaper, setWallpaper] = useState();
+
 
   useEffect(() => {
     axios.get(`${config.api.url}/user`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } }).then((res) => {
@@ -43,6 +45,7 @@ const AccountEmployer = (props) => {
         setAddress(res.data.address);
         setIntroduction(res.data.about);
         setSize(res.data.size);
+        setWallpaper(res.data.wallpaper);
       });
   }, [userStore]);
 
@@ -51,7 +54,7 @@ const AccountEmployer = (props) => {
       `${config.api.url}/employer`,
       {
         about: introduction,
-        wallpaper: "wallpaper",
+        wallpaper: wallpaper,
         size: size,
       },
       { headers: { Authorization: `Bearer ${userStore.accessToken}` } }
