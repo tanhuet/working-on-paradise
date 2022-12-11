@@ -23,19 +23,17 @@ const Comment = (props) => {
     setComment(e.target.value);
   };
 
-  const handlePostComment = (e) => {
+  const handlePostComment = async (e) => {
     e.preventDefault();
-    axios
-      .post(
-        `${config.api.url}/employer/${user.id}/comment`,
-        {
-          content: comment,
-        },
-        { headers: { Authorization: `Bearer ${userStore?.accessToken}` } }
-      )
-      .then((res) => {
-        setListComment([res.data, ...listComment]);
-      });
+    const res = await axios.post(
+      `${config.api.url}/employer/${user.id}/comment`,
+      {
+        content: comment,
+      },
+      { headers: { Authorization: `Bearer ${userStore?.accessToken}` } }
+    );
+    setListComment([res.data, ...listComment]);
+    window.location.reload();
   };
 
   const compareTime = (a, b) => {
@@ -52,7 +50,7 @@ const Comment = (props) => {
   };
 
   return (
-    <div>
+    <form>
       {/* table comment-account-employer */}
       <div className={classes["comment-accEmployer"]}>
         {/* dong 1 */}
@@ -106,7 +104,7 @@ const Comment = (props) => {
           })}
         </div>
       </div>
-    </div>
+    </form>
   );
 };
 export default Comment;
