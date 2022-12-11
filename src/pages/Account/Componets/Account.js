@@ -11,7 +11,7 @@ import Data from "./Data";
 import CvBox from "./CvBox";
 import editButton from "../../../asses/editButton.png";
 import saveButton from "../../../asses/saveButton.png";
-import Backdrop from "../../../components/back-drop/Backdrop";
+import Backdrop from "../../../components/Backdrop/Backdrop";
 
 const Account = (props) => {
   const USER = props.user;

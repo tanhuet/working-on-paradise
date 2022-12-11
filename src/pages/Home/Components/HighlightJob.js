@@ -5,10 +5,10 @@ import axios from "axios"
 import { useSelector } from "react-redux"
 
 import locationImg from "../../../asses/img-location.png"
-import JobList from "./highligh-job/JobList"
-import JobPosting from "./highligh-job/JobPosting"
-import OfferList from "./highligh-job/OfferList"
-import Personnel from "./highligh-job/Personnel"
+import JobList from "./HighlightJob/JobList"
+import JobPosting from "./HighlightJob/JobPosting"
+import OfferList from "./HighlightJob/OfferList"
+import Personnel from "./HighlightJob/Personnel"
 
 const DUMYJOB = [
     {

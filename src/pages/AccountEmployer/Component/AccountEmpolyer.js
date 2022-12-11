@@ -7,7 +7,7 @@ import config from "../../../config";
 import React from "react";
 import axios from "axios";
 import Comment from "./Comment";
-import Backdrop from "../../../components/back-drop/Backdrop";
+import Backdrop from "../../../components/Backdrop/Backdrop";
 
 const AccountEmployer = (props) => {
   const USER = props.user;

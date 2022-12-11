@@ -1,5 +1,5 @@
 // import React, { useEffect, useState } from 'react';
-import Layout from "./components/layout/Layout";
+import Layout from "./components/Layout/Layout";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useSelector, useStore } from "react-redux";
 import { useLocation } from "react-router-dom";

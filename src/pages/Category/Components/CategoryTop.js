@@ -5,8 +5,8 @@ import axios from "axios"
 import config from "../../../config"
 
 import classes from "./CategoryTop.module.scss"
-import FilterBar from "../../../components/filterbar/FilterBar"
-import HighlightJob from "../../../components/highlight-job/HighlightJob"
+import FilterBar from "../../../components/FilterBar/FilterBar"
+import HighlightJob from "../../../components/HighlightJob/HighlightJob"
 
 const CategoryTop = (props) => {
 

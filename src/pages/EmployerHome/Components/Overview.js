@@ -1,7 +1,7 @@
 import React from "react"
-import Feature from "./overview/Feature"
-import Highlight from "./overview/Highlight"
-import Service from "./overview/Service"
+import Feature from "./Overview/Feature"
+import Highlight from "./Overview/Highlight"
+import Service from "./Overview/Service"
 
 const Overview = () => {
     return (

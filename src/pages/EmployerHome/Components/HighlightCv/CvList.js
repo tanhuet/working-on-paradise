@@ -1,6 +1,6 @@
 import { Fragment } from "react"
 import classes from "./CvList.module.scss"
-import HighlightCv from "../../../../components/hightlight-cv/HighlightCv"
+import HighlightCv from "../../../../components/HighlightCv/HighlightCv"
 import { NavLink } from "react-router-dom"
 import more from "../../../../asses/more.png"
 
