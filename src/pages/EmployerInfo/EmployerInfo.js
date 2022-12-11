@@ -10,9 +10,6 @@ import axios from "axios";
 import Comment from "../account-employer/Component/Comment";
 
 const EmployerInfo = () => {
-
- 
-
   const userStore = useSelector((state) => state.auth.login?.currentUser);
 
   const [introduction, setIntroduction] = useState();
@@ -21,23 +18,22 @@ const EmployerInfo = () => {
   const [email, setEmail] = useState();
   const [size, setSize] = useState();
   const [name, setName] = useState();
+  const [profileUser, setProfileUser] = useState();
 
-  const employerId = useParams().employerId
-  console.log(employerId);
+  const employerId = useParams().employerId;
 
   useEffect(() => {
-    axios.get(`${config.api.url}/employer/${employerId}`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } })
-    .then((res) => {
-        setName(res.data.name);
-        setPhone(res.data.phone);
-        setEmail(res.data.email);
-        setAddress(res.data.address);
-        setIntroduction(res.data.about);
-        setSize(res.data.size);
-    })
-  },  [userStore, employerId]);
-  
-  
+    axios.get(`${config.api.url}/employer/${employerId}`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } }).then((res) => {
+      setName(res.data.name);
+      setPhone(res.data.phone);
+      setEmail(res.data.email);
+      setAddress(res.data.address);
+      setIntroduction(res.data.about);
+      setSize(res.data.size);
+      setProfileUser(res.data);
+    });
+  }, [userStore, employerId]);
+
   return (
     <Fragment>
       <div className={classes["container2-2"]}>
@@ -47,60 +43,46 @@ const EmployerInfo = () => {
         <div className={classes.text}>{name}</div>
       </div>
       <div id="list-example" className={classes["group-item"]}>
-        <a
-          className={`list-group-item list-group-item-action ${classes.style1}`}
-          href="#list-item-2"
-        >
+        <a className={`list-group-item list-group-item-action ${classes.style1}`} href="#list-item-2">
           Basic Information
         </a>
-        <a
-          className={`list-group-item list-group-item-action ${classes.style1}`}
-          href="#list-item-1"
-        >
+        <a className={`list-group-item list-group-item-action ${classes.style1}`} href="#list-item-1">
           Introduction
         </a>
       </div>
 
       <div className={`row`}>
         <div className={`col-xl-8`}>
-          <div
-            data-spy="scroll"
-            data-target="#list-example"
-            data-offset="0"
-            className="scrollspy-example"
-          >
+          <div data-spy="scroll" data-target="#list-example" data-offset="0" className="scrollspy-example">
             <div id="list-item-2" className={classes.title}>
               <div className={classes.makeup}>
                 <div className={classes.style1}>Basic Information</div>
               </div>
-              
             </div>
 
             <div className={`d-flex`}>
-              
-                <form className={classes.data}>
-                  <div className={classes.left}>
-                    <div className={`${classes.font} ${classes.phone}`}>
-                      <label>Phone Number: </label> <br />
-                      {phone}
-                    </div>
-                    <div className={`${classes.font} ${classes.address}`}>
-                      <label>Permanent address: </label> <br />
-                      {address}
-                    </div>
+              <form className={classes.data}>
+                <div className={classes.left}>
+                  <div className={`${classes.font} ${classes.phone}`}>
+                    <label>Phone Number: </label> <br />
+                    {phone}
                   </div>
-                  <div className={classes.right}>
-                    <div className={`${classes.font} ${classes.email}`}>
-                      <label>Email: </label> <br />
-                      {email}
-                    </div>
-                    <div className={`${classes.font} ${classes.size}`}>
-                      <label>Company Size: </label> <br />
-                      {size}
-                    </div>
+                  <div className={`${classes.font} ${classes.address}`}>
+                    <label>Permanent address: </label> <br />
+                    {address}
                   </div>
-                </form>
-              
+                </div>
+                <div className={classes.right}>
+                  <div className={`${classes.font} ${classes.email}`}>
+                    <label>Email: </label> <br />
+                    {email}
+                  </div>
+                  <div className={`${classes.font} ${classes.size}`}>
+                    <label>Company Size: </label> <br />
+                    {size}
+                  </div>
+                </div>
+              </form>
             </div>
             <div id="list-item-1" className={classes.title}>
               <div className={classes.makeup} style={{ width: "154px" }}>
@@ -109,26 +91,19 @@ const EmployerInfo = () => {
             </div>
 
             <div>
-              
-                <form
-                  className={classes.data}
-                  style={{ height: "auto", minHeight: "400px" }}
-                >
-                  <div
-                    className={classes.font}
-                    style={{ height: "auto", padding: "20px" }}
-                  >
-                    <div className={classes.styleborder}>{introduction}</div>
-                  </div>
-                </form>
+              <form className={classes.data} style={{ height: "auto", minHeight: "400px" }}>
+                <div className={classes.font} style={{ height: "auto", padding: "20px" }}>
+                  <div className={classes.styleborder}>{introduction}</div>
+                </div>
+              </form>
             </div>
           </div>
-          <Comment />
+          {profileUser && <Comment user={profileUser} />}
         </div>
         <div className={`col-xl-4 ${classes.map}`}>
           <div
             className={`d-flex justify-content-center ${classes.map2}`}
-            style={{ border: "4px solid #EEEEEE", borderRadius: "10px", maxHeight: '500px'}}
+            style={{ border: "4px solid #EEEEEE", borderRadius: "10px", maxHeight: "500px" }}
           >
             <Iframe
               title="myFrame"

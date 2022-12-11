@@ -28,7 +28,6 @@ const AccountEmployer = (props) => {
 
   const [wallpaper, setWallpaper] = useState();
 
-
   useEffect(() => {
     axios.get(`${config.api.url}/user`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } }).then((res) => {
       setName(res.data.name);
@@ -71,35 +70,35 @@ const AccountEmployer = (props) => {
   };
   // };
 
- 
-
   const handleChangeAvatar = (event) => {
     setSelectAvatar(event.target.files[0]);
-   
   };
   const handleSubmitSave = async (event) => {
     const newAvatar = new FormData();
     newAvatar.append(`file`, selectedAvatar);
     const avatarLink = await axios.post(`${config.api.url}/helper/upload`, newAvatar);
-    axios.put(`${config.api.url}/user`,
-      {
-        avatar: avatarLink.data,
-        name: name,
-        address: address,
-      },
-      { headers: { Authorization: `Bearer ${userStore.accessToken}` } }
-    ).then(() => {
-      window.location.reload();
-    });
+    axios
+      .put(
+        `${config.api.url}/user`,
+        {
+          avatar: avatarLink.data,
+          name: name,
+          address: address,
+        },
+        { headers: { Authorization: `Bearer ${userStore.accessToken}` } }
+      )
+      .then(() => {
+        window.location.reload();
+      });
   };
   const [isOpen, setIsOpen] = useState(false);
   const openDialog = () => {
-    setIsOpen(true)
-  }
+    setIsOpen(true);
+  };
   const handleClose = () => {
-    setIsOpen(false)
-  }
- 
+    setIsOpen(false);
+  };
+
   return (
     USER && (
       <Fragment>
@@ -109,63 +108,55 @@ const AccountEmployer = (props) => {
               {USER.name.charAt(0).toUpperCase()}
             </div> */}
             <div>
-            <img className={classes.circle} onClick={openDialog} src={avatar} alt="" />
-          </div>
-          {
-            isOpen &&
-            <Fragment>
-              <Backdrop onClose={handleClose} />
-              <form className={classes.form}>
-                <div className={classes.child}>
-                  <h2>Change avatar</h2>
-                </div>
-                <div className={classes.child}>
-                  <input type="file" onChange={handleChangeAvatar}></input>
-                  <i style={{marginLeft: '10px'}} className={"fa fa-camera"} />
-                </div>
-                <div className={classes.submit}>
-                  <button onClick={handleClose}>Cancel</button>
-                  <button onClick={() => { handleSubmitSave(); setIsOpen(false); }}>Save</button>
-                </div>
-              </form>
-            </Fragment>
-          }
+              <img className={classes.circle} onClick={openDialog} src={avatar} alt="" />
+            </div>
+            {isOpen && (
+              <Fragment>
+                <Backdrop onClose={handleClose} />
+                <form className={classes.form}>
+                  <div className={classes.child}>
+                    <h2>Change avatar</h2>
+                  </div>
+                  <div className={classes.child}>
+                    <input type="file" onChange={handleChangeAvatar}></input>
+                    <i style={{ marginLeft: "10px" }} className={"fa fa-camera"} />
+                  </div>
+                  <div className={classes.submit}>
+                    <button onClick={handleClose}>Cancel</button>
+                    <button
+                      onClick={() => {
+                        handleSubmitSave();
+                        setIsOpen(false);
+                      }}
+                    >
+                      Save
+                    </button>
+                  </div>
+                </form>
+              </Fragment>
+            )}
           </div>
           <div className={classes.text}>{name}</div>
         </div>
         <div id="list-example" className={classes["group-item"]}>
-          <a
-            className={`list-group-item list-group-item-action ${classes.style1}`}
-            href="#list-item-2"
-          >
+          <a className={`list-group-item list-group-item-action ${classes.style1}`} href="#list-item-2">
             Basic Information
           </a>
-          <a
-            className={`list-group-item list-group-item-action ${classes.style1}`}
-            href="#list-item-1"
-          >
+          <a className={`list-group-item list-group-item-action ${classes.style1}`} href="#list-item-1">
             Introduction
           </a>
         </div>
 
         <div className={`row`}>
           <div className={`col-xl-8`}>
-            <div
-              data-spy="scroll"
-              data-target="#list-example"
-              data-offset="0"
-              className="scrollspy-example"
-            >
+            <div data-spy="scroll" data-target="#list-example" data-offset="0" className="scrollspy-example">
               <div id="list-item-2" className={classes.title}>
                 <div className={classes.makeup}>
                   <div className={classes.style1}>Basic Information</div>
                 </div>
                 <div>
                   {editInfo === false ? (
-                    <button
-                      className={classes.edit}
-                      onClick={() => setEditInfo(true)}
-                    >
+                    <button className={classes.edit} onClick={() => setEditInfo(true)}>
                       <div className={classes.style3}>Edit</div>
                     </button>
                   ) : (
@@ -251,10 +242,7 @@ const AccountEmployer = (props) => {
                 </div>
                 <div>
                   {editIntro === false ? (
-                    <button
-                      className={`${classes.edit} ${classes.margin1}`}
-                      onClick={() => setEditIntro(true)}
-                    >
+                    <button className={`${classes.edit} ${classes.margin1}`} onClick={() => setEditIntro(true)}>
                       <div className={classes.style3}>Edit</div>
                     </button>
                   ) : (
@@ -273,23 +261,13 @@ const AccountEmployer = (props) => {
 
               <div>
                 {editIntro === false ? (
-                  <form
-                    className={classes.data}
-                    style={{ height: "auto", minHeight: "400px" }}
-                  >
-                    <div
-                      className={classes.font}
-                      style={{ height: "auto", padding: "20px" }}
-                    >
+                  <form className={classes.data} style={{ height: "auto", minHeight: "400px" }}>
+                    <div className={classes.font} style={{ height: "auto", padding: "20px" }}>
                       <div className={classes.styleborder}>{introduction}</div>
                     </div>
                   </form>
                 ) : (
-                  <form
-                    className={classes.data}
-                    onSubmit={handleSubmit}
-                    style={{ height: "auto", minHeight: "400px" }}
-                  >
+                  <form className={classes.data} onSubmit={handleSubmit} style={{ height: "auto", minHeight: "400px" }}>
                     <textarea
                       className={`${classes.font} ${classes.textexper}`}
                       onChange={(e) => setIntroduction(e.target.value)}
@@ -304,14 +282,13 @@ const AccountEmployer = (props) => {
                   </form>
                 )}
               </div>
-              <Comment />
-
+              <Comment user={USER} />
             </div>
           </div>
           <div className={`col-xl-4 ${classes.map}`}>
             <div
               className={`d-flex justify-content-center ${classes.map2}`}
-              style={{ border: "4px solid #EEEEEE", borderRadius: "10px", maxHeight: '500px' }}
+              style={{ border: "4px solid #EEEEEE", borderRadius: "10px", maxHeight: "500px" }}
             >
               <Iframe
                 title="myFrame"
