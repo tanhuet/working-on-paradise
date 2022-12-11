@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import config from "../../config";
 import React from "react";
 import axios from "axios";
-import Comment from "../account-employer/Component/Comment";
+import Comment from "../AccountEmployer/Component/Comment";
 
 const EmployerInfo = () => {
   const userStore = useSelector((state) => state.auth.login?.currentUser);
