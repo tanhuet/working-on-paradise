@@ -1,5 +1,5 @@
 import classes from "./OfferList.module.scss"
-import ExcitingOffer from "../../../../components/exciting-offer/ExcitingOffer"
+import ExcitingOffer from "../../../../components/ExcitingOffer/ExcitingOffer"
 import { Fragment } from "react"
 
 const OfferList = () => {

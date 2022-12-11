@@ -4,7 +4,7 @@ import classes from "./EducationEdit.module.scss";
 import axios from "axios";
 import config from "../../../config";
 import { useSelector } from "react-redux";
-import Backdrop from "../../../components/back-drop/Backdrop";
+import Backdrop from "../../../components/Backdrop/Backdrop";
 import swal from "sweetalert";
 
 const EducationEdit = (props) => {

@@ -1,5 +1,5 @@
 import classes from "./IdeaPositionFooter.module.scss";
-import HighlightJob from "../highlight-job/HighlightJob";
+import HighlightJob from "../HighlightJob/HighlightJob";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import axios from "axios";

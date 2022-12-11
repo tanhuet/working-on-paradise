@@ -1,4 +1,4 @@
-import RecommendedJob from "../../../components/recommended-job/RecommendedJob"
+import RecommendedJob from "../../../components/RecommendedJob/RecommendedJob"
 import classes from "./RecommendedJobs.module.scss"
 
 const RecommendedJobs = (props) => {

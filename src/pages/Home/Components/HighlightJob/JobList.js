@@ -1,6 +1,6 @@
 import { Fragment } from "react"
 import classes from "./JobList.module.scss"
-import HighlightJob from "../../../../components/highlight-job/HighlightJob"
+import HighlightJob from "../../../../components/HighlightJob/HighlightJob"
 import { NavLink } from "react-router-dom"
 import more from "../../../../asses/more.png"
 
