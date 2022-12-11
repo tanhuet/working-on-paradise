@@ -1,6 +1,6 @@
 import classes from "./JobList.module.scss";
 import Wrap from "../../../components/UI/Wrap";
-import JobCard from "../../../components/JobCard/JobCard";
+import JobCard from "../../../components/job-card/JobCard";
 import RecommendedJob from "../../../components/RecommendedJob/RecommendedJob";
 
 const JobList = (props) => {
