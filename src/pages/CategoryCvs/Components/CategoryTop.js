@@ -3,7 +3,7 @@ import img from "../../../asses/nhansu.png";
 
 import classes from "./CategoryTop.module.scss";
 import FilterBar from "../../../components/filterbar2/FilterBar";
-import HighlightJob from "../../../components/highlight-job2/HighlightJob";
+import HighlightJob from "../../../components/HighlightJob2/HighlightJob";
 // import { useLocation } from "react-router-dom"
 
 const CategoryTop = (props) => {
