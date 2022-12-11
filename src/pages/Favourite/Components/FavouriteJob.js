@@ -6,7 +6,7 @@ import config from "../../../config"
 import { useSelector } from "react-redux"
 
 import FilterBar from "../../../components/FilterBar/FilterBar"
-import JobCard from "../../../components/JobCard/JobCard"
+import JobCard from "../../../components/job-card/JobCard"
 
 const FavouriteJob = (props) => {
 
