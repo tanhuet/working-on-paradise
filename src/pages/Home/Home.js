@@ -1,7 +1,7 @@
 import React from "react"
 import Overview from "./Components/Overview"
 import HighlightJob from "./Components/HighlightJob"
-import HomeBackground from "../../components/layout/HomeBackground"
+import HomeBackground from "../../components/Layout/HomeBackground"
 import classes from "./Home.module.scss"
 
 const Home = () => {
