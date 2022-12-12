@@ -49,6 +49,15 @@ const Comment = (props) => {
     }
   };
 
+  const deleteComment = async (idComment) => {
+    const res = await axios.delete(
+      `${config.api.url}/comments/${idComment}`,
+      { headers: { Authorization: `Bearer ${userStore?.accessToken}` } }
+    );
+    setListComment([res.data, ...listComment]);
+    window.location.reload();
+  };
+
   return (
     <form>
       {/* table comment-account-employer */}
@@ -94,10 +103,13 @@ const Comment = (props) => {
             return (
               <div>
                 <div className={`row`}>
-                  <div className={`col-sm-4 ${classes["username-old"]}`}>{item.user.name}</div>
-                  <div className={`col-sm-4 ${classes["mins-old"]}`}>{new Date(item.createdAt).toISOString().slice(0, 16).replace("T", " ")}</div>
+                  <div className={`col-sm-4 ${classes["username-old"]}`}>{item?.user?.name}</div>
+                  <div className={`col-sm-4 ${classes["mins-old"]}`}>{new Date(item?.createdAt)?.toISOString()?.slice(0, 16)?.replace("T", " ")}</div>
+                  <div className={`col ${classes["button-delete"]}`}>
+                    <button type='button' onClick={() => deleteComment(item.id)}>delete</button>
+                  </div>
                 </div>
-                <div>{item.content}</div>
+                <div>{item?.content}</div>
                 <hr style={{ width: "100%" }} />
               </div>
             );

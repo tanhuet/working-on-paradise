@@ -17,7 +17,7 @@ function IdeaPositionFooter(props) {
       .catch((err) => {
         console.log(err);
       });
-  });
+  }, [userStore]);
 
   return (
     <div className={classes["body-bottom"]}>
