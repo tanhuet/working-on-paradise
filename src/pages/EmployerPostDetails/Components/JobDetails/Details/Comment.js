@@ -5,6 +5,7 @@ import UserComment from "./UserComment";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import config from "../../../../../config";
 
 const Comment = (props) => {
   const [comments, setComment] = useState([]);
@@ -14,7 +15,7 @@ const Comment = (props) => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios
-        .get(`https://tanhuet.site/job/${id}}/applications`, {
+        .get(`${config.api.url}/job/${id}}/applications`, {
           headers: { Authorization: `Bearer ${userStore.accessToken}` },
         })
         .catch((error) => console.log(error));
@@ -28,9 +29,7 @@ const Comment = (props) => {
     setStatus(status);
   };
   const listItem1 = comments?.filter((item) => item.status === "pending");
-  const listItem = listItem1?.map((item) => (
-    <UserComment data={item} key={item.toString()} status={handleFuntion} />
-  ));
+  const listItem = listItem1?.map((item) => <UserComment data={item} key={item.toString()} status={handleFuntion} />);
   return (
     <div className={classes.des}>
       <div className={classes.card}>
