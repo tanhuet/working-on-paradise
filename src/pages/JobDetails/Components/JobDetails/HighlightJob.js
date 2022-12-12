@@ -1,10 +1,10 @@
 import { Fragment, useEffect, useState } from "react";
-import Offer from "./detail/Offer";
-import Highlight from "./overview/Highlight";
-import Requirement from "./detail/Requirement";
-import About from "./detail/About";
+import Offer from "./Details/Offer";
+import Highlight from "./OverView/Highlight";
+import Requirement from "./Details/Requirement";
+import About from "./Details/About";
 import axios from "axios";
-import Benefit from "./detail/Benefit";
+import Benefit from "./Details/Benefit";
 import React from "react";
 import { useSelector } from "react-redux";
 import config from "../../../../config";
@@ -45,6 +45,7 @@ const HighlightJob = () => {
       setMark(marks.data);
     };
     fetchData();
+    // eslint-disable-next-line
   }, [redirect, flag]);
   const callbackRedirectFuntion = (redirect) => {
     setRedirect(redirect);
@@ -59,7 +60,8 @@ const HighlightJob = () => {
       setButton("Applied");
       setStatus(true);
     }
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [persons.apply]);
 
   const callbackHandlerFunction = (status) => {
     if (status === true) {

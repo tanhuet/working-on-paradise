@@ -1,7 +1,7 @@
 // import React, { useEffect, useState } from 'react';
 import Layout from "./components/Layout/Layout";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { useSelector, useStore } from "react-redux";
+import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 
 //import page
@@ -16,7 +16,7 @@ import AccountPage from "./pages/Account/AccountPage";
 import JobDetail from "./pages/JobDetails/JobDetail";
 import CvDetailPage from "./pages/CvDetail/CvDetailPage";
 import PostManagementPage from "./pages/PostManagement/PostManagementPage";
-import EmployerJobDetail from "./pages/EmployerPost-Details/EmployerJobDetail";
+import EmployerJobDetail from "./pages/EmployerPostDetails/EmployerJobDetail";
 import CategoryCvs from "./pages/CategoryCvs/Category";
 // import AccountEmployer from "./pages/account-employer/AccEmp";
 // import AccountEmployerEdit from "./pages/account-employer/AccountEmployerEdit";
@@ -58,21 +58,41 @@ function App() {
     <Layout isFooter={isFooter}>
       <Routes>
         <Route path="/" element={<Navigate replace to="/home" />} />
-        {userStore?.role !== "Employer" && <Route path="/home" element={<Home />} />}
-        {userStore?.role === "Employer" && <Route path="/home" element={<EmployerHome />} />}
-        {userStore?.role === "Employer" && <Route path="import-data" element={<ImportData />} />}
+        {userStore?.role !== "Employer" && (
+          <Route path="/home" element={<Home />} />
+        )}
+        {userStore?.role === "Employer" && (
+          <Route path="/home" element={<EmployerHome />} />
+        )}
+        {userStore?.role === "Employer" && (
+          <Route path="import-data" element={<ImportData />} />
+        )}
         <Route path="/category" element={<Category />} />
-        {userStore?.role === "JobSeeker" && <Route path="/favourite" element={<Favourite />} />}
-        {userStore?.role === "JobSeeker" && <Route path="/cv" element={<Cv />} />}
-        {userStore?.role === "JobSeeker" && <Route path="/application" element={<Application />} />}
+        {userStore?.role === "JobSeeker" && (
+          <Route path="/favourite" element={<Favourite />} />
+        )}
+        {userStore?.role === "JobSeeker" && (
+          <Route path="/cv" element={<Cv />} />
+        )}
+        {userStore?.role === "JobSeeker" && (
+          <Route path="/application" element={<Application />} />
+        )}
         <Route path="/forgot" element={<ForgotPassWord />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/cv/:cvId" element={<CvDetailPage />} />
-        {userStore?.role === "JobSeeker" && <Route path="/account" element={<AccountPage />} />}
-        {userStore?.role === "JobSeeker" && <Route path="/employerInfo/:employerId" element={<EmployerInfo/>} />}
-        {userStore?.role === "Employer" && <Route path="/account" element={<AccEmp />} />}
-        {userStore?.role === "Employer" && <Route path="/account/:jobseekerId" element={<JobSeekerInfor />} />}
+        {userStore?.role === "JobSeeker" && (
+          <Route path="/account" element={<AccountPage />} />
+        )}
+        {userStore?.role === "JobSeeker" && (
+          <Route path="/employerInfo/:employerId" element={<EmployerInfo />} />
+        )}
+        {userStore?.role === "Employer" && (
+          <Route path="/account" element={<AccEmp />} />
+        )}
+        {userStore?.role === "Employer" && (
+          <Route path="/account/:jobseekerId" element={<JobSeekerInfor />} />
+        )}
         <Route path="/details/:id" element={<JobDetail />} />
         <Route path="/post/management" element={<PostManagementPage />} />
         <Route path="/employer-post/:id" element={<EmployerJobDetail />} />
@@ -81,14 +101,13 @@ function App() {
         {/* <Route path="/accountEmployer/employerEdit" element={<AccountEmployerEdit />} /> */}
         <Route path="/addPost" element={<AddPost />} />
         <Route path="/reset-password/:token" element={<ChangePassWord />} />
-        <Route path="/setup-account-jobseeker" element={<SetUpAccJobSeeker />} />
+        <Route
+          path="/setup-account-jobseeker"
+          element={<SetUpAccJobSeeker />}
+        />
         <Route path="/setup-account-employer" element={<SetUpAccEmployer />} />
         <Route path="*" element={<Navigate replace to="/home" />} />
         <Route path="/message" element={<Message />} />
-
-
-      
-        
       </Routes>
     </Layout>
   );

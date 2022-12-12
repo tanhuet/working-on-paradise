@@ -77,7 +77,7 @@ const Benefit = (props) => {
         </div>
         <Link href="#" to={`/details/${recomend.id}`} onClick={handleRedirect}>
           <Job
-            logo={recomend.authorAvatar}
+            logo={recomend.logo}
             title={recomend.title}
             companyName={recomend.authorName}
             address={recomend.authorAddress}

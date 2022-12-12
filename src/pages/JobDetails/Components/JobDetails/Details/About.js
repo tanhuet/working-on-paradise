@@ -1,7 +1,6 @@
 import classes from "./About.module.scss";
-import { Link, redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Job from "./Job";
-import locationImg from "../../../../../asses/nawest.png";
 import React, { useState } from "react";
 
 const About = (props) => {
@@ -34,7 +33,7 @@ const About = (props) => {
         </div>
         <Link href="#" to={`/details/${recomend.id}`} onClick={handleRedirect}>
           <Job
-            logo={recomend.authorAvatar}
+            logo={recomend.logo}
             title={recomend.title}
             companyName={recomend.authorName}
             address={recomend.authorAddress}

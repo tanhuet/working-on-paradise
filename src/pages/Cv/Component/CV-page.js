@@ -1,7 +1,5 @@
 import classes from "./CV-page.module.scss";
 import cvCreate from "../../../asses/cvCreate.png";
-import RecomendedJob from "../../JobDetails/Components/recomended-job/RecomendedJob";
-import HighlightJob from "../../../components/HighlightJob/HighlightJob";
 import CvCard from "./CvCard";
 import { MdOutlineAddCircle } from "react-icons/md";
 import { Link } from "react-router-dom";
@@ -10,7 +8,7 @@ import { useEffect, useState } from "react";
 import config from "../../../config";
 import axios from "axios";
 import RecommendedJob from "../../../components/RecommendedJob/RecommendedJob";
-import IdeaPosition from '../../../components/idea-position-footer/IdeaPositionFooter';
+import IdeaPosition from "../../../components/idea-position-footer/IdeaPositionFooter";
 
 const CVPage = (props) => {
   const userStore = useSelector((state) => state.auth.login?.currentUser);
@@ -74,18 +72,18 @@ const CVPage = (props) => {
                     //   jobs={item.jobs}
                     // />
                     <RecommendedJob
-            key={item.id}
-            id={item.id}
-            author={item.author}
-            companyName={item.companyName}
-            logo={item.logo}
-            jobName={item.jobName}
-            address={item.address}
-            position={item.position}
-            salary={item.salary}
-            jobType={item.jobType}
-            slot={item.slot}
-          />
+                      key={item.id}
+                      id={item.id}
+                      author={item.author}
+                      companyName={item.companyName}
+                      logo={item.logo}
+                      jobName={item.jobName}
+                      address={item.address}
+                      position={item.position}
+                      salary={item.salary}
+                      jobType={item.jobType}
+                      slot={item.slot}
+                    />
                   ))}
                 </div>
               </div>

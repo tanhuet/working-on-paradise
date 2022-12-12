@@ -1,6 +1,6 @@
 import React from "react";
 import HomeBackground from "../../components/Layout/HomeBackground2";
-import HighlightJob from "./Components/job-detail/HighlightJob";
+import HighlightJob from "./Components/JobDetails/HighlightJob";
 
 const EmployerJobDetail = () => {
   return (

@@ -10,16 +10,18 @@ const Comment = (props) => {
   const [comments, setComment] = useState([]);
   const userStore = useSelector((state) => state.auth.login?.currentUser);
   const [status, setStatus] = useState(false);
+  const id = props.comment;
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios
-        .get(`https://tanhuet.site/job/${props.comment}/applications`, {
+        .get(`https://tanhuet.site/job/${id}}/applications`, {
           headers: { Authorization: `Bearer ${userStore.accessToken}` },
         })
         .catch((error) => console.log(error));
       setComment(response.data);
     };
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [status]);
 
   const handleFuntion = (status) => {

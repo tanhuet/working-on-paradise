@@ -1,13 +1,13 @@
 import { Fragment, useEffect, useState } from "react";
-import Offer from "./detail/Offer";
-import Highlight from "./overview/Highlight";
-import Requirement from "./detail/Requirement";
-import About from "./detail/About";
+import Offer from "./Details/Offer";
+import Highlight from "./OverView/Highlight";
+import Requirement from "./Details/Requirement";
+import About from "./Details/About";
 import axios from "axios";
-import Comment from "./detail/Comment";
+import Comment from "./Details/Comment";
 import React from "react";
 import Docs from "./Docs";
-import Benefit from "./detail/Benefits";
+import Benefit from "./Details/Benefits";
 import { useSelector, useStore } from "react-redux";
 import config from "../../../../config";
 function createString(Strings, text) {
@@ -39,6 +39,7 @@ const HighlightJob = () => {
       }
     };
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [clickStatus]);
   const callbackSavehandle = (status) => {
     setSave(status);
@@ -59,7 +60,6 @@ const HighlightJob = () => {
     jobType: persons.title,
     company: persons.authorName,
     icon: persons.authorAvatar,
-    imageUrl: persons.imageUrl,
     address: persons.authorAddress,
     daysPost: -new Date().getDate() + new Date(persons.createdAt).getDate(),
     salary: persons.salary,

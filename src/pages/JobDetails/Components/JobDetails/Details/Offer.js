@@ -1,7 +1,6 @@
 import classes from "./Offer.module.scss";
 import { Link } from "react-router-dom";
 import Job from "./Job";
-import locationImg from "../../../../../asses/nawest.png";
 import { useState } from "react";
 
 const Offer = (props) => {
@@ -41,7 +40,7 @@ const Offer = (props) => {
             onClick={handleRedirect}
           >
             <Job
-              logo={recomend1.authorAvatar}
+              logo={recomend1.logo}
               title={recomend1.title}
               companyName={recomend1.authorName}
               address={recomend1.authorAddress}
@@ -58,7 +57,7 @@ const Offer = (props) => {
             onClick={handleRedirect}
           >
             <Job
-              logo={recomend2.authorAvatar}
+              logo={recomend1.logo}
               title={recomend2.title}
               companyName={recomend2.authorName}
               address={recomend2.authorAddress}

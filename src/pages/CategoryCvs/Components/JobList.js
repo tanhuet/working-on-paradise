@@ -1,6 +1,6 @@
 import classes from "./JobList.module.scss";
 import Wrap from "../../../components/UI/Wrap";
-import JobCard from "../../../components/job-card2/JobCard";
+import JobCard from "../../../components/JobCard2/JobCard";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 

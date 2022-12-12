@@ -1,21 +1,7 @@
 import classes from "./Comment.module.scss";
 import { Link } from "react-router-dom";
-import Job from "./Job";
-import locationImg from "../../../../../asses/nawest.png";
 import locationImg1 from "../../../../../asses/image1.png";
 import UserComment from "./UserComment";
-
-const DUMYJOB = {
-  logo: locationImg,
-  companyName: "NatWest. Group",
-  location: "NatWest. Group - London, UK",
-  recruitment: "Enterprise Architect",
-  location1: "NatWest. Group - London, UK",
-  recruitment1: "Privacy Officer",
-  jobName: "UI/UX Desgin",
-  type: "Part Time",
-  submittedDate: "12/12/2012",
-};
 
 const Comment = () => {
   return (

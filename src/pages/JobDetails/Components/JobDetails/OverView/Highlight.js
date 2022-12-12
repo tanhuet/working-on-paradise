@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import classes from "./Highlight.module.scss";
-import locationImg from "../../../../../asses/bg-defaut.png";
+import locationImg from "../../../../../asses/category-job.png";
 import { Google } from "../../../../../components/icon/google";
 import { useSelector } from "react-redux";
 import axios from "axios";
