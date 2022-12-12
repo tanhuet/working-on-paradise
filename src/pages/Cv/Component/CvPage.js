@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import config from "../../../config";
 import axios from "axios";
 import RecommendedJob from "../../../components/RecommendedJob/RecommendedJob";
-import IdeaPosition from "../../../components/idea-position-footer/IdeaPositionFooter";
+import IdeaPosition from "../../../components/IdeaPositionFooter/IdeaPositionFooter";
 
 const CVPage = (props) => {
   const userStore = useSelector((state) => state.auth.login?.currentUser);

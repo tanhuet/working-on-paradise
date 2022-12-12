@@ -5,7 +5,7 @@ import config from "../../config";
 import axios from "axios";
 import Banner from "./Components/Banner";
 import classes from "./Application.module.scss";
-import IdeaPosition from "../../components/idea-position-footer/IdeaPositionFooter";
+import IdeaPosition from "../../components/IdeaPositionFooter/IdeaPositionFooter";
 // import locationImg from "../../asses/img-location.png"
 import google from "../../asses/google.png";
 

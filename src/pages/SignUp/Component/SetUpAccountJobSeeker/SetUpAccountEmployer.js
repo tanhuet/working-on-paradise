@@ -40,7 +40,7 @@ const SetUpAccEmployer = (props) => {
     event.preventDefault();
 
     if (wallpaper === "" || avatar === "") {
-      alert('Please upload wallpaper or avatar');
+      swal("Error!", "Please upload wallpaper and avatar", "error");
     }
 
     const formDataWallpaper = new FormData();
@@ -49,14 +49,8 @@ const SetUpAccEmployer = (props) => {
     formDataWallpaper.append(`file`, selectedWallpaper);
     formDataAvatar.append(`file`, selectedAvatar);
 
-    const wallpaperLink = await axios.post(
-      `${config.api.url}/helper/upload`,
-      formDataWallpaper
-    );
-    const avatarLink = await axios.post(
-      `${config.api.url}/helper/upload`,
-      formDataAvatar
-    );
+    const wallpaperLink = await axios.post(`${config.api.url}/helper/upload`, formDataWallpaper);
+    const avatarLink = await axios.post(`${config.api.url}/helper/upload`, formDataAvatar);
 
     const DUMMYJOBSEEKER = {
       username: props.account.username,
@@ -71,27 +65,22 @@ const SetUpAccEmployer = (props) => {
       size: size,
     };
 
-    const newJobseeker = await axios.post(
-      `${config.api.url}/employer`,
-      DUMMYJOBSEEKER
-    )
-    .then((res) => {
-      swal("Success!", "Your account has been created!", "success").then(() => {
-        navigate("/login");
-      });
-    })
-    .catch((err) =>
-      swal("Error!", err.response.data, "error").then(() => {
-        navigate("/signup");
+    const newJobseeker = await axios
+      .post(`${config.api.url}/employer`, DUMMYJOBSEEKER)
+      .then((res) => {
+        swal("Success!", "Your account has been created!", "success").then(() => {
+          navigate("/login");
+        });
       })
-    );
+      .catch((err) =>
+        swal("Error!", err.response.data, "error").then(() => {
+          navigate("/signup");
+        })
+      );
   };
 
   return (
-    <div
-      className={`container-fluid ${classes["set-up-acc"]}`}
-      style={{ fontWeight: "bold" }}
-    >
+    <div className={`container-fluid ${classes["set-up-acc"]}`} style={{ fontWeight: "bold" }}>
       <div className={`row`}>
         <div className={`col-lg-5 col-sm-12 ${classes["img-setting"]}`}>
           <img src={settingImage}></img>
@@ -105,72 +94,39 @@ const SetUpAccEmployer = (props) => {
 
           {/* row-content in colum content */}
           <div className={`row ${classes["row-in-column"]}`}>
-            <div className={`col-sm-3 ${classes["row-in-column-content"]}`}>
-              Size:
-            </div>
+            <div className={`col-sm-3 ${classes["row-in-column-content"]}`}>Size:</div>
             <div className={`col-sm-9`}>
-              <input
-                type="number"
-                value={size}
-                min='0'
-                style={{width: '100px'}}
-                onChange={handleChangeSize}
-                required
-              ></input>
+              <input type="number" value={size} min="0" style={{ width: "100px" }} onChange={handleChangeSize} required></input>
             </div>
           </div>
 
           {/* row-content in colum content */}
           <div className={`row ${classes["row-in-column"]}`}>
-            <div className={`col-sm-3 ${classes["row-in-column-content"]}`}>
-              Address:
-            </div>
+            <div className={`col-sm-3 ${classes["row-in-column-content"]}`}>Address:</div>
             <div className={`col-sm-9`}>
-              <input
-                type="text"
-                value={address}
-                style={{width: '100%'}}
-                onChange={handleChangeAddress}
-                required
-              ></input>
+              <input type="text" value={address} style={{ width: "100%" }} onChange={handleChangeAddress} required></input>
             </div>
           </div>
 
           {/* row-content in colum content */}
           <div className={`row ${classes["row-in-column"]}`}>
-            <div className={`col-sm-3 ${classes["row-in-column-content"]}`}>
-              About:
-            </div>
+            <div className={`col-sm-3 ${classes["row-in-column-content"]}`}>About:</div>
             <div className={`col-sm-9`}>
-              <textarea
-                rows={"10"}
-                columns={"40"}
-                style={{ width: "100%" }}
-                value={about}
-                onChange={handleChangeAbout}
-              ></textarea>
+              <textarea rows={"10"} columns={"40"} style={{ width: "100%" }} value={about} onChange={handleChangeAbout}></textarea>
             </div>
           </div>
 
           {/* row-content in colum content */}
           <div className={`row ${classes["row-in-column"]}`}>
-            <div className={`col-sm-3 ${classes["row-in-column-content"]}`}>
-              Wallpaper:
-            </div>
+            <div className={`col-sm-3 ${classes["row-in-column-content"]}`}>Wallpaper:</div>
             <div className={`col-sm-9`}>
-              <input
-                type="file"
-                value={wallpaper}
-                onChange={handleChangeWallpaper}
-              />
+              <input type="file" value={wallpaper} onChange={handleChangeWallpaper} />
             </div>
           </div>
 
           {/* row-content in colum content */}
           <div className={`row ${classes["row-in-column"]}`}>
-            <div className={`col-sm-3 ${classes["row-in-column-content"]}`}>
-              Avatar:
-            </div>
+            <div className={`col-sm-3 ${classes["row-in-column-content"]}`}>Avatar:</div>
             <div className={`col-sm-9`}>
               <input type="file" value={avatar} onChange={handleChangeAvatar} />
             </div>

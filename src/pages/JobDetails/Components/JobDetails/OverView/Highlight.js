@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import classes from "./Highlight.module.scss";
 import locationImg from "../../../../../asses/category-job.png";
-import { Google } from "../../../../../components/icon/google";
+import { Google } from "../../../../../components/Icons/Google";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import ReactImageFallback from "react-image-fallback";
@@ -54,19 +54,12 @@ const Highlight = (props) => {
   const followHanlder = async () => {
     if (userStore) {
       try {
-        const resFlag = await axios.get(
-          `${config.api.url}/job/${props.skills.id}/marked`,
-          {
-            headers: { Authorization: `Bearer ${userStore.accessToken}` },
-          }
-        );
+        const resFlag = await axios.get(`${config.api.url}/job/${props.skills.id}/marked`, {
+          headers: { Authorization: `Bearer ${userStore.accessToken}` },
+        });
         if (!resFlag.data) {
           await axios
-            .post(
-              `${config.api.url}/job/${props.skills.id}/mark`,
-              {},
-              { headers: { Authorization: `Bearer ${userStore.accessToken}` } }
-            )
+            .post(`${config.api.url}/job/${props.skills.id}/mark`, {}, { headers: { Authorization: `Bearer ${userStore.accessToken}` } })
             .then(
               swal("Success, Added to Favorite", {
                 icon: "success",
@@ -118,12 +111,7 @@ const Highlight = (props) => {
   return (
     <React.Fragment>
       <div className={classes.underHeader}>
-        <ReactImageFallback
-          className={classes.img1}
-          src={props.skills.imageUrl}
-          alt=".."
-          fallbackImage={locationImg}
-        />
+        <ReactImageFallback className={classes.img1} src={props.skills.imageUrl} alt=".." fallbackImage={locationImg} />
 
         <div className={classes.factory}>
           <Link to={"/employerInfo/" + props.skills.authorId}>
@@ -137,8 +125,7 @@ const Highlight = (props) => {
               <div className={classes.info1}>
                 <h3>{props.skills.jobType}</h3>
                 <p>
-                  {props.skills.company} - {props.skills.address} -{" "}
-                  {Math.abs(props.skills.daysPost)} days ago
+                  {props.skills.company} - {props.skills.address} - {Math.abs(props.skills.daysPost)} days ago
                 </p>
                 <div className={classes.skill}>
                   <ul className={classes["skill-items"]}>
@@ -156,34 +143,18 @@ const Highlight = (props) => {
             <button className={classes.button1} onClick={handleContact}>
               Contact
             </button>
-            <button
-              className={classes.button1}
-              onClick={handleSubmit}
-              disabled={props.skills.status}
-            >
+            <button className={classes.button1} onClick={handleSubmit} disabled={props.skills.status}>
               {props.skills.button}
             </button>
 
             <button className={classes.btn} onClick={followHanlder}>
               {!props.skills.bookmark && (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="45px"
-                  fill="#48CCCD"
-                  class="bi bi-bookmark"
-                  viewBox="0 0 16 16"
-                >
+                <svg xmlns="http://www.w3.org/2000/svg" width="45px" fill="#48CCCD" class="bi bi-bookmark" viewBox="0 0 16 16">
                   <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z" />
                 </svg>
               )}
               {props.skills.bookmark && (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="45px"
-                  fill="#48CCCD"
-                  class="bi bi-bookmark-fill"
-                  viewBox="0 0 16 16"
-                >
+                <svg xmlns="http://www.w3.org/2000/svg" width="45px" fill="#48CCCD" class="bi bi-bookmark-fill" viewBox="0 0 16 16">
                   <path d="M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z" />
                 </svg>
               )}

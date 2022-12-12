@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import classes from "./Highlight.module.scss";
 import locationImg from "../../../../../asses/nhansu.png";
-import { Google } from "../../../../../components/icon/google";
+import { Google } from "../../../../../components/Icons/Google";
 import ReactImageFallback from "react-image-fallback";
 
 const Highlight = (props) => {
@@ -19,12 +19,7 @@ const Highlight = (props) => {
   return (
     <React.Fragment>
       <div className={classes.underHeader}>
-        <ReactImageFallback
-          className={classes.img1}
-          src={props.skills.imageUrl}
-          alt=".."
-          fallbackImage={locationImg}
-        />
+        <ReactImageFallback className={classes.img1} src={props.skills.imageUrl} alt=".." fallbackImage={locationImg} />
 
         <div className={classes.company1}>
           <div className={classes.factory}>
@@ -34,8 +29,7 @@ const Highlight = (props) => {
             <div className={classes.info1}>
               <h3>{props.skills.jobType}</h3>
               <p>
-                {props.skills.company} - {props.skills.address} -{" "}
-                {Math.abs(props.skills.daysPost)} days ago
+                {props.skills.company} - {props.skills.address} - {Math.abs(props.skills.daysPost)} days ago
               </p>
               <div className={classes.skill}>
                 <ul className={classes["skill-items"]}>

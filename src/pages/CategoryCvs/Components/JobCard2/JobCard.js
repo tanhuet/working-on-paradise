@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import Card from "../UI/Card";
+import Card from "../../../../components/UI/Card";
 import classes from "./JobCard.module.scss";
 import ReactImageFallback from "react-image-fallback";
-import locationImg from "../../asses/bg-paradise.PNG";
+import locationImg from "../../../../asses/bg-paradise.PNG";
 const JobCard = (props) => {
   return (
     <Card>
@@ -10,17 +10,12 @@ const JobCard = (props) => {
         <Link to={"/account/" + props.id}>
           <div className={classes.info}>
             <div className={classes.logo}>
-              <ReactImageFallback
-                src={props.logo}
-                alt=".."
-                fallbackImage={locationImg}
-              />
+              <ReactImageFallback src={props.logo} alt=".." fallbackImage={locationImg} />
             </div>
             <div className={classes.detail}>
               <div>{props.category}</div>
               <div className={classes.introduction}>
-                {props.companyName} - {props.location} - {props.experience}{" "}
-                {props.category} - {props.jobType} - ${props.salary}
+                {props.companyName} - {props.location} - {props.experience} {props.category} - {props.jobType} - ${props.salary}
               </div>
             </div>
           </div>

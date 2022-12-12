@@ -1,5 +1,5 @@
 import classes from "./FilterBar.module.scss";
-import FilterImg from "../../../../components/icon/filter";
+import FilterImg from "../../../../components/Icons/Filter";
 import { useState } from "react";
 
 const FilterBar = (props) => {

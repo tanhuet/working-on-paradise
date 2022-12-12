@@ -1,6 +1,6 @@
 import classes from "./JobList.module.scss";
 import Wrap from "../../../components/UI/Wrap";
-import JobCard from "../../../components/JobCard2/JobCard";
+import JobCard from "./JobCard2/JobCard";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 
@@ -79,14 +79,7 @@ const JobList = (props) => {
         <div className={classes["page-controller"]}>
           {/* <button onClick={prePage}>Previous</button> */}
           <button onClick={nextPage}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="70"
-              height="70"
-              fill="#48CCCD"
-              class="bi bi-caret-down-fill"
-              viewBox="0 0 16 16"
-            >
+            <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="#48CCCD" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
               <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
             </svg>
           </button>

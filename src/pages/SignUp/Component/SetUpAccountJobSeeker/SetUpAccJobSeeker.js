@@ -66,24 +66,33 @@ const SetUpAccJobSeeker = (props) => {
 
   const handleSubmitButton = async (event) => {
     event.preventDefault();
-    if (avatar === "") {
-      alert('Please upload avatar');
+    let avatarLink = "https://png.pngtree.com/png-vector/20190704/ourlarge/pngtree-businessman-user-avatar-free-vector-png-image_1538405.jpg";
+    let cvLink = "";
+
+    if (avatar !== "") {
+      const formDataAvatar = new FormData();
+
+      formDataAvatar.append(`file`, selectedAvatar);
+
+      avatarLink = (await axios.post(`${config.api.url}/helper/upload`, formDataAvatar)).data;
     }
-    const formDataCV = new FormData();
-    const formDataAvatar = new FormData();
 
-    formDataCV.append(`file`, selectedCV);
-    formDataAvatar.append(`file`, selectedAvatar);
+    if (cv !== "") {
+      const formDataCV = new FormData();
+      const formDataAvatar = new FormData();
 
-    const cvLink = await axios.post(`${config.api.url}/helper/upload`, formDataCV);
-    const avatarLink = await axios.post(`${config.api.url}/helper/upload`, formDataAvatar);
+      formDataCV.append(`file`, selectedCV);
+      formDataAvatar.append(`file`, selectedAvatar);
+
+      cvLink = (await axios.post(`${config.api.url}/helper/upload`, formDataCV)).data;
+    }
 
     const DUMMYJOBSEEKER = {
       username: props.account.username,
       name: props.account.name,
       email: props.account.email,
       phone: props.account.phone,
-      avatar: avatarLink.data,
+      avatar: avatarLink,
       password: props.account.password,
       address: address,
       age: age,
@@ -92,7 +101,7 @@ const SetUpAccJobSeeker = (props) => {
       advanedSkill: advancedSkill,
       salary: desiredSalary,
       workplace: workPlace,
-      cv: cvLink.data,
+      cv: cvLink,
       careerFeild: desiredCareerField,
       typeOfJob: typeOfJob,
     };
@@ -172,7 +181,7 @@ const SetUpAccJobSeeker = (props) => {
           <div className={`row ${classes["row-in-column"]}`}>
             <div className={`col-sm-3 ${classes["row-in-column-content"]}`}>Desired Salary:</div>
             <div className={`col-sm-9`}>
-              <input type="number" value={desiredSalary} onChange={handleChangeDesiredSalary} style={{height: '100%'}} required></input>
+              <input type="number" value={desiredSalary} onChange={handleChangeDesiredSalary} style={{ height: "100%" }} required></input>
             </div>
           </div>
 
@@ -223,7 +232,7 @@ const SetUpAccJobSeeker = (props) => {
           <div className={`row ${classes["row-in-column"]}`}>
             <div className={`col-sm-3 ${classes["row-in-column-content"]}`}>Avatar:</div>
             <div className={`col-sm-9`}>
-              <input type="file" onChange={handleChangeAvatar}  value={avatar}/>
+              <input type="file" onChange={handleChangeAvatar} value={avatar} />
             </div>
           </div>
 
