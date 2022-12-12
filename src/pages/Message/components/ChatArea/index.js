@@ -24,7 +24,7 @@ function ChatArea(props) {
     }
 
     if (conversationId) {
-      socketRef.current = socketIOClient.connect(`${config.api.url}`);
+      socketRef.current = socketIOClient.connect(`${config.socket.url}`);
       axios
         .create()
         .post(`${config.api.url}/chat/conversation`, { friendId: receiver.id }, { headers: { Authorization: `Bearer ${userStore.accessToken}` } })
