@@ -20,7 +20,7 @@ const Cv = () => {
         });
     }
   }, [userStore]);
-  console.log(recomendedJobs)
+ 
   const CVS = [
     {
       id: 1,

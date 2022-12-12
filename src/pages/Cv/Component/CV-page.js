@@ -56,7 +56,7 @@ const CVPage = (props) => {
                 </div>
                 <div className={classes["body-create-cv"]}>
                   {listCv.map((cv, index) => (
-                    <CvCard CvName={"CV-" + index} CvLink={cv} />
+                    <CvCard index={index} CvLink={cv} />
                   ))}
                 </div>
               </div>
