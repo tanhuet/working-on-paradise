@@ -60,7 +60,12 @@ const HighlightJob = () => {
     jobType: persons.title,
     company: persons.authorName,
     icon: persons.authorAvatar,
-    address: persons.authorAddress,
+    address:
+      persons.authorAddress === "undefined"
+        ? "undefined address"
+        : persons.authorAddress?.trim().length === 0
+        ? "undefined address"
+        : persons.authorAddress,
     daysPost: Math.abs(
       new Date().getDate() - new Date(persons.createdAt).getDate()
     ),
@@ -90,7 +95,12 @@ const HighlightJob = () => {
     company: persons.authorName,
     icon: persons.authorAvatar,
     imageUrl: persons.imageUrl,
-    address: persons.authorAddress,
+    address:
+      persons.authorAddress === "undefined"
+        ? "undefined address"
+        : persons.authorAddress?.trim().length === 0
+        ? "undefined address"
+        : persons.authorAddress,
     daysPost: -new Date().getDate() + new Date(persons.createdAt).getDate(),
     salary: persons.salary,
     quantity: persons.slots,

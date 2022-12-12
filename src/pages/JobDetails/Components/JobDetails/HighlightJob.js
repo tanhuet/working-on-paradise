@@ -79,7 +79,12 @@ const HighlightJob = () => {
     company: persons.authorName,
     icon: persons.authorAvatar,
     imageUrl: persons.imageUrl,
-    address: persons.authorAddress,
+    address:
+      persons.authorAddress === "undefined"
+        ? "undefined address"
+        : persons.authorAddress?.trim().length === 0
+        ? "undefined address"
+        : persons.authorAddress,
     daysPost: -new Date().getDate() + new Date(persons.createdAt).getDate(),
     salary: persons.salary,
     quantity: persons.slots,
