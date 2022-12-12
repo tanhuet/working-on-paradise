@@ -8,8 +8,12 @@
     justify-content: space-between;
     width: 100%;
 
+    .listJob {
+        width: 95%;
+    }
+
     .listButton {
-        width: 90px;
+        width: 60px;
         margin-left: 5px;
         .edit {
             width: 25px;
@@ -80,8 +84,6 @@
         width: 100%;
 
         .listButton {
-            margin-left: 5px;
-            width: 100px;
             .edit {
                 width: 23px;
                 height: 23px;
