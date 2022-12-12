@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import CVPage from "./Component/CV-page";
+import CVPage from "./Component/CvPage";
 import address from "../../asses/address.png";
 import google from "../../asses/google.png";
 import config from "../../config";
@@ -20,7 +20,7 @@ const Cv = () => {
         });
     }
   }, [userStore]);
- 
+
   const CVS = [
     {
       id: 1,
@@ -64,25 +64,25 @@ const Cv = () => {
     },
   ];
 
-  let rJ = []
+  let rJ = [];
   if (recomendedJobs !== null) {
-      rJ = recomendedJobs.map((job) => {
-          return {
-              id: job.id,
-              author: job.author,
-              companyName: job.authorName,
-              logo: job.authorAvatar,
-              jobName: job.title,
-              address: job.authorAddress,
-              position: job.positions,
-              salary: job.salary,
-              jobType: job.typeOfWorking,
-              slot: job.slots,
-          }
-      })
-      // setRecomendJobs(rJ)
+    rJ = recomendedJobs.map((job) => {
+      return {
+        id: job.id,
+        author: job.author,
+        companyName: job.authorName,
+        logo: job.authorAvatar,
+        jobName: job.title,
+        address: job.authorAddress,
+        position: job.positions,
+        salary: job.salary,
+        jobType: job.typeOfWorking,
+        slot: job.slots,
+      };
+    });
+    // setRecomendJobs(rJ)
   }
-  return <CVPage cvs={CVS} items={ITEMS} jobs={JOBS} recomendedJobs={rJ}/>;
+  return <CVPage cvs={CVS} items={ITEMS} jobs={JOBS} recomendedJobs={rJ} />;
 };
 
 export default Cv;

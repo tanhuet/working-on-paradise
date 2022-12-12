@@ -2,13 +2,27 @@ import classes from "./CvCard.module.scss";
 import axios from "axios";
 import config from "../../../config";
 import { useSelector } from "react-redux";
+import swal from "sweetalert";
 
 function CvCard(props) {
   const userStore = useSelector((state) => state.auth.login?.currentUser);
 
   const deleteCV = (position) => {
-    axios.delete(`${config.api.url}/cv/${position}`, { headers: { Authorization: `Bearer ${userStore?.accessToken}` } }).then(() => {
-      window.location.reload();
+    swal({
+      title: "Are you sure?",
+      text: "You will remove this cv from your profile!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        axios.delete(`${config.api.url}/cv/${position}`, { headers: { Authorization: `Bearer ${userStore?.accessToken}` } }).then(() => {
+          props.onDelete();
+          swal("Poof! Your cv has been removed!", {
+            icon: "success",
+          });
+        });
+      }
     });
   };
   return (

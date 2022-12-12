@@ -1,7 +1,8 @@
-import classes from "./CV-page.module.scss";
+import classes from "./CvPage.module.scss";
 import cvCreate from "../../../asses/cvCreate.png";
 import CvCard from "./CvCard";
 import { MdOutlineAddCircle } from "react-icons/md";
+import { ImUpload3 } from "react-icons/im";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
@@ -15,6 +16,10 @@ const CVPage = (props) => {
   const [listCv, setListCv] = useState([]);
 
   useEffect(() => {
+    loadListCv();
+  }, [userStore]);
+
+  const loadListCv = () => {
     axios
       .get(`${config.api.url}/jobseeker`, {
         headers: { Authorization: `Bearer ${userStore.accessToken}` },
@@ -29,7 +34,17 @@ const CVPage = (props) => {
         });
         setListCv(newList);
       });
-  }, [userStore]);
+  };
+
+  const handleChangeCV = async (event) => {
+    const formDataCV = new FormData();
+
+    formDataCV.append(`file`, event.target.files[0]);
+
+    await axios.post(`${config.api.url}/cv/upload`, formDataCV, { headers: { Authorization: `Bearer ${userStore.accessToken}` } }).then((res) => {
+      setListCv([...listCv, res.data]);
+    });
+  };
 
   return (
     <div className={`container-fluid ${classes["container-background"]}`}>
@@ -53,13 +68,19 @@ const CVPage = (props) => {
               <div className={classes["create-cv"]}>
                 <div className={classes["header-create-cv"]}>
                   <div className={classes["title-create-cv"]}>Created CV</div>
-                  <Link to="/cv/:cvld">
-                    <MdOutlineAddCircle className={classes["add-cv-btn"]} />
-                  </Link>
+                  <div className={classes["button-add-upload"]}>
+                    <Link to="/cv/:cvld">
+                      <MdOutlineAddCircle className={classes["add-cv-btn"]} />
+                    </Link>
+                    <label for="upload-cv">
+                      <ImUpload3 className={classes["upload-cv-btn"]} />
+                    </label>
+                    <input type="file" name="cv" id="upload-cv" className={classes["upload-cv"]} onChange={handleChangeCV} />
+                  </div>
                 </div>
                 <div className={classes["body-create-cv"]}>
                   {listCv.map((cv, index) => (
-                    <CvCard index={index} CvLink={cv} />
+                    <CvCard index={index} CvLink={cv} onDelete={loadListCv} />
                   ))}
                 </div>
               </div>
