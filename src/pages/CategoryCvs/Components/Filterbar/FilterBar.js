@@ -1,5 +1,5 @@
 import classes from "./FilterBar.module.scss";
-import FilterImg from "../icon/filter";
+import FilterImg from "../../../../components/icon/filter";
 import { useState } from "react";
 
 const FilterBar = (props) => {
@@ -25,12 +25,7 @@ const FilterBar = (props) => {
         </div>
         <div className={classes["filter-search"]}>
           <form onSubmit={filterHandler}>
-            <input
-              type="text"
-              placeholder="Category, TypeJob, ..."
-              name="filter"
-              list="job"
-            />
+            <input type="text" placeholder="Category, TypeJob, ..." name="filter" list="job" />
             <datalist id="job">
               {props.filter.slice(0, 7).map((item, index) => (
                 <option value={item} key={index} />
