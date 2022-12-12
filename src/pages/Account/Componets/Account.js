@@ -11,6 +11,7 @@ import Data from "./Data";
 import CvBox from "./CvBox";
 import editButton from "../../../asses/editButton.png";
 import saveButton from "../../../asses/saveButton.png";
+import error from "../../../asses/errorImg.png"
 import Backdrop from "../../../components/Backdrop/Backdrop";
 
 const Account = (props) => {
@@ -130,7 +131,6 @@ const Account = (props) => {
     }
   }
 
-  // Hiệp: khi bấm ra ngoài sẽ close education edit
   const closeEducationEditHandler = (reload) => {
     setCanEditEducation(false);
     setNewEdu(false);
@@ -164,6 +164,11 @@ const Account = (props) => {
   const handleClose = () => {
     setIsOpen(false)
   }
+  
+  const errorImg = (e) => {
+    e.target.onerror = null
+    e.target.src = error
+  }
 
   return (
     USER && (
@@ -172,7 +177,7 @@ const Account = (props) => {
         {canEditEducation && selectedEducation && <EducationEdit onCloseEditingEducation={closeEducationEditHandler} education={selectedEducation} />}
         <div className={classes.container1}>
           <div>
-            <img className={classes.circle} onClick={openDialog} src={avatar} alt="" />
+            <img className={classes.circle} onClick={openDialog} src={avatar} alt="avatar" onError={errorImg}/>
           </div>
           {
             isOpen &&

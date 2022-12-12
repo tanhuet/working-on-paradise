@@ -7,6 +7,7 @@ import classes from "./JobSeekerInfor.module.scss"
 import { Fragment } from "react";
 import Data from "../Account/Componets/Data";
 import CvBox from "../Account/Componets/CvBox";
+import error from "../../asses/errorImg.png"
 
 const JobSeekerInfor = () => {
   const userStore = useSelector((state) => state.auth.login?.currentUser);
@@ -68,10 +69,15 @@ const JobSeekerInfor = () => {
     });
   }
 
+  const errorImg = (e) => {
+    e.target.onerror = null
+    e.target.src = error
+  }
+
   return (
     <Fragment>
       <div className={classes.container1}>
-        <img className={classes.circle} src={avatar} alt="" />
+        <img className={classes.circle} src={avatar} onError={errorImg} alt="avatar" />
         <div className={classes.text}>{name}</div>
       </div>
       <div id="list-example" className={classes["group-item"]}>
