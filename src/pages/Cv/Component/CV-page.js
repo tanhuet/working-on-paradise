@@ -20,7 +20,14 @@ const CVPage = (props) => {
         headers: { Authorization: `Bearer ${userStore.accessToken}` },
       })
       .then((res) => {
-        setListCv(res.data.cv.split(","));
+        const resList = res.data.cv.split(",");
+        const newList = [];
+        resList.forEach((item) => {
+          if (item && item !== "" && item.length > 3 && item !== "cv link") {
+            newList.push(item);
+          }
+        });
+        setListCv(newList);
       });
   }, [userStore]);
 
@@ -33,14 +40,10 @@ const CVPage = (props) => {
               <img src={cvCreate} alt="create cv" />
             </div>
             <div className={`${classes["content"]}`}>
-              <div className={classes["content-create-cv"]}>
-                Create your own CV and apply now
-              </div>
+              <div className={classes["content-create-cv"]}>Create your own CV and apply now</div>
               <div className={classes["div-create-cv"]}>
                 <Link to="/cv/:cvld">
-                  <button className={classes["button-create-cv"]}>
-                    Create now
-                  </button>
+                  <button className={classes["button-create-cv"]}>Create now</button>
                 </Link>
               </div>
             </div>
