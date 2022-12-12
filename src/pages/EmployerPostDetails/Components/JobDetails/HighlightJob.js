@@ -61,7 +61,9 @@ const HighlightJob = () => {
     company: persons.authorName,
     icon: persons.authorAvatar,
     address: persons.authorAddress,
-    daysPost: -new Date().getDate() + new Date(persons.createdAt).getDate(),
+    daysPost: Math.abs(
+      new Date().getDate() - new Date(persons.createdAt).getDate()
+    ),
     salary: persons.salary,
     quantity: persons.slots,
     typeOfWorking: persons.typeOfWorking,
@@ -79,7 +81,7 @@ const HighlightJob = () => {
     benefits: persons.benefits,
     about: persons.authorAbout,
   };
-  console.log(persons.title);
+
   let PERSON = {
     handleFuntion: callbackHandlerFunction,
     saveFun: callbackSavehandle,

@@ -53,6 +53,7 @@ const CategoryCvs = () => {
   let topJobs = [];
   if (entireJobs) {
     jobs = entireJobs.map((job) => {
+      let tags = job.careerFeild.replace(" ", "").split(",");
       return {
         id: job.id,
         logo: job.avatar,
@@ -63,7 +64,7 @@ const CategoryCvs = () => {
         experience: job.experience,
         salary: job.salary,
         age: job.age,
-        skills: ["Web", "Mobile"],
+        skills: tags,
       };
     });
 
@@ -71,7 +72,7 @@ const CategoryCvs = () => {
       topJobs = jobs.slice(0, 3);
       topJobs = topJobs.map((job) => {
         // let tags = job.tags.replace(" ", '').split(",")
-        let tags = job.skills.slice(0, 2);
+        let tags = job.skills.slice(0, 3);
         return {
           id: job.id,
           logo: job.logo,

@@ -138,7 +138,7 @@ const Highlight = (props) => {
                 <h3>{props.skills.jobType}</h3>
                 <p>
                   {props.skills.company} - {props.skills.address} -{" "}
-                  {props.skills.daysPost} days ago
+                  {Math.abs(props.skills.daysPost)} days ago
                 </p>
                 <div className={classes.skill}>
                   <ul className={classes["skill-items"]}>
