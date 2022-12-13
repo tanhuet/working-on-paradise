@@ -5,6 +5,8 @@ import axios from "axios";
 import config from "../../../config";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import deleteImg from "../../../asses/delete_img.png"
+
 
 const Comment = (props) => {
   const user = props.user;
@@ -104,12 +106,13 @@ const Comment = (props) => {
               <div>
                 <div className={`row`}>
                   <div className={`col-sm-4 ${classes["username-old"]}`}>{item?.user?.name}</div>
-                  <div className={`col-sm-4 ${classes["mins-old"]}`}>{new Date(item?.createdAt)?.toISOString()?.slice(0, 16)?.replace("T", " ")}</div>
                   <div className={`col ${classes["button-delete"]}`}>
-                    <button type='button' onClick={() => deleteComment(item.id)}>delete</button>
+                    <button type='button' onClick={() => deleteComment(item.id)}><img src={deleteImg} alt="" /></button>
                   </div>
                 </div>
-                <div>{item?.content}</div>
+                <div className={classes["comment-content"]}>{item?.content}</div>
+                <div className={`col-sm-4 ${classes["mins-old"]}`}>{new Date(item?.createdAt)?.toISOString()?.slice(0, 16)?.replace("T", " ")}</div>
+
                 <hr style={{ width: "100%" }} />
               </div>
             );

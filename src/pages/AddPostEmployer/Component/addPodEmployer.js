@@ -129,12 +129,13 @@ const AddPostEmployer = (props) => {
       });
   }, [userStore]);
 
+  
   return (
     <div className={`container`}>
       <form className={"row g-3 needs-validation"} onSubmit={handleSubmit}>
         <div className={classes["header-div"]}>
           <div className={classes["add-image"]}>
-            <img src={user?.wallpaper} />
+            <img src={user.wallpaper !== 'wallpaper' ? user.wallpaper : 'https://thuthuatnhanh.com/wp-content/uploads/2021/03/hinh-anh-tuyen-dung-noi-bat.jpg'} />
           </div>
           <div className={classes["body-add-post"]}>
             <div className={`row`}>
