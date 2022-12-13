@@ -16,6 +16,10 @@ const Highlight = (props) => {
     }
   }
 
+  const handleChangeTitle = (event) => {
+    // setTittle(event.target.value);
+    props.skills.handleTitleImg(event.target.value, props.skills.icon);
+  };
   return (
     <React.Fragment>
       <div className={classes.underHeader}>
@@ -25,9 +29,45 @@ const Highlight = (props) => {
           <div className={classes.factory}>
             <div className={classes.icon}>
               <Google src={props.skills.icon} />
+
+              {/* {status && (
+                <div>
+                  <input
+                    type="file"
+                    id="file"
+                    ref={inputFile}
+                    style={{ display: "none" }}
+                    onChange={changeHandler}
+                  />
+
+                  <button onClick={onButtonClick}>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="25"
+                      height="25"
+                      fill="currentColor"
+                      class="bi bi-plus-circle"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                      <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                    </svg>
+                  </button>
+                </div>
+              )} */}
             </div>
             <div className={classes.info1}>
-              <h3>{props.skills.jobType}</h3>
+              <h3>{!status && props.skills.jobType}</h3>
+              <h3>
+                {status && (
+                  <input
+                    type="text"
+                    onChange={handleChangeTitle}
+                    // placeholder={props.skills.jobType}
+                    Value={props.skills.jobType}
+                  ></input>
+                )}
+              </h3>
               <p>
                 {props.skills.company} - {props.skills.address} - {Math.abs(props.skills.daysPost)} days ago
               </p>

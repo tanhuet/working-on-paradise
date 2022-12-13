@@ -20,6 +20,7 @@ const HighlightJob = () => {
   const [clickStatus, setStatus] = useState(false);
   const [save, setSave] = useState(false);
   const [button, setButton] = useState("Edit");
+
   const curUrl = window.location.href;
   const [mark, setMark] = useState();
   const id = curUrl.split("employer-post/")[1];
@@ -48,6 +49,12 @@ const HighlightJob = () => {
     setStatus(status);
     setButton(buttonIdea);
   };
+  const [title, setTittle] = useState(persons.title);
+  const [img, setImg] = useState(persons.authorAvatar);
+  const callbackDataWhileSave = (title, file) => {
+    setTittle(title);
+    setImg(file);
+  };
 
   const skills = createString(persons.positions, "/");
   let DOCS = {
@@ -58,8 +65,9 @@ const HighlightJob = () => {
     callbackHandlerFunction: callbackHandlerFunction,
     skill: skills,
     jobType: persons.title,
+
     company: persons.authorName,
-    icon: persons.authorAvatar,
+    icon: img,
     address:
       persons.authorAddress === "undefined"
         ? "undefined address"
@@ -76,7 +84,7 @@ const HighlightJob = () => {
     positions: persons.positions,
     startTime: persons.startTime,
     endTime: persons.endTime,
-    title: persons.title,
+    title: title,
     tags: persons.tags,
     imageUrl: persons.imageUrl,
     exp: persons.exp,
@@ -89,6 +97,7 @@ const HighlightJob = () => {
 
   let PERSON = {
     handleFuntion: callbackHandlerFunction,
+    handleTitleImg: callbackDataWhileSave,
     saveFun: callbackSavehandle,
     skill: skills,
     jobType: persons.title,
