@@ -12,7 +12,7 @@ const Highlight = () => {
 
   const submitHander = (e) => {
     e.preventDefault();
-    navigate(`/category?filter=${suggestion.current.value}`);
+    navigate(`/employer-cv?filter=${suggestion.current.value}`);
   };
 
   return (
