@@ -5,6 +5,7 @@ import swal from "sweetalert";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import config from "../../../../../config";
+import { Link } from "react-router-dom";
 const UserComment = (props) => {
   // const [status, setStatus] = useState("pending");
   const userStore = useSelector((state) => state.auth.login?.currentUser);
@@ -91,10 +92,10 @@ const UserComment = (props) => {
   };
   return (
     <div className={classes.des}>
-      <div className={classes.name}>
+      <Link to={`/account/${props.data.jobseeker.id}`} className={classes.name}>
         <h3>{props.data.jobseeker.username}</h3>
-        {subDate()}
-      </div>
+        <p> {subDate()}</p>
+      </Link>
       <div className={classes.boxInfo}>
         <ReactImageFallback className={classes.img1} src={props.data.jobseeker.avatar} alt=".." fallbackImage={locationImg} />
         <div className={classes.boxLeft}>

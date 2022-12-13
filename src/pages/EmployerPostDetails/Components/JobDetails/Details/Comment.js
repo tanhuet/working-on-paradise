@@ -15,7 +15,7 @@ const Comment = (props) => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios
-        .get(`${config.api.url}/job/${id}}/applications`, {
+        .get(`${config.api.url}/job/${id}/applications`, {
           headers: { Authorization: `Bearer ${userStore.accessToken}` },
         })
         .catch((error) => console.log(error));

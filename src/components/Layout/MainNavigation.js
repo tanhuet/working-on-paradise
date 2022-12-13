@@ -136,6 +136,11 @@ const MainNavigation = (props) => {
                   </NavLink>
                 </li>
                 <li className="nav-item">
+                  <NavLink className="nav-link" href="#" to="/applied-cv">
+                    Applied CV
+                  </NavLink>
+                </li>
+                <li className="nav-item">
                   <NavLink className="nav-link" href="#" to="/import-data">
                     Import Job
                   </NavLink>
