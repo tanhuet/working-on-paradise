@@ -47,6 +47,8 @@ const JobSeekerInfor = () => {
         setWorkplace(res.data.workplace);
         setListCv(res.data.cv.split(","))
       });
+      
+    window.scrollTo(0, 0);
 
     axios.get(`${config.api.url}/education/jobseeker/${jobseekerId}`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } })
       .then((res) => {
