@@ -65,7 +65,6 @@ const HighlightJob = () => {
     callbackHandlerFunction: callbackHandlerFunction,
     skill: skills,
     jobType: persons.title,
-
     company: persons.authorName,
     icon: img,
     address:

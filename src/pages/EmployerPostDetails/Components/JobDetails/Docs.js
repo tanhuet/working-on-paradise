@@ -69,7 +69,7 @@ const Docs = (props) => {
                 benefits: textarea4,
                 tags: props.docs.tags,
                 title:
-                  props.docs.title === ""
+                  props.docs.title === undefined
                     ? props.docs.jobType
                     : props.docs.title,
                 startTime: new Date().toISOString().slice(0, 10),
@@ -107,6 +107,7 @@ const Docs = (props) => {
     });
     setStatus(false);
   }
+
   return (
     <div>
       <div className={classes["des"]}>
