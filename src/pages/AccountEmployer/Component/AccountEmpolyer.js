@@ -259,7 +259,7 @@ const AccountEmployer = (props) => {
                           className={`${classes.font} ${classes.editmake}`}
                           rows={"4"}
                           colums={"40"}
-                          style={{ borderRadius: "10px" }}
+                          style={{ borderRadius: "10px", width: '300px' }}
                           onChange={(e) => setAddress(e.target.value)}
                           value={address}
                         ></textarea>
