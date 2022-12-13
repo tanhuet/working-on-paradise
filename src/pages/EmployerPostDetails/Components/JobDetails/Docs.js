@@ -116,23 +116,13 @@ const Docs = (props) => {
               <ul>
                 <li>
                   <p>
-                    Salary:{" "}
-                    <input
-                      type="number"
-                      onChange={handleChangeSalary}
-                      value={salary}
-                    />
+                    Salary: <input type="number" onChange={handleChangeSalary} value={salary} />
                     <span>$</span>
                   </p>
                 </li>
                 <li>
                   <p>
-                    Type of Job:{" "}
-                    <input
-                      type="text"
-                      onChange={handleChangeType}
-                      value={typeOfWorking}
-                    ></input>
+                    Type of Job: <input type="text" onChange={handleChangeType} value={typeOfWorking}></input>
                   </p>
                 </li>
 
@@ -140,12 +130,7 @@ const Docs = (props) => {
                   <p>
                     Gender:{" "}
                     <select onChange={handleChangeGender}>
-                      <option
-                        value={props.docs.gender}
-                        disabled
-                        selected
-                        hidden
-                      >
+                      <option value={props.docs.gender} disabled selected hidden>
                         {props.docs.gender}
                       </option>
                       {<option value="no-require">No-require</option>}
@@ -160,25 +145,18 @@ const Docs = (props) => {
               <ul>
                 <li>
                   <p>
-                    Quantity:{" "}
-                    <input
-                      type="number"
-                      onChange={handleChangeQuantity}
-                      value={quantity}
-                    />
+                    Quantity: <input type="number" onChange={handleChangeQuantity} value={quantity} />
                   </p>
                 </li>
                 <li>
                   <p>
-                    Position:{" "}
-                    <input type="text" onChange={handleChangePos} value={pos} />
+                    Position: <input type="text" onChange={handleChangePos} value={pos} />
                   </p>
                 </li>
                 <li>
                   <p>
                     Experience:
                     <input onChange={handleChangeExp} value={exp} />
-                    <span> years</span>
                   </p>
                 </li>
               </ul>
@@ -192,11 +170,7 @@ const Docs = (props) => {
           <Link>
             <div className={classes["info"]}>
               <form>
-                <textarea
-                  name="textValue"
-                  onChange={handleChange1}
-                  value={textarea1}
-                />
+                <textarea name="textValue" onChange={handleChange1} value={textarea1} />
               </form>
             </div>
           </Link>
@@ -208,11 +182,7 @@ const Docs = (props) => {
           <Link>
             <div className={classes["info"]}>
               <form>
-                <textarea
-                  name="textValue2"
-                  onChange={handleChange2}
-                  value={textarea2}
-                />
+                <textarea name="textValue2" onChange={handleChange2} value={textarea2} />
               </form>
             </div>
           </Link>
@@ -224,11 +194,7 @@ const Docs = (props) => {
           <Link>
             <div className={classes["info"]}>
               <form>
-                <textarea
-                  name="textValue3"
-                  onChange={handleChange3}
-                  value={textarea4}
-                />
+                <textarea name="textValue3" onChange={handleChange3} value={textarea4} />
               </form>
             </div>
           </Link>
@@ -240,11 +206,7 @@ const Docs = (props) => {
           <Link>
             <div className={classes["info"]}>
               <form>
-                <textarea
-                  name="textValue4"
-                  onChange={handleChange4}
-                  value={textarea3}
-                />
+                <textarea name="textValue4" onChange={handleChange4} value={textarea3} />
               </form>
             </div>
           </Link>
