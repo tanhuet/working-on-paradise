@@ -88,15 +88,17 @@
         border-radius: 0px 0px 40px 40px;
         box-shadow: 0 0 0 0;
 
-        .page-controller {
+        .listButton {
             display: flex;
             justify-content: center;
         }
 
-        .page-controller button {
-            margin-left: 1rem;
-            margin-right: 1rem;
-            border-radius: 50%;
+        .listButton button {
+            border: none;
+            margin-left: 0.5rem;
+            margin-right: 0.5rem;
+            background-color: transparent;
+            margin-top: 1rem;
         }
     }
 }

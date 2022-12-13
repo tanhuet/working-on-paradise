@@ -6,6 +6,8 @@ import { useSelector } from "react-redux";
 
 const PostManagementPage = () => {
   const [job, setJob] = useState();
+  const [firstList, setFirstList] = useState(0);
+  const [lastList, setLastList] = useState(5);
   const [profile, setProfile] = useState();
   const userStore = useSelector((state) => state.auth.login?.currentUser);
 
@@ -13,6 +15,7 @@ const PostManagementPage = () => {
     axios.get(`${config.api.url}/job/all-mine`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } })
       .then((res) => {
         setJob(res.data);
+
       });
 
     axios.get(`${config.api.url}/employer/recommend-jobseeker/3`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } })
@@ -22,9 +25,30 @@ const PostManagementPage = () => {
 
   }, [userStore]);
 
+  const nextList = () => {
+    setFirstList((firstList) => {
+      return firstList + 5;
+    });
+    setLastList((lastList) => {
+      return lastList + 5;
+    });
+  };
+
+  const preList = () => {
+    if (firstList !== 0) {
+      setFirstList((firstList) => {
+        return firstList - 5;
+      });
+      setLastList((lastList) => {
+        return lastList - 5;
+      });
+    }
+  };
+
   let jobs = [];
+
   if (job) {
-    jobs = job.slice(0, 4)
+    jobs = job.slice(firstList, lastList)
     jobs = jobs.map((job) => {
       let tags = job.tags.replace(" ", '').split(",")
       tags = tags.slice(0, 5)
@@ -46,7 +70,7 @@ const PostManagementPage = () => {
 
   let profiles = [];
   if (profile) {
-    profiles = profile.map((profile ) => {
+    profiles = profile.map((profile) => {
       let careerFeild = profile.careerFeild.replace(" ", '').split(",")
       careerFeild = careerFeild.slice(0, 2)
       return {
@@ -63,7 +87,7 @@ const PostManagementPage = () => {
   }
 
   return (
-    <PostManagement profiles={profiles} jobs={jobs} />
+    <PostManagement profiles={profiles} jobs={jobs} onNextList={nextList} onPreList={preList} />
   );
 };
 

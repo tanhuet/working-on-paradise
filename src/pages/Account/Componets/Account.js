@@ -129,7 +129,7 @@ const Account = (props) => {
     } else {
       setCanEditEducation(true)
     }
-  }
+  };
 
   const closeEducationEditHandler = (reload) => {
     setCanEditEducation(false);
@@ -160,15 +160,16 @@ const Account = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const openDialog = () => {
     setIsOpen(true)
-  }
+  };
+
   const handleClose = () => {
     setIsOpen(false)
-  }
+  };
   
   const errorImg = (e) => {
     e.target.onerror = null
     e.target.src = error
-  }
+  };
 
   return (
     USER && (
@@ -355,7 +356,7 @@ const Account = (props) => {
             {editEx === false ? (
               <form className={classes.dataItem234}>
                 <div className={classes.font}>
-                  <div className={classes.styleborder}>{experience}</div>
+                  <div className={classes.styleborder}><p>{experience}</p></div>
                 </div>
               </form>
             ) : (
