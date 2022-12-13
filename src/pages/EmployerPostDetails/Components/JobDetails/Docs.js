@@ -69,7 +69,7 @@ const Docs = (props) => {
                 benefits: textarea4,
                 tags: props.docs.tags,
                 title:
-                  props.docs.title !== ""
+                  props.docs.title === ""
                     ? props.docs.jobType
                     : props.docs.title,
                 startTime: new Date().toISOString().slice(0, 10),
