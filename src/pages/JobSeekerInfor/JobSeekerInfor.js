@@ -1,13 +1,13 @@
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux"
+import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import config from "../../config";
-import classes from "./JobSeekerInfor.module.scss"
+import classes from "./JobSeekerInfor.module.scss";
 import { Fragment } from "react";
 import Data from "../Account/Componets/Data";
 import CvBox from "../Account/Componets/CvBox";
-import error from "../../asses/errorImg.png"
+import error from "../../asses/errorImg.png";
 
 const JobSeekerInfor = () => {
   const userStore = useSelector((state) => state.auth.login?.currentUser);
@@ -27,33 +27,40 @@ const JobSeekerInfor = () => {
   const [education, setEducation] = useState();
   const [listCv, setListCv] = useState([]);
 
-  const jobseekerId = useParams().jobseekerId
+  const jobseekerId = useParams().jobseekerId;
 
   useEffect(() => {
-    axios.get(`${config.api.url}/jobseeker/${jobseekerId}`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } })
-      .then((res) => {
-        setName(res.data.name);
-        setAvatar(res.data.avatar);
-        setPhone(res.data.phone);
-        setEmail(res.data.email);
-        setAge(res.data.age);
-        setAddress(res.data.address);
-        setGender(res.data.gender);
-        setExperience(res.data.experience);
-        setAdvanedSkill(res.data.advanedSkill);
-        setCareerFeild(res.data.careerFeild);
-        setTypeOfJob(res.data.typeOfJob);
-        setSalary(res.data.salary);
-        setWorkplace(res.data.workplace);
-        setListCv(res.data.cv.split(","))
-      });
-      
-    window.scrollTo(0, 0);
+    axios.get(`${config.api.url}/jobseeker/${jobseekerId}`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } }).then((res) => {
+      setName(res.data.name);
+      setAvatar(res.data.avatar);
+      setPhone(res.data.phone);
+      setEmail(res.data.email);
+      setAge(res.data.age);
+      setAddress(res.data.address);
+      setGender(res.data.gender);
+      setExperience(res.data.experience);
+      setAdvanedSkill(res.data.advanedSkill);
+      setCareerFeild(res.data.careerFeild);
+      setTypeOfJob(res.data.typeOfJob);
+      setSalary(res.data.salary);
+      setWorkplace(res.data.workplace);
 
-    axios.get(`${config.api.url}/education/jobseeker/${jobseekerId}`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } })
+      const resListCv = res.data.cv.split(",");
+      const newListCv = [];
+      resListCv.forEach((item) => {
+        if (item && item !== "" && item.length > 3 && item !== "cv link") {
+          newListCv.push(item);
+        }
+      });
+
+      setListCv(newListCv);
+    });
+
+    axios
+      .get(`${config.api.url}/education/jobseeker/${jobseekerId}`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } })
       .then((res) => {
-        setEducation(res.data)
-      })
+        setEducation(res.data);
+      });
   }, [userStore, jobseekerId]);
 
   let educations = [];
@@ -72,9 +79,9 @@ const JobSeekerInfor = () => {
   }
 
   const errorImg = (e) => {
-    e.target.onerror = null
-    e.target.src = error
-  }
+    e.target.onerror = null;
+    e.target.src = error;
+  };
 
   return (
     <Fragment>
@@ -166,7 +173,9 @@ const JobSeekerInfor = () => {
                 <div className={classes.fontTitle}>{data.school}</div>
                 <div className={classes.font}>{data.major}</div>
                 <div className={classes.font}>{data.degree}</div>
-                <div className={classes.font}>{data.startDate} {data.endDate}</div>
+                <div className={classes.font}>
+                  {data.startDate} {data.endDate}
+                </div>
                 <div className={classes.font}>{data.description}</div>
               </div>
             ))}
@@ -219,9 +228,8 @@ const JobSeekerInfor = () => {
           <CvBox CvName={"CV-" + index} CvLink={cv} />
         ))}
       </Data>
-
-    </Fragment >
+    </Fragment>
   );
-}
+};
 
-export default JobSeekerInfor
+export default JobSeekerInfor;
