@@ -129,12 +129,13 @@ const AddPostEmployer = (props) => {
       });
   }, [userStore]);
 
+  
   return (
     <div className={`container`}>
       <form className={"row g-3 needs-validation"} onSubmit={handleSubmit}>
         <div className={classes["header-div"]}>
           <div className={classes["add-image"]}>
-            <img src={user?.wallpaper} />
+            <img src={user?.wallpaper !== 'wallpaper' ? user?.wallpaper : 'https://thuthuatnhanh.com/wp-content/uploads/2021/03/hinh-anh-tuyen-dung-noi-bat.jpg'} />
           </div>
           <div className={classes["body-add-post"]}>
             <div className={`row`}>
@@ -145,9 +146,9 @@ const AddPostEmployer = (props) => {
                     style={{ borderRadius: "50%", width: "150px", height: '150px' }}
                   />
                 </div>
-                <div className={classes["button-camera"]}>
+                {/* <div className={classes["button-camera"]}>
                   <img src={ButtonCamera} />
-                </div>
+                </div> */}
               </div>
               <div
                 className={`col-sm-5 order-1`}
@@ -198,14 +199,6 @@ const AddPostEmployer = (props) => {
                         <option value="fulltime">Full-time</option>
                         <option value="parttime">Part-time</option>
                       </select>
-                      {/* <span>
-                        {" "}
-                        <input
-                          onChange={handleChangeTypeOfJob}
-                          value={typeOfJob}
-                          required
-                        ></input>
-                      </span> */}
                     </li>
                     <li>
                       <p1>Position:</p1>

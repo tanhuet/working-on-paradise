@@ -53,6 +53,7 @@ const MainNavigation = (props) => {
   const handleLogout = () => {
     setIsDisplayAccount(false);
     logoutUser(dispatch, navigate, axiosJWT);
+    navigate('/signin')
   };
 
   const searchHander = (e) => {

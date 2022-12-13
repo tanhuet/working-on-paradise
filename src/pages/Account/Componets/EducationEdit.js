@@ -26,7 +26,7 @@ const EducationEdit = (props) => {
       setEndDate(props.education.endDate);
       setDescription(props.education.description);
     }
-  }, []);
+  }, [props]);
 
   const handleSubmit = (event) => {
     event.preventDefault();

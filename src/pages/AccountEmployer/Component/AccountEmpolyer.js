@@ -1,6 +1,5 @@
 import { Fragment, useState, useEffect } from "react";
 import Iframe from "react-iframe";
-import { useNavigate } from "react-router-dom";
 import classes from "./AccountEmployer.module.scss";
 import { useSelector } from "react-redux";
 import config from "../../../config";
@@ -8,6 +7,8 @@ import React from "react";
 import axios from "axios";
 import Comment from "./Comment";
 import Backdrop from "../../../components/Backdrop/Backdrop";
+import editButton from "../../../asses/editButton.png";
+import saveButton from "../../../asses/saveButton.png";
 
 const AccountEmployer = (props) => {
   const USER = props.user;
@@ -23,17 +24,23 @@ const AccountEmployer = (props) => {
   const userStore = useSelector((state) => state.auth.login?.currentUser);
 
   const [name, setName] = useState();
+  const [editName, setEditName] = useState(false);
+
   const [avatar, setAvatar] = useState();
   const [selectedAvatar, setSelectAvatar] = useState("");
 
   const [wallpaper, setWallpaper] = useState();
 
   useEffect(() => {
-    axios.get(`${config.api.url}/user`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } }).then((res) => {
-      setName(res.data.name);
-      setAvatar(res.data.avatar);
-      setAddress(res.data.address);
-    });
+    axios
+      .get(`${config.api.url}/user`, {
+        headers: { Authorization: `Bearer ${userStore.accessToken}` },
+      })
+      .then((res) => {
+        setName(res.data.name);
+        setAvatar(res.data.avatar);
+        setAddress(res.data.address);
+      });
     axios
       .get(`${config.api.url}/employer`, {
         headers: { Authorization: `Bearer ${userStore.accessToken}` },
@@ -61,8 +68,8 @@ const AccountEmployer = (props) => {
     axios.put(
       `${config.api.url}/user`,
       {
-        name: USER.name,
-        avatar: USER.avatar,
+        name: name,
+        avatar: avatar,
         address: address,
       },
       { headers: { Authorization: `Bearer ${userStore.accessToken}` } }
@@ -76,7 +83,10 @@ const AccountEmployer = (props) => {
   const handleSubmitSave = async (event) => {
     const newAvatar = new FormData();
     newAvatar.append(`file`, selectedAvatar);
-    const avatarLink = await axios.post(`${config.api.url}/helper/upload`, newAvatar);
+    const avatarLink = await axios.post(
+      `${config.api.url}/helper/upload`,
+      newAvatar
+    );
     axios
       .put(
         `${config.api.url}/user`,
@@ -104,11 +114,13 @@ const AccountEmployer = (props) => {
       <Fragment>
         <div className={classes["container1-1"]}>
           <div className={classes["edit-img"]}>
-            {/* <div className={classes.letter}>
-              {USER.name.charAt(0).toUpperCase()}
-            </div> */}
             <div>
-              <img className={classes.circle} onClick={openDialog} src={avatar} alt="" />
+              <img
+                className={classes.circle}
+                onClick={openDialog}
+                src={avatar}
+                alt=""
+              />
             </div>
             {isOpen && (
               <Fragment>
@@ -119,7 +131,10 @@ const AccountEmployer = (props) => {
                   </div>
                   <div className={classes.child}>
                     <input type="file" onChange={handleChangeAvatar}></input>
-                    <i style={{ marginLeft: "10px" }} className={"fa fa-camera"} />
+                    <i
+                      style={{ marginLeft: "10px" }}
+                      className={"fa fa-camera"}
+                    />
                   </div>
                   <div className={classes.submit}>
                     <button onClick={handleClose}>Cancel</button>
@@ -136,27 +151,61 @@ const AccountEmployer = (props) => {
               </Fragment>
             )}
           </div>
-          <div className={classes.text}>{name}</div>
+          {editName === false ? (
+            <>
+              <div className={classes.text}>{name}</div>
+              <button className={classes.makeupButton} onClick={() => setEditName(true)}>
+                <img className={classes.edit} src={editButton} alt="" />
+              </button>
+            </>
+          ) : (
+            <>
+              <input className={classes.text} value={name} onChange={(e) => setName(e.target.value)} style={{ width: "15%", borderRadius: '10px', border: '2px solid rgba(213, 246, 246, 0.5)' }}></input>
+              <button
+                className={classes.makeupButton}
+                onClick={() => {
+                  handleSubmit();
+                  setEditName(false);
+                }}
+              >
+                <img className={classes.save} src={saveButton} alt="" />
+              </button>
+            </>
+          )}
         </div>
         <div id="list-example" className={classes["group-item"]}>
-          <a className={`list-group-item list-group-item-action ${classes.style1}`} href="#list-item-2">
+          <a
+            className={`list-group-item list-group-item-action ${classes.style1}`}
+            href="#list-item-2"
+          >
             Basic Information
           </a>
-          <a className={`list-group-item list-group-item-action ${classes.style1}`} href="#list-item-1">
+          <a
+            className={`list-group-item list-group-item-action ${classes.style1}`}
+            href="#list-item-1"
+          >
             Introduction
           </a>
         </div>
 
         <div className={`row`}>
           <div className={`col-xl-8`}>
-            <div data-spy="scroll" data-target="#list-example" data-offset="0" className="scrollspy-example">
+            <div
+              data-spy="scroll"
+              data-target="#list-example"
+              data-offset="0"
+              className="scrollspy-example"
+            >
               <div id="list-item-2" className={classes.title}>
                 <div className={classes.makeup}>
                   <div className={classes.style1}>Basic Information</div>
                 </div>
                 <div>
                   {editInfo === false ? (
-                    <button className={classes.edit} onClick={() => setEditInfo(true)}>
+                    <button
+                      className={classes.edit}
+                      onClick={() => setEditInfo(true)}
+                    >
                       <div className={classes.style3}>Edit</div>
                     </button>
                   ) : (
@@ -210,7 +259,7 @@ const AccountEmployer = (props) => {
                           className={`${classes.font} ${classes.editmake}`}
                           rows={"4"}
                           colums={"40"}
-                          style={{ borderRadius: "10px" }}
+                          style={{ borderRadius: "10px", width: '300px' }}
                           onChange={(e) => setAddress(e.target.value)}
                           value={address}
                         ></textarea>
@@ -242,7 +291,10 @@ const AccountEmployer = (props) => {
                 </div>
                 <div>
                   {editIntro === false ? (
-                    <button className={`${classes.edit} ${classes.margin1}`} onClick={() => setEditIntro(true)}>
+                    <button
+                      className={`${classes.edit} ${classes.margin1}`}
+                      onClick={() => setEditIntro(true)}
+                    >
                       <div className={classes.style3}>Edit</div>
                     </button>
                   ) : (
@@ -261,13 +313,23 @@ const AccountEmployer = (props) => {
 
               <div>
                 {editIntro === false ? (
-                  <form className={classes.data} style={{ height: "auto", minHeight: "400px" }}>
-                    <div className={classes.font} style={{ height: "auto", padding: "20px" }}>
+                  <form
+                    className={classes.data}
+                    style={{ height: "auto", minHeight: "400px" }}
+                  >
+                    <div
+                      className={classes.font}
+                      style={{ height: "auto", padding: "20px" }}
+                    >
                       <div className={classes.styleborder}>{introduction}</div>
                     </div>
                   </form>
                 ) : (
-                  <form className={classes.data} onSubmit={handleSubmit} style={{ height: "auto", minHeight: "400px" }}>
+                  <form
+                    className={classes.data}
+                    onSubmit={handleSubmit}
+                    style={{ height: "auto", minHeight: "400px" }}
+                  >
                     <textarea
                       className={`${classes.font} ${classes.textexper}`}
                       onChange={(e) => setIntroduction(e.target.value)}
@@ -288,7 +350,11 @@ const AccountEmployer = (props) => {
           <div className={`col-xl-4 ${classes.map}`}>
             <div
               className={`d-flex justify-content-center ${classes.map2}`}
-              style={{ border: "4px solid #EEEEEE", borderRadius: "10px", maxHeight: "500px" }}
+              style={{
+                border: "4px solid #EEEEEE",
+                borderRadius: "10px",
+                maxHeight: "500px",
+              }}
             >
               <Iframe
                 title="myFrame"

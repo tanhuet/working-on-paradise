@@ -60,7 +60,14 @@ const Account = (props) => {
       setTypeOfJob(res.data.typeOfJob);
       setSalary(res.data.salary);
       setWorkplace(res.data.workplace);
-      setListCv(res.data.cv.split(","))
+      const resList = res.data.cv.split(",");
+      const newList = [];
+      resList.forEach((item) => {
+        if (item && item !== "" && item.length > 3 && item !== "cv link") {
+          newList.push(item);
+        }
+      });
+      setListCv(newList);
     });
 
     axios.get(`${config.api.url}/education/all-mine`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } }).then((res) => {
@@ -129,7 +136,7 @@ const Account = (props) => {
     } else {
       setCanEditEducation(true)
     }
-  }
+  };
 
   const closeEducationEditHandler = (reload) => {
     setCanEditEducation(false);
@@ -160,15 +167,16 @@ const Account = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const openDialog = () => {
     setIsOpen(true)
-  }
+  };
+
   const handleClose = () => {
     setIsOpen(false)
-  }
-  
+  };
+
   const errorImg = (e) => {
     e.target.onerror = null
     e.target.src = error
-  }
+  };
 
   return (
     USER && (
@@ -177,7 +185,7 @@ const Account = (props) => {
         {canEditEducation && selectedEducation && <EducationEdit onCloseEditingEducation={closeEducationEditHandler} education={selectedEducation} />}
         <div className={classes.container1}>
           <div>
-            <img className={classes.circle} onClick={openDialog} src={avatar} alt="avatar" onError={errorImg}/>
+            <img className={classes.circle} onClick={openDialog} src={avatar} alt="avatar" onError={errorImg} />
           </div>
           {
             isOpen &&
@@ -189,7 +197,7 @@ const Account = (props) => {
                 </div>
                 <div className={classes.child}>
                   <input type="file" onChange={handleChangeAvatar}></input>
-                  <i style={{marginLeft: '10px'}} className={"fa fa-camera"} />
+                  <i style={{ marginLeft: '10px' }} className={"fa fa-camera"} />
                 </div>
                 <div className={classes.submit}>
                   <button onClick={handleClose}>Cancel</button>
@@ -355,7 +363,7 @@ const Account = (props) => {
             {editEx === false ? (
               <form className={classes.dataItem234}>
                 <div className={classes.font}>
-                  <div className={classes.styleborder}>{experience}</div>
+                  <div className={classes.styleborder}><p>{experience}</p></div>
                 </div>
               </form>
             ) : (
@@ -547,11 +555,19 @@ const Account = (props) => {
               </button>
             </Link>
           </div>
-          <Data className={classes.dataCv}>
-            {listCv.map((cv, index) => (
-              <CvBox CvName={"CV-" + index} CvLink={cv} />
-            ))}
-          </Data>
+          {listCv.length === 0 ? (
+            <div className={classes.dataItem6}>
+              <div className={classes.font}>
+                <div className={classes.styleborder}></div>
+              </div>
+            </div>
+          ) : (
+            <Data className={classes.dataCv}>
+              {listCv.map((cv, index) => (
+                <CvBox CvName={"CV-" + index} CvLink={cv} />
+              ))}
+            </Data>
+          )}
         </div>
       </Fragment>
     )
