@@ -68,7 +68,10 @@ const Docs = (props) => {
                 requirements: textarea2,
                 benefits: textarea4,
                 tags: props.docs.tags,
-                title: props.docs.title,
+                title:
+                  props.docs.title === undefined
+                    ? props.docs.jobType
+                    : props.docs.title,
                 startTime: new Date().toISOString().slice(0, 10),
                 endTime: new Date().toISOString().slice(0, 10),
                 imageUrl: props.docs.imageUrl,
@@ -104,6 +107,7 @@ const Docs = (props) => {
     });
     setStatus(false);
   }
+
   return (
     <div>
       <div className={classes["des"]}>
