@@ -7,6 +7,8 @@ import React from "react";
 import axios from "axios";
 import Comment from "./Comment";
 import Backdrop from "../../../components/Backdrop/Backdrop";
+import editButton from "../../../asses/editButton.png";
+import saveButton from "../../../asses/saveButton.png";
 
 const AccountEmployer = (props) => {
   const USER = props.user;
@@ -22,6 +24,8 @@ const AccountEmployer = (props) => {
   const userStore = useSelector((state) => state.auth.login?.currentUser);
 
   const [name, setName] = useState();
+  const [editName, setEditName] = useState(false);
+
   const [avatar, setAvatar] = useState();
   const [selectedAvatar, setSelectAvatar] = useState("");
 
@@ -64,8 +68,8 @@ const AccountEmployer = (props) => {
     axios.put(
       `${config.api.url}/user`,
       {
-        name: USER.name,
-        avatar: USER.avatar,
+        name: name,
+        avatar: avatar,
         address: address,
       },
       { headers: { Authorization: `Bearer ${userStore.accessToken}` } }
@@ -147,7 +151,27 @@ const AccountEmployer = (props) => {
               </Fragment>
             )}
           </div>
-          <div className={classes.text}>{name}</div>
+          {editName === false ? (
+            <>
+              <div className={classes.text}>{name}</div>
+              <button className={classes.makeupButton} onClick={() => setEditName(true)}>
+                <img className={classes.edit} src={editButton} alt="" />
+              </button>
+            </>
+          ) : (
+            <>
+              <input className={classes.text} value={name} onChange={(e) => setName(e.target.value)} style={{ width: "15%", borderRadius: '10px', border: '2px solid rgba(213, 246, 246, 0.5)' }}></input>
+              <button
+                className={classes.makeupButton}
+                onClick={() => {
+                  handleSubmit();
+                  setEditName(false);
+                }}
+              >
+                <img className={classes.save} src={saveButton} alt="" />
+              </button>
+            </>
+          )}
         </div>
         <div id="list-example" className={classes["group-item"]}>
           <a
