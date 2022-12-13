@@ -1,6 +1,5 @@
 import { Fragment, useState, useEffect } from "react";
 import Iframe from "react-iframe";
-import { useNavigate } from "react-router-dom";
 import classes from "./AccountEmployer.module.scss";
 import { useSelector } from "react-redux";
 import config from "../../../config";
@@ -29,11 +28,15 @@ const AccountEmployer = (props) => {
   const [wallpaper, setWallpaper] = useState();
 
   useEffect(() => {
-    axios.get(`${config.api.url}/user`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } }).then((res) => {
-      setName(res.data.name);
-      setAvatar(res.data.avatar);
-      setAddress(res.data.address);
-    });
+    axios
+      .get(`${config.api.url}/user`, {
+        headers: { Authorization: `Bearer ${userStore.accessToken}` },
+      })
+      .then((res) => {
+        setName(res.data.name);
+        setAvatar(res.data.avatar);
+        setAddress(res.data.address);
+      });
     axios
       .get(`${config.api.url}/employer`, {
         headers: { Authorization: `Bearer ${userStore.accessToken}` },
@@ -76,7 +79,10 @@ const AccountEmployer = (props) => {
   const handleSubmitSave = async (event) => {
     const newAvatar = new FormData();
     newAvatar.append(`file`, selectedAvatar);
-    const avatarLink = await axios.post(`${config.api.url}/helper/upload`, newAvatar);
+    const avatarLink = await axios.post(
+      `${config.api.url}/helper/upload`,
+      newAvatar
+    );
     axios
       .put(
         `${config.api.url}/user`,
@@ -104,11 +110,13 @@ const AccountEmployer = (props) => {
       <Fragment>
         <div className={classes["container1-1"]}>
           <div className={classes["edit-img"]}>
-            {/* <div className={classes.letter}>
-              {USER.name.charAt(0).toUpperCase()}
-            </div> */}
             <div>
-              <img className={classes.circle} onClick={openDialog} src={avatar} alt="" />
+              <img
+                className={classes.circle}
+                onClick={openDialog}
+                src={avatar}
+                alt=""
+              />
             </div>
             {isOpen && (
               <Fragment>
@@ -119,7 +127,10 @@ const AccountEmployer = (props) => {
                   </div>
                   <div className={classes.child}>
                     <input type="file" onChange={handleChangeAvatar}></input>
-                    <i style={{ marginLeft: "10px" }} className={"fa fa-camera"} />
+                    <i
+                      style={{ marginLeft: "10px" }}
+                      className={"fa fa-camera"}
+                    />
                   </div>
                   <div className={classes.submit}>
                     <button onClick={handleClose}>Cancel</button>
@@ -139,24 +150,38 @@ const AccountEmployer = (props) => {
           <div className={classes.text}>{name}</div>
         </div>
         <div id="list-example" className={classes["group-item"]}>
-          <a className={`list-group-item list-group-item-action ${classes.style1}`} href="#list-item-2">
+          <a
+            className={`list-group-item list-group-item-action ${classes.style1}`}
+            href="#list-item-2"
+          >
             Basic Information
           </a>
-          <a className={`list-group-item list-group-item-action ${classes.style1}`} href="#list-item-1">
+          <a
+            className={`list-group-item list-group-item-action ${classes.style1}`}
+            href="#list-item-1"
+          >
             Introduction
           </a>
         </div>
 
         <div className={`row`}>
           <div className={`col-xl-8`}>
-            <div data-spy="scroll" data-target="#list-example" data-offset="0" className="scrollspy-example">
+            <div
+              data-spy="scroll"
+              data-target="#list-example"
+              data-offset="0"
+              className="scrollspy-example"
+            >
               <div id="list-item-2" className={classes.title}>
                 <div className={classes.makeup}>
                   <div className={classes.style1}>Basic Information</div>
                 </div>
                 <div>
                   {editInfo === false ? (
-                    <button className={classes.edit} onClick={() => setEditInfo(true)}>
+                    <button
+                      className={classes.edit}
+                      onClick={() => setEditInfo(true)}
+                    >
                       <div className={classes.style3}>Edit</div>
                     </button>
                   ) : (
@@ -242,7 +267,10 @@ const AccountEmployer = (props) => {
                 </div>
                 <div>
                   {editIntro === false ? (
-                    <button className={`${classes.edit} ${classes.margin1}`} onClick={() => setEditIntro(true)}>
+                    <button
+                      className={`${classes.edit} ${classes.margin1}`}
+                      onClick={() => setEditIntro(true)}
+                    >
                       <div className={classes.style3}>Edit</div>
                     </button>
                   ) : (
@@ -261,13 +289,23 @@ const AccountEmployer = (props) => {
 
               <div>
                 {editIntro === false ? (
-                  <form className={classes.data} style={{ height: "auto", minHeight: "400px" }}>
-                    <div className={classes.font} style={{ height: "auto", padding: "20px" }}>
+                  <form
+                    className={classes.data}
+                    style={{ height: "auto", minHeight: "400px" }}
+                  >
+                    <div
+                      className={classes.font}
+                      style={{ height: "auto", padding: "20px" }}
+                    >
                       <div className={classes.styleborder}>{introduction}</div>
                     </div>
                   </form>
                 ) : (
-                  <form className={classes.data} onSubmit={handleSubmit} style={{ height: "auto", minHeight: "400px" }}>
+                  <form
+                    className={classes.data}
+                    onSubmit={handleSubmit}
+                    style={{ height: "auto", minHeight: "400px" }}
+                  >
                     <textarea
                       className={`${classes.font} ${classes.textexper}`}
                       onChange={(e) => setIntroduction(e.target.value)}
@@ -288,7 +326,11 @@ const AccountEmployer = (props) => {
           <div className={`col-xl-4 ${classes.map}`}>
             <div
               className={`d-flex justify-content-center ${classes.map2}`}
-              style={{ border: "4px solid #EEEEEE", borderRadius: "10px", maxHeight: "500px" }}
+              style={{
+                border: "4px solid #EEEEEE",
+                borderRadius: "10px",
+                maxHeight: "500px",
+              }}
             >
               <Iframe
                 title="myFrame"

@@ -145,9 +145,9 @@ const AddPostEmployer = (props) => {
                     style={{ borderRadius: "50%", width: "150px", height: '150px' }}
                   />
                 </div>
-                <div className={classes["button-camera"]}>
+                {/* <div className={classes["button-camera"]}>
                   <img src={ButtonCamera} />
-                </div>
+                </div> */}
               </div>
               <div
                 className={`col-sm-5 order-1`}
@@ -198,14 +198,6 @@ const AddPostEmployer = (props) => {
                         <option value="fulltime">Full-time</option>
                         <option value="parttime">Part-time</option>
                       </select>
-                      {/* <span>
-                        {" "}
-                        <input
-                          onChange={handleChangeTypeOfJob}
-                          value={typeOfJob}
-                          required
-                        ></input>
-                      </span> */}
                     </li>
                     <li>
                       <p1>Position:</p1>
