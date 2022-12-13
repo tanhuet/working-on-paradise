@@ -148,23 +148,32 @@
     padding: 30px;
     .username-old {
       font-weight: 600;
-      font-size: 25px;
+      font-size: 24px;
       line-height: 38px;
       text-align: justify;
       color: #000000;
     }
     .mins-old {
       display: flex;
+      // flex-direction: row-reverse;
+      // width: 100%;
       align-items: center;
+      font-size: 10px;
+    }
+    .comment-content {
+      font-family: "Poppins";
+      font-style: normal;
+        
+        font-size: 20px;
+        line-height: 38px;
     }
     .button-delete {
       display: flex;
       flex-direction: row-reverse;
-      margin-right: 50px;
+
       button {
-        border: 2px solid rgba(213, 246, 246, 0.5);
-        background: #00ced1;
-        border-radius: 10px;
+        border: none;
+        background: none;
       }
     }
   }
