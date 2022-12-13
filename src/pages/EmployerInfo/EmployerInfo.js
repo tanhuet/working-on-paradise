@@ -1,6 +1,5 @@
 import { Fragment, useState, useEffect } from "react";
 import Iframe from "react-iframe";
-import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import classes from "./EmployerInfo.module.scss";
 import { useSelector } from "react-redux";
@@ -20,40 +19,57 @@ const EmployerInfo = () => {
   const [name, setName] = useState();
   const [profileUser, setProfileUser] = useState();
 
+  const [avatar, setAvatar] = useState();
+
   const employerId = useParams().employerId;
 
   useEffect(() => {
-    axios.get(`${config.api.url}/employer/${employerId}`, { headers: { Authorization: `Bearer ${userStore.accessToken}` } }).then((res) => {
-      setName(res.data.name);
-      setPhone(res.data.phone);
-      setEmail(res.data.email);
-      setAddress(res.data.address);
-      setIntroduction(res.data.about);
-      setSize(res.data.size);
-      setProfileUser(res.data);
-    });
+    axios
+      .get(`${config.api.url}/employer/${employerId}`, {
+        headers: { Authorization: `Bearer ${userStore.accessToken}` },
+      })
+      .then((res) => {
+        setName(res.data.name);
+        setPhone(res.data.phone);
+        setEmail(res.data.email);
+        setAddress(res.data.address);
+        setIntroduction(res.data.about);
+        setSize(res.data.size);
+        setProfileUser(res.data);
+        setAvatar(res.data.avatar);
+      });
   }, [userStore, employerId]);
-
   return (
     <Fragment>
       <div className={classes["container2-2"]}>
-        <div className={classes.circle}>
-          <div className={classes.letter}>{name?.charAt(0)?.toUpperCase()}</div>
+        <div>
+          <img className={classes.circle} src={avatar} alt="" />
         </div>
         <div className={classes.text}>{name}</div>
       </div>
       <div id="list-example" className={classes["group-item"]}>
-        <a className={`list-group-item list-group-item-action ${classes.style1}`} href="#list-item-2">
+        <a
+          className={`list-group-item list-group-item-action ${classes.style1}`}
+          href="#list-item-2"
+        >
           Basic Information
         </a>
-        <a className={`list-group-item list-group-item-action ${classes.style1}`} href="#list-item-1">
+        <a
+          className={`list-group-item list-group-item-action ${classes.style1}`}
+          href="#list-item-1"
+        >
           Introduction
         </a>
       </div>
 
       <div className={`row`}>
         <div className={`col-xl-8`}>
-          <div data-spy="scroll" data-target="#list-example" data-offset="0" className="scrollspy-example">
+          <div
+            data-spy="scroll"
+            data-target="#list-example"
+            data-offset="0"
+            className="scrollspy-example"
+          >
             <div id="list-item-2" className={classes.title}>
               <div className={classes.makeup}>
                 <div className={classes.style1}>Basic Information</div>
@@ -91,8 +107,14 @@ const EmployerInfo = () => {
             </div>
 
             <div>
-              <form className={classes.data} style={{ height: "auto", minHeight: "400px" }}>
-                <div className={classes.font} style={{ height: "auto", padding: "20px" }}>
+              <form
+                className={classes.data}
+                style={{ height: "auto", minHeight: "400px" }}
+              >
+                <div
+                  className={classes.font}
+                  style={{ height: "auto", padding: "20px" }}
+                >
                   <div className={classes.styleborder}>{introduction}</div>
                 </div>
               </form>
@@ -103,7 +125,11 @@ const EmployerInfo = () => {
         <div className={`col-xl-4 ${classes.map}`}>
           <div
             className={`d-flex justify-content-center ${classes.map2}`}
-            style={{ border: "4px solid #EEEEEE", borderRadius: "10px", maxHeight: "500px" }}
+            style={{
+              border: "4px solid #EEEEEE",
+              borderRadius: "10px",
+              maxHeight: "500px",
+            }}
           >
             <Iframe
               title="myFrame"
